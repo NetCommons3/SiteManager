@@ -31,7 +31,9 @@ class SiteManagerController extends SiteManagerAppController {
  *
  * @var array
  */
-	//public $components = array();
+	public $components = array(
+		'ControlPanel.ControlPanelLayout',
+	);
 
 /**
  * index

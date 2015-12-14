@@ -25,6 +25,10 @@ class SiteManagerAppController extends AppController {
  * @var array
  */
 	public $components = array(
+		'NetCommons.Permission' => array(
+			'type' => PermissionComponent::CHECK_TYEP_SYSTEM_PLUGIN,
+			'allow' => array()
+		),
 		'Security'
 	);
 }
