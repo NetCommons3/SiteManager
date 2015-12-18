@@ -8,4 +8,4 @@ SiteManager for NetComomns3
 
 | dependencies  | status |
 | ------------- | ------ |
-| composer.json | [![Dependency Status](https://www.versioneye.com/user/projects/(versioneye_project_ID)/badge.png)](https://www.versioneye.com/user/projects/(versioneye_project_ID)) |
+| composer.json | [![Dependency Status](https://www.versioneye.com/user/projects/56738e8184f9b4000c0011e9/badge.png)](https://www.versioneye.com/user/projects/56738e8184f9b4000c0011e9) |
