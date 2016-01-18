@@ -1,6 +1,6 @@
 <?php
 /**
- * SiteManager Controller
+ * DefaultPageSettings Controller
  *
  * @author Noriko Arai <arai@nii.ac.jp>
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
@@ -13,12 +13,21 @@ App::uses('SiteManagerAppController', 'SiteManager.Controller');
 App::uses('Room', 'Rooms.Model');
 
 /**
- * サイト管理【一般設定】
+ * サイト管理【ページスタイル】
  *
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @package NetCommons\SiteManager\Controller
  */
-class SiteManagerController extends SiteManagerAppController {
+class DefaultPageSettingsController extends SiteManagerAppController {
+
+/**
+ * use components
+ *
+ * @var array
+ */
+	public $components = array(
+		'ThemeSettings.ThemeSettings',
+	);
 
 /**
  * use model
@@ -44,32 +53,18 @@ class SiteManagerController extends SiteManagerAppController {
 				'RoomsLanguage.language_id' => Current::read('Language.id')
 			)
 		));
-		$this->set('rooms', Hash::combine($rooms, '{n}.RoomsLanguage.room_id', '{n}.RoomsLanguage.name'));
+		$this->set('rooms', Hash::combine($rooms, '{n}.RoomsLanguage.room_id', '{n}'));
+		$this->set('activeRoomId', Hash::get($this->request->pass, '0'));
+
+		//テーマセット
+		$this->ThemeSettings->setThemes();
 
 		//リクエストセット
 		if ($this->request->is('post')) {
 
 		} else {
-			$settings = $this->SiteSetting->find('all', array(
-				'recursive' => -1,
-				'conditions' => array('key' => array(
-					//サイト名
-					'App.site_name',
-					//システム標準使用言語
-					'Config.language',
-					//標準の開始ルーム
-					'App.default_start_room',
-					//サイトを閉鎖する
-					'App.close_site',
-					//サイト閉鎖の理由
-					'App.site_closing_reason',
-				))
-			));
-			$this->request->data['SiteSetting'] = Hash::combine($settings,
-				'{n}.SiteSetting.language_id',
-				'{n}.SiteSetting',
-				'{n}.SiteSetting.key'
-			);
+			$this->request->data['Room'] = $this->viewVars['rooms'];
+			$this->theme = Hash::get($this->request->query, 'theme', $this->theme);
 		}
 	}
 }

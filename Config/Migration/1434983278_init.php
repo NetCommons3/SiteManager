@@ -11,7 +11,7 @@
 /**
  * Init migration
  *
- * @package NetCommons\ThemeSettings\Config\Migration
+ * @package NetCommons\SiteManager\Config\Migration
  */
 class Init extends CakeMigration {
 
@@ -32,7 +32,7 @@ class Init extends CakeMigration {
 			'create_table' => array(
 				'site_settings' => array(
 					'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
-					'language_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'length' => 6, 'unsigned' => false),
+					'language_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'length' => 6, 'unsigned' => false, 'comment' => '共通の場合、0'),
 					'key' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => 'Key of the record.    e.g.) theme_name, site_name', 'charset' => 'utf8'),
 					'value' => array('type' => 'text', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => 'Value of the record.    e.g.) default, My Homepage', 'charset' => 'utf8'),
 					'label' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => 'Human friendly label for the record.    e.g.) Theme, Site Name', 'charset' => 'utf8'),

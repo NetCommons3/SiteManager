@@ -1,6 +1,6 @@
 <?php
 /**
- * サイト管理の初期表示テンプレート
+ * サイト管理【メール設定】テンプレート
  *
  * @author Noriko Arai <arai@nii.ac.jp>
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
@@ -9,4 +9,7 @@
  * @copyright Copyright 2014, NetCommons Project
  */
 ?>
+
+<?php echo $this->SiteManager->tabs(); ?>
+
 <div></div>

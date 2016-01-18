@@ -1,6 +1,6 @@
 <?php
 /**
- * SiteManager Controller
+ * MailSettings Controller
  *
  * @author Noriko Arai <arai@nii.ac.jp>
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
@@ -10,25 +10,21 @@
  */
 
 App::uses('SiteManagerAppController', 'SiteManager.Controller');
-App::uses('Room', 'Rooms.Model');
 
 /**
- * サイト管理【一般設定】
+ * サイト管理【メール設定】
  *
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @package NetCommons\SiteManager\Controller
  */
-class SiteManagerController extends SiteManagerAppController {
+class MailSettingsController extends SiteManagerAppController {
 
 /**
  * use model
  *
  * @var array
  */
-	public $uses = array(
-		'Rooms.RoomsLanguage',
-		'SiteManager.SiteSetting',
-	);
+	//public $uses = array();
 
 /**
  * edit
@@ -36,16 +32,6 @@ class SiteManagerController extends SiteManagerAppController {
  * @return void
  */
 	public function edit() {
-		//ルームデータ取得
-		$rooms = $this->RoomsLanguage->find('all', array(
-			'recursive' => 0,
-			'conditions' => array(
-				'RoomsLanguage.room_id' => Room::$spaceRooms,
-				'RoomsLanguage.language_id' => Current::read('Language.id')
-			)
-		));
-		$this->set('rooms', Hash::combine($rooms, '{n}.RoomsLanguage.room_id', '{n}.RoomsLanguage.name'));
-
 		//リクエストセット
 		if ($this->request->is('post')) {
 
@@ -53,16 +39,10 @@ class SiteManagerController extends SiteManagerAppController {
 			$settings = $this->SiteSetting->find('all', array(
 				'recursive' => -1,
 				'conditions' => array('key' => array(
-					//サイト名
-					'App.site_name',
-					//システム標準使用言語
-					'Config.language',
-					//標準の開始ルーム
-					'App.default_start_room',
-					//サイトを閉鎖する
-					'App.close_site',
-					//サイト閉鎖の理由
-					'App.site_closing_reason',
+					//本文ヘッダー
+					'Mail.body_header',
+					//署名
+					'Mail.signature',
 				))
 			));
 			$this->request->data['SiteSetting'] = Hash::combine($settings,

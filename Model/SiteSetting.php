@@ -42,9 +42,10 @@ class SiteSetting extends AppModel {
  */
 	public function getSiteTimezone() {
 		$languageId = Current::read('Language.id');
-		$setting = $this->findByLanguageIdAndKey($languageId, 'site_timezone');
+		$setting = $this->findByLanguageIdAndKey($languageId, 'App.default_timezone');
 		$timezone = $setting['SiteSetting']['value'];
 		return $timezone;
 	}
+
 }
 
