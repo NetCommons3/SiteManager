@@ -52,7 +52,7 @@ class SiteManagerController extends SiteManagerAppController {
 		} else {
 			$settings = $this->SiteSetting->find('all', array(
 				'recursive' => -1,
-				'conditions' => array('key' => array(
+				'conditions' => array('SiteSetting.key' => array(
 					//サイト名
 					'App.site_name',
 					//システム標準使用言語

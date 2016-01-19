@@ -41,7 +41,7 @@ class MetaSettingsController extends SiteManagerAppController {
 		} else {
 			$settings = $this->SiteSetting->find('all', array(
 				'recursive' => -1,
-				'conditions' => array('key' => array(
+				'conditions' => array('SiteSetting.key' => array(
 					//作成者
 					'Meta.author',
 					//著作権表示

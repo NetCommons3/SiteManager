@@ -44,7 +44,7 @@ class MembershipController extends SiteManagerAppController {
 
 			$settings = $this->SiteSetting->find('all', array(
 				'recursive' => -1,
-				'conditions' => array('key' => array(
+				'conditions' => array('SiteSetting.key' => array(
 					// * 入会設定
 					// ** 自動会員登録を許可する
 					'AutoRegist.use_automatic_register',

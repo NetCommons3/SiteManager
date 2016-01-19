@@ -38,7 +38,7 @@ class MailSettingsController extends SiteManagerAppController {
 		} else {
 			$settings = $this->SiteSetting->find('all', array(
 				'recursive' => -1,
-				'conditions' => array('key' => array(
+				'conditions' => array('SiteSetting.key' => array(
 					//本文ヘッダー
 					'Mail.body_header',
 					//署名
