@@ -245,10 +245,10 @@ msgid "Mail.body_header"
 msgstr "本文ヘッダー"
 
 msgid "Mail.body_header description"
-msgstr "ここに説明分書く"
+msgstr "ここに説明文を書く"
 
 msgid "Mail.signature"
 msgstr "署名"
 
 msgid "Mail.signature description"
-msgstr "ここに説明分書く"
+msgstr "ここに説明文を文書く"
