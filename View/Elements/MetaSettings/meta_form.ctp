@@ -1,6 +1,6 @@
 <?php
 /**
- * Meta情報Element
+ * Meta情報 Element
  *
  * @author Noriko Arai <arai@nii.ac.jp>
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>

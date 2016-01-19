@@ -1,6 +1,6 @@
 <?php
 /**
- * テーマElement
+ * テーマ設定 Element
  *
  * @author Noriko Arai <arai@nii.ac.jp>
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>

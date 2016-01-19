@@ -1,6 +1,6 @@
 <?php
 /**
- * パスワード再発行設定 Element
+ * メール署名 Element
  *
  * @author Noriko Arai <arai@nii.ac.jp>
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>

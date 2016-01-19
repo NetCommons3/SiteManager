@@ -1,6 +1,6 @@
 <?php
 /**
- * サイト閉鎖設定Element
+ * サイト閉鎖設定 Element
  *
  * @author Noriko Arai <arai@nii.ac.jp>
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
