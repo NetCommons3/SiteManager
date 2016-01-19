@@ -39,9 +39,8 @@ class MetaSettingsController extends SiteManagerAppController {
 		if ($this->request->is('post')) {
 
 		} else {
-			$settings = $this->SiteSetting->find('all', array(
-				'recursive' => -1,
-				'conditions' => array('SiteSetting.key' => array(
+			$this->request->data['SiteSetting'] = $this->SiteSetting->getSiteSettingForEdit(
+				array('SiteSetting.key' => array(
 					//作成者
 					'Meta.author',
 					//著作権表示
@@ -54,13 +53,8 @@ class MetaSettingsController extends SiteManagerAppController {
 					'Meta.robots',
 					//閲覧対象年齢層の指定
 					'Meta.rating',
-				))
+				)
 			));
-			$this->request->data['SiteSetting'] = Hash::combine($settings,
-				'{n}.SiteSetting.language_id',
-				'{n}.SiteSetting',
-				'{n}.SiteSetting.key'
-			);
 		}
 	}
 }

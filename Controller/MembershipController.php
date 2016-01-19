@@ -42,9 +42,8 @@ class MembershipController extends SiteManagerAppController {
 		} else {
 			$this->set('membershipTab', Hash::get($this->request->query, 'membershipTab', 'automatic-registration'));
 
-			$settings = $this->SiteSetting->find('all', array(
-				'recursive' => -1,
-				'conditions' => array('SiteSetting.key' => array(
+			$this->request->data['SiteSetting'] = $this->SiteSetting->getSiteSettingForEdit(
+				array('SiteSetting.key' => array(
 					// * 入会設定
 					// ** 自動会員登録を許可する
 					'AutoRegist.use_automatic_register',
@@ -111,13 +110,8 @@ class MembershipController extends SiteManagerAppController {
 					'Workflow.approval_completion_mail_subject',
 					// ** 承認完了メールの本文
 					'Workflow.approval_completion_mail_body',
-				))
+				)
 			));
-			$this->request->data['SiteSetting'] = Hash::combine($settings,
-				'{n}.SiteSetting.language_id',
-				'{n}.SiteSetting',
-				'{n}.SiteSetting.key'
-			);
 		}
 	}
 }

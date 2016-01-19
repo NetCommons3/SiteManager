@@ -48,28 +48,37 @@ class SiteManagerController extends SiteManagerAppController {
 
 		//リクエストセット
 		if ($this->request->is('post')) {
+			//不要パラメータ除去
+			$this->request->data = Hash::remove($this->request->data, 'save');
+			$this->request->data = Hash::remove($this->request->data, 'active_lang_id');
 
-		} else {
-			$settings = $this->SiteSetting->find('all', array(
-				'recursive' => -1,
-				'conditions' => array('SiteSetting.key' => array(
-					//サイト名
-					'App.site_name',
-					//システム標準使用言語
-					'Config.language',
-					//標準の開始ルーム
-					'App.default_start_room',
-					//サイトを閉鎖する
-					'App.close_site',
-					//サイト閉鎖の理由
-					'App.site_closing_reason',
-				))
-			));
-			$this->request->data['SiteSetting'] = Hash::combine($settings,
-				'{n}.SiteSetting.language_id',
-				'{n}.SiteSetting',
-				'{n}.SiteSetting.key'
-			);
+			//登録処理
+			if ($this->SiteSetting->saveSiteSetting($this->request->data)) {
+				//正常の場合
+				$this->NetCommons->setFlashNotification(__d('net_commons', 'Successfully saved.'), array(
+					'class' => 'success',
+				));
+			} else {
+				$this->NetCommons->handleValidationError($this->SiteSetting->validationErrors);
+				$this->validationErrors = $this->SiteSetting->validationErrors;
+			}
 		}
+//		CakeLog::debug(print_r($this->validationErrors, true));
+
+		$this->request->data['SiteSetting'] = $this->SiteSetting->getSiteSettingForEdit(
+			array('SiteSetting.key' => array(
+				//サイト名
+				'App.site_name',
+				//システム標準使用言語
+				'Config.language',
+				//標準の開始ルーム
+				'App.default_start_room',
+				//サイトを閉鎖する
+				'App.close_site',
+				//サイト閉鎖の理由
+				'App.site_closing_reason',
+			)
+		));
+
 	}
 }

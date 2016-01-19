@@ -36,20 +36,14 @@ class MailSettingsController extends SiteManagerAppController {
 		if ($this->request->is('post')) {
 
 		} else {
-			$settings = $this->SiteSetting->find('all', array(
-				'recursive' => -1,
-				'conditions' => array('SiteSetting.key' => array(
+			$this->request->data['SiteSetting'] = $this->SiteSetting->getSiteSettingForEdit(
+				array('SiteSetting.key' => array(
 					//本文ヘッダー
 					'Mail.body_header',
 					//署名
 					'Mail.signature',
-				))
+				)
 			));
-			$this->request->data['SiteSetting'] = Hash::combine($settings,
-				'{n}.SiteSetting.language_id',
-				'{n}.SiteSetting',
-				'{n}.SiteSetting.key'
-			);
 		}
 	}
 }
