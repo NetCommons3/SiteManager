@@ -222,7 +222,7 @@ class SiteManagerHelper extends AppHelper {
 		}
 
 		$hasDescription = Hash::get($options, 'description', false);
-		Hash::remove($options, 'description');
+		$options = Hash::remove($options, 'description');
 
 		$languageId = '0';
 		$inputValue = $model . '.' . $key . '.' . $languageId;
@@ -284,7 +284,7 @@ class SiteManagerHelper extends AppHelper {
 		}
 
 		$hasDescription = Hash::get($options, 'description', false);
-		Hash::remove($options, 'description');
+		$options = Hash::remove($options, 'description');
 
 		$activeLangId = $this->_View->viewVars['activeLangId'];
 		$languageIds = array_keys($this->_View->viewVars['languages']);
