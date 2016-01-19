@@ -72,6 +72,9 @@ class SiteManagerHelper extends AppHelper {
 		$this->NetCommonsHtml->css(array(
 			'/site_manager/css/style.css', '/data_types/css/style.css'
 		));
+		$this->NetCommonsHtml->script(array(
+			'/site_manager/js/site_manager.js'
+		));
 		parent::beforeRender($viewFile);
 	}
 
@@ -229,7 +232,12 @@ class SiteManagerHelper extends AppHelper {
 		$output .= $this->inputHidden($model, $key, $languageId);
 
 		//value
-		$output .= '<div class="form-group">';
+		if (Hash::get($options, 'div', true)) {
+			$output .= '<div class="form-group">';
+		} else {
+			$output .= '<div>';
+		}
+
 		$valueOptions = array(
 			'name' => $inputName . '[value]',
 			'value' => $this->getValue($model, $key, $languageId),

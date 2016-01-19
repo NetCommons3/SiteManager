@@ -163,6 +163,12 @@ msgstr ""
 msgid "UserCancel.use_cancel_feature"
 msgstr "Setting ofmembership cancelation"
 
+msgid "Automatic membership cancellation"
+msgstr "Automatic"
+
+msgid "Do not use membership cancellation"
+msgstr "Do not use"
+
 msgid "UserCancel.disclaimer"
 msgstr "Agreement"
 
@@ -226,10 +232,10 @@ msgid "Workflow.disapproval_mail_body description"
 msgstr "You may use the keyword, {X-SITE_NAME}, {X-URL}. Each keyword stands for the site name and the url."
 
 msgid "Workflow.approval_completion_mail_subject"
-msgstr "承認完了メールの件名"
+msgstr "承認完了通知メールの件名"
 
 msgid "Workflow.approval_completion_mail_body"
-msgstr "承認完了メールの本文"
+msgstr "承認完了通知メールの本文"
 
 msgid "Workflow.approval_completion_mail_body description"
 msgstr "You may use the keyword, {X-SITE_NAME}, {X-URL}. Each keyword stands for the site name and the url."
@@ -238,5 +244,11 @@ msgstr "You may use the keyword, {X-SITE_NAME}, {X-URL}. Each keyword stands for
 msgid "Mail.body_header"
 msgstr "本文ヘッダー"
 
+msgid "Mail.body_header description"
+msgstr "ここに説明分書く"
+
 msgid "Mail.signature"
 msgstr "署名"
+
+msgid "Mail.signature description"
+msgstr "ここに説明分書く"

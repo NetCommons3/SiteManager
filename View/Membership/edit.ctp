@@ -14,6 +14,7 @@
 
 
 <?php echo $this->NetCommonsForm->create('SiteSetting', array(
+		'ng-controller' => 'SiteManager',
 		'ng-init' => $this->SiteManager->domId('membershipTab') . ' = \'' . h($membershipTab) . '\''
 	)); ?>
 
@@ -31,19 +32,19 @@
 			<br>
 
 			<div class="tab-content">
-				<div class="tab-pane active" id="automatic-registration">
+				<div class="tab-pane<?php echo ($membershipTab === 'automatic-registration' ? ' active' : ''); ?>" id="automatic-registration">
 					<?php echo $this->element('Membership/automatic_registration_form'); ?>
 				</div>
 
-				<div class="tab-pane" id="membership-cancellation">
+				<div class="tab-pane<?php echo ($membershipTab === 'membership-cancellation' ? ' active' : ''); ?>" id="membership-cancellation">
 					<?php echo $this->element('Membership/membership_cancellation_form'); ?>
 				</div>
 
-				<div class="tab-pane" id="notification-password">
+				<div class="tab-pane<?php echo ($membershipTab === 'notification-password' ? ' active' : ''); ?>" id="notification-password">
 					<?php echo $this->element('Membership/notification_password_form'); ?>
 				</div>
 
-				<div class="tab-pane" id="content-workflow">
+				<div class="tab-pane<?php echo ($membershipTab === 'content-workflow' ? ' active' : ''); ?>" id="content-workflow">
 					<?php echo $this->element('Membership/content_workflo_form'); ?>
 				</div>
 			</div>

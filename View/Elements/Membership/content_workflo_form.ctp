@@ -11,5 +11,35 @@
 ?>
 
 <article>
-	content_workflo_form
+	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.approval_mail_subject', array(
+			//'type' => 'textarea',
+		)); ?>
+
+	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.approval_mail_body', array(
+			'type' => 'textarea',
+			'description' => true,
+		)); ?>
+
+	<hr>
+
+	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.disapproval_mail_subject', array(
+			//'type' => 'textarea',
+		)); ?>
+
+	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.disapproval_mail_body', array(
+			'type' => 'textarea',
+			'description' => true,
+		)); ?>
+
+	<hr>
+
+	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.approval_completion_mail_subject', array(
+			//'type' => 'textarea',
+		)); ?>
+
+	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.approval_completion_mail_body', array(
+			'type' => 'textarea',
+			'description' => true,
+		)); ?>
+
 </article>

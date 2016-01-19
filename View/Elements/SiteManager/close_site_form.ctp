@@ -16,7 +16,7 @@
 
 		<?php echo $this->SiteManager->inputCommon('SiteSetting', 'App.close_site', array(
 				'type' => 'radio',
-				'ng-click' => $domId . ' = !' . $domId,
+				'ng-click' => $domId . ' = click($event)',
 				'div' => array('class' => 'form-control nc-data-label'),
 				'options' => array(
 					'1' => __d('net_commons', 'Yes'),

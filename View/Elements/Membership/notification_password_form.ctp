@@ -11,5 +11,23 @@
 ?>
 
 <article>
-	notification_password_form
+	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'ForgotPass.issue_mail_subject', array(
+			//'type' => 'textarea',
+		)); ?>
+
+	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'ForgotPass.issue_mail_body', array(
+			'type' => 'textarea',
+			'description' => true,
+		)); ?>
+
+	<hr>
+
+	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'ForgotPass.request_mail_subject', array(
+			//'type' => 'textarea',
+		)); ?>
+
+	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'ForgotPass.request_mail_body', array(
+			'type' => 'textarea',
+			'description' => true,
+		)); ?>
 </article>

@@ -135,9 +135,7 @@ msgid "AutoRegist.approval_mail_body"
 msgstr "会員登録承認メールの本文"
 
 msgid "AutoRegist.approval_mail_body description"
-msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。
-{X-SITE_NAME}：サイト名、
-{X-URL}：URL"
+msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。<br>{X-SITE_NAME}：サイト名、<br>{X-URL}：URL"
 
 msgid "AutoRegist.acceptance_mail_subject"
 msgstr "会員登録受付メールの件名"
@@ -146,9 +144,7 @@ msgid "AutoRegist.acceptance_mail_body"
 msgstr "会員登録受付メールの本文"
 
 msgid "AutoRegist.acceptance_mail_body description"
-msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。
-{X-SITE_NAME}：サイト名、
-{X-URL}：URL"
+msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。<br>{X-SITE_NAME}：サイト名、<br>{X-URL}：URL"
 
 msgid "AutoRegist.mail_subject"
 msgstr "会員登録メールの件名"
@@ -157,21 +153,20 @@ msgid "AutoRegist.mail_body"
 msgstr "会員登録メールの本文"
 
 msgid "AutoRegist.mail_body description"
-msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。
-{X-SITE_NAME}：サイト名
-{X-HANDLE}：ハンドル名
-{X-USERNAME}：ログインID
-{X-PASSWORD}：パスワード
-{X-EMAIL}：e-mail
-{X-ENTRY_ROOM}：参加ルーム
-{X-URL}：URL"
+msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。<br>{X-SITE_NAME}：サイト名、<br>{X-HANDLE}：ハンドル名、<br>{X-USERNAME}：ログインID、<br>{X-PASSWORD}：パスワード、<br>{X-EMAIL}：e-mail、<br>{X-ENTRY_ROOM}：参加ルーム、<br>{X-URL}：URL"
 
 
 msgid "Membership cancellation"
 msgstr "退会設定"
 
 msgid "UserCancel.use_cancel_feature"
-msgstr "退会機能の設定"
+msgstr "退会機能"
+
+msgid "Automatic membership cancellation"
+msgstr "自動的に退会させる"
+
+msgid "Do not use membership cancellation"
+msgstr "退会機能を使用しない"
 
 msgid "UserCancel.disclaimer"
 msgstr "退会規約"
@@ -189,9 +184,7 @@ msgid "UserCancel.mail_body"
 msgstr "退会完了メールの内容"
 
 msgid "UserCancel.mail_body description"
-msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。
-{X-SITE_NAME}：サイト名
-{X-HANDLE}：ハンドル名"
+msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。<br>{X-SITE_NAME}：サイト名、<br>{X-HANDLE}：ハンドル名"
 
 
 msgid "Notification of password"
@@ -204,9 +197,7 @@ msgid "ForgotPass.issue_mail_body"
 msgstr "パスワード通知メールの本文"
 
 msgid "ForgotPass.issue_mail_body description"
-msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。
-{X-SITE_NAME}：サイト名、
-{X-URL}：URL"
+msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。<br>{X-SITE_NAME}：サイト名、<br>{X-URL}：URL"
 
 msgid "ForgotPass.request_mail_subject"
 msgstr "新規パスワード発行の件名"
@@ -215,9 +206,7 @@ msgid "ForgotPass.request_mail_body"
 msgstr "パスワード発行メールの本文"
 
 msgid "ForgotPass.request_mail_body description"
-msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。
-{X-SITE_NAME}：サイト名、
-{X-URL}：URL"
+msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。<br>{X-SITE_NAME}：サイト名、<br>{X-URL}：URL"
 
 
 msgid "Content workflow"
@@ -230,9 +219,7 @@ msgid "Workflow.approval_mail_body"
 msgstr "申請メールの本文"
 
 msgid "Workflow.approval_mail_body description"
-msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。
-{X-SITE_NAME}：サイト名、
-{X-URL}：URL"
+msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。<br>{X-SITE_NAME}：サイト名、<br>{X-URL}：URL"
 
 msgid "Workflow.disapproval_mail_subject"
 msgstr "差し戻しメールの件名"
@@ -241,24 +228,26 @@ msgid "Workflow.disapproval_mail_body"
 msgstr "差し戻しメールの本文"
 
 msgid "Workflow.disapproval_mail_body description"
-msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。
-{X-SITE_NAME}：サイト名、
-{X-URL}：URL"
+msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。<br>{X-SITE_NAME}：サイト名、<br>{X-URL}：URL"
 
 msgid "Workflow.approval_completion_mail_subject"
-msgstr "承認完了メールの件名"
+msgstr "承認完了通知メールの件名"
 
 msgid "Workflow.approval_completion_mail_body"
-msgstr "承認完了メールの本文"
+msgstr "承認完了通知メールの本文"
 
 msgid "Workflow.approval_completion_mail_body description"
-msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。
-{X-SITE_NAME}：サイト名、
-{X-URL}：URL"
+msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。<br>{X-SITE_NAME}：サイト名、<br>{X-URL}：URL"
 
 
 msgid "Mail.body_header"
 msgstr "本文ヘッダー"
 
+msgid "Mail.body_header description"
+msgstr "ここに説明分書く"
+
 msgid "Mail.signature"
 msgstr "署名"
+
+msgid "Mail.signature description"
+msgstr "ここに説明分書く"
