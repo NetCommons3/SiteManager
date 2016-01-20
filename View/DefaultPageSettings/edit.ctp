@@ -12,14 +12,10 @@
 
 <?php echo $this->SiteManager->tabs(); ?>
 
-<?php echo $this->NetCommonsForm->create('Room'); ?>
+<?php echo $this->SiteManager->roomTabs(); ?>
 
-	<?php echo $this->SiteManager->roomTabs(); ?>
-
-	<div class="panel panel-default">
-		<div class="panel-body">
-			<?php echo $this->ThemeSettings->render('DefaultPageSettings/theme_form'); ?>
-		</div>
+<div class="panel panel-default">
+	<div class="panel-body">
+		<?php echo $this->ThemeSettings->render('DefaultPageSettings/theme_form'); ?>
 	</div>
-
-<?php echo $this->NetCommonsForm->end();
+</div>

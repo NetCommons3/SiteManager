@@ -35,6 +35,7 @@ class DefaultPageSettingsController extends SiteManagerAppController {
  * @var array
  */
 	public $uses = array(
+		'Rooms.Room',
 		'Rooms.RoomsLanguage',
 		'SiteManager.SiteSetting',
 	);
@@ -60,10 +61,22 @@ class DefaultPageSettingsController extends SiteManagerAppController {
 		$this->ThemeSettings->setThemes();
 
 		//リクエストセット
-		if ($this->request->is('post')) {
+		if ($this->request->is('put')) {
+			$this->request->data = Hash::remove($this->request->data, 'save');
+
+			if ($this->Room->saveTheme($this->request->data)) {
+				//正常の場合
+				$this->NetCommons->setFlashNotification(__d('net_commons', 'Successfully saved.'), array(
+					'class' => 'success',
+				));
+				$this->redirect($this->referer());
+
+			} else {
+				$this->NetCommons->handleValidationError($this->Room->validationErrors);
+			}
 
 		} else {
-			$this->request->data['Room'] = $this->viewVars['rooms'];
+			$this->request->data['Room'] = $this->viewVars['rooms'][$this->viewVars['activeRoomId']]['Room'];
 			$this->theme = Hash::get($this->request->query, 'theme', $this->theme);
 		}
 	}

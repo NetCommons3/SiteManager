@@ -31,7 +31,8 @@ class SiteManagerAppController extends AppController {
 			'type' => PermissionComponent::CHECK_TYEP_SYSTEM_PLUGIN,
 			'allow' => array()
 		),
-		'Security'
+		'Security',
+		'SiteManager.SiteManager',
 	);
 
 /**

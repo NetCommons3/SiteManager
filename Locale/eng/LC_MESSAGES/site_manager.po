@@ -110,6 +110,15 @@ msgstr "Allow new user registration?"
 msgid "AutoRegist.confirmation"
 msgstr "Confirmation"
 
+msgid "Automatic registration by user(advised)"
+msgstr "by user(advised)"
+
+msgid "User registration by automatic"
+msgstr "automatic"
+
+msgid "Approval by administrator"
+msgstr "by administrator"
+
 msgid "AutoRegist.use_secret_key"
 msgstr "Use secret key?"
 

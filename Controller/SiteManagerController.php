@@ -21,7 +21,7 @@ App::uses('Room', 'Rooms.Model');
 class SiteManagerController extends SiteManagerAppController {
 
 /**
- * use model
+ * 使用するモデル
  *
  * @var array
  */
@@ -36,7 +36,7 @@ class SiteManagerController extends SiteManagerAppController {
  * @return void
  */
 	public function edit() {
-		//ルームデータ取得
+		//ルームデータ取得（とりあえず、スペースのみ）
 		$rooms = $this->RoomsLanguage->find('all', array(
 			'recursive' => 0,
 			'conditions' => array(
@@ -48,37 +48,29 @@ class SiteManagerController extends SiteManagerAppController {
 
 		//リクエストセット
 		if ($this->request->is('post')) {
-			//不要パラメータ除去
-			$this->request->data = Hash::remove($this->request->data, 'save');
-			$this->request->data = Hash::remove($this->request->data, 'active_lang_id');
+			//システム標準使用言語
+			$this->SiteSetting->defaultLanguages = array_merge([''], $this->viewVars['languages']);
+			//標準の開始ルームのリストをセット
+			$this->SiteSetting->defaultStartRoom = array_keys($this->viewVars['rooms']);
 
 			//登録処理
-			if ($this->SiteSetting->saveSiteSetting($this->request->data)) {
-				//正常の場合
-				$this->NetCommons->setFlashNotification(__d('net_commons', 'Successfully saved.'), array(
-					'class' => 'success',
-				));
-			} else {
-				$this->NetCommons->handleValidationError($this->SiteSetting->validationErrors);
-				$this->validationErrors = $this->SiteSetting->validationErrors;
-			}
+			$this->SiteManager->saveData();
+
+		} else {
+			$this->request->data['SiteSetting'] = $this->SiteSetting->getSiteSettingForEdit(
+				array('SiteSetting.key' => array(
+					//サイト名
+					'App.site_name',
+					//システム標準使用言語
+					'Config.language',
+					//標準の開始ルーム
+					'App.default_start_room',
+					//サイトを閉鎖する
+					'App.close_site',
+					//サイト閉鎖の理由
+					'App.site_closing_reason',
+				)
+			));
 		}
-//		CakeLog::debug(print_r($this->validationErrors, true));
-
-		$this->request->data['SiteSetting'] = $this->SiteSetting->getSiteSettingForEdit(
-			array('SiteSetting.key' => array(
-				//サイト名
-				'App.site_name',
-				//システム標準使用言語
-				'Config.language',
-				//標準の開始ルーム
-				'App.default_start_room',
-				//サイトを閉鎖する
-				'App.close_site',
-				//サイト閉鎖の理由
-				'App.site_closing_reason',
-			)
-		));
-
 	}
 }

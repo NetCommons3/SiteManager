@@ -37,6 +37,8 @@ class MetaSettingsController extends SiteManagerAppController {
 	public function edit() {
 		//リクエストセット
 		if ($this->request->is('post')) {
+			//登録処理
+			$this->SiteManager->saveData();
 
 		} else {
 			$this->request->data['SiteSetting'] = $this->SiteSetting->getSiteSettingForEdit(

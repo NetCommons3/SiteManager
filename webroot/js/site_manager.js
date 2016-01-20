@@ -17,7 +17,10 @@ NetCommonsApp.controller('SiteManager', function($scope) {
    *
    * @return {void}
    */
-  $scope.click = function($event) {
+  $scope.click = function($event, domId) {
+    if (domId) {
+      $('#' + domId).checked = true;
+    }
     return Number($event.target.value);
   };
 

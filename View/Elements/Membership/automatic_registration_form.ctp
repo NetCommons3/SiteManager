@@ -8,6 +8,8 @@
  * @license http://www.netcommons.org/license.txt NetCommons License
  * @copyright Copyright 2014, NetCommons Project
  */
+
+App::uses('SiteSetting', 'SiteManager.Model');
 ?>
 
 <article>
@@ -16,7 +18,7 @@
 
 		<?php echo $this->SiteManager->inputCommon('SiteSetting', 'AutoRegist.use_automatic_register', array(
 				'type' => 'radio',
-				'ng-click' => $domId . ' = click($event)',
+				'ng-click' => $domId . ' = click($event, \'' . $domId . '\')',
 				'options' => array(
 					'1' => __d('net_commons', 'Yes'),
 					'0' => __d('net_commons', 'No'),
@@ -26,6 +28,7 @@
 		<div ng-show="<?php echo $domId; ?>">
 			<?php echo $this->SiteManager->inputCommon('SiteSetting', 'AutoRegist.confirmation', array(
 					'type' => 'select',
+					'options' => SiteSetting::$autoRegistConfirm
 				)); ?>
 		</div>
 
@@ -55,6 +58,7 @@
 		<div ng-show="<?php echo $domId; ?>">
 			<?php echo $this->SiteManager->inputCommon('SiteSetting', 'AutoRegist.role_key', array(
 					'type' => 'select',
+					'options' => $userRoles,
 				)); ?>
 		</div>
 

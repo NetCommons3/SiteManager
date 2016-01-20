@@ -9,6 +9,7 @@
  * @copyright Copyright 2014, NetCommons Project
  */
 
+App::uses('SiteSetting', 'SiteManager.Model');
 App::uses('M17nHelper', 'M17n.View/Helper');
 ?>
 

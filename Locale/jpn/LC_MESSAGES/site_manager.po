@@ -26,7 +26,7 @@ msgid "Tab.default_page_settings"
 msgstr "ページスタイル"
 
 msgid "Tab.membership"
-msgstr "入会・退会・承認設定"
+msgstr "入会・退会・承認等の設定"
 
 
 msgid "General settings"
@@ -109,6 +109,15 @@ msgstr "自動会員登録を許可する"
 
 msgid "AutoRegist.confirmation"
 msgstr "アカウント登録の最終決定"
+
+msgid "Automatic registration by user(advised)"
+msgstr "ユーザ自身による確認(推奨)"
+
+msgid "User registration by automatic"
+msgstr "自動的にアカウントを登録する"
+
+msgid "Approval by administrator"
+msgstr "管理者による承認"
 
 msgid "AutoRegist.use_secret_key"
 msgstr "入力キーの使用"

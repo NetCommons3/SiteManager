@@ -11,6 +11,7 @@
 
 App::uses('AppHelper', 'View/Helper');
 App::uses('Room', 'Rooms.Model');
+App::uses('SiteManagerComponent', 'SiteManager.Controller/Component');
 
 /**
  * サイト管理ヘルパー
@@ -113,7 +114,7 @@ class SiteManagerHelper extends AppHelper {
 		foreach ($this->_View->viewVars['rooms'] as $roomId => $room) {
 			$output .= '<li class="' . ((string)$roomId === $this->_View->viewVars['activeRoomId'] ? 'active' : '') . '">';
 			$output .= $this->NetCommonsHtml->link(
-							Hash::get($this->_View->viewVars['rooms'], $roomId . '.RoomsLanguage.name'),
+							Hash::get($room, $roomId . '.RoomsLanguage.name'),
 							Hash::merge(Hash::get($this->_tabs, $this->_View->request->params['controller']), array('key' => $roomId))
 						);
 			$output .= '</li>';
@@ -173,34 +174,19 @@ class SiteManagerHelper extends AppHelper {
 	public function inputHidden($model, $key, $languageId) {
 		$output = '';
 
-		if (! isset($this->_View->request->data[$model][$key])) {
+		$requestKey = strtr($key, SiteManagerComponent::STRTR_FROM, SiteManagerComponent::STRTR_TO);
+		if (! isset($this->_View->request->data[$model][$requestKey])) {
 			return $output;
 		}
 
-		$inputValue = $model . '.' . $key . '.' . $languageId;
-		$inputName = 'data[' . $model . '][' . $key . '][' .$languageId . ']';
+		$inputValue = $model . '.' . $requestKey . '.' . $languageId;
 
 		//id
-		$output .= $this->NetCommonsForm->hidden($inputValue . '.id',
-			array(
-				'name' => $inputName . '[id]',
-				'value' => Hash::get($this->_View->request->data[$model][$key],  $languageId . '.id')
-			)
-		);
+		$output .= $this->NetCommonsForm->hidden($inputValue . '.id');
 		//key
-		$output .= $this->NetCommonsForm->hidden($inputValue . '.key',
-			array(
-				'name' => $inputName . '[key]',
-				'value' => Hash::get($this->_View->request->data[$model][$key],  $languageId . '.key')
-			)
-		);
+		$output .= $this->NetCommonsForm->hidden($inputValue . '.key');
 		//language_id
-		$output .= $this->NetCommonsForm->hidden($inputValue . '.language_id',
-			array(
-				'name' => $inputName . '[language_id]',
-				'value' => Hash::get($this->_View->request->data[$model][$key],  $languageId . '.language_id')
-			)
-		);
+		$output .= $this->NetCommonsForm->hidden($inputValue . '.language_id');
 
 		return $output;
 	}
@@ -217,7 +203,8 @@ class SiteManagerHelper extends AppHelper {
 	public function inputCommon($model, $key, $options = array(), $labelPlugin = 'site_manager') {
 		$output = '';
 
-		if (! isset($this->_View->request->data[$model][$key])) {
+		$requestKey = strtr($key, SiteManagerComponent::STRTR_FROM, SiteManagerComponent::STRTR_TO);
+		if (! isset($this->_View->request->data[$model][$requestKey])) {
 			return $output;
 		}
 
@@ -225,8 +212,7 @@ class SiteManagerHelper extends AppHelper {
 		$options = Hash::remove($options, 'description');
 
 		$languageId = '0';
-		$inputValue = $model . '.' . $key . '.' . $languageId;
-		$inputName = 'data[' . $model . '][' . $key . '][' .$languageId . ']';
+		$inputValue = $model . '.' . $requestKey . '.' . $languageId;
 
 		//hidden
 		$output .= $this->inputHidden($model, $key, $languageId);
@@ -238,17 +224,13 @@ class SiteManagerHelper extends AppHelper {
 			$output .= '<div>';
 		}
 
-		$valueOptions = array(
-			'name' => $inputName . '[value]',
-			'value' => $this->getValue($model, $key, $languageId),
-		);
 		if (Hash::get($options, 'type', 'text') === 'radio') {
 			$output .= $this->NetCommonsForm->label($inputValue . '.value', __d($labelPlugin, $key));
 			$output .= '<div class="form-control nc-data-label">';
 			$output .= $this->NetCommonsForm->radio($inputValue . '.value', Hash::get($options, 'options', array()), Hash::merge(array(
 				'div' => array('class' => 'form-control form-inline'),
 				'separator' => '<span class="radio-separator"></span>'
-			), $valueOptions, $options));
+			), $options));
 			$output .= '</div>';
 		} else {
 			$output .= $this->NetCommonsForm->input($inputValue . '.value',
@@ -256,7 +238,7 @@ class SiteManagerHelper extends AppHelper {
 					'label' => __d($labelPlugin, $key),
 					'div' => false,
 					'error' => false,
-				), $valueOptions, $options)
+				), $options)
 			);
 		}
 
@@ -279,7 +261,8 @@ class SiteManagerHelper extends AppHelper {
 	public function inputLanguage($model, $key, $options = array(), $labelPlugin = 'site_manager') {
 		$output = '';
 
-		if (! isset($this->_View->request->data[$model][$key])) {
+		$requestKey = strtr($key, SiteManagerComponent::STRTR_FROM, SiteManagerComponent::STRTR_TO);
+		if (! isset($this->_View->request->data[$model][$requestKey])) {
 			return $output;
 		}
 
@@ -289,21 +272,18 @@ class SiteManagerHelper extends AppHelper {
 		$activeLangId = $this->_View->viewVars['activeLangId'];
 		$languageIds = array_keys($this->_View->viewVars['languages']);
 		foreach ($languageIds as $languageId) {
-			$inputValue = $model . '.' . $key . '.' . $languageId;
-			$inputName = 'data[' . $model . '][' . $key . '][' .$languageId . ']';
+			$inputValue = $model . '.' . $requestKey . '.' . $languageId;
 
 			$output .= '<div class="tab-pane' . ((string)$activeLangId === (string)$languageId ? ' active' : '') . '" ' .
 							'ng-show="' . 'activeLangId === \'' . $languageId . '\'' . '">';
 
 			//hidden
-			$output .= $this->inputHidden($model, $key, $languageId);
+			$output .= $this->inputHidden($model, $requestKey, $languageId);
 			//value
 			$output .= '<div class="form-group">';
 			$output .= $this->NetCommonsForm->input($inputValue . '.value',
 				Hash::merge(array(
 					'label' => $this->SwitchLanguage->inputLabel(__d($labelPlugin, $key), $languageId),
-					'name' => $inputName . '[value]',
-					'value' => $this->getValue($model, $key, $languageId),
 					'div' => false,
 					'error' => false,
 				), $options)
@@ -347,11 +327,8 @@ class SiteManagerHelper extends AppHelper {
  * @return string HTML
  */
 	public function getValue($model, $key, $languageId = '0') {
-		if (! isset($this->_View->request->data[$model][$key])) {
-			return '';
-		}
-
-		return Hash::get($this->_View->request->data[$model][$key],  $languageId . '.value');
+		$requestKey = strtr($key, SiteManagerComponent::STRTR_FROM, SiteManagerComponent::STRTR_TO);
+		return Hash::get($this->_View->request->data[$model][$requestKey],  $languageId . '.value');
 	}
 
 }

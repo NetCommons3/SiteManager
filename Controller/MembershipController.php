@@ -10,6 +10,7 @@
  */
 
 App::uses('SiteManagerAppController', 'SiteManager.Controller');
+App::uses('UserRole', 'UserRoles.Model');
 
 /**
  * サイト管理【入会退会設定】
@@ -26,6 +27,7 @@ class MembershipController extends SiteManagerAppController {
  */
 	public $uses = array(
 		'SiteManager.SiteSetting',
+		'UserRoles.UserRole',
 	);
 
 /**
@@ -34,10 +36,28 @@ class MembershipController extends SiteManagerAppController {
  * @return void
  */
 	public function edit() {
+		//権限リスト取得
+		$userRoles = $this->UserRole->find('list', array(
+			'recursive' => 0,
+			'fields' => array('UserRole.key', 'UserRole.name'),
+			'conditions' => array(
+				'UserRole.type' => UserRole::ROLE_TYPE_USER,
+				'UserRole.language_id' => Current::read('Language.id'),
+				'UserRoleSetting.origin_role_key' => UserRole::USER_ROLE_KEY_COMMON_USER
+			),
+			'order' => array('UserRole.id' => 'asc')
+		));
+		$this->set('userRoles', $userRoles);
 
 		//リクエストセット
 		if ($this->request->is('post')) {
-			$this->set('membershipTab', Hash::get($this->request->data['Setting'], 'membershipTab', 'automatic-registration'));
+			$this->set('membershipTab', Hash::get($this->request->data['SiteSetting'], 'membershipTab', 'automatic-registration'));
+
+			//権限リストをモデルにセット
+			$this->SiteSetting->autoRegistRoles = $userRoles;
+
+			//登録処理
+			$this->SiteManager->saveData();
 
 		} else {
 			$this->set('membershipTab', Hash::get($this->request->query, 'membershipTab', 'automatic-registration'));
