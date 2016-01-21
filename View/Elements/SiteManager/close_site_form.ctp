@@ -22,6 +22,7 @@
 					'1' => __d('net_commons', 'Yes'),
 					'0' => __d('net_commons', 'No'),
 				),
+				'description' => true
 			)); ?>
 
 		<div ng-show="<?php echo $domId; ?>">
