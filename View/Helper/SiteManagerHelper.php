@@ -114,7 +114,7 @@ class SiteManagerHelper extends AppHelper {
 		foreach ($this->_View->viewVars['rooms'] as $roomId => $room) {
 			$output .= '<li class="' . ((string)$roomId === $this->_View->viewVars['activeRoomId'] ? 'active' : '') . '">';
 			$output .= $this->NetCommonsHtml->link(
-							Hash::get($room, $roomId . '.RoomsLanguage.name'),
+							Hash::get($room, 'RoomsLanguage.name'),
 							Hash::merge(Hash::get($this->_tabs, $this->_View->request->params['controller']), array('key' => $roomId))
 						);
 			$output .= '</li>';

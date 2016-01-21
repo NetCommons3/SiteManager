@@ -390,7 +390,7 @@ You may now log in by clicking on this link or copying and pasting it in your br
 			array(
 				'language_id' => '2',
 				'key' => 'ForgotPass.issue_mail_subject',
-				'value' => '',
+				'value' => '[{X-SITE_NAME}]新規パスワードのリクエスト',
 			),
 			// *** 英語
 			array(
