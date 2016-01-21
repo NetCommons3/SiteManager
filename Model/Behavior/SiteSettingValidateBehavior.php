@@ -132,6 +132,9 @@ class SiteSettingValidateBehavior extends ModelBehavior {
 			//自動会員登録を許可しない場合、リクエストデータから破棄
 			$settingKeys = array_keys($data[$model->alias]);
 			foreach ($settingKeys as $key) {
+				if ($key === 'AutoRegist.use_automatic_register') {
+					continue;
+				}
 				if (substr($key, 0, strlen('AutoRegist.')) === 'AutoRegist.') {
 					unset($data[$model->alias][$key]);
 				}
@@ -170,6 +173,9 @@ class SiteSettingValidateBehavior extends ModelBehavior {
 			//退会機能を使用しない場合、リクエストデータから破棄
 			$settingKeys = array_keys($data[$model->alias]);
 			foreach ($settingKeys as $key) {
+				if ($key === 'UserCancel.use_cancel_feature') {
+					continue;
+				}
 				if (substr($key, 0, strlen('UserCancel.')) === 'UserCancel.') {
 					unset($data[$model->alias][$key]);
 				}

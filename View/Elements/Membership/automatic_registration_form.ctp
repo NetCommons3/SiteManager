@@ -18,7 +18,7 @@ App::uses('SiteSetting', 'SiteManager.Model');
 
 		<?php echo $this->SiteManager->inputCommon('SiteSetting', 'AutoRegist.use_automatic_register', array(
 				'type' => 'radio',
-				'ng-click' => $domId . ' = click($event, \'' . $domId . '\')',
+				'ng-click' => $domId . ' = click($event)',
 				'options' => array(
 					'1' => __d('net_commons', 'Yes'),
 					'0' => __d('net_commons', 'No'),
