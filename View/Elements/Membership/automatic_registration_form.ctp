@@ -72,6 +72,15 @@ App::uses('SiteSetting', 'SiteManager.Model');
 				)); ?>
 		</div>
 
+		<div class="panel panel-default" ng-show="<?php echo $domId; ?>">
+			<div class="panel-heading">
+				<?php echo __d('site_manager', 'Input items'); ?>
+			</div>
+			<div class="panel-body">
+
+			</div>
+		</div>
+
 		<div ng-show="<?php echo $domId; ?>">
 			<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'AutoRegist.disclaimer', array(
 					'type' => 'textarea',

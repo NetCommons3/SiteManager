@@ -131,6 +131,9 @@ msgstr "自動登録時の権限"
 msgid "AutoRegist.prarticipate_default_room"
 msgstr "自動登録時にデフォルトルームに参加する"
 
+msgid "Input items"
+msgstr "入力項目"
+
 msgid "AutoRegist.disclaimer"
 msgstr "利用許諾文"
 
