@@ -71,6 +71,22 @@ class SiteSetting extends SiteManagerAppModel {
 		'mature' => array('site_manager', 'Mature'),
 	);
 
+/**
+ * 自動ログアウトの時間
+ *
+ * @var array
+ */
+	public static $sessionTimeout = array(
+		'900' => array('system_manager', '%s minutes', 15), //15分
+		'1800' => array('system_manager', '%s minutes', 30), //30分
+		'2700' => array('system_manager', '%s minutes', 45), //45分
+		'3600' => array('system_manager', '%s hour', 1), //1時間
+		'10800' => array('system_manager', '%s hours', 3), //3時間
+		'21600' => array('system_manager', '%s hours', 6), //6時間
+		'43200' => array('system_manager', '%s hours', 12), //12時間
+		'86400' => array('system_manager', '%s day', 1), //1日
+		'259200' => array('system_manager', '%s days', 3), //3日
+	);
 
 /**
  * アカウント登録の最終決定のオプション
@@ -181,7 +197,8 @@ class SiteSetting extends SiteManagerAppModel {
  */
 	public $actsAs = array(
 		'DataTypes.Timezone',
-		'SiteManager.SiteSettingValidate',
+		'SiteManager.SiteManagerValidate',
+		'SiteManager.SystemManagerValidate',
 	);
 
 /**
@@ -224,6 +241,11 @@ class SiteSetting extends SiteManagerAppModel {
 		foreach (self::$autoRegistConfirm as $key => $message) {
 			self::$autoRegistConfirm[$key] = __d($message[0], $message[1]);
 		}
+		//セッションタイムアウト
+		foreach (self::$sessionTimeout as $key => $message) {
+			self::$sessionTimeout[$key] = __d($message[0], $message[1], $message[2]);
+		}
+
 	}
 
 /**
@@ -361,6 +383,7 @@ class SiteSetting extends SiteManagerAppModel {
 		$data = $this->validateMembership($data);
 		$data = $this->validateProxy($data);
 		$data = $this->validateSystemSetting($data);
+		$data = $this->validateAuthSetting($data);
 		$data = $this->validateWebServer($data);
 		$data = $this->validateMailServer($data);
 		$data = $this->validateDeveloper($data);
