@@ -51,7 +51,7 @@ class SiteSetting extends SiteManagerAppModel {
  *
  * @var array
  */
-	public static $metaRobots = array(
+	public $metaRobots = array(
 		'index,follow' => array('site_manager', 'Index, Follow'),
 		'noindex,follow' => array('site_manager', 'No Index, Follow'),
 		'index,nofollow' => array('site_manager', 'Index, No Follow'),
@@ -64,7 +64,7 @@ class SiteSetting extends SiteManagerAppModel {
  *
  * @var array
  */
-	public static $metaRating = array(
+	public $metaRating = array(
 		'General' => array('site_manager', 'General'),
 		'14 years' => array('site_manager', '14 years'),
 		'restricted' => array('site_manager', 'Restricted'),
@@ -76,7 +76,7 @@ class SiteSetting extends SiteManagerAppModel {
  *
  * @var array
  */
-	public static $sessionTimeout = array(
+	public $sessionTimeout = array(
 		'900' => array('system_manager', '%s minutes', 15), //15分
 		'1800' => array('system_manager', '%s minutes', 30), //30分
 		'2700' => array('system_manager', '%s minutes', 45), //45分
@@ -94,7 +94,7 @@ class SiteSetting extends SiteManagerAppModel {
  *
  * @var array
  */
-	public static $autoRegistConfirm = array(
+	public $autoRegistConfirm = array(
 		'0' => array('site_manager', 'Automatic registration by user(advised)'),
 		'1' => array('site_manager', 'User registration by automatic'),
 		'2' => array('site_manager', 'Approval by administrator'),
@@ -113,7 +113,7 @@ class SiteSetting extends SiteManagerAppModel {
  *
  * @var array
  */
-	public static $memoryLimit = array(
+	public $memoryLimit = array(
 		'64M' => '64M',
 		'128M' => '128M',
 		'256M' => '256M',
@@ -127,7 +127,7 @@ class SiteSetting extends SiteManagerAppModel {
  *
  * @var array
  */
-	public static $mailMessageType = array(
+	public $mailMessageType = array(
 		'html' => array('system_manager', 'HTML'),
 		'text' => array('system_manager', 'Plan text'),
 	);
@@ -149,7 +149,7 @@ class SiteSetting extends SiteManagerAppModel {
  *
  * @var array
  */
-	public static $mailTransport = array(
+	public $mailTransport = array(
 		self::MAIL_TRANSPORT_PHPMAIL => array('system_manager', 'PHP mail()'),
 		self::MAIL_TRANSPORT_SMTP => array('system_manager', 'SMTP'),
 	);
@@ -160,14 +160,14 @@ class SiteSetting extends SiteManagerAppModel {
  *
  * @var array
  */
-	public static $defaultTimezones = array();
+	public $defaultTimezones = array();
 
 /**
  * ルームの容量のオプション
  *
  * @var array
  */
-	public static $diskSpace = array(
+	public $diskSpace = array(
 		-1, //無制限
 		10737418240, //10G
 		5368709120, //5G
@@ -184,7 +184,7 @@ class SiteSetting extends SiteManagerAppModel {
  *
  * @var array
  */
-	public static $debugOptions = array(
+	public $debugOptions = array(
 		'0' => array('system_manager', '0: No error messages, errors, or warnings shown. Flash messages redirect.'),
 		'1' => array('system_manager', '1: Errors and warnings shown, model caches refreshed, flash messages halted.'),
 		'2' => array('system_manager', '2: As in 1, but also with full debug messages and SQL output.'),
@@ -202,48 +202,41 @@ class SiteSetting extends SiteManagerAppModel {
 	);
 
 /**
- * Constructor. Binds the model's database table to the object.
+ * 設定画面の前準備
  *
- * @param bool|int|string|array $id Set this ID for this model on startup,
- * can also be an array of options, see above.
- * @param string $table Name of database table to use.
- * @param string $ds DataSource connection name.
- * @see Model::__construct()
- * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
+ * @return void
  */
-	public function __construct($id = false, $table = null, $ds = null) {
-		parent::__construct();
-
+	public function prepare() {
 		//METAタグのロボット型検索エンジンへの対応のオプション
-		foreach (self::$metaRobots as $key => $message) {
-			self::$metaRobots[$key] = __d($message[0], $message[1]);
+		foreach ($this->metaRobots as $key => $message) {
+			$this->metaRobots[$key] = __d($message[0], $message[1]);
 		}
 		//METAタグの閲覧対象年齢層の指定のオプション
-		foreach (self::$metaRating as $key => $message) {
-			self::$metaRating[$key] = __d($message[0], $message[1]);
+		foreach ($this->metaRating as $key => $message) {
+			$this->metaRating[$key] = __d($message[0], $message[1]);
 		}
 		//メール形式のオプション
-		foreach (self::$mailMessageType as $key => $message) {
-			self::$mailMessageType[$key] = __d($message[0], $message[1]);
+		foreach ($this->mailMessageType as $key => $message) {
+			$this->mailMessageType[$key] = __d($message[0], $message[1]);
 		}
 		//メール送信方法のオプション
-		foreach (self::$mailTransport as $key => $message) {
-			self::$mailTransport[$key] = __d($message[0], $message[1]);
+		foreach ($this->mailTransport as $key => $message) {
+			$this->mailTransport[$key] = __d($message[0], $message[1]);
 		}
 		//debugのオプション
-		foreach (self::$debugOptions as $key => $message) {
-			self::$debugOptions[$key] = __d($message[0], $message[1]);
+		foreach ($this->debugOptions as $key => $message) {
+			$this->debugOptions[$key] = __d($message[0], $message[1]);
 		}
 		//デフォルトのタイムゾーン
 		$timezones = $this->getTimezone();
-		self::$defaultTimezones = Hash::combine($timezones, '{n}.code', '{n}.name');
+		$this->defaultTimezones = Hash::combine($timezones, '{n}.code', '{n}.name');
 		//アカウント登録の最終決定
-		foreach (self::$autoRegistConfirm as $key => $message) {
-			self::$autoRegistConfirm[$key] = __d($message[0], $message[1]);
+		foreach ($this->autoRegistConfirm as $key => $message) {
+			$this->autoRegistConfirm[$key] = __d($message[0], $message[1]);
 		}
 		//セッションタイムアウト
-		foreach (self::$sessionTimeout as $key => $message) {
-			self::$sessionTimeout[$key] = __d($message[0], $message[1], $message[2]);
+		foreach ($this->sessionTimeout as $key => $message) {
+			$this->sessionTimeout[$key] = __d($message[0], $message[1], $message[2]);
 		}
 	}
 
@@ -377,6 +370,8 @@ class SiteSetting extends SiteManagerAppModel {
  * @return bool|array 正常な場合、登録不要なデータを削除して戻す。validateionErrorが空でない場合は、falseを返す。
  */
 	public function validateSiteSetting($data) {
+		$this->prepare();
+
 		$data = $this->validateAppSetting($data);
 		$data = $this->validateSiteClose($data);
 		$data = $this->validateMembership($data);
