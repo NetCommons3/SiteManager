@@ -10,6 +10,8 @@
  */
 
 App::uses('SiteSetting', 'SiteManager.Model');
+$SiteSetting = new SiteSetting();
+$SiteSettin->prepare();
 ?>
 
 <article>
@@ -28,7 +30,7 @@ App::uses('SiteSetting', 'SiteManager.Model');
 		<div ng-show="<?php echo $domId; ?>">
 			<?php echo $this->SiteManager->inputCommon('SiteSetting', 'AutoRegist.confirmation', array(
 					'type' => 'select',
-					'options' => SiteSetting::$autoRegistConfirm
+					'options' => $SiteSetting->autoRegistConfirm
 				)); ?>
 		</div>
 

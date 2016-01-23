@@ -10,6 +10,8 @@
  */
 
 App::uses('SiteSetting', 'SiteManager.Model');
+$SiteSetting = new SiteSetting();
+$SiteSettin->prepare();
 ?>
 
 <article>
@@ -33,12 +35,12 @@ App::uses('SiteSetting', 'SiteManager.Model');
 
 	<?php echo $this->SiteManager->inputCommon('SiteSetting', 'Meta.robots', array(
 		'type' => 'select',
-		'options' => SiteSetting::$metaRobots,
+		'options' => $SiteSetting->metaRobots,
 		'description' => true
 	)); ?>
 
 	<?php echo $this->SiteManager->inputCommon('SiteSetting', 'Meta.rating', array(
 		'type' => 'select',
-		'options' => SiteSetting::$metaRating,
+		'options' => $SiteSetting->metaRating,
 	)); ?>
 </article>
