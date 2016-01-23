@@ -1,6 +1,5 @@
-<?php
 /**
- * サイト管理の初期表示テンプレート
+ * site＿manager/css/style.css
  *
  * @author Noriko Arai <arai@nii.ac.jp>
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
@@ -8,5 +7,7 @@
  * @license http://www.netcommons.org/license.txt NetCommons License
  * @copyright Copyright 2014, NetCommons Project
  */
-?>
-<div></div>
+
+.site-manager-description {
+	padding: 8px;
+}

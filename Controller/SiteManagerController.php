@@ -10,9 +10,10 @@
  */
 
 App::uses('SiteManagerAppController', 'SiteManager.Controller');
+App::uses('Room', 'Rooms.Model');
 
 /**
- * SiteManager Controller
+ * サイト管理【一般設定】
  *
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @package NetCommons\SiteManager\Controller
@@ -20,44 +21,14 @@ App::uses('SiteManagerAppController', 'SiteManager.Controller');
 class SiteManagerController extends SiteManagerAppController {
 
 /**
- * use model
+ * 使用するモデル
  *
  * @var array
  */
-	//public $uses = array();
-
-/**
- * use component
- *
- * @var array
- */
-	public $components = array(
-		'ControlPanel.ControlPanelLayout',
+	public $uses = array(
+		'Rooms.RoomsLanguage',
+		'SiteManager.SiteSetting',
 	);
-
-/**
- * index
- *
- * @return void
- */
-	public function index() {
-	}
-
-/**
- * view
- *
- * @return void
- */
-	public function view() {
-	}
-
-/**
- * add
- *
- * @return void
- */
-	public function add() {
-	}
 
 /**
  * edit
@@ -65,13 +36,41 @@ class SiteManagerController extends SiteManagerAppController {
  * @return void
  */
 	public function edit() {
-	}
+		//ルームデータ取得（とりあえず、スペースのみ）
+		$rooms = $this->RoomsLanguage->find('all', array(
+			'recursive' => 0,
+			'conditions' => array(
+				'RoomsLanguage.room_id' => Room::$spaceRooms,
+				'RoomsLanguage.language_id' => Current::read('Language.id')
+			)
+		));
+		$this->set('rooms', Hash::combine($rooms, '{n}.RoomsLanguage.room_id', '{n}.RoomsLanguage.name'));
 
-/**
- * delete
- *
- * @return void
- */
-	public function delete() {
+		//リクエストセット
+		if ($this->request->is('post')) {
+			//システム標準使用言語
+			$this->SiteSetting->defaultLanguages = array_merge([''], $this->viewVars['languages']);
+			//標準の開始ルームのリストをセット
+			$this->SiteSetting->defaultStartRoom = array_keys($this->viewVars['rooms']);
+
+			//登録処理
+			$this->SiteManager->saveData();
+
+		} else {
+			$this->request->data['SiteSetting'] = $this->SiteSetting->getSiteSettingForEdit(
+				array('SiteSetting.key' => array(
+					//サイト名
+					'App.site_name',
+					//システム標準使用言語
+					'Config.language',
+					//標準の開始ルーム
+					'App.default_start_room',
+					//サイトを閉鎖する
+					'App.close_site',
+					//サイト閉鎖の理由
+					'App.site_closing_reason',
+				)
+			));
+		}
 	}
 }

@@ -20,15 +20,27 @@ App::uses('AppController', 'Controller');
 class SiteManagerAppController extends AppController {
 
 /**
- * use component
+ * 使用コンポーネント
  *
  * @var array
  */
 	public $components = array(
+		'ControlPanel.ControlPanelLayout',
+		'M17n.SwitchLanguage',
 		'NetCommons.Permission' => array(
 			'type' => PermissionComponent::CHECK_TYEP_SYSTEM_PLUGIN,
 			'allow' => array()
 		),
-		'Security'
+		'Security',
+		'SiteManager.SiteManager',
+	);
+
+/**
+ * 使用ヘルパー
+ *
+ * @var array
+ */
+	public $helpers = array(
+		'SiteManager.SiteManager',
 	);
 }
