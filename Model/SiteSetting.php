@@ -245,7 +245,6 @@ class SiteSetting extends SiteManagerAppModel {
 		foreach (self::$sessionTimeout as $key => $message) {
 			self::$sessionTimeout[$key] = __d($message[0], $message[1], $message[2]);
 		}
-
 	}
 
 /**
