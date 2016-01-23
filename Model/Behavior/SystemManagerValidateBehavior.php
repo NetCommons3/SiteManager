@@ -1,6 +1,6 @@
 <?php
 /**
- * SiteSettingValidate Behavior
+ * SystemManagerValidate Behavior
  *
  * @author Noriko Arai <arai@nii.ac.jp>
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
@@ -12,7 +12,7 @@
 App::uses('SiteSettingValidateBehavior', 'SiteManager.Model/Behavior');
 
 /**
- * SiteSettingValidate Behavior
+ * SystemManagerValidate Behavior
  *
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @package NetCommons\SiteManager\Model\Behavior
