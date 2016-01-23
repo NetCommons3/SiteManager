@@ -328,7 +328,7 @@ class SiteManagerHelper extends AppHelper {
  */
 	public function getValue($model, $key, $languageId = '0') {
 		$requestKey = strtr($key, SiteManagerComponent::STRTR_FROM, SiteManagerComponent::STRTR_TO);
-		return Hash::get($this->_View->request->data[$model][$requestKey],  $languageId . '.value');
+		return Hash::get($this->_View->request->data[$model][$requestKey], $languageId . '.value');
 	}
 
 }
