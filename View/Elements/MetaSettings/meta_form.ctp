@@ -11,7 +11,7 @@
 
 App::uses('SiteSetting', 'SiteManager.Model');
 $SiteSetting = new SiteSetting();
-$SiteSettin->prepare();
+$SiteSetting->prepare();
 ?>
 
 <article>
