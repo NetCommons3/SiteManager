@@ -310,7 +310,7 @@ class SiteManagerHelper extends AppHelper {
 		$output = '';
 
 		if ($hasDescription) {
-			$output .= '<div class="bg-info text-info site-manager-description">';
+			$output .= '<div class="help-block bg-info site-manager-description">';
 			$output .= __d($labelPlugin, $key . ' description');
 			$output .= '</div>';
 		}
