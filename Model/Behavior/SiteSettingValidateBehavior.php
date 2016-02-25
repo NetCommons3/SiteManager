@@ -10,7 +10,6 @@
  */
 
 App::uses('ModelBehavior', 'Model');
-App::uses('SiteSetting', 'SiteManager.Model');
 
 /**
  * SiteSettingValidate Behavior
@@ -19,6 +18,21 @@ App::uses('SiteSetting', 'SiteManager.Model');
  * @package NetCommons\SiteManager\Model\Behavior
  */
 class SiteSettingValidateBehavior extends ModelBehavior {
+
+/**
+ * Setup this behavior with the specified configuration settings.
+ *
+ * @param Model $model Model using this behavior
+ * @param array $config Configuration settings for $model
+ * @return void
+ */
+	public function setup(Model $model, $config = array()) {
+		parent::setup($model, $config);
+
+		$model->loadModels([
+			'SiteSetting' => 'SiteManager.SiteSetting',
+		]);
+	}
 
 /**
  * サイト設定の必須Validate処理

@@ -63,20 +63,20 @@ class SystemManagerValidateBehavior extends SiteSettingValidateBehavior {
 
 		//デフォルトのタイムゾーン
 		foreach ($data[$model->alias]['App.default_timezone'] as $langId => $check) {
-			if (! in_array(Hash::get($check, 'value'), array_keys(SiteSetting::$defaultTimezones), true)) {
+			if (! in_array(Hash::get($check, 'value'), array_keys($model->SiteSetting->defaultTimezones), true)) {
 				$this->_setValidationMessage($model, 'App.default_timezone', $langId,
 						__d('net_commons', 'Invalid request.'));
 			}
 		}
 
 		//グループルームの容量
-		if (! in_array((int)Hash::get($data[$model->alias]['App.disk_for_group_room'], '0.value'), SiteSetting::$diskSpace, true)) {
+		if (! in_array((int)Hash::get($data[$model->alias]['App.disk_for_group_room'], '0.value'), $model->SiteSetting->diskSpace, true)) {
 			$this->_setValidationMessage($model, 'App.disk_for_group_room', '0',
 					__d('net_commons', 'Invalid request.'));
 		}
 
 		//プライベートルームの容量
-		if (! in_array((int)Hash::get($data[$model->alias]['App.disk_for_private_room'], '0.value'), SiteSetting::$diskSpace, true)) {
+		if (! in_array((int)Hash::get($data[$model->alias]['App.disk_for_private_room'], '0.value'), $model->SiteSetting->diskSpace, true)) {
 			$this->_setValidationMessage($model, 'App.disk_for_private_room', '0',
 					__d('net_commons', 'Invalid request.'));
 		}
@@ -97,7 +97,8 @@ class SystemManagerValidateBehavior extends SiteSettingValidateBehavior {
 		}
 
 		//自動ログアウトするまでの時間
-		if (! in_array((int)Hash::get($data[$model->alias]['Session.ini.session.cookie_lifetime'], '0.value'), array_keys(SiteSetting::$sessionTimeout), true)) {
+		if (! in_array((int)Hash::get($data[$model->alias]['Session.ini.session.cookie_lifetime'], '0.value'),
+											array_keys($model->SiteSetting->sessionTimeout), true)) {
 			$this->_setValidationMessage($model, 'Session.ini.session.cookie_lifetime', '0',
 					__d('net_commons', 'Invalid request.'));
 		}
@@ -124,7 +125,7 @@ class SystemManagerValidateBehavior extends SiteSettingValidateBehavior {
 		}
 
 		//PHP最大メモリ数
-		if (! in_array(Hash::get($data[$model->alias]['Php.memory_limit'], '0.value'), array_keys(SiteSetting::$memoryLimit), true)) {
+		if (! in_array(Hash::get($data[$model->alias]['Php.memory_limit'], '0.value'), array_keys($model->SiteSetting->memoryLimit), true)) {
 			$this->_setValidationMessage($model, 'Php.memory_limit', '0',
 					__d('net_commons', 'Invalid request.'));
 		}
@@ -148,13 +149,13 @@ class SystemManagerValidateBehavior extends SiteSettingValidateBehavior {
 		$this->_validateRequired($model, $data, 'Mail.from');
 
 		//メール形式
-		if (! in_array(Hash::get($data[$model->alias]['Mail.messageType'], '0.value'), array_keys(SiteSetting::$mailMessageType), true)) {
+		if (! in_array(Hash::get($data[$model->alias]['Mail.messageType'], '0.value'), array_keys($model->SiteSetting->mailMessageType), true)) {
 			$this->_setValidationMessage($model, 'Mail.messageType', '0',
 					__d('net_commons', 'Invalid request.'));
 		}
 
 		//メール送信方法
-		if (! in_array(Hash::get($data[$model->alias]['Mail.transport'], '0.value'), array_keys(SiteSetting::$mailTransport), true)) {
+		if (! in_array(Hash::get($data[$model->alias]['Mail.transport'], '0.value'), array_keys($model->SiteSetting->mailTransport), true)) {
 			$this->_setValidationMessage($model, 'Mail.transport', '0',
 					__d('net_commons', 'Invalid request.'));
 		}
@@ -183,7 +184,7 @@ class SystemManagerValidateBehavior extends SiteSettingValidateBehavior {
 		}
 
 		//デバッグのチェック
-		if (! in_array((int)Hash::get($data[$model->alias]['debug'], '0.value'), array_keys(SiteSetting::$debugOptions), true)) {
+		if (! in_array((int)Hash::get($data[$model->alias]['debug'], '0.value'), array_keys($model->SiteSetting->debugOptions), true)) {
 			$this->_setValidationMessage($model, 'debug', '0',
 					__d('net_commons', 'Invalid request.'));
 		}

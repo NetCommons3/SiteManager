@@ -35,13 +35,13 @@ class SiteManagerValidateBehavior extends SiteSettingValidateBehavior {
 		$data = $this->_validateRequired($model, $data, 'App.site_name');
 
 		//システム標準使用言語
-		if (! in_array(Hash::get($data[$model->alias]['Config.language'], '0.value'), $model->defaultLanguages, true)) {
+		if (! in_array(Hash::get($data[$model->alias]['Config.language'], '0.value'), $model->SiteSetting->defaultLanguages, true)) {
 			$this->_setValidationMessage($model, 'Config.language', '0',
 					__d('net_commons', 'Invalid request.'));
 		}
 
 		//標準の開始ルーム
-		if (! in_array((int)Hash::get($data[$model->alias]['App.default_start_room'], '0.value'), $model->defaultStartRoom, true)) {
+		if (! in_array((int)Hash::get($data[$model->alias]['App.default_start_room'], '0.value'), $model->SiteSetting->defaultStartRoom, true)) {
 			$this->_setValidationMessage($model, 'App.default_start_room', '0',
 					__d('net_commons', 'Invalid request.'));
 		}
@@ -108,7 +108,8 @@ class SiteManagerValidateBehavior extends SiteSettingValidateBehavior {
 		if (Hash::get($data[$model->alias]['AutoRegist.use_automatic_register'], '0.value')) {
 			//自動会員登録を許可する場合、入力チェックする
 			// * アカウント登録の最終決定
-			if (! in_array((int)Hash::get($data[$model->alias]['AutoRegist.confirmation'], '0.value'), array_keys(SiteSetting::$autoRegistConfirm), true)) {
+			if (! in_array((int)Hash::get($data[$model->alias]['AutoRegist.confirmation'], '0.value'),
+													array_keys($model->SiteSetting->autoRegistConfirm), true)) {
 				$this->_setValidationMessage($model, 'AutoRegist.confirmation', '0',
 						__d('net_commons', 'Invalid request.'));
 			}
@@ -118,7 +119,8 @@ class SiteManagerValidateBehavior extends SiteSettingValidateBehavior {
 						__d('net_commons', 'Invalid request.'));
 			}
 			// * 自動登録時の権限
-			if (! in_array(Hash::get($data[$model->alias]['AutoRegist.role_key'], '0.value'), array_keys($model->autoRegistRoles), true)) {
+			if (! in_array(Hash::get($data[$model->alias]['AutoRegist.role_key'], '0.value'),
+													array_keys($model->SiteSetting->autoRegistRoles), true)) {
 				$this->_setValidationMessage($model, 'AutoRegist.role_key', '0',
 						__d('net_commons', 'Invalid request.'));
 			}
