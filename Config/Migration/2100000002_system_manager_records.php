@@ -199,6 +199,12 @@ class SystemManagerRecords extends NetCommonsMigration {
 				'key' => 'Mail.smtp.pass',
 				'value' => '',
 			),
+			// ** Cronを使用する
+			array(
+				'language_id' => 0,
+				'key' => 'Mail.use_cron',
+				'value' => '0',
+			),
 
 			//開発者向け
 			// * デバッグ出力
