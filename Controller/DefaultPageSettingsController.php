@@ -59,7 +59,7 @@ class DefaultPageSettingsController extends SiteManagerAppController {
 
 		//テーマセット
 		$themes = $this->SiteSetting->getThemes();
-		$this->set('themes',$themes);
+		$this->set('themes', $themes);
 
 		//リクエストセット
 		if ($this->request->is('put')) {
