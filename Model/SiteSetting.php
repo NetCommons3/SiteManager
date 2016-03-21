@@ -199,6 +199,7 @@ class SiteSetting extends SiteManagerAppModel {
 		'DataTypes.Timezone',
 		'SiteManager.SiteManagerValidate',
 		'SiteManager.SystemManagerValidate',
+		'ThemeSettings.Theme',
 	);
 
 /**

@@ -21,11 +21,11 @@ App::uses('Room', 'Rooms.Model');
 class DefaultPageSettingsController extends SiteManagerAppController {
 
 /**
- * use components
+ * use helpers
  *
  * @var array
  */
-	public $components = array(
+	public $helpers = array(
 		'ThemeSettings.ThemeSettings',
 	);
 
@@ -58,7 +58,8 @@ class DefaultPageSettingsController extends SiteManagerAppController {
 		$this->set('activeRoomId', Hash::get($this->request->pass, '0'));
 
 		//テーマセット
-		$this->ThemeSettings->setThemes();
+		$themes = $this->SiteSetting->getThemes();
+		$this->set('themes', $themes);
 
 		//リクエストセット
 		if ($this->request->is('put')) {
