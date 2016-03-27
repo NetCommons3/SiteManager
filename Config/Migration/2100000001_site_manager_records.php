@@ -456,29 +456,35 @@ Please log in using the new password at your earliest convenience.
 			array(
 				'language_id' => '2',
 				'key' => 'Workflow.approval_mail_subject',
-				'value' => '[{X-SITE_NAME}]コンテンツ申請メール',
+				'value' => '[{X-SITE_NAME}]{X-PLUGIN_NAME}承認依頼通知',
 			),
 			// *** 英語
 			array(
 				'language_id' => '1',
 				'key' => 'Workflow.approval_mail_subject',
-				'value' => '[{X-SITE_NAME}]コンテンツ申請メール',
+				'value' => '[{X-SITE_NAME}]{X-PLUGIN_NAME} approval request notification',
 			),
 			// ** 申請メールの本文
 			// *** 日本語
 			array(
 				'language_id' => '2',
 				'key' => 'Workflow.approval_mail_body',
-				'value' => 'ここに本文書く
+				'value' => '{X-SITE_NAME}における{X-PLUGIN_NAME}の承認依頼がありました。
 
+{X-WORKFLOW_COMMENT}
+
+内容を確認するには下記のリンクをクリックして下さい。
 {X-URL}',
 			),
 			// *** 英語
 			array(
 				'language_id' => '1',
 				'key' => 'Workflow.approval_mail_body',
-				'value' => 'ここに本文書く
+				'value' => 'There was approval request of {X-PLUGIN_NAME} in {X-SITE_NAME}.
 
+{X-WORKFLOW_COMMENT}
+
+Please click on the link below to check the contents.
 {X-URL}',
 			),
 			// ** 差し戻しメールの件名
@@ -486,29 +492,37 @@ Please log in using the new password at your earliest convenience.
 			array(
 				'language_id' => '2',
 				'key' => 'Workflow.disapproval_mail_subject',
-				'value' => '[{X-SITE_NAME}]コンテンツ差し戻しメール',
+				'value' => '[{X-SITE_NAME}]{X-PLUGIN_NAME}差し戻し通知',
 			),
 			// *** 英語
 			array(
 				'language_id' => '1',
 				'key' => 'Workflow.disapproval_mail_subject',
-				'value' => '[{X-SITE_NAME}]コンテンツ差し戻しメール',
+				'value' => '[{X-SITE_NAME}]{X-PLUGIN_NAME} remand notification',
 			),
 			// ** 差し戻しメールの本文
 			// *** 日本語
 			array(
 				'language_id' => '2',
 				'key' => 'Workflow.disapproval_mail_body',
-				'value' => 'ここに本文書く
+				'value' => '{X-SITE_NAME}における{X-PLUGIN_NAME}が差し戻しされました。
+もし{X-SITE_NAME}での{X-PLUGIN_NAME}に覚えがない場合はこのメールを破棄してください。
 
+{X-WORKFLOW_COMMENT}
+
+内容を確認するには下記のリンクをクリックして下さい。
 {X-URL}',
 			),
 			// *** 英語
 			array(
 				'language_id' => '1',
 				'key' => 'Workflow.disapproval_mail_body',
-				'value' => 'ここに本文書く
+				'value' => '{X-PLUGIN_NAME} in {X-SITE_NAME} has been remanded.
+Please discard this email if you\'re still unable to recognize the if {X-PLUGIN_NAME} in {X-SITE_NAME}.
 
+{X-WORKFLOW_COMMENT}
+
+Please click on the link below to check the contents.
 {X-URL}',
 			),
 			// ** 承認完了メールの件名
@@ -516,29 +530,37 @@ Please log in using the new password at your earliest convenience.
 			array(
 				'language_id' => '2',
 				'key' => 'Workflow.approval_completion_mail_subject',
-				'value' => '[{X-SITE_NAME}]承認完了通知メール',
+				'value' => '[{X-SITE_NAME}]{X-PLUGIN_NAME}承認完了通知',
 			),
 			// *** 英語
 			array(
 				'language_id' => '1',
 				'key' => 'Workflow.approval_completion_mail_subject',
-				'value' => '[{X-SITE_NAME}]承認完了通知メール',
+				'value' => '[{X-SITE_NAME}]{X-PLUGIN_NAME} approval completion notification',
 			),
 			// ** 承認完了メールの本文
 			// *** 日本語
 			array(
 				'language_id' => '2',
 				'key' => 'Workflow.approval_completion_mail_body',
-				'value' => 'ここに本文書く
+				'value' => '{X-SITE_NAME}における{X-PLUGIN_NAME}の承認が完了しました。
+もし{X-SITE_NAME}での{X-PLUGIN_NAME}に覚えがない場合はこのメールを破棄してください。
 
+{X-WORKFLOW_COMMENT}
+
+内容を確認するには下記のリンクをクリックして下さい。
 {X-URL}',
 			),
 			// *** 英語
 			array(
 				'language_id' => '1',
 				'key' => 'Workflow.approval_completion_mail_body',
-				'value' => 'ここに本文書く
+				'value' => 'Approval of {X-PLUGIN_NAME} in {X-SITE_NAME} has been completed.
+Please discard this email if you\'re still unable to recognize the if {X-PLUGIN_NAME} in {X-SITE_NAME}.
 
+{X-WORKFLOW_COMMENT}
+
+Please click on the link below to check the contents.
 {X-URL}',
 			),
 
