@@ -309,8 +309,6 @@ Clicking on the link below will activate the account of this user.
 ログインID：{X-LOGIN_ID}
 パスワード：{X-PASSWORD}
 e-mail：{X-EMAIL}
-参加ルーム：
-{X-ENTRY_ROOM}
 
 下記アドレスからログインしてください。
 {X-URL}',
@@ -324,8 +322,6 @@ Handle:{X-HANDLENAME}
 Login_id:{X-USERNAME}
 Password:{X-PASSWORD}
 e-mail:{X-EMAIL}
-Entry Room:
-{X-ENTRY_ROOM}
 
 You may now log in by clicking on this link or copying and pasting it in your browser:
 {X-URL}',
