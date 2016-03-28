@@ -64,6 +64,14 @@ class SiteSettingFixture extends CakeTestFixture {
 			'label' => 'SiteTimezone',
 			'weight' => '1',
 		),
+		array(
+			'id' => '5',
+			'language_id' => '0',
+			'key' => 'Mail.from',
+			'value' => '',
+			'label' => 'Mail.from',
+			'weight' => '1',
+		),
 	);
 
 }
