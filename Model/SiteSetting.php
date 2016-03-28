@@ -18,6 +18,7 @@ App::uses('M17nHelper', 'M17n.View/Helper');
  *
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @package NetCommons\SiteManager\Model
+ * @SuppressWarnings(PHPMD.TooManyFields)
  */
 class SiteSetting extends SiteManagerAppModel {
 
@@ -300,7 +301,6 @@ class SiteSetting extends SiteManagerAppModel {
 		if (Configure::read('App.default_start_room') === Room::PUBLIC_PARENT_ID) {
 			return '/';
 		}
-		CakeLog::debug(print_r(Current::read('User.UserRoleSetting'), true));
 		//プライベートの場合、プライベートの利用可をチェックする
 		if (Configure::read('App.default_start_room') === Room::PRIVATE_PARENT_ID &&
 				! Current::read('User.UserRoleSetting.use_private_room')) {
