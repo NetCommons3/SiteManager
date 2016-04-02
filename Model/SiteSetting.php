@@ -18,6 +18,7 @@ App::uses('M17nHelper', 'M17n.View/Helper');
  *
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @package NetCommons\SiteManager\Model
+ * @SuppressWarnings(PHPMD.TooManyFields)
  */
 class SiteSetting extends SiteManagerAppModel {
 
@@ -203,6 +204,13 @@ class SiteSetting extends SiteManagerAppModel {
 	);
 
 /**
+ * Behaviors
+ *
+ * @var array
+ */
+	public static $siteSetting;
+
+/**
  * 設定画面の前準備
  *
  * @return void
@@ -242,19 +250,90 @@ class SiteSetting extends SiteManagerAppModel {
 	}
 
 /**
+ * サイト設定の初期データ取得
+ *
+ * @return array
+ */
+	public function getInitializeSiteSetting() {
+		if (self::$siteSetting) {
+			return self::$siteSetting;
+		}
+
+		$result = $this->find('list', array(
+			'recursive' => -1,
+			'fields' => array('key', 'value'),
+			'conditions' => array(
+				'language_id' => array('0', Current::read('Language.id')),
+				'key' => array(
+					'App.close_site',
+					'App.default_start_room',
+					'App.default_timezone',
+					'App.disk_for_group_room',
+					'App.disk_for_private_room',
+					'App.site_closing_reason',
+					'App.site_name',
+					'Auth.use_ssl',
+					'Config.language',
+					'debug',
+					//'Php.memory_limit',
+					//'Session.ini.session.cookie_lifetime',
+					//'Session.ini.session.gc_maxlifetime',
+					//'Session.ini.session.name',
+					'theme',
+				)
+			),
+		));
+		self::$siteSetting = $result;
+		return $result;
+	}
+
+/**
+ * デフォルト開始ページの取得
+ *
+ * @return string or null
+ */
+	public function getDefaultStartPage() {
+		$this->loadModels([
+			'Page' => 'Pages.Page',
+			'Room' => 'Rooms.Room',
+		]);
+		//パブリックスペースの場合
+		if (Configure::read('App.default_start_room') === Room::PUBLIC_PARENT_ID) {
+			return '/';
+		}
+		//プライベートの場合、プライベートの利用可をチェックする
+		if (Configure::read('App.default_start_room') === Room::PRIVATE_PARENT_ID &&
+				! Current::read('User.UserRoleSetting.use_private_room')) {
+			return '/';
+		}
+
+		$query = $this->Room->getReadableRoomsConditions(array(
+			'Room.parent_id' => Configure::read('App.default_start_room')
+		));
+		$room = $this->Room->find('first', Hash::merge($query, array('recursive' => -1)));
+		if (! $room) {
+			return '/';
+		}
+
+		$page = $this->Page->find('first', array(
+			'recursive' => -1,
+			'conditions' => array('id' => $room['Room']['page_id_top'])
+		));
+		if (! $page) {
+			return '/';
+		}
+
+		return '/' . $page['Page']['permalink'];
+	}
+
+/**
  * サイトに設定されているテーマを返す
  *
  * @return string or null
  */
 	public function getSiteTheme() {
-		$row = $this->find('first', array(
-			'conditions' => array('SiteSetting.key' => 'theme'),
-		));
-		if ($row && isset($row['SiteSetting'])
-			&& isset($row['SiteSetting']['value'])) {
-			return $row['SiteSetting']['value'];
-		}
-		return null;
+		$siteSetting = $this->getInitializeSiteSetting();
+		return Hash::get($siteSetting, 'theme');
 	}
 
 /**
