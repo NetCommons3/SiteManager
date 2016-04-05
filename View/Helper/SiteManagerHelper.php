@@ -98,7 +98,6 @@ class SiteManagerHelper extends AppHelper {
 			$output .= '</li>';
 		}
 		$output .= '</ul>';
-		$output .= '<br>';
 
 		return $output;
 	}
@@ -120,7 +119,6 @@ class SiteManagerHelper extends AppHelper {
 			$output .= '</li>';
 		}
 		$output .= '</ul>';
-		$output .= '<br>';
 
 		return $output;
 	}
@@ -158,7 +156,6 @@ class SiteManagerHelper extends AppHelper {
 		}
 
 		$output .= '</ul>';
-		$output .= '<br>';
 
 		return $output;
 	}

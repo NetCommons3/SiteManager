@@ -19,7 +19,7 @@
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<?php echo $this->SwitchLanguage->tablist('site-settings-'); ?>
-			<br>
+			<br><br>
 
 			<div class="panel panel-default">
 				<div class="panel-body">
