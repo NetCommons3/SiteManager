@@ -29,7 +29,6 @@
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<?php echo $this->SwitchLanguage->tablist('site-settings-'); ?>
-			<br>
 
 			<div class="tab-content">
 				<div class="tab-pane<?php echo ($membershipTab === 'automatic-registration' ? ' active' : ''); ?>" id="automatic-registration">
