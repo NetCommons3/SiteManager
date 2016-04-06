@@ -19,7 +19,6 @@
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<?php echo $this->SwitchLanguage->tablist('site-settings-'); ?>
-			<br>
 
 			<?php echo $this->element('MailSettings/signature_form'); ?>
 		</div>
