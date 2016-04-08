@@ -17,7 +17,7 @@
 
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.approval_mail_body', array(
 			'type' => 'textarea',
-			'description' => true,
+			'help' => true,
 		)); ?>
 
 	<hr>
@@ -28,7 +28,7 @@
 
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.disapproval_mail_body', array(
 			'type' => 'textarea',
-			'description' => true,
+			'help' => true,
 		)); ?>
 
 	<hr>
@@ -39,7 +39,7 @@
 
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.approval_completion_mail_body', array(
 			'type' => 'textarea',
-			'description' => true,
+			'help' => true,
 		)); ?>
 
 </article>

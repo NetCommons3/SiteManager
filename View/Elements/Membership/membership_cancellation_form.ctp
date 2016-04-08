@@ -26,7 +26,7 @@
 		<div ng-show="<?php echo $domId; ?>">
 			<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'UserCancel.disclaimer', array(
 					'type' => 'textarea',
-					'description' => true,
+					'help' => true,
 				)); ?>
 		</div>
 
@@ -52,7 +52,7 @@
 			<div ng-show="<?php echo $notifyDomId; ?>">
 				<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'UserCancel.mail_body', array(
 						'type' => 'textarea',
-						'description' => true,
+						'help' => true,
 					)); ?>
 			</div>
 		</div>

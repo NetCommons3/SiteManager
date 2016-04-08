@@ -17,7 +17,7 @@
 
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'ForgotPass.issue_mail_body', array(
 			'type' => 'textarea',
-			'description' => true,
+			'help' => true,
 		)); ?>
 
 	<hr>
@@ -28,6 +28,6 @@
 
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'ForgotPass.request_mail_body', array(
 			'type' => 'textarea',
-			'description' => true,
+			'help' => true,
 		)); ?>
 </article>

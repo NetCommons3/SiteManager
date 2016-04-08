@@ -45,56 +45,56 @@ msgstr "Default language"
 msgid "Automatic language"
 msgstr "Automatic"
 
-msgid "Config.language description"
+msgid "Config.language help"
 msgstr "If set to `Automatic`, it decide with browser`s language setting."
 
 msgid "App.default_start_room"
 msgstr "Default start room"
 
-msgid "App.default_start_room description"
+msgid "App.default_start_room help"
 msgstr "Set the first room shown after logging in."
 
 msgid "App.close_site"
 msgstr "Turn your site off?"
 
-msgid "App.close_site description"
+msgid "App.close_site help"
 msgstr "Select yes to turn your site off so that only users in selected groups have access to the site."
 
 msgid "App.site_closing_reason"
 msgstr "Reason for turning off the site"
 
-msgid "App.site_closing_reason description"
+msgid "App.site_closing_reason help"
 msgstr "The text that is presented when the site is closed."
 
 
 msgid "Meta.author"
 msgstr "Creator"
 
-msgid "Meta.author description"
+msgid "Meta.author help"
 msgstr "You can open the information of the creator (i.e. name and e-mail addresses) of this site."
 
 msgid "Meta.copyright"
 msgstr "Copyright"
 
-msgid "Meta.copyright description"
+msgid "Meta.copyright help"
 msgstr "You can define the copyright of your site."
 
 msgid "Meta.keywords"
 msgstr "Meta Keywords"
 
-msgid "Meta.keywords description"
+msgid "Meta.keywords help"
 msgstr "The keywords meta tag is a series of keywords that represents the content of your site. Type in keywords with each separated by a comma or a space in between. (i.e. NetCommons, elementary school, research, Tokyo)"
 
 msgid "Meta.description"
 msgstr "META(Description)"
 
-msgid "Meta.description description"
-msgstr "The description meta tag is a general description of what is contained in your web page"
+msgid "Meta.description help"
+msgstr "The help meta tag is a general help of what is contained in your web page"
 
 msgid "Meta.robots"
 msgstr "Welcome robots?"
 
-msgid "Meta.robots description"
+msgid "Meta.robots help"
 msgstr "\"index\" means that you allow search robots to crawl on your site, and \"follow\" means that you allow search robots to link to your site."
 
 msgid "Meta.rating"
@@ -137,7 +137,7 @@ msgstr ""
 msgid "AutoRegist.disclaimer"
 msgstr "Registration disclaimer"
 
-msgid "AutoRegist.disclaimer description"
+msgid "AutoRegist.disclaimer help"
 msgstr "Registration disclaimer"
 
 msgid "AutoRegist.approval_mail_subject"
@@ -146,7 +146,7 @@ msgstr "Subject of user registration approval mail."
 msgid "AutoRegist.approval_mail_body"
 msgstr "Content of user registration approval mail."
 
-msgid "AutoRegist.approval_mail_body description"
+msgid "AutoRegist.approval_mail_body help"
 msgstr "You may use the keyword, {X-SITE_NAME}, {X-URL}. Each keyword stands for the site name and the url."
 
 msgid "AutoRegist.acceptance_mail_subject"
@@ -155,7 +155,7 @@ msgstr "Subject of user registration acceptance mail."
 msgid "AutoRegist.acceptance_mail_body"
 msgstr "Content of user registration acceptance mail."
 
-msgid "AutoRegist.acceptance_mail_body description"
+msgid "AutoRegist.acceptance_mail_body help"
 msgstr "You may use the keyword, {X-SITE_NAME}, {X-URL}. Each keyword stands for the site name and the url."
 
 msgid "AutoRegist.mail_subject"
@@ -164,7 +164,7 @@ msgstr "Subject"
 msgid "AutoRegist.mail_body"
 msgstr "Body"
 
-msgid "AutoRegist.mail_body description"
+msgid "AutoRegist.mail_body help"
 msgstr "You may use the keyword, {X-SITE_NAME}, {X-HANDLENAME}, {X-USERNAME}, {X-PASSWORD}, {X-EMAIL}, {X-ENTRY_ROOM}, {X-URL}.
 Each keyword stands for the site name, the handle name, login id, password, e-mail address the list of grouprooms to join and the url."
 
@@ -184,7 +184,7 @@ msgstr "Do not use"
 msgid "UserCancel.disclaimer"
 msgstr "Agreement"
 
-msgid "UserCancel.disclaimer description"
+msgid "UserCancel.disclaimer help"
 msgstr "You may add some articles which you want the users to agree before they cancel the membership."
 
 msgid "UserCancel.notify_administrators"
@@ -196,7 +196,7 @@ msgstr "Subject"
 msgid "UserCancel.mail_body"
 msgstr "Body"
 
-msgid "UserCancel.mail_body description"
+msgid "UserCancel.mail_body help"
 msgstr "You may use the keyword, {X-SITE_NAME} and {X-HANDLENAME}. Each keyword stands for the site name and the handle name."
 
 
@@ -209,7 +209,7 @@ msgstr "Subject of new password issue mail."
 msgid "ForgotPass.issue_mail_body"
 msgstr "Content of new password issue mail."
 
-msgid "ForgotPass.issue_mail_body description"
+msgid "ForgotPass.issue_mail_body help"
 msgstr "You may use the keyword, {X-SITE_NAME}, {X-URL}. Each keyword stands for the site name and the url."
 
 msgid "ForgotPass.request_mail_subject"
@@ -218,7 +218,7 @@ msgstr "Subject of new password request."
 msgid "ForgotPass.request_mail_body"
 msgstr "Content of new password request."
 
-msgid "ForgotPass.request_mail_body description"
+msgid "ForgotPass.request_mail_body help"
 msgstr "You may use the keyword, {X-SITE_NAME}, {X-URL}. Each keyword stands for the site name and the url."
 
 
@@ -231,7 +231,7 @@ msgstr "申請メールの件名"
 msgid "Workflow.approval_mail_body"
 msgstr "申請メールの本文"
 
-msgid "Workflow.approval_mail_body description"
+msgid "Workflow.approval_mail_body help"
 msgstr "You may use the keyword, {X-SITE_NAME}, {X-URL}. Each keyword stands for the site name and the url."
 
 msgid "Workflow.disapproval_mail_subject"
@@ -240,7 +240,7 @@ msgstr "差し戻しメールの件名"
 msgid "Workflow.disapproval_mail_body"
 msgstr "差し戻しメールの本文"
 
-msgid "Workflow.disapproval_mail_body description"
+msgid "Workflow.disapproval_mail_body help"
 msgstr "You may use the keyword, {X-SITE_NAME}, {X-URL}. Each keyword stands for the site name and the url."
 
 msgid "Workflow.approval_completion_mail_subject"
@@ -249,18 +249,18 @@ msgstr "承認完了通知メールの件名"
 msgid "Workflow.approval_completion_mail_body"
 msgstr "承認完了通知メールの本文"
 
-msgid "Workflow.approval_completion_mail_body description"
+msgid "Workflow.approval_completion_mail_body help"
 msgstr "You may use the keyword, {X-SITE_NAME}, {X-URL}. Each keyword stands for the site name and the url."
 
 
 msgid "Mail.body_header"
 msgstr "本文ヘッダー"
 
-msgid "Mail.body_header description"
+msgid "Mail.body_header help"
 msgstr "ここに説明文を書く"
 
 msgid "Mail.signature"
 msgstr "署名"
 
-msgid "Mail.signature description"
+msgid "Mail.signature help"
 msgstr "ここに説明文を文書く"

@@ -86,7 +86,7 @@ $SiteSetting->prepare();
 		<div ng-show="<?php echo $domId; ?>">
 			<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'AutoRegist.disclaimer', array(
 					'type' => 'textarea',
-					'description' => true,
+					'help' => true,
 				)); ?>
 		</div>
 
@@ -101,7 +101,7 @@ $SiteSetting->prepare();
 		<div ng-show="<?php echo $domId; ?>">
 			<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'AutoRegist.approval_mail_body', array(
 					'type' => 'textarea',
-					'description' => true,
+					'help' => true,
 				)); ?>
 		</div>
 
@@ -116,7 +116,7 @@ $SiteSetting->prepare();
 		<div ng-show="<?php echo $domId; ?>">
 			<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'AutoRegist.acceptance_mail_body', array(
 					'type' => 'textarea',
-					'description' => true,
+					'help' => true,
 				)); ?>
 		</div>
 
@@ -131,7 +131,7 @@ $SiteSetting->prepare();
 		<div ng-show="<?php echo $domId; ?>">
 			<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'AutoRegist.mail_body', array(
 					'type' => 'textarea',
-					'description' => true,
+					'help' => true,
 				)); ?>
 		</div>
 	</div>

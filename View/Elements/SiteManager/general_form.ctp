@@ -20,12 +20,12 @@ App::uses('M17nHelper', 'M17n.View/Helper');
 		'type' => 'select',
 		'empty' => __d('site_manager', 'Automatic language'),
 		'options' => array_map('__', array_intersect_key(M17nHelper::$languages, array_flip($languages))),
-		'description' => true
+		'help' => true
 	)); ?>
 
 	<?php echo $this->SiteManager->inputCommon('SiteSetting', 'App.default_start_room', array(
 		'type' => 'select',
 		'options' => $rooms,
-		'description' => true
+		'help' => true
 	)); ?>
 </article>
