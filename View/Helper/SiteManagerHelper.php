@@ -206,8 +206,9 @@ class SiteManagerHelper extends AppHelper {
 			return $output;
 		}
 
-		$hasHelp = Hash::get($options, 'help', false);
-		$options = Hash::remove($options, 'help');
+		if (Hash::get($options, 'help', false)) {
+			$options = Hash::insert($options, 'help', __d($labelPlugin, $key . ' help'));
+		}
 
 		$languageId = '0';
 		$inputValue = $model . '.' . $requestKey . '.' . $languageId;
@@ -215,48 +216,20 @@ class SiteManagerHelper extends AppHelper {
 		//hidden
 		$output .= $this->inputHidden($model, $key, $languageId);
 
-		//value
-		if (Hash::get($options, 'div', true)) {
-			$output .= '<div class="form-group">';
-		} else {
-			$output .= '<div>';
-		}
-
-		if (Hash::get($options, 'required')) {
-			$required = $this->_View->element('NetCommons.required');
-		} else {
-			$required = '';
-		}
-
-		if ($this->Form->error($inputValue . '.value')) {
-			$output .= '<div class="has-error">';
-		} else {
-			$output .= '<div>';
-		}
-		$output .= $this->NetCommonsForm->label($inputValue . '.value', __d($labelPlugin, $key) . $required, array('class' => 'control-label'));
 		if (Hash::get($options, 'type', 'text') === 'radio') {
-			$output .= '<div class="form-control nc-data-label">';
-			$output .= $this->NetCommonsForm->radio($inputValue . '.value', Hash::get($options, 'options', array()), Hash::merge(array(
-				'div' => array('class' => 'form-control form-inline'),
-				'separator' => '<span class="radio-separator"></span>'
-			), $options));
-			$output .= '</div>';
-		} else {
-			$output .= $this->NetCommonsForm->input($inputValue . '.value',
-				Hash::merge(array(
-					'label' => false,
-					'div' => false,
-					'error' => false,
-				), $options)
-			);
+			$options = Hash::merge(array(
+				'class' => false,
+				'div' => array('class' => 'form-group'),
+				'childDiv' => array('class' => 'form-inline'),
+				'separator' => '<span class="radio-separator"></span>',
+			), $options);
 		}
-		$output .= '</div>';
 
-		$output .= $this->help($key, $hasHelp, $labelPlugin);
-
-		$output .= $this->NetCommonsForm->error($inputValue . '.value');
-
-		$output .= '</div>';
+		$output .= $this->NetCommonsForm->input($inputValue . '.value',
+			Hash::merge(array(
+				'label' => __d($labelPlugin, $key),
+			), $options)
+		);
 		return $output;
 	}
 
@@ -277,8 +250,9 @@ class SiteManagerHelper extends AppHelper {
 			return $output;
 		}
 
-		$hasHelp = Hash::get($options, 'help', false);
-		$options = Hash::remove($options, 'help');
+		if (Hash::get($options, 'help', false)) {
+			$options = Hash::insert($options, 'help', __d($labelPlugin, $key . ' help'));
+		}
 
 		$activeLangId = $this->_View->viewVars['activeLangId'];
 		$languageIds = array_keys($this->_View->viewVars['languages']);
@@ -291,55 +265,12 @@ class SiteManagerHelper extends AppHelper {
 			//hidden
 			$output .= $this->inputHidden($model, $requestKey, $languageId);
 
-			//value
-			$output .= '<div class="form-group">';
-
-			if ($this->Form->error($inputValue . '.value')) {
-				$output .= '<div class="has-error">';
-			} else {
-				$output .= '<div>';
-			}
-			if (Hash::get($options, 'required')) {
-				$required = $this->_View->element('NetCommons.required');
-			} else {
-				$required = '';
-			}
-			$output .= $this->NetCommonsForm->label($inputValue . '.value',
-				$this->SwitchLanguage->inputLabel(__d($labelPlugin, $key), $languageId) . $required,
-				array('class' => 'control-label')
-			);
 			$output .= $this->NetCommonsForm->input($inputValue . '.value',
 				Hash::merge(array(
-					'label' => false,
-					'div' => false,
-					'error' => false,
+					'label' => $this->SwitchLanguage->inputLabel(__d($labelPlugin, $key), $languageId),
 				), $options)
 			);
-			$output .= '</div>';
-			$output .= $this->help($key, $hasHelp, $labelPlugin);
-			$output .= $this->NetCommonsForm->error($inputValue . '.value');
 
-			$output .= '</div>';
-			$output .= '</div>';
-		}
-
-		return $output;
-	}
-
-/**
- * 説明
- *
- * @param string $key キー
- * @param bool $hasHelp 説明の有無
- * @param string $labelPlugin __dのプラグイン名
- * @return string HTML
- */
-	public function help($key, $hasHelp, $labelPlugin = 'site_manager') {
-		$output = '';
-
-		if ($hasHelp) {
-			$output .= '<div class="help-block">';
-			$output .= __d($labelPlugin, $key . ' help');
 			$output .= '</div>';
 		}
 
