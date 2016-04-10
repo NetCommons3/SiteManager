@@ -70,7 +70,7 @@ class SystemManagerRecords extends NetCommonsMigration {
 				'value' => '52428800',
 			),
 
-			//ログイン・ログアウト
+			//セッションタイムアウト
 			// * 自動ログアウトする時間(cookie_lifetime)(6時間)
 			array(
 				'language_id' => 0,
@@ -82,12 +82,6 @@ class SystemManagerRecords extends NetCommonsMigration {
 				'language_id' => 0,
 				'key' => 'Session.ini.session.gc_maxlifetime',
 				'value' => '21600',
-			),
-			// * SSLを有効にする
-			array(
-				'language_id' => 0,
-				'key' => 'Auth.use_ssl',
-				'value' => '0',
 			),
 
 			//サーバ設定

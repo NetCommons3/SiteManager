@@ -103,12 +103,6 @@ class SystemManagerValidateBehavior extends SiteSettingValidateBehavior {
 					__d('net_commons', 'Invalid request.'));
 		}
 
-		//SSLを有効にする
-		if (! in_array((string)Hash::get($data[$model->alias]['Auth.use_ssl'], '0.value'), ['0', '1'], true)) {
-			$this->_setValidationMessage($model, 'Auth.use_ssl', '0',
-					__d('net_commons', 'Invalid request.'));
-		}
-
 		return $data;
 	}
 
