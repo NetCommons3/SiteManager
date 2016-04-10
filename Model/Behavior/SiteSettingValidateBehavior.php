@@ -56,6 +56,23 @@ class SiteSettingValidateBehavior extends ModelBehavior {
 	}
 
 /**
+ * validationMessageの有無
+ *
+ * @param Model $model ビヘイビア呼び出し元モデル
+ * @param string $key キー
+ * @param int $langId 言語ID
+ * @return bool
+ */
+	protected function _hasValidationError(Model $model, $key, $langId) {
+		if (isset($model->validationErrors[$key][$langId]['value']) &&
+				$model->validationErrors[$key][$langId]['value']) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+/**
  * validationMessageのセット処理
  *
  * @param Model $model ビヘイビア呼び出し元モデル

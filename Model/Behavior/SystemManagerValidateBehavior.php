@@ -85,13 +85,13 @@ class SystemManagerValidateBehavior extends SiteSettingValidateBehavior {
 	}
 
 /**
- * ログイン・ログアウト設定のValidate処理
+ * セッションタイムアウトのValidate処理
  *
  * @param Model $model ビヘイビア呼び出し元モデル
  * @param array $data リクエストデータ配列
  * @return array リクエストデータ
  */
-	public function validateAuthSetting(Model $model, $data) {
+	public function validateSession(Model $model, $data) {
 		if (! isset($data[$model->alias]['Session.ini.session.cookie_lifetime'])) {
 			return $data;
 		}
@@ -163,6 +163,142 @@ class SystemManagerValidateBehavior extends SiteSettingValidateBehavior {
 		}
 
 		return $data;
+	}
+
+/**
+ * セキュリティ設定のValidate処理
+ *
+ * @param Model $model ビヘイビア呼び出し元モデル
+ * @param array $data リクエストデータ配列
+ * @return array リクエストデータ
+ */
+	public function validateSecuritySettings(Model $model, $data) {
+		if (! isset($data[$model->alias]['Upload.allow_extension'])) {
+			return $data;
+		}
+
+		//アップロードファイルを許可する拡張子
+		$this->_validateRequired($model, $data, 'Upload.allow_extension');
+
+		//IPアドレスでアクセスを拒否する
+		$this->_validateBadIps($model, $data);
+
+		//管理画面のアクセスをIPアドレスで制御する
+		$this->_validateAllowSystemPluginIps($model, $data);
+
+		return $data;
+	}
+
+/**
+ * IPアドレスのアクセス拒否のValidate処理
+ *
+ * @param Model $model ビヘイビア呼び出し元モデル
+ * @param array $data リクエストデータ配列
+ * @return void
+ */
+	protected function _validateBadIps(Model $model, $data) {
+		//IPアドレスでアクセスを拒否する
+		if (! in_array((string)Hash::get($data[$model->alias]['Security.enable_bad_ips'], '0.value'), ['0', '1'], true)) {
+			$this->_setValidationMessage($model, 'Security.enable_bad_ips', '0',
+					__d('net_commons', 'Invalid request.'));
+		}
+
+		//アクセスを拒否するIPアドレス
+		if ((string)Hash::get($data[$model->alias]['Security.enable_bad_ips'], '0.value') === '1') {
+			$this->validateIp($model, $data, 'Security.bad_ips');
+
+			$ips = $data[$model->alias]['Security.bad_ips']['0']['value'];
+			if (! $this->_hasValidationError($model, 'Security.bad_ips', '0')) {
+				if ($this->hasCurrentIp($model, $ips)) {
+					$this->_setValidationMessage($model, 'Security.bad_ips', '0',
+							__d('system_manager', 'Contains the current IP address. Please excluded from the list.'));
+				}
+			}
+		}
+	}
+
+/**
+ * 管理画面のアクセスのIPアドレス制御のValidate処理
+ *
+ * @param Model $model ビヘイビア呼び出し元モデル
+ * @param array $data リクエストデータ配列
+ * @return void
+ */
+	protected function _validateAllowSystemPluginIps(Model $model, $data) {
+		//管理画面のアクセスをIPアドレスで制御する
+		if (! in_array((string)Hash::get($data[$model->alias]['Security.enable_allow_system_plugin_ips'], '0.value'), ['0', '1'], true)) {
+			$this->_setValidationMessage($model, 'Security.enable_allow_system_plugin_ips', '0',
+					__d('net_commons', 'Invalid request.'));
+		}
+
+		//アクセスを許可するIPアドレス
+		if ((string)Hash::get($data[$model->alias]['Security.enable_allow_system_plugin_ips'], '0.value') === '1') {
+			$this->validateIp($model, $data, 'Security.allow_system_plugin_ips');
+
+			$ips = $data[$model->alias]['Security.allow_system_plugin_ips']['0']['value'];
+			if (! $this->_hasValidationError($model, 'Security.allow_system_plugin_ips', '0')) {
+				if (! $this->hasCurrentIp($model, $ips)) {
+					$this->_setValidationMessage($model, 'Security.allow_system_plugin_ips', '0',
+							__d('system_manager', 'It does not include the current IP address. Please add to the list.'));
+				}
+			}
+		}
+	}
+
+/**
+ * 現在アクセスしているIPアドレスがあるかどうか
+ *
+ * @param Model $model ビヘイビア呼び出し元モデル
+ * @param array|string $ips IPアドレスリスト
+ * @return bool
+ */
+	public function hasCurrentIp(Model $model, $ips) {
+		if (! $ips) {
+			return false;
+		}
+
+		if (is_string($ips)) {
+			$ips = explode('|', $ips);
+		}
+
+		$current = Hash::get($_SERVER, 'REMOTE_ADDR');
+		foreach ($ips as $ip) {
+			if (preg_match('/^' . preg_quote($ip, '/') . '/', $current)) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+/**
+ * IPアドレスのFormatチェック
+ *
+ * @param Model $model ビヘイビア呼び出し元モデル
+ * @param array $data リクエストデータ配列
+ * @param string $key IPアドレスリスト
+ * @return bool
+ */
+	public function validateIp(Model $model, $data, $key) {
+		//必須チェック
+		$this->_validateRequired($model, $data, $key);
+		if ($this->_hasValidationError($model, $key, '0')) {
+			return false;
+		}
+
+		$ips = explode('|', $data[$model->alias][$key]['0']['value']);
+
+		//フォーマットチェック
+		$formatErrorMessage = __d('net_commons', 'Unauthorized pattern for %s. Please input the data in %s format.');
+		foreach ($ips as $ip) {
+			if (! Validation::ip($ip)) {
+				$this->_setValidationMessage($model, $key, '0',
+						sprintf($formatErrorMessage, __d('system_manager', $key), __d('net_commons', 'IP Address')));
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 /**

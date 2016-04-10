@@ -141,8 +141,6 @@ class SiteManagerHelper extends AppHelper {
 		$tabs = array(
 			'automatic-registration' => __d('site_manager', 'Automatic registration'),
 			'membership-cancellation' => __d('site_manager', 'Membership cancellation'),
-//			'notification-password' => __d('site_manager', 'Notification of password'),
-//			'content-workflow' => __d('site_manager', 'Content workflow'),
 		);
 
 		$active = $this->_View->viewVars['membershipTab'];
