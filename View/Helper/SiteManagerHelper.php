@@ -56,6 +56,10 @@ class SiteManagerHelper extends AppHelper {
 			'controller' => 'membership',
 			'action' => 'edit',
 		),
+		'workflow' => array(
+			'controller' => 'workflow',
+			'action' => 'edit',
+		),
 		'mail_settings' => array(
 			'controller' => 'mail_settings',
 			'action' => 'edit',
@@ -137,8 +141,8 @@ class SiteManagerHelper extends AppHelper {
 		$tabs = array(
 			'automatic-registration' => __d('site_manager', 'Automatic registration'),
 			'membership-cancellation' => __d('site_manager', 'Membership cancellation'),
-			'notification-password' => __d('site_manager', 'Notification of password'),
-			'content-workflow' => __d('site_manager', 'Content workflow'),
+//			'notification-password' => __d('site_manager', 'Notification of password'),
+//			'content-workflow' => __d('site_manager', 'Content workflow'),
 		);
 
 		$active = $this->_View->viewVars['membershipTab'];

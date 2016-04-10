@@ -13,6 +13,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
+#
+# タブ文言
+#
 msgid "Tab.site_manager"
 msgstr "General setting"
 
@@ -28,14 +31,12 @@ msgstr "Page style"
 msgid "Tab.membership"
 msgstr "Membership"
 
+msgid "Tab.workflow"
+msgstr "コンテンツ承認"
 
-msgid "General settings"
-msgstr ""
-
-msgid "Close site settings"
-msgstr ""
-
-
+#
+# 一般設定
+#
 msgid "App.site_name"
 msgstr "Site name"
 
@@ -54,6 +55,39 @@ msgstr "Default start room"
 msgid "App.default_start_room help"
 msgstr "Set the first room shown after logging in."
 
+#
+# パスワード再発行
+#
+msgid "Notification of password"
+msgstr ""
+
+msgid "ForgotPass.use_password_reissue"
+msgstr "パスワード再発行の機能を使う"
+
+msgid "ForgotPass.issue_mail_subject"
+msgstr "Subject of new password issue mail."
+
+msgid "ForgotPass.issue_mail_body"
+msgstr "Content of new password issue mail."
+
+msgid "ForgotPass.issue_mail_body help"
+msgstr "You may use the keyword, {X-SITE_NAME}, {X-URL}. Each keyword stands for the site name and the url."
+
+msgid "ForgotPass.request_mail_subject"
+msgstr "Subject of new password request."
+
+msgid "ForgotPass.request_mail_body"
+msgstr "Content of new password request."
+
+msgid "ForgotPass.request_mail_body help"
+msgstr "You may use the keyword, {X-SITE_NAME}, {X-URL}. Each keyword stands for the site name and the url."
+
+#
+# サイトの一時停止
+#
+msgid "Close site settings"
+msgstr ""
+
 msgid "App.close_site"
 msgstr "Turn your site off?"
 
@@ -63,10 +97,9 @@ msgstr "Select yes to turn your site off so that only users in selected groups h
 msgid "App.site_closing_reason"
 msgstr "Reason for turning off the site"
 
-msgid "App.site_closing_reason help"
-msgstr "The text that is presented when the site is closed."
-
-
+#
+# メタ情報
+#
 msgid "Meta.author"
 msgstr "Creator"
 
@@ -100,7 +133,9 @@ msgstr "\"index\" means that you allow search robots to crawl on your site, and 
 msgid "Meta.rating"
 msgstr "Classifications and Ratings"
 
-
+#
+# 入会設定
+#
 msgid "Automatic registration"
 msgstr ""
 
@@ -124,6 +159,9 @@ msgstr "Use secret key?"
 
 msgid "AutoRegist.secret_key"
 msgstr ""
+
+msgid "AutoRegist.secret_key help"
+msgstr "キーを入力してください。"
 
 msgid "AutoRegist.role_key"
 msgstr "Authority setting"
@@ -168,18 +206,14 @@ msgid "AutoRegist.mail_body help"
 msgstr "You may use the keyword, {X-SITE_NAME}, {X-HANDLENAME}, {X-USERNAME}, {X-PASSWORD}, {X-EMAIL}, {X-ENTRY_ROOM}, {X-URL}.
 Each keyword stands for the site name, the handle name, login id, password, e-mail address the list of grouprooms to join and the url."
 
-
+#
+# 退会設定
+#
 msgid "Membership cancellation"
 msgstr ""
 
 msgid "UserCancel.use_cancel_feature"
-msgstr "Setting ofmembership cancelation"
-
-msgid "Automatic membership cancellation"
-msgstr "Automatic"
-
-msgid "Do not use membership cancellation"
-msgstr "Do not use"
+msgstr "会員本人による退会を許可する"
 
 msgid "UserCancel.disclaimer"
 msgstr "Agreement"
@@ -199,29 +233,9 @@ msgstr "Body"
 msgid "UserCancel.mail_body help"
 msgstr "You may use the keyword, {X-SITE_NAME} and {X-HANDLENAME}. Each keyword stands for the site name and the handle name."
 
-
-msgid "Notification of password"
-msgstr ""
-
-msgid "ForgotPass.issue_mail_subject"
-msgstr "Subject of new password issue mail."
-
-msgid "ForgotPass.issue_mail_body"
-msgstr "Content of new password issue mail."
-
-msgid "ForgotPass.issue_mail_body help"
-msgstr "You may use the keyword, {X-SITE_NAME}, {X-URL}. Each keyword stands for the site name and the url."
-
-msgid "ForgotPass.request_mail_subject"
-msgstr "Subject of new password request."
-
-msgid "ForgotPass.request_mail_body"
-msgstr "Content of new password request."
-
-msgid "ForgotPass.request_mail_body help"
-msgstr "You may use the keyword, {X-SITE_NAME}, {X-URL}. Each keyword stands for the site name and the url."
-
-
+#
+# コンテンツ承認
+#
 msgid "Content workflow"
 msgstr ""
 
@@ -252,15 +266,17 @@ msgstr "承認完了通知メールの本文"
 msgid "Workflow.approval_completion_mail_body help"
 msgstr "You may use the keyword, {X-SITE_NAME}, {X-URL}. Each keyword stands for the site name and the url."
 
-
+#
+# メール署名
+#
 msgid "Mail.body_header"
 msgstr "本文ヘッダー"
 
 msgid "Mail.body_header help"
-msgstr "ここに説明文を書く"
+msgstr "全てのメール本文の冒頭に付与する内容です。"
 
 msgid "Mail.signature"
 msgstr "署名"
 
 msgid "Mail.signature help"
-msgstr "ここに説明文を文書く"
+msgstr "全てのメール本文の末尾に付与する内容です。"

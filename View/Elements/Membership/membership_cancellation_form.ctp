@@ -18,8 +18,8 @@
 				'type' => 'radio',
 				'ng-click' => $domId . ' = click($event)',
 				'options' => array(
-					'1' => __d('site_manager', 'Automatic membership cancellation'),
-					'0' => __d('site_manager', 'Do not use membership cancellation'),
+					'1' => __d('net_commons', 'Yes'),
+					'0' => __d('net_commons', 'No'),
 				),
 			)); ?>
 

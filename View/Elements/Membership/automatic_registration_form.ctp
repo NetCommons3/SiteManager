@@ -53,6 +53,7 @@ $SiteSetting->prepare();
 				<?php echo $this->SiteManager->inputCommon('SiteSetting', 'AutoRegist.secret_key', array(
 						'type' => 'text',
 						'label' => false,
+						'placeholder' => __d('site_manager', 'AutoRegist.secret_key help')
 					)); ?>
 			</div>
 		</div>

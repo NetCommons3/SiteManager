@@ -65,10 +65,24 @@ class SiteManagerController extends SiteManagerAppController {
 					'Config.language',
 					//標準の開始ルーム
 					'App.default_start_room',
-					//サイトを閉鎖する
+
+					// * サイトの一時停止
+					// ** サイトを一時停止する
 					'App.close_site',
-					//サイト閉鎖の理由
+					// ** メンテナンス画面に表示する文言
 					'App.site_closing_reason',
+
+					// * パスワード再発行通知
+					// ** 退会機能の設定
+					'ForgotPass.use_password_reissue',
+					// ** 新規パスワード通知の件名
+					'ForgotPass.issue_mail_subject',
+					// ** パスワード通知メールの本文
+					'ForgotPass.issue_mail_body',
+					// ** 新規パスワード発行の件名
+					'ForgotPass.request_mail_subject',
+					// ** パスワード発行メールの本文
+					'ForgotPass.request_mail_body',
 				)
 			));
 		}

@@ -11,6 +11,8 @@
 ?>
 
 <article>
+	<?php echo $this->NetCommonsForm->help(__d('site_manager', 'App.close_site help')); ?>
+
 	<?php $domId = $this->SiteManager->domId('SiteSetting.App.close_site'); ?>
 	<div ng-init="<?php echo $domId . ' = ' . (int)$this->SiteManager->getValue('SiteSetting', 'App.close_site'); ?>">
 
@@ -21,7 +23,6 @@
 					'1' => __d('net_commons', 'Yes'),
 					'0' => __d('net_commons', 'No'),
 				),
-				'help' => true
 			)); ?>
 
 		<div ng-show="<?php echo $domId; ?>">

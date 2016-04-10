@@ -106,30 +106,6 @@ class MembershipController extends SiteManagerAppController {
 					'UserCancel.mail_subject',
 					// ** 退会完了メールの内容
 					'UserCancel.mail_body',
-
-					// * パスワード再発行通知
-					// ** 新規パスワード通知の件名
-					'ForgotPass.issue_mail_subject',
-					// ** パスワード通知メールの本文
-					'ForgotPass.issue_mail_body',
-					// ** 新規パスワード発行の件名
-					'ForgotPass.request_mail_subject',
-					// ** パスワード発行メールの本文
-					'ForgotPass.request_mail_body',
-
-					// * コンテンツ承認設定
-					// ** 申請メールの件名
-					'Workflow.approval_mail_subject',
-					// ** 申請メールの本文
-					'Workflow.approval_mail_body',
-					// ** 差し戻しメールの件名
-					'Workflow.disapproval_mail_subject',
-					// ** 差し戻しメールの本文
-					'Workflow.disapproval_mail_body',
-					// ** 承認完了メールの件名
-					'Workflow.approval_completion_mail_subject',
-					// ** 承認完了メールの本文
-					'Workflow.approval_completion_mail_body',
 				)
 			));
 		}
