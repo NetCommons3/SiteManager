@@ -211,6 +211,10 @@ class SiteManagerHelper extends AppHelper {
 		if (Hash::get($options, 'help', false)) {
 			$options = Hash::insert($options, 'help', __d($labelPlugin, $key . ' help'));
 		}
+		if (Hash::get($options, 'mailHelp', false)) {
+			$help = $this->NetCommonsHtml->mailHelp(__d($labelPlugin, $key . ' help'));
+			$options = Hash::insert($options, 'help', $help);
+		}
 
 		$languageId = '0';
 		$inputValue = $model . '.' . $requestKey . '.' . $languageId;
@@ -254,6 +258,10 @@ class SiteManagerHelper extends AppHelper {
 
 		if (Hash::get($options, 'help', false)) {
 			$options = Hash::insert($options, 'help', __d($labelPlugin, $key . ' help'));
+		}
+		if (Hash::get($options, 'mailHelp', false)) {
+			$help = $this->NetCommonsHtml->mailHelp(__d($labelPlugin, $key . ' help'));
+			$options = Hash::insert($options, 'help', $help);
 		}
 
 		$activeLangId = $this->_View->viewVars['activeLangId'];

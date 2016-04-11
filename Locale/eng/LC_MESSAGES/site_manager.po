@@ -71,7 +71,7 @@ msgid "ForgotPass.issue_mail_body"
 msgstr "Content of new password issue mail."
 
 msgid "ForgotPass.issue_mail_body help"
-msgstr "You may use the keyword, {X-SITE_NAME}, {X-URL}. Each keyword stands for the site name and the url."
+msgstr "{X-SITE_NAME} : Site name<br>{X-URL} : URL"
 
 msgid "ForgotPass.request_mail_subject"
 msgstr "Subject of new password request."
@@ -80,7 +80,7 @@ msgid "ForgotPass.request_mail_body"
 msgstr "Content of new password request."
 
 msgid "ForgotPass.request_mail_body help"
-msgstr "You may use the keyword, {X-SITE_NAME}, {X-URL}. Each keyword stands for the site name and the url."
+msgstr "{X-SITE_NAME} : Site name<br>{X-URL} : URL"
 
 #
 # サイトの一時停止
@@ -185,7 +185,7 @@ msgid "AutoRegist.approval_mail_body"
 msgstr "Content of user registration approval mail."
 
 msgid "AutoRegist.approval_mail_body help"
-msgstr "You may use the keyword, {X-SITE_NAME}, {X-URL}. Each keyword stands for the site name and the url."
+msgstr "{X-SITE_NAME} : Site name<br>{X-URL} : URL"
 
 msgid "AutoRegist.acceptance_mail_subject"
 msgstr "Subject of user registration acceptance mail."
@@ -194,7 +194,7 @@ msgid "AutoRegist.acceptance_mail_body"
 msgstr "Content of user registration acceptance mail."
 
 msgid "AutoRegist.acceptance_mail_body help"
-msgstr "You may use the keyword, {X-SITE_NAME}, {X-URL}. Each keyword stands for the site name and the url."
+msgstr "{X-SITE_NAME} : Site name<br>{X-URL} : URL"
 
 msgid "AutoRegist.mail_subject"
 msgstr "Subject"
@@ -203,8 +203,7 @@ msgid "AutoRegist.mail_body"
 msgstr "Body"
 
 msgid "AutoRegist.mail_body help"
-msgstr "You may use the keyword, {X-SITE_NAME}, {X-HANDLENAME}, {X-USERNAME}, {X-PASSWORD}, {X-EMAIL}, {X-ENTRY_ROOM}, {X-URL}.
-Each keyword stands for the site name, the handle name, login id, password, e-mail address the list of grouprooms to join and the url."
+msgstr "{X-SITE_NAME}：Site name<br>{X-HANDLE}：Handle name<br>{X-LOGIN_ID}：Login id<br>{X-PASSWORD}：Password<br>{X-EMAIL}：e-mail<br>{X-URL}：URL"
 
 #
 # 退会設定
@@ -231,7 +230,7 @@ msgid "UserCancel.mail_body"
 msgstr "Body"
 
 msgid "UserCancel.mail_body help"
-msgstr "You may use the keyword, {X-SITE_NAME} and {X-HANDLENAME}. Each keyword stands for the site name and the handle name."
+msgstr "{X-SITE_NAME} : Site name<br>{X-URL} : URL"
 
 #
 # コンテンツ承認
@@ -246,7 +245,7 @@ msgid "Workflow.approval_mail_body"
 msgstr "申請メールの本文"
 
 msgid "Workflow.approval_mail_body help"
-msgstr "You may use the keyword, {X-SITE_NAME}, {X-URL}. Each keyword stands for the site name and the url."
+msgstr "{X-SITE_NAME} : Site name<br>{X-PLUGIN_NAME} : Plugin name<br>{X-ROOM} : Room name<br>{X-BLOCK_NAME} : Block name<br>{X-WORKFLOW_COMMENT} : Workflow comment<br>{X-URL} : URL"
 
 msgid "Workflow.disapproval_mail_subject"
 msgstr "差し戻しメールの件名"
@@ -255,7 +254,7 @@ msgid "Workflow.disapproval_mail_body"
 msgstr "差し戻しメールの本文"
 
 msgid "Workflow.disapproval_mail_body help"
-msgstr "You may use the keyword, {X-SITE_NAME}, {X-URL}. Each keyword stands for the site name and the url."
+msgstr "{X-SITE_NAME} : Site name<br>{X-PLUGIN_NAME} : Plugin name<br>{X-ROOM} : Room name<br>{X-BLOCK_NAME} : Block name<br>{X-WORKFLOW_COMMENT} : Workflow comment<br>{X-URL} : URL"
 
 msgid "Workflow.approval_completion_mail_subject"
 msgstr "承認完了通知メールの件名"
@@ -264,7 +263,7 @@ msgid "Workflow.approval_completion_mail_body"
 msgstr "承認完了通知メールの本文"
 
 msgid "Workflow.approval_completion_mail_body help"
-msgstr "You may use the keyword, {X-SITE_NAME}, {X-URL}. Each keyword stands for the site name and the url."
+msgstr "{X-SITE_NAME} : Site name<br>{X-PLUGIN_NAME} : Plugin name<br>{X-ROOM} : Room name<br>{X-BLOCK_NAME} : Block name<br>{X-WORKFLOW_COMMENT} : Workflow comment<br>{X-URL} : URL"
 
 #
 # メール署名

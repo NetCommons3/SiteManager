@@ -52,7 +52,7 @@
 			<div ng-show="<?php echo $notifyDomId; ?>">
 				<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'UserCancel.mail_body', array(
 						'type' => 'textarea',
-						'help' => true,
+						'mailHelp' => true,
 					)); ?>
 			</div>
 		</div>
