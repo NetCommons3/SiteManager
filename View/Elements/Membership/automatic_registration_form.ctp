@@ -38,23 +38,24 @@ $SiteSetting->prepare();
 		<div ng-show="<?php echo $domId; ?>"
 				ng-init="<?php echo $secretDomId . ' = ' . (int)$this->SiteManager->getValue('SiteSetting', 'AutoRegist.use_secret_key'); ?>">
 
-			<?php echo $this->SiteManager->inputCommon('SiteSetting', 'AutoRegist.use_secret_key', array(
-					'type' => 'radio',
-					'ng-click' => $secretDomId . ' = click($event)',
-					'options' => array(
-						'1' => __d('net_commons', 'Yes'),
-						'0' => __d('net_commons', 'No'),
-					),
-					'div' => false,
-				)); ?>
-
-			<div class="form-group" ng-hide="<?php echo $secretDomId; ?>"></div>
-			<div ng-show="<?php echo $secretDomId; ?>">
-				<?php echo $this->SiteManager->inputCommon('SiteSetting', 'AutoRegist.secret_key', array(
-						'type' => 'text',
-						'label' => false,
-						'placeholder' => __d('site_manager', 'AutoRegist.secret_key help')
+			<div class="form-group">
+				<?php echo $this->SiteManager->inputCommon('SiteSetting', 'AutoRegist.use_secret_key', array(
+						'type' => 'radio',
+						'ng-click' => $secretDomId . ' = click($event)',
+						'options' => array(
+							'1' => __d('net_commons', 'Yes'),
+							'0' => __d('net_commons', 'No'),
+						),
+						'div' => false,
 					)); ?>
+
+				<div class="form-input-outer" ng-show="<?php echo $secretDomId; ?>">
+					<?php echo $this->SiteManager->inputCommon('SiteSetting', 'AutoRegist.secret_key', array(
+							'type' => 'text',
+							'label' => false,
+							'placeholder' => __d('site_manager', 'AutoRegist.secret_key help')
+						)); ?>
+				</div>
 			</div>
 		</div>
 
