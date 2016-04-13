@@ -456,13 +456,13 @@ Please log in using the new password at your earliest convenience.
 			array(
 				'language_id' => '2',
 				'key' => 'Workflow.approval_mail_subject',
-				'value' => '[{X-SITE_NAME}]{X-PLUGIN_NAME}承認依頼通知',
+				'value' => '(承認依頼){X-PLUGIN_MAIL_SUBJECT}',
 			),
 			// *** 英語
 			array(
 				'language_id' => '1',
 				'key' => 'Workflow.approval_mail_subject',
-				'value' => '[{X-SITE_NAME}]{X-PLUGIN_NAME} approval request notification',
+				'value' => '(approval request){X-PLUGIN_MAIL_SUBJECT}[{X-SITE_NAME}]{X-PLUGIN_NAME}',
 			),
 			// ** 申請メールの本文
 			// *** 日本語
@@ -473,8 +473,8 @@ Please log in using the new password at your earliest convenience.
 
 {X-WORKFLOW_COMMENT}
 
-内容を確認するには下記のリンクをクリックして下さい。
-{X-URL}',
+
+{X-PLUGIN_MAIL_BODY}',
 			),
 			// *** 英語
 			array(
@@ -484,21 +484,21 @@ Please log in using the new password at your earliest convenience.
 
 {X-WORKFLOW_COMMENT}
 
-Please click on the link below to check the contents.
-{X-URL}',
+
+{X-PLUGIN_MAIL_BODY}',
 			),
 			// ** 差し戻しメールの件名
 			// *** 日本語
 			array(
 				'language_id' => '2',
 				'key' => 'Workflow.disapproval_mail_subject',
-				'value' => '[{X-SITE_NAME}]{X-PLUGIN_NAME}差し戻し通知',
+				'value' => '(差し戻し){X-PLUGIN_MAIL_SUBJECT}',
 			),
 			// *** 英語
 			array(
 				'language_id' => '1',
 				'key' => 'Workflow.disapproval_mail_subject',
-				'value' => '[{X-SITE_NAME}]{X-PLUGIN_NAME} remand notification',
+				'value' => '(remand){X-PLUGIN_MAIL_SUBJECT} [{X-SITE_NAME}]{X-PLUGIN_NAME}',
 			),
 			// ** 差し戻しメールの本文
 			// *** 日本語
@@ -510,8 +510,8 @@ Please click on the link below to check the contents.
 
 {X-WORKFLOW_COMMENT}
 
-内容を確認するには下記のリンクをクリックして下さい。
-{X-URL}',
+
+{X-PLUGIN_MAIL_BODY}',
 			),
 			// *** 英語
 			array(
@@ -522,21 +522,21 @@ Please discard this email if you\'re still unable to recognize the if {X-PLUGIN_
 
 {X-WORKFLOW_COMMENT}
 
-Please click on the link below to check the contents.
-{X-URL}',
+
+{X-PLUGIN_MAIL_BODY}',
 			),
 			// ** 承認完了メールの件名
 			// *** 日本語
 			array(
 				'language_id' => '2',
 				'key' => 'Workflow.approval_completion_mail_subject',
-				'value' => '[{X-SITE_NAME}]{X-PLUGIN_NAME}承認完了通知',
+				'value' => '(承認完了){X-PLUGIN_MAIL_SUBJECT}',
 			),
 			// *** 英語
 			array(
 				'language_id' => '1',
 				'key' => 'Workflow.approval_completion_mail_subject',
-				'value' => '[{X-SITE_NAME}]{X-PLUGIN_NAME} approval completion notification',
+				'value' => '(approval completion){X-PLUGIN_MAIL_SUBJECT}',
 			),
 			// ** 承認完了メールの本文
 			// *** 日本語
@@ -548,8 +548,8 @@ Please click on the link below to check the contents.
 
 {X-WORKFLOW_COMMENT}
 
-内容を確認するには下記のリンクをクリックして下さい。
-{X-URL}',
+
+{X-PLUGIN_MAIL_BODY}',
 			),
 			// *** 英語
 			array(
@@ -560,8 +560,8 @@ Please discard this email if you\'re still unable to recognize the if {X-PLUGIN_
 
 {X-WORKFLOW_COMMENT}
 
-Please click on the link below to check the contents.
-{X-URL}',
+
+{X-PLUGIN_MAIL_BODY}',
 			),
 
 			//メール設定
