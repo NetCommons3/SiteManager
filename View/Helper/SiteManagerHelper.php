@@ -225,9 +225,7 @@ class SiteManagerHelper extends AppHelper {
 		if (Hash::get($options, 'type', 'text') === 'radio') {
 			$options = Hash::merge(array(
 				'class' => false,
-				'div' => array('class' => 'form-group'),
 				'childDiv' => array('class' => 'form-inline'),
-				'separator' => '<span class="radio-separator"></span>',
 			), $options);
 		}
 
