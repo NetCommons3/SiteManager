@@ -11,13 +11,16 @@
 ?>
 
 <?php echo $this->SiteManager->tabs(); ?>
+<?php echo $this->MessageFlash->description(
+		__d('site_manager', 'Meta-information (meta tag), is described in the head tag of the html page, is a tag that defines a variety of additional information of the page.' .
+							'The meta-information by setting properly, will also be the SEO measures. Also, if you change the content in each page, it can be changed in the Page Setup.')
+	); ?>
 
 <?php echo $this->NetCommonsForm->create('SiteSetting', array(
 		'ng-controller' => 'SiteManager',
 	)); ?>
 
 	<div class="panel panel-default">
-
 		<div class="panel-body">
 			<?php echo $this->element('MetaSettings/meta_form'); ?>
 		</div>
