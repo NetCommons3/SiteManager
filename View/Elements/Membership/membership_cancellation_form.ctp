@@ -18,15 +18,15 @@
 				'type' => 'radio',
 				'ng-click' => $domId . ' = click($event)',
 				'options' => array(
-					'1' => __d('site_manager', 'Automatic membership cancellation'),
-					'0' => __d('site_manager', 'Do not use membership cancellation'),
+					'1' => __d('net_commons', 'Yes'),
+					'0' => __d('net_commons', 'No'),
 				),
 			)); ?>
 
 		<div ng-show="<?php echo $domId; ?>">
 			<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'UserCancel.disclaimer', array(
 					'type' => 'textarea',
-					'description' => true,
+					'help' => true,
 				)); ?>
 		</div>
 
@@ -52,7 +52,7 @@
 			<div ng-show="<?php echo $notifyDomId; ?>">
 				<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'UserCancel.mail_body', array(
 						'type' => 'textarea',
-						'description' => true,
+						'mailHelp' => true,
 					)); ?>
 			</div>
 		</div>

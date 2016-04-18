@@ -70,7 +70,7 @@ class SystemManagerRecords extends NetCommonsMigration {
 				'value' => '52428800',
 			),
 
-			//ログイン・ログアウト
+			//セッションタイムアウト
 			// * 自動ログアウトする時間(cookie_lifetime)(6時間)
 			array(
 				'language_id' => 0,
@@ -82,12 +82,6 @@ class SystemManagerRecords extends NetCommonsMigration {
 				'language_id' => 0,
 				'key' => 'Session.ini.session.gc_maxlifetime',
 				'value' => '21600',
-			),
-			// * SSLを有効にする
-			array(
-				'language_id' => 0,
-				'key' => 'Auth.use_ssl',
-				'value' => '0',
 			),
 
 			//サーバ設定
@@ -206,6 +200,41 @@ class SystemManagerRecords extends NetCommonsMigration {
 				'value' => '0',
 			),
 
+			//セキュリティ設定
+			// * アップロードファイルの許可拡張子
+			array(
+				'language_id' => 0,
+				'key' => 'Upload.allow_extension',
+				//xht,xhtml,html,htm,jsをNC2から削除
+				'value' => 'csv,hqx,doc,docx,dot,bin,lha,lzh,class,so,dll,pdf,ai,eps,ps,smi,smil,wbxml,wmlc,wmlsc,xla,xls,xlsx,xlt,ppt,pptx,csh,dcr,dir,dxr,spl,gtar,sh,swf,sit,tar,tcl,ent,dtd,mod,gz,tgz,zip,au,snd,mid,midi,kar,mp1,mp2,mp3,aif,aiff,m3u,ram,rm,rpm,ra,wav,bmp,gif,jpeg,jpg,jpe,png,tiff,tif,wbmp,pnm,pbm,pgm,ppm,xbm,xpm,ics,ifb,css,asc,txt,rtf,sgml,sgm,tsv,wml,wmls,xsl,mpeg,mpg,mpe,qt,mov,avi,wmv,asf,tex,dvi,mcw,wps,xjs,xlw,wk1,wk2,wk3,wk4,wj2,wj3,pot,pps,ppa,wmf,mdb,mwd,odb,obt,obz,psd,svg,svgz,bak,cab,chm,dic,eml,hlp,ini,jhd,jtd,msg,rmi,wab,wma,smf,aac,m4a,m4v,wpl,xslt,flv,odt,odg,ods,odp,odf,odb,docm,dotm,dotx,fla,jtt,mp4,xltx',
+			),
+			// * IP変動を禁止する会員権限
+			array(
+				'language_id' => 0,
+				'key' => 'Security.deny_ip_move',
+				'value' => 'system_administrator|administrator',
+			),
+			// * IPアドレスでアクセス拒否する
+			array(
+				'language_id' => 0,
+				'key' => 'Security.enable_bad_ips',
+				'value' => '0',
+			),
+			// * アクセス拒否IPアドレス
+			array(
+				'language_id' => 0,
+				'key' => 'Security.bad_ips',
+				'value' => '',
+			),
+			// * 管理画面のアクセスをIPアドレスで制御する
+			array(
+				'language_id' => 0,
+				'key' => 'Security.enable_allow_system_plugin_ips',
+				'value' => '0',
+			),
+			// * 管理画面アクセス許可IPアドレス
+			// after()でセットする
+
 			//開発者向け
 			// * デバッグ出力
 			array(
@@ -236,6 +265,13 @@ class SystemManagerRecords extends NetCommonsMigration {
 		if ($direction === 'down') {
 			return true;
 		}
+
+		$this->records['SiteSetting'][] = array(
+			'language_id' => 0,
+			'key' => 'Security.allow_system_plugin_ips',
+			'value' => Hash::get($_SERVER, 'REMOTE_ADDR', ''),
+		);
+
 		foreach ($this->records as $model => $records) {
 			if (!$this->updateRecords($model, $records)) {
 				return false;

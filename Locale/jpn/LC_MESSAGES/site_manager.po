@@ -13,6 +13,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
+#
+# タブ文言
+#
 msgid "Tab.site_manager"
 msgstr "一般設定"
 
@@ -26,16 +29,14 @@ msgid "Tab.default_page_settings"
 msgstr "ページスタイル"
 
 msgid "Tab.membership"
-msgstr "入会・退会・承認等の設定"
+msgstr "入会・退会"
 
+msgid "Tab.workflow"
+msgstr "コンテンツ承認"
 
-msgid "General settings"
-msgstr "一般設定"
-
-msgid "Close site settings"
-msgstr "サイトの閉鎖"
-
-
+#
+# 一般設定
+#
 msgid "App.site_name"
 msgstr "サイト名"
 
@@ -45,62 +46,102 @@ msgstr "システム標準使用言語"
 msgid "Automatic language"
 msgstr "自動"
 
-msgid "Config.language description"
+msgid "Config.language help"
 msgstr "自動の場合はブラウザに設定されている言語を優先します。"
 
 msgid "App.default_start_room"
 msgstr "標準の開始ルーム"
 
-msgid "App.default_start_room description"
+msgid "App.default_start_room help"
 msgstr "ログイン後に最初に表示するルームを指定します。パブリックスペースを指定した場合には、トップページを表示します。"
 
-msgid "App.close_site"
-msgstr "サイトを閉鎖する"
+#
+# パスワード再発行
+#
+msgid "Notification of password"
+msgstr "パスワード再発行"
 
-msgid "App.close_site description"
+msgid "ForgotPass.use_password_reissue"
+msgstr "パスワード再発行の機能を使う"
+
+msgid "ForgotPass.issue_mail_subject"
+msgstr "新規パスワード通知の件名"
+
+msgid "ForgotPass.issue_mail_body"
+msgstr "新規パスワード通知メールの本文"
+
+msgid "ForgotPass.issue_mail_body help"
+msgstr "{X-SITE_NAME} : サイト名<br>{X-URL} : URL"
+
+msgid "ForgotPass.request_mail_subject"
+msgstr "新規パスワード発行の件名"
+
+msgid "ForgotPass.request_mail_body"
+msgstr "新規パスワード発行メールの本文"
+
+msgid "ForgotPass.request_mail_body help"
+msgstr "{X-SITE_NAME} : サイト名<br>{X-URL} : URL"
+
+#
+# サイトの一時停止
+#
+msgid "Close site settings"
+msgstr "サイトの一時停止"
+
+msgid "App.close_site"
+msgstr "サイトを一時停止にする"
+
+msgid "App.close_site help"
 msgstr "管理者以外はサイトにアクセスすることができないようにします。"
 
 msgid "App.site_closing_reason"
-msgstr "サイト閉鎖の理由"
+msgstr "メンテナンス画面に表示する文言"
 
-msgid "App.site_closing_reason description"
-msgstr "サイト閉鎖時に表示します。"
+#
+# メタ情報
+#
 
+msgid "Meta-information (meta tag), is described in the head tag of the html page, is a tag that defines a variety of additional information of the page."
+"The meta-information by setting properly, will also be the SEO measures. Also, if you change the content in each page, it can be changed in the Page Setup."
+msgstr "メタ情報（metaタグ）は、htmlページのheadタグ内に記述される、ページの各種付加情報を定義するタグです。"
+"メタ情報を適切に設定することで、SEOの対策にもなります。また、ページごとで内容を変える場合は、ページ設定で変更することができます。"
 
 msgid "Meta.author"
 msgstr "作成者"
 
-msgid "Meta.author description"
+msgid "Meta.author help"
 msgstr "作成者METAタグは、サイト文書の作成者の公開情報を定義します。名前、システム管理者のe-mailアドレス、会社名、URLなどを記述します。"
 
 msgid "Meta.copyright"
 msgstr "著作権表示"
 
-msgid "Meta.copyright description"
+msgid "Meta.copyright help"
 msgstr "METAコピーライトタグは、あなたのサイト上の情報に対するの著作権情報を定義します。"
 
 msgid "Meta.keywords"
 msgstr "キーワード"
 
-msgid "Meta.keywords description"
+msgid "Meta.keywords help"
 msgstr "このサイトをロボット型検索エンジンに登録するための検索キーワードを設定することができます。キーワードはカンマで区切って記述してください。 (例: NetCommons, 学校, 研究, 東京)"
 
 msgid "Meta.description"
 msgstr "サイトの説明"
 
-msgid "Meta.description description"
+msgid "Meta.description help"
 msgstr "このサイトがロボット型検索エンジンに登録された時に表示される説明文を設定することができます。"
 
 msgid "Meta.robots"
 msgstr "ロボット型検索エンジンへの対応"
 
-msgid "Meta.robots description"
+msgid "Meta.robots help"
 msgstr "ロボット型検索エンジンが登録の対象にしてよいか(index)、リンクを辿ってよいか(follow)の組み合わせを選択できます。"
 
 msgid "Meta.rating"
 msgstr "閲覧対象年齢層の指定"
 
-
+#
+# 入会設定
+#
 msgid "Automatic registration"
 msgstr "入会設定"
 
@@ -125,6 +166,9 @@ msgstr "入力キーの使用"
 msgid "AutoRegist.secret_key"
 msgstr ""
 
+msgid "AutoRegist.secret_key help"
+msgstr "キーを入力してください。"
+
 msgid "AutoRegist.role_key"
 msgstr "自動登録時の権限"
 
@@ -137,7 +181,7 @@ msgstr "入力項目"
 msgid "AutoRegist.disclaimer"
 msgstr "利用許諾文"
 
-msgid "AutoRegist.disclaimer description"
+msgid "AutoRegist.disclaimer help"
 msgstr "ユーザの新規登録ページに表示する利用許諾文を入力してください。"
 
 msgid "AutoRegist.approval_mail_subject"
@@ -146,8 +190,8 @@ msgstr "会員登録承認メールの件名"
 msgid "AutoRegist.approval_mail_body"
 msgstr "会員登録承認メールの本文"
 
-msgid "AutoRegist.approval_mail_body description"
-msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。<br>{X-SITE_NAME}：サイト名、<br>{X-URL}：URL"
+msgid "AutoRegist.approval_mail_body help"
+msgstr "{X-SITE_NAME} : サイト名<br>{X-URL} : URL"
 
 msgid "AutoRegist.acceptance_mail_subject"
 msgstr "会員登録受付メールの件名"
@@ -155,8 +199,8 @@ msgstr "会員登録受付メールの件名"
 msgid "AutoRegist.acceptance_mail_body"
 msgstr "会員登録受付メールの本文"
 
-msgid "AutoRegist.acceptance_mail_body description"
-msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。<br>{X-SITE_NAME}：サイト名、<br>{X-URL}：URL"
+msgid "AutoRegist.acceptance_mail_body help"
+msgstr "{X-SITE_NAME} : サイト名<br>{X-URL} : URL"
 
 msgid "AutoRegist.mail_subject"
 msgstr "会員登録メールの件名"
@@ -164,26 +208,22 @@ msgstr "会員登録メールの件名"
 msgid "AutoRegist.mail_body"
 msgstr "会員登録メールの本文"
 
-msgid "AutoRegist.mail_body description"
-msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。<br>{X-SITE_NAME}：サイト名、<br>{X-HANDLE}：ハンドル名、<br>{X-USERNAME}：ログインID、<br>{X-PASSWORD}：パスワード、<br>{X-EMAIL}：e-mail、<br>{X-ENTRY_ROOM}：参加ルーム、<br>{X-URL}：URL"
+msgid "AutoRegist.mail_body help"
+msgstr "{X-SITE_NAME}：サイト名<br>{X-HANDLE}：ハンドル名<br>{X-LOGIN_ID}：ログインID<br>{X-PASSWORD}：パスワード<br>{X-EMAIL}：e-mail<br>{X-URL}：URL"
 
-
+#
+# 退会設定
+#
 msgid "Membership cancellation"
 msgstr "退会設定"
 
 msgid "UserCancel.use_cancel_feature"
-msgstr "退会機能"
-
-msgid "Automatic membership cancellation"
-msgstr "自動的に退会させる"
-
-msgid "Do not use membership cancellation"
-msgstr "退会機能を使用しない"
+msgstr "会員本人による退会を許可する"
 
 msgid "UserCancel.disclaimer"
 msgstr "退会規約"
 
-msgid "UserCancel.disclaimer description"
+msgid "UserCancel.disclaimer help"
 msgstr "退会規約を追加で設定する場合、記述してください。システム上の退会規約は、常に表示されます。"
 
 msgid "UserCancel.notify_administrators"
@@ -195,32 +235,12 @@ msgstr "退会完了メールの件名"
 msgid "UserCancel.mail_body"
 msgstr "退会完了メールの内容"
 
-msgid "UserCancel.mail_body description"
-msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。<br>{X-SITE_NAME}：サイト名、<br>{X-HANDLE}：ハンドル名"
+msgid "UserCancel.mail_body help"
+msgstr "{X-SITE_NAME} : サイト名<br>{X-URL} : URL"
 
-
-msgid "Notification of password"
-msgstr "パスワード再発行"
-
-msgid "ForgotPass.issue_mail_subject"
-msgstr "新規パスワード通知の件名"
-
-msgid "ForgotPass.issue_mail_body"
-msgstr "パスワード通知メールの本文"
-
-msgid "ForgotPass.issue_mail_body description"
-msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。<br>{X-SITE_NAME}：サイト名、<br>{X-URL}：URL"
-
-msgid "ForgotPass.request_mail_subject"
-msgstr "新規パスワード発行の件名"
-
-msgid "ForgotPass.request_mail_body"
-msgstr "パスワード発行メールの本文"
-
-msgid "ForgotPass.request_mail_body description"
-msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。<br>{X-SITE_NAME}：サイト名、<br>{X-URL}：URL"
-
-
+#
+# コンテンツ承認
+#
 msgid "Content workflow"
 msgstr "コンテンツ承認設定"
 
@@ -230,8 +250,8 @@ msgstr "申請メールの件名"
 msgid "Workflow.approval_mail_body"
 msgstr "申請メールの本文"
 
-msgid "Workflow.approval_mail_body description"
-msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。<br>{X-SITE_NAME}：サイト名、<br>{X-URL}：URL"
+msgid "Workflow.approval_mail_body help"
+msgstr "{X-SITE_NAME} : サイト名<br>{X-PLUGIN_NAME} : プラグイン名<br>{X-ROOM} : ルーム名<br>{X-BLOCK_NAME} : ブロック名<br>{X-WORKFLOW_COMMENT} : 承認コメント<br>{X-URL} : コンテンツの内容URL"
 
 msgid "Workflow.disapproval_mail_subject"
 msgstr "差し戻しメールの件名"
@@ -239,8 +259,8 @@ msgstr "差し戻しメールの件名"
 msgid "Workflow.disapproval_mail_body"
 msgstr "差し戻しメールの本文"
 
-msgid "Workflow.disapproval_mail_body description"
-msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。<br>{X-SITE_NAME}：サイト名、<br>{X-URL}：URL"
+msgid "Workflow.disapproval_mail_body help"
+msgstr "{X-SITE_NAME} : サイト名<br>{X-PLUGIN_NAME} : プラグイン名<br>{X-ROOM} : ルーム名<br>{X-BLOCK_NAME} : ブロック名<br>{X-WORKFLOW_COMMENT} : 承認コメント<br>{X-URL} : コンテンツの内容URL"
 
 msgid "Workflow.approval_completion_mail_subject"
 msgstr "承認完了通知メールの件名"
@@ -248,18 +268,20 @@ msgstr "承認完了通知メールの件名"
 msgid "Workflow.approval_completion_mail_body"
 msgstr "承認完了通知メールの本文"
 
-msgid "Workflow.approval_completion_mail_body description"
-msgstr "以下のキーワードを件名、内容に含めると対応する値に変換されます。<br>{X-SITE_NAME}：サイト名、<br>{X-URL}：URL"
+msgid "Workflow.approval_completion_mail_body help"
+msgstr "{X-SITE_NAME} : サイト名<br>{X-PLUGIN_NAME} : プラグイン名<br>{X-ROOM} : ルーム名<br>{X-BLOCK_NAME} : ブロック名<br>{X-WORKFLOW_COMMENT} : 承認コメント<br>{X-URL} : コンテンツの内容URL"
 
-
+#
+# メール署名
+#
 msgid "Mail.body_header"
 msgstr "本文ヘッダー"
 
-msgid "Mail.body_header description"
-msgstr "ここに説明文を書く"
+msgid "Mail.body_header help"
+msgstr "全てのメール本文の冒頭に付与する内容です。"
 
 msgid "Mail.signature"
 msgstr "署名"
 
-msgid "Mail.signature description"
-msgstr "ここに説明文を文書く"
+msgid "Mail.signature help"
+msgstr "全てのメール本文の末尾に付与する内容です。"

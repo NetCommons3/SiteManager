@@ -38,14 +38,6 @@
 				<div class="tab-pane<?php echo ($membershipTab === 'membership-cancellation' ? ' active' : ''); ?>" id="membership-cancellation">
 					<?php echo $this->element('Membership/membership_cancellation_form'); ?>
 				</div>
-
-				<div class="tab-pane<?php echo ($membershipTab === 'notification-password' ? ' active' : ''); ?>" id="notification-password">
-					<?php echo $this->element('Membership/notification_password_form'); ?>
-				</div>
-
-				<div class="tab-pane<?php echo ($membershipTab === 'content-workflow' ? ' active' : ''); ?>" id="content-workflow">
-					<?php echo $this->element('Membership/content_workflo_form'); ?>
-				</div>
 			</div>
 		</div>
 

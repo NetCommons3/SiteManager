@@ -27,6 +27,7 @@ class SiteManagerHelper extends AppHelper {
  * @var array
  */
 	public $helpers = array(
+		'Form',
 		'M17n.SwitchLanguage',
 		'NetCommons.NetCommonsForm',
 		'NetCommons.NetCommonsHtml',
@@ -53,6 +54,10 @@ class SiteManagerHelper extends AppHelper {
 		),
 		'membership' => array(
 			'controller' => 'membership',
+			'action' => 'edit',
+		),
+		'workflow' => array(
+			'controller' => 'workflow',
 			'action' => 'edit',
 		),
 		'mail_settings' => array(
@@ -136,8 +141,6 @@ class SiteManagerHelper extends AppHelper {
 		$tabs = array(
 			'automatic-registration' => __d('site_manager', 'Automatic registration'),
 			'membership-cancellation' => __d('site_manager', 'Membership cancellation'),
-			'notification-password' => __d('site_manager', 'Notification of password'),
-			'content-workflow' => __d('site_manager', 'Content workflow'),
 		);
 
 		$active = $this->_View->viewVars['membershipTab'];
@@ -205,8 +208,13 @@ class SiteManagerHelper extends AppHelper {
 			return $output;
 		}
 
-		$hasDescription = Hash::get($options, 'description', false);
-		$options = Hash::remove($options, 'description');
+		if (Hash::get($options, 'help', false)) {
+			$options = Hash::insert($options, 'help', __d($labelPlugin, $key . ' help'));
+		}
+		if (Hash::get($options, 'mailHelp', false)) {
+			$help = $this->NetCommonsHtml->mailHelp(__d($labelPlugin, $key . ' help'));
+			$options = Hash::insert($options, 'help', $help);
+		}
 
 		$languageId = '0';
 		$inputValue = $model . '.' . $requestKey . '.' . $languageId;
@@ -214,35 +222,18 @@ class SiteManagerHelper extends AppHelper {
 		//hidden
 		$output .= $this->inputHidden($model, $key, $languageId);
 
-		//value
-		if (Hash::get($options, 'div', true)) {
-			$output .= '<div class="form-group">';
-		} else {
-			$output .= '<div>';
-		}
-
 		if (Hash::get($options, 'type', 'text') === 'radio') {
-			$output .= $this->NetCommonsForm->label($inputValue . '.value', __d($labelPlugin, $key));
-			$output .= '<div class="form-control nc-data-label">';
-			$output .= $this->NetCommonsForm->radio($inputValue . '.value', Hash::get($options, 'options', array()), Hash::merge(array(
-				'div' => array('class' => 'form-control form-inline'),
-				'separator' => '<span class="radio-separator"></span>'
-			), $options));
-			$output .= '</div>';
-		} else {
-			$output .= $this->NetCommonsForm->input($inputValue . '.value',
-				Hash::merge(array(
-					'label' => __d($labelPlugin, $key),
-					'div' => false,
-					'error' => false,
-				), $options)
-			);
+			$options = Hash::merge(array(
+				'class' => false,
+				'childDiv' => array('class' => 'form-inline'),
+			), $options);
 		}
 
-		$output .= $this->description($key, $hasDescription, $labelPlugin);
-		$output .= $this->NetCommonsForm->error($inputValue . '.value');
-		$output .= '</div>';
-
+		$output .= $this->NetCommonsForm->input($inputValue . '.value',
+			Hash::merge(array(
+				'label' => __d($labelPlugin, $key),
+			), $options)
+		);
 		return $output;
 	}
 
@@ -263,8 +254,13 @@ class SiteManagerHelper extends AppHelper {
 			return $output;
 		}
 
-		$hasDescription = Hash::get($options, 'description', false);
-		$options = Hash::remove($options, 'description');
+		if (Hash::get($options, 'help', false)) {
+			$options = Hash::insert($options, 'help', __d($labelPlugin, $key . ' help'));
+		}
+		if (Hash::get($options, 'mailHelp', false)) {
+			$help = $this->NetCommonsHtml->mailHelp(__d($labelPlugin, $key . ' help'));
+			$options = Hash::insert($options, 'help', $help);
+		}
 
 		$activeLangId = $this->_View->viewVars['activeLangId'];
 		$languageIds = array_keys($this->_View->viewVars['languages']);
@@ -276,39 +272,13 @@ class SiteManagerHelper extends AppHelper {
 
 			//hidden
 			$output .= $this->inputHidden($model, $requestKey, $languageId);
-			//value
-			$output .= '<div class="form-group">';
+
 			$output .= $this->NetCommonsForm->input($inputValue . '.value',
 				Hash::merge(array(
 					'label' => $this->SwitchLanguage->inputLabel(__d($labelPlugin, $key), $languageId),
-					'div' => false,
-					'error' => false,
 				), $options)
 			);
-			$output .= $this->description($key, $hasDescription, $labelPlugin);
-			$output .= $this->NetCommonsForm->error($inputValue . '.value');
-			$output .= '</div>';
 
-			$output .= '</div>';
-		}
-
-		return $output;
-	}
-
-/**
- * 説明
- *
- * @param string $key キー
- * @param bool $hasDescription 説明の有無
- * @param string $labelPlugin __dのプラグイン名
- * @return string HTML
- */
-	public function description($key, $hasDescription, $labelPlugin = 'site_manager') {
-		$output = '';
-
-		if ($hasDescription) {
-			$output .= '<div class="help-block bg-info site-manager-description">';
-			$output .= __d($labelPlugin, $key . ' description');
 			$output .= '</div>';
 		}
 

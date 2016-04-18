@@ -13,11 +13,11 @@
 <article>
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Mail.body_header', array(
 			'type' => 'textarea',
-			'description' => true,
+			'help' => true,
 		)); ?>
 
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Mail.signature', array(
 			'type' => 'textarea',
-			'description' => true,
+			'help' => true,
 		)); ?>
 </article>

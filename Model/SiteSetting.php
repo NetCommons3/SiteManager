@@ -48,7 +48,7 @@ class SiteSetting extends SiteManagerAppModel {
 
 /**
  * METAタグのロボット型検索エンジンへの対応のオプション
- * 文言は、__constructでセットする
+ * 文言は、prepare()でセットする
  *
  * @var array
  */
@@ -61,7 +61,7 @@ class SiteSetting extends SiteManagerAppModel {
 
 /**
  * METAタグの閲覧対象年齢層の指定のオプション
- * 文言は、__constructでセットする
+ * 文言は、prepare()でセットする
  *
  * @var array
  */
@@ -91,7 +91,7 @@ class SiteSetting extends SiteManagerAppModel {
 
 /**
  * アカウント登録の最終決定のオプション
- * 文言は、__constructでセットする
+ * 文言は、prepare()でセットする
  *
  * @var array
  */
@@ -124,7 +124,7 @@ class SiteSetting extends SiteManagerAppModel {
 
 /**
  * メール形式のオプション
- * 文言は、__constructでセットする
+ * 文言は、prepare()でセットする
  *
  * @var array
  */
@@ -145,7 +145,7 @@ class SiteSetting extends SiteManagerAppModel {
 
 /**
  * メール送信方法のオプション
- * 文言は、__constructでセットする
+ * 文言は、prepare()でセットする
  * ※sendmailを使いたい場合は、phpmailを選んで、各自php.iniにsendmailの設定を記述するため、選択肢からなくす
  *
  * @var array
@@ -157,7 +157,7 @@ class SiteSetting extends SiteManagerAppModel {
 
 /**
  * デフォルトのタイムゾーンのオプション
- * データは、__constructでセットする
+ * データは、prepare()でセットする
  *
  * @var array
  */
@@ -181,7 +181,7 @@ class SiteSetting extends SiteManagerAppModel {
 
 /**
  * デバッグのオプション
- * 文言は、__constructでセットする
+ * 文言は、prepare()でセットする
  *
  * @var array
  */
@@ -190,6 +190,14 @@ class SiteSetting extends SiteManagerAppModel {
 		'1' => array('system_manager', '1: Errors and warnings shown, model caches refreshed, flash messages halted.'),
 		'2' => array('system_manager', '2: As in 1, but also with full debug messages and SQL output.'),
 	);
+
+/**
+ * IP変動を禁止する会員権限のオプション
+ * saveSiteSetting()を呼び出す前に、SecuritySettingsControllerでセットする
+ *
+ * @var array
+ */
+	public $userRoles = array();
 
 /**
  * Behaviors
@@ -349,7 +357,7 @@ class SiteSetting extends SiteManagerAppModel {
 	}
 
 /**
- * サイトのデフォルトタイムゾーン（未ログインのゲスト用）を返す
+ * サイト設定データを取得する
  *
  * @param array $conditions 条件配列
  * @return array サイト設定データ配列
@@ -457,9 +465,10 @@ class SiteSetting extends SiteManagerAppModel {
 		$data = $this->validateMembership($data);
 		$data = $this->validateProxy($data);
 		$data = $this->validateSystemSetting($data);
-		$data = $this->validateAuthSetting($data);
+		$data = $this->validateSession($data);
 		$data = $this->validateWebServer($data);
 		$data = $this->validateMailServer($data);
+		$data = $this->validateSecuritySettings($data);
 		$data = $this->validateDeveloper($data);
 
 		if (! $this->validationErrors) {

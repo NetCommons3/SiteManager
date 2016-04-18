@@ -69,13 +69,90 @@ class SiteManagerRecords extends NetCommonsMigration {
 				'key' => 'App.default_start_room',
 				'value' => '2',
 			),
-			// * サイトを閉鎖する
+			// * パスワード再発行通知
+			// ** パスワード再発行の機能を使う
+			array(
+				'language_id' => 0,
+				'key' => 'ForgotPass.use_password_reissue',
+				'value' => '1', //0:いいえ|1:はい
+			),
+			// ** 新規パスワード通知の件名
+			// *** 日本語
+			array(
+				'language_id' => '2',
+				'key' => 'ForgotPass.issue_mail_subject',
+				'value' => '[{X-SITE_NAME}]新規パスワードのリクエスト',
+			),
+			// *** 英語
+			array(
+				'language_id' => '1',
+				'key' => 'ForgotPass.issue_mail_subject',
+				'value' => '[{X-SITE_NAME}]Request for new password',
+			),
+			// ** パスワード通知メールの本文
+			// *** 日本語
+			array(
+				'language_id' => '2',
+				'key' => 'ForgotPass.issue_mail_body',
+				'value' => '{X-SITE_NAME}におけるログイン用パスワードの新規発行リクエストがありました。
+新たにパスワードを発行する場合は下記のリンクをクリックしてください。
+
+このリクエストが手違いの場合はこのメールを破棄してください。
+今までのパスワードでログインすることができます。
+
+{X-URL}',
+			),
+			// *** 英語
+			array(
+				'language_id' => '1',
+				'key' => 'ForgotPass.issue_mail_body',
+				'value' => 'A web user has just requested for a new password for your account at {X-SITE_NAME} site.
+If you didn\'t ask for one, don\'t worry.  Just delete this e-mail.
+You can get your new password by clicking on the link below:
+
+{X-URL}',
+			),
+			// ** 新規パスワード発行の件名
+			// *** 日本語
+			array(
+				'language_id' => '2',
+				'key' => 'ForgotPass.request_mail_subject',
+				'value' => '[{X-SITE_NAME}]新規パスワードのリクエスト',
+			),
+			// *** 英語
+			array(
+				'language_id' => '1',
+				'key' => 'ForgotPass.request_mail_subject',
+				'value' => '[{X-SITE_NAME}]Request for new password',
+			),
+			// ** パスワード発行メールの本文
+			// *** 日本語
+			array(
+				'language_id' => '2',
+				'key' => 'ForgotPass.request_mail_body',
+				'value' => '{X-SITE_NAME}におけるログイン用パスワードの新規発行リクエストがありました。
+下記の新しいログイン情報を使用してログインし、パスワードを直ちに変更することをお勧めします。
+
+{X-URL}',
+			),
+			// *** 英語
+			array(
+				'language_id' => '1',
+				'key' => 'ForgotPass.request_mail_body',
+				'value' => 'A web user has just requested for a new password for your account at {X-SITE_NAME} site.
+Here is your new account information.
+Please log in using the new password at your earliest convenience.
+
+{X-URL}',
+			),
+
+			// * サイトを一時停止する
 			array(
 				'language_id' => 0,
 				'key' => 'App.close_site',
 				'value' => '0',
 			),
-			// * サイト閉鎖の理由
+			// * メンテナンス画面に表示する文言
 			// ** 日本語
 			array(
 				'language_id' => '2',
@@ -131,7 +208,7 @@ class SiteManagerRecords extends NetCommonsMigration {
 			// * テーマ(Roomデータを参照する)
 			// * レイアウト(後で、、、ルーム管理かページ設定で行う)
 
-			//入会・退会・承認設定
+			//入会・退会設定
 			// * 入会設定
 			// ** 自動会員登録を許可する
 			array(
@@ -380,77 +457,7 @@ You may now log in by clicking on this link or copying and pasting it in your br
 				'value' => '{X-SITE_NAME}\'s{X-HANDLE} is already leaved.',
 			),
 
-			// * パスワード再発行通知
-			// ** 新規パスワード通知の件名
-			// *** 日本語
-			array(
-				'language_id' => '2',
-				'key' => 'ForgotPass.issue_mail_subject',
-				'value' => '[{X-SITE_NAME}]新規パスワードのリクエスト',
-			),
-			// *** 英語
-			array(
-				'language_id' => '1',
-				'key' => 'ForgotPass.issue_mail_subject',
-				'value' => '[{X-SITE_NAME}]Request for new password',
-			),
-			// ** パスワード通知メールの本文
-			// *** 日本語
-			array(
-				'language_id' => '2',
-				'key' => 'ForgotPass.issue_mail_body',
-				'value' => '{X-SITE_NAME}におけるログイン用パスワードの新規発行リクエストがありました。
-新たにパスワードを発行する場合は下記のリンクをクリックしてください。
-
-このリクエストが手違いの場合はこのメールを破棄してください。
-今までのパスワードでログインすることができます。
-
-{X-URL}',
-			),
-			// *** 英語
-			array(
-				'language_id' => '1',
-				'key' => 'ForgotPass.issue_mail_body',
-				'value' => 'A web user has just requested for a new password for your account at {X-SITE_NAME} site.
-If you didn\'t ask for one, don\'t worry.  Just delete this e-mail.
-You can get your new password by clicking on the link below:
-
-{X-URL}',
-			),
-			// ** 新規パスワード発行の件名
-			// *** 日本語
-			array(
-				'language_id' => '2',
-				'key' => 'ForgotPass.request_mail_subject',
-				'value' => '[{X-SITE_NAME}]新規パスワードのリクエスト',
-			),
-			// *** 英語
-			array(
-				'language_id' => '1',
-				'key' => 'ForgotPass.request_mail_subject',
-				'value' => '[{X-SITE_NAME}]Request for new password',
-			),
-			// ** パスワード発行メールの本文
-			// *** 日本語
-			array(
-				'language_id' => '2',
-				'key' => 'ForgotPass.request_mail_body',
-				'value' => '{X-SITE_NAME}におけるログイン用パスワードの新規発行リクエストがありました。
-下記の新しいログイン情報を使用してログインし、パスワードを直ちに変更することをお勧めします。
-
-{X-URL}',
-			),
-			// *** 英語
-			array(
-				'language_id' => '1',
-				'key' => 'ForgotPass.request_mail_body',
-				'value' => 'A web user has just requested for a new password for your account at {X-SITE_NAME} site.
-Here is your new account information.
-Please log in using the new password at your earliest convenience.
-
-{X-URL}',
-			),
-
+			//コンテンツ承認
 			// * コンテンツ承認設定
 			// ** 申請メールの件名
 			array(

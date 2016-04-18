@@ -70,7 +70,7 @@ class SiteManagerValidateBehavior extends SiteSettingValidateBehavior {
 	}
 
 /**
- * 入会・退会・承認等のValidate処理
+ * 入会・退会のValidate処理
  *
  * @param Model $model ビヘイビア呼び出し元モデル
  * @param array $data リクエストデータ配列
@@ -85,8 +85,6 @@ class SiteManagerValidateBehavior extends SiteSettingValidateBehavior {
 		if (isset($data[$model->alias]['UserCancel.use_cancel_feature'])) {
 			$data = $this->__validateMembershipUserCancel($model, $data);
 		}
-
-		//パスワード再発行・コンテンツ承認設定は、チェックは不要のため、処理ない。
 
 		return $data;
 	}

@@ -16,27 +16,27 @@ $SiteSetting->prepare();
 
 <article>
 	<?php echo $this->SiteManager->inputCommon('SiteSetting', 'Meta.author', array(
-		'description' => true
+		'help' => true
 	)); ?>
 
 	<?php echo $this->SiteManager->inputCommon('SiteSetting', 'Meta.copyright', array(
-		'description' => true
+		'help' => true
 	)); ?>
 
 	<?php echo $this->SiteManager->inputCommon('SiteSetting', 'Meta.keywords', array(
 		'type' => 'textarea',
-		'description' => true
+		'help' => true
 	)); ?>
 
 	<?php echo $this->SiteManager->inputCommon('SiteSetting', 'Meta.description', array(
 		'type' => 'textarea',
-		'description' => true
+		'help' => true
 	)); ?>
 
 	<?php echo $this->SiteManager->inputCommon('SiteSetting', 'Meta.robots', array(
 		'type' => 'select',
 		'options' => $SiteSetting->metaRobots,
-		'description' => true
+		'help' => true
 	)); ?>
 
 	<?php echo $this->SiteManager->inputCommon('SiteSetting', 'Meta.rating', array(

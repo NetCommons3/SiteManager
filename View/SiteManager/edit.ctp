@@ -29,6 +29,16 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
+					<?php echo __d('site_manager', 'Notification of password'); ?>
+				</div>
+
+				<div class="panel-body">
+					<?php echo $this->element('SiteManager/notification_password_form'); ?>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
 					<?php echo __d('site_manager', 'Close site settings'); ?>
 				</div>
 
