@@ -73,7 +73,7 @@ class SiteManagerController extends SiteManagerAppController {
 					'App.site_closing_reason',
 
 					// * パスワード再発行通知
-					// ** 退会機能の設定
+					// ** パスワード再発行を使う
 					'ForgotPass.use_password_reissue',
 					// ** 新規パスワード通知の件名
 					'ForgotPass.issue_mail_subject',
