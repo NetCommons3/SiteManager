@@ -95,12 +95,13 @@ class SiteManagerRecords extends NetCommonsMigration {
 				'language_id' => '2',
 				'key' => 'ForgotPass.issue_mail_body',
 				'value' => '{X-SITE_NAME}におけるログイン用パスワードの新規発行リクエストがありました。
-新たにパスワードを発行する場合は下記のリンクをクリックしてください。
+新たにパスワードを発行する場合は、認証キー入力画面で、下記の認証キーを入力して下さい。
 
 このリクエストが手違いの場合はこのメールを破棄してください。
 今までのパスワードでログインすることができます。
 
-{X-URL}',
+認証キー：
+{X-AUTHORIZATION_KEY}',
 			),
 			// *** 英語
 			array(
@@ -108,9 +109,10 @@ class SiteManagerRecords extends NetCommonsMigration {
 				'key' => 'ForgotPass.issue_mail_body',
 				'value' => 'A web user has just requested for a new password for your account at {X-SITE_NAME} site.
 If you didn\'t ask for one, don\'t worry.  Just delete this e-mail.
-You can get your new password by clicking on the link below:
+新たにパスワードを発行する場合は、認証キー入力画面で、下記の認証キーを入力して下さい。
 
-{X-URL}',
+Authorization key：
+{X-AUTHORIZATION_KEY}',
 			),
 			// ** 新規パスワード発行の件名
 			// *** 日本語
@@ -131,19 +133,20 @@ You can get your new password by clicking on the link below:
 				'language_id' => '2',
 				'key' => 'ForgotPass.request_mail_body',
 				'value' => '{X-SITE_NAME}におけるログイン用パスワードの新規発行リクエストがありました。
-下記の新しいログイン情報を使用してログインし、パスワードを直ちに変更することをお勧めします。
+下記のログインIDを使用して、新しいパスワードを再登録して下さい。
 
-{X-URL}',
+ハンドル: {X-HANDLENAME}
+ログインID: {X-USERNAME}',
 			),
 			// *** 英語
 			array(
 				'language_id' => '1',
 				'key' => 'ForgotPass.request_mail_body',
 				'value' => 'A web user has just requested for a new password for your account at {X-SITE_NAME} site.
-Here is your new account information.
-Please log in using the new password at your earliest convenience.
+下記のログインIDを使用して、新しいパスワードを再登録して下さい。
 
-{X-URL}',
+Handle: {X-HANDLENAME}
+Login id: {X-USERNAME}',
 			),
 
 			// * サイトを一時停止する
