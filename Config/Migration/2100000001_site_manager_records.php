@@ -479,7 +479,7 @@ You may now log in by clicking on this link or copying and pasting it in your br
 			array(
 				'language_id' => '2',
 				'key' => 'Workflow.approval_mail_body',
-				'value' => '{X-SITE_NAME}における{X-PLUGIN_NAME}の承認依頼がありました。
+				'value' => '{X-USER}さんから{X-PLUGIN_NAME}の承認依頼があったことをお知らせします。
 
 {X-WORKFLOW_COMMENT}
 
@@ -490,7 +490,7 @@ You may now log in by clicking on this link or copying and pasting it in your br
 			array(
 				'language_id' => '1',
 				'key' => 'Workflow.approval_mail_body',
-				'value' => 'There was approval request of {X-PLUGIN_NAME} in {X-SITE_NAME}.
+				'value' => '{X-USER} we let you know that there was an approval request of {X-PLUGIN_NAME} from.
 
 {X-WORKFLOW_COMMENT}
 
@@ -515,8 +515,8 @@ You may now log in by clicking on this link or copying and pasting it in your br
 			array(
 				'language_id' => '2',
 				'key' => 'Workflow.disapproval_mail_body',
-				'value' => '{X-SITE_NAME}における{X-PLUGIN_NAME}が差し戻しされました。
-もし{X-SITE_NAME}での{X-PLUGIN_NAME}に覚えがない場合はこのメールを破棄してください。
+				'value' => '{X-USER}さんの{X-PLUGIN_NAME}が差し戻しされたことをお知らせします。
+もし{X-USER}さんの{X-PLUGIN_NAME}に覚えがない場合はこのメールを破棄してください。
 
 {X-WORKFLOW_COMMENT}
 
@@ -527,8 +527,8 @@ You may now log in by clicking on this link or copying and pasting it in your br
 			array(
 				'language_id' => '1',
 				'key' => 'Workflow.disapproval_mail_body',
-				'value' => '{X-PLUGIN_NAME} in {X-SITE_NAME} has been remanded.
-Please discard this email if you\'re still unable to recognize the if {X-PLUGIN_NAME} in {X-SITE_NAME}.
+				'value' => '{X-USER} \'s {X-PLUGIN_NAME} is to inform you that it has been remanded.
+Please discard this email if you\'re still unable to recognize the if {X-USER} \'s {X-PLUGIN_NAME}.
 
 {X-WORKFLOW_COMMENT}
 
@@ -553,8 +553,8 @@ Please discard this email if you\'re still unable to recognize the if {X-PLUGIN_
 			array(
 				'language_id' => '2',
 				'key' => 'Workflow.approval_completion_mail_body',
-				'value' => '{X-SITE_NAME}における{X-PLUGIN_NAME}の承認が完了しました。
-もし{X-SITE_NAME}での{X-PLUGIN_NAME}に覚えがない場合はこのメールを破棄してください。
+				'value' => '{X-USER}さんの{X-PLUGIN_NAME}の承認が完了されたことをお知らせします。
+もし{X-USER}さんの{X-PLUGIN_NAME}に覚えがない場合はこのメールを破棄してください。
 
 {X-WORKFLOW_COMMENT}
 
@@ -565,8 +565,8 @@ Please discard this email if you\'re still unable to recognize the if {X-PLUGIN_
 			array(
 				'language_id' => '1',
 				'key' => 'Workflow.approval_completion_mail_body',
-				'value' => 'Approval of {X-PLUGIN_NAME} in {X-SITE_NAME} has been completed.
-Please discard this email if you\'re still unable to recognize the if {X-PLUGIN_NAME} in {X-SITE_NAME}.
+				'value' => 'To inform you that approval of {X-USER} \'s {X-PLUGIN_NAME} has been completed.
+Please discard this email if you\'re still unable to recognize the if {X-USER} \'s {X-PLUGIN_NAME}.
 
 {X-WORKFLOW_COMMENT}
 

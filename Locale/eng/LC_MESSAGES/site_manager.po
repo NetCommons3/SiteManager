@@ -239,31 +239,31 @@ msgid "Content workflow"
 msgstr ""
 
 msgid "Workflow.approval_mail_subject"
-msgstr "申請メールの件名"
+msgstr "Application e-mail subject"
 
 msgid "Workflow.approval_mail_body"
-msgstr "申請メールの本文"
+msgstr "Application e-mail text"
 
 msgid "Workflow.approval_mail_body help"
-msgstr "{X-SITE_NAME} : Site name<br>{X-PLUGIN_NAME} : Plugin name<br>{X-ROOM} : Room name<br>{X-BLOCK_NAME} : Block name<br>{X-WORKFLOW_COMMENT} : Workflow comment<br>{X-URL} : URL"
+msgstr "{X-PLUGIN_MAIL_SUBJECT} : Plugin e-mail subject<br>{X-PLUGIN_NAME} : Plugin name<br>{X-USER} : Posted<br>{X-WORKFLOW_COMMENT} : Approval Comments<br>{X-PLUGIN_MAIL_BODY} E-mail plugin text"
 
 msgid "Workflow.disapproval_mail_subject"
-msgstr "差し戻しメールの件名"
+msgstr "Remand e-mail subject"
 
 msgid "Workflow.disapproval_mail_body"
-msgstr "差し戻しメールの本文"
+msgstr "Remand e-mail text"
 
 msgid "Workflow.disapproval_mail_body help"
-msgstr "{X-SITE_NAME} : Site name<br>{X-PLUGIN_NAME} : Plugin name<br>{X-ROOM} : Room name<br>{X-BLOCK_NAME} : Block name<br>{X-WORKFLOW_COMMENT} : Workflow comment<br>{X-URL} : URL"
+msgstr "{X-PLUGIN_MAIL_SUBJECT} : Plugin e-mail subject<br>{X-PLUGIN_NAME} : Plugin name<br>{X-USER} : Posted<br>{X-WORKFLOW_COMMENT} : Approval Comments<br>{X-PLUGIN_MAIL_BODY} E-mail plugin text"
 
 msgid "Workflow.approval_completion_mail_subject"
-msgstr "承認完了通知メールの件名"
+msgstr "Approval completion notification e-mail subject"
 
 msgid "Workflow.approval_completion_mail_body"
-msgstr "承認完了通知メールの本文"
+msgstr "Approval completion notification e-mail text"
 
 msgid "Workflow.approval_completion_mail_body help"
-msgstr "{X-SITE_NAME} : Site name<br>{X-PLUGIN_NAME} : Plugin name<br>{X-ROOM} : Room name<br>{X-BLOCK_NAME} : Block name<br>{X-WORKFLOW_COMMENT} : Workflow comment<br>{X-URL} : URL"
+msgstr "{X-PLUGIN_MAIL_SUBJECT} : Plugin e-mail subject<br>{X-PLUGIN_NAME} : Plugin name<br>{X-USER} : Posted<br>{X-WORKFLOW_COMMENT} : Approval Comments<br>{X-PLUGIN_MAIL_BODY} E-mail plugin text"
 
 #
 # メール署名
