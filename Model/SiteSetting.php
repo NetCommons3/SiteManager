@@ -186,9 +186,15 @@ class SiteSetting extends SiteManagerAppModel {
  * @var array
  */
 	public $debugOptions = array(
-		'0' => array('system_manager', '0: No error messages, errors, or warnings shown. Flash messages redirect.'),
-		'1' => array('system_manager', '1: Errors and warnings shown, model caches refreshed, flash messages halted.'),
-		'2' => array('system_manager', '2: As in 1, but also with full debug messages and SQL output.'),
+		'0' => array(
+			'system_manager', '0: No error messages, errors, or warnings shown. Flash messages redirect.'
+		),
+		'1' => array(
+			'system_manager', '1: Errors and warnings shown, model caches refreshed, flash messages halted.'
+		),
+		'2' => array(
+			'system_manager', '2: As in 1, but also with full debug messages and SQL output.'
+		),
 	);
 
 /**

@@ -51,7 +51,10 @@ class MembershipController extends SiteManagerAppController {
 
 		//リクエストセット
 		if ($this->request->is('post')) {
-			$this->set('membershipTab', Hash::get($this->request->data['SiteSetting'], 'membershipTab', 'automatic-registration'));
+			$this->set(
+				'membershipTab',
+				Hash::get($this->request->data['SiteSetting'], 'membershipTab', 'automatic-registration')
+			);
 
 			//権限リストをモデルにセット
 			$this->SiteSetting->autoRegistRoles = $userRoles;
@@ -60,7 +63,10 @@ class MembershipController extends SiteManagerAppController {
 			$this->SiteManager->saveData();
 
 		} else {
-			$this->set('membershipTab', Hash::get($this->request->query, 'membershipTab', 'automatic-registration'));
+			$this->set(
+				'membershipTab',
+				Hash::get($this->request->query, 'membershipTab', 'automatic-registration')
+			);
 
 			$this->request->data['SiteSetting'] = $this->SiteSetting->getSiteSettingForEdit(
 				array('SiteSetting.key' => array(

@@ -116,10 +116,18 @@ class SiteManagerHelper extends AppHelper {
 		$output = '';
 		$output .= '<ul class="nav nav-pills" role="tablist">';
 		foreach ($this->_View->viewVars['rooms'] as $roomId => $room) {
-			$output .= '<li class="' . ((string)$roomId === $this->_View->viewVars['activeRoomId'] ? 'active' : '') . '">';
+			if ((string)$roomId === $this->_View->viewVars['activeRoomId']) {
+				$active = 'active';
+			} else {
+				$active = '';
+			}
+			$output .= '<li class="' . $active . '">';
 			$output .= $this->NetCommonsHtml->link(
 							Hash::get($room, 'RoomsLanguage.name'),
-							Hash::merge(Hash::get($this->_tabs, $this->_View->request->params['controller']), array('key' => $roomId))
+							Hash::merge(
+								Hash::get($this->_tabs, $this->_View->request->params['controller']),
+								array('key' => $roomId)
+							)
 						);
 			$output .= '</li>';
 		}
@@ -192,6 +200,26 @@ class SiteManagerHelper extends AppHelper {
 	}
 
 /**
+ * ヘルプオプションの取得
+ *
+ * @param string $key キー
+ * @param array $options オプション
+ * @param string $labelPlugin __dのプラグイン名
+ * @return array オプション
+ */
+	private function __getHelpOption($key, $options = array(), $labelPlugin = 'site_manager') {
+		if (Hash::get($options, 'help', false)) {
+			$options = Hash::insert($options, 'help', __d($labelPlugin, $key . ' help'));
+		}
+		if (Hash::get($options, 'mailHelp', false)) {
+			$help = $this->NetCommonsHtml->mailHelp(__d($labelPlugin, $key . ' help'));
+			$options = Hash::insert($options, 'help', $help);
+		}
+
+		return $options;
+	}
+
+/**
  * inputタグ
  *
  * @param string $model モデル名
@@ -208,13 +236,7 @@ class SiteManagerHelper extends AppHelper {
 			return $output;
 		}
 
-		if (Hash::get($options, 'help', false)) {
-			$options = Hash::insert($options, 'help', __d($labelPlugin, $key . ' help'));
-		}
-		if (Hash::get($options, 'mailHelp', false)) {
-			$help = $this->NetCommonsHtml->mailHelp(__d($labelPlugin, $key . ' help'));
-			$options = Hash::insert($options, 'help', $help);
-		}
+		$options = $this->__getHelpOption($key, $options, $labelPlugin);
 
 		$languageId = '0';
 		$inputValue = $model . '.' . $requestKey . '.' . $languageId;
@@ -254,20 +276,19 @@ class SiteManagerHelper extends AppHelper {
 			return $output;
 		}
 
-		if (Hash::get($options, 'help', false)) {
-			$options = Hash::insert($options, 'help', __d($labelPlugin, $key . ' help'));
-		}
-		if (Hash::get($options, 'mailHelp', false)) {
-			$help = $this->NetCommonsHtml->mailHelp(__d($labelPlugin, $key . ' help'));
-			$options = Hash::insert($options, 'help', $help);
-		}
+		$options = $this->__getHelpOption($key, $options, $labelPlugin);
 
 		$activeLangId = $this->_View->viewVars['activeLangId'];
 		$languageIds = array_keys($this->_View->viewVars['languages']);
 		foreach ($languageIds as $languageId) {
 			$inputValue = $model . '.' . $requestKey . '.' . $languageId;
 
-			$output .= '<div class="tab-pane' . ((string)$activeLangId === (string)$languageId ? ' active' : '') . '" ' .
+			if ((string)$activeLangId === (string)$languageId) {
+				$active = 'active';
+			} else {
+				$active = '';
+			}
+			$output .= '<div class="tab-pane' . $active . '" ' .
 							'ng-show="' . 'activeLangId === \'' . $languageId . '\'' . '">';
 
 			//hidden
