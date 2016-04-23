@@ -31,7 +31,8 @@ class SystemManagerValidateBehavior extends SiteSettingValidateBehavior {
 			return $data;
 		}
 
-		if (! in_array((string)Hash::get($data[$model->alias]['Proxy.use_proxy'], '0.value'), ['0', '1'], true)) {
+		$value = (string)Hash::get($data[$model->alias]['Proxy.use_proxy'], '0.value');
+		if (! in_array($value, ['0', '1'], true)) {
 			$this->_setValidationMessage($model, 'Proxy.use_proxy', '0',
 					__d('net_commons', 'Invalid request.'));
 		}
@@ -63,20 +64,23 @@ class SystemManagerValidateBehavior extends SiteSettingValidateBehavior {
 
 		//デフォルトのタイムゾーン
 		foreach ($data[$model->alias]['App.default_timezone'] as $langId => $check) {
-			if (! in_array(Hash::get($check, 'value'), array_keys($model->SiteSetting->defaultTimezones), true)) {
+			$value = Hash::get($check, 'value');
+			if (! in_array($value, array_keys($model->SiteSetting->defaultTimezones), true)) {
 				$this->_setValidationMessage($model, 'App.default_timezone', $langId,
 						__d('net_commons', 'Invalid request.'));
 			}
 		}
 
 		//グループルームの容量
-		if (! in_array((int)Hash::get($data[$model->alias]['App.disk_for_group_room'], '0.value'), $model->SiteSetting->diskSpace, true)) {
+		$value = (int)Hash::get($data[$model->alias]['App.disk_for_group_room'], '0.value');
+		if (! in_array($value, $model->SiteSetting->diskSpace, true)) {
 			$this->_setValidationMessage($model, 'App.disk_for_group_room', '0',
 					__d('net_commons', 'Invalid request.'));
 		}
 
 		//プライベートルームの容量
-		if (! in_array((int)Hash::get($data[$model->alias]['App.disk_for_private_room'], '0.value'), $model->SiteSetting->diskSpace, true)) {
+		$value = (int)Hash::get($data[$model->alias]['App.disk_for_private_room'], '0.value');
+		if (! in_array($value, $model->SiteSetting->diskSpace, true)) {
 			$this->_setValidationMessage($model, 'App.disk_for_private_room', '0',
 					__d('net_commons', 'Invalid request.'));
 		}
@@ -97,8 +101,8 @@ class SystemManagerValidateBehavior extends SiteSettingValidateBehavior {
 		}
 
 		//自動ログアウトするまでの時間
-		if (! in_array((int)Hash::get($data[$model->alias]['Session.ini.session.cookie_lifetime'], '0.value'),
-											array_keys($model->SiteSetting->sessionTimeout), true)) {
+		$value = (int)Hash::get($data[$model->alias]['Session.ini.session.cookie_lifetime'], '0.value');
+		if (! in_array($value, array_keys($model->SiteSetting->sessionTimeout), true)) {
 			$this->_setValidationMessage($model, 'Session.ini.session.cookie_lifetime', '0',
 					__d('net_commons', 'Invalid request.'));
 		}
@@ -119,7 +123,8 @@ class SystemManagerValidateBehavior extends SiteSettingValidateBehavior {
 		}
 
 		//PHP最大メモリ数
-		if (! in_array(Hash::get($data[$model->alias]['Php.memory_limit'], '0.value'), array_keys($model->SiteSetting->memoryLimit), true)) {
+		$value = Hash::get($data[$model->alias]['Php.memory_limit'], '0.value');
+		if (! in_array($value, array_keys($model->SiteSetting->memoryLimit), true)) {
 			$this->_setValidationMessage($model, 'Php.memory_limit', '0',
 					__d('net_commons', 'Invalid request.'));
 		}
@@ -143,23 +148,29 @@ class SystemManagerValidateBehavior extends SiteSettingValidateBehavior {
 		$this->_validateRequired($model, $data, 'Mail.from');
 
 		//メール形式
-		if (! in_array(Hash::get($data[$model->alias]['Mail.messageType'], '0.value'), array_keys($model->SiteSetting->mailMessageType), true)) {
+		$value = Hash::get($data[$model->alias]['Mail.messageType'], '0.value');
+		if (! in_array($value, array_keys($model->SiteSetting->mailMessageType), true)) {
 			$this->_setValidationMessage($model, 'Mail.messageType', '0',
 					__d('net_commons', 'Invalid request.'));
 		}
 
 		//メール送信方法
-		if (! in_array(Hash::get($data[$model->alias]['Mail.transport'], '0.value'), array_keys($model->SiteSetting->mailTransport), true)) {
+		$value = Hash::get($data[$model->alias]['Mail.transport'], '0.value');
+		if (! in_array($value, array_keys($model->SiteSetting->mailTransport), true)) {
 			$this->_setValidationMessage($model, 'Mail.transport', '0',
 					__d('net_commons', 'Invalid request.'));
 		}
 
 		//メール送信方法がSMTPの場合、SMTPサーバアドレスとポート番号は必須とする
-		if (Hash::get($data[$model->alias]['Mail.transport'], '0.value') === SiteSetting::MAIL_TRANSPORT_SMTP) {
+		$value = Hash::get($data[$model->alias]['Mail.transport'], '0.value');
+		if ($value === SiteSetting::MAIL_TRANSPORT_SMTP) {
 			$this->_validateRequired($model, $data, 'Mail.smtp.host');
 			$this->_validateRequired($model, $data, 'Mail.smtp.port');
 		} else {
-			unset($data['Mail.smtp.host'], $data['Mail.smtp.port'], $data['Mail.smtp.user'], $data['Mail.smtp.pass']);
+			unset(
+				$data['Mail.smtp.host'], $data['Mail.smtp.port'],
+				$data['Mail.smtp.user'], $data['Mail.smtp.pass']
+			);
 		}
 
 		return $data;
@@ -198,7 +209,8 @@ class SystemManagerValidateBehavior extends SiteSettingValidateBehavior {
  */
 	protected function _validateBadIps(Model $model, $data) {
 		//IPアドレスでアクセスを拒否する
-		if (! in_array((string)Hash::get($data[$model->alias]['Security.enable_bad_ips'], '0.value'), ['0', '1'], true)) {
+		$value = (string)Hash::get($data[$model->alias]['Security.enable_bad_ips'], '0.value');
+		if (! in_array($value, ['0', '1'], true)) {
 			$this->_setValidationMessage($model, 'Security.enable_bad_ips', '0',
 					__d('net_commons', 'Invalid request.'));
 		}
@@ -210,8 +222,11 @@ class SystemManagerValidateBehavior extends SiteSettingValidateBehavior {
 			$ips = $data[$model->alias]['Security.bad_ips']['0']['value'];
 			if (! $this->_hasValidationError($model, 'Security.bad_ips', '0')) {
 				if ($this->hasCurrentIp($model, $ips)) {
-					$this->_setValidationMessage($model, 'Security.bad_ips', '0',
-							__d('system_manager', 'Contains the current IP address. Please excluded from the list.'));
+					$this->_setValidationMessage(
+						$model, 'Security.bad_ips', '0',
+						__d('system_manager',
+								'Contains the current IP address. Please excluded from the list.')
+					);
 				}
 			}
 		}
@@ -226,20 +241,30 @@ class SystemManagerValidateBehavior extends SiteSettingValidateBehavior {
  */
 	protected function _validateAllowSystemPluginIps(Model $model, $data) {
 		//管理画面のアクセスをIPアドレスで制御する
-		if (! in_array((string)Hash::get($data[$model->alias]['Security.enable_allow_system_plugin_ips'], '0.value'), ['0', '1'], true)) {
+		$value = (string)Hash::get(
+			$data[$model->alias]['Security.enable_allow_system_plugin_ips'], '0.value'
+		);
+		if (! in_array($value, ['0', '1'], true)) {
 			$this->_setValidationMessage($model, 'Security.enable_allow_system_plugin_ips', '0',
 					__d('net_commons', 'Invalid request.'));
 		}
 
 		//アクセスを許可するIPアドレス
-		if ((string)Hash::get($data[$model->alias]['Security.enable_allow_system_plugin_ips'], '0.value') === '1') {
+		$value = (string)Hash::get(
+			$data[$model->alias]['Security.enable_allow_system_plugin_ips'], '0.value'
+		);
+		if ($value === '1') {
 			$this->validateIp($model, $data, 'Security.allow_system_plugin_ips');
 
 			$ips = $data[$model->alias]['Security.allow_system_plugin_ips']['0']['value'];
 			if (! $this->_hasValidationError($model, 'Security.allow_system_plugin_ips', '0')) {
 				if (! $this->hasCurrentIp($model, $ips)) {
-					$this->_setValidationMessage($model, 'Security.allow_system_plugin_ips', '0',
-							__d('system_manager', 'It does not include the current IP address. Please add to the list.'));
+					$this->_setValidationMessage(
+						$model,
+						'Security.allow_system_plugin_ips', '0',
+						__d('system_manager',
+								'It does not include the current IP address. Please add to the list.')
+					);
 				}
 			}
 		}
@@ -289,11 +314,15 @@ class SystemManagerValidateBehavior extends SiteSettingValidateBehavior {
 		$ips = explode('|', $data[$model->alias][$key]['0']['value']);
 
 		//フォーマットチェック
-		$formatErrorMessage = __d('net_commons', 'Unauthorized pattern for %s. Please input the data in %s format.');
+		$formatErrorMessage = __d(
+			'net_commons', 'Unauthorized pattern for %s. Please input the data in %s format.'
+		);
 		foreach ($ips as $ip) {
 			if (! Validation::ip($ip)) {
-				$this->_setValidationMessage($model, $key, '0',
-						sprintf($formatErrorMessage, __d('system_manager', $key), __d('net_commons', 'IP Address')));
+				$this->_setValidationMessage(
+					$model, $key, '0',
+					sprintf($formatErrorMessage, __d('system_manager', $key), __d('net_commons', 'IP Address'))
+				);
 				return false;
 			}
 		}
@@ -314,7 +343,8 @@ class SystemManagerValidateBehavior extends SiteSettingValidateBehavior {
 		}
 
 		//デバッグのチェック
-		if (! in_array((int)Hash::get($data[$model->alias]['debug'], '0.value'), array_keys($model->SiteSetting->debugOptions), true)) {
+		$value = (int)Hash::get($data[$model->alias]['debug'], '0.value');
+		if (! in_array($value, array_keys($model->SiteSetting->debugOptions), true)) {
 			$this->_setValidationMessage($model, 'debug', '0',
 					__d('net_commons', 'Invalid request.'));
 		}
