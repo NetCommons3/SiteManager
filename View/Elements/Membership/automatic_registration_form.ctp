@@ -16,7 +16,9 @@ $SiteSetting->prepare();
 
 <article>
 	<?php $domId = $this->SiteManager->domId('SiteSetting.AutoRegist.use_automatic_register'); ?>
-	<div ng-init="<?php echo $domId . ' = ' . (int)$this->SiteManager->getValue('SiteSetting', 'AutoRegist.use_automatic_register'); ?>">
+	<?php $confirmationDomId = $this->SiteManager->domId('SiteSetting.AutoRegist.confirmation'); ?>
+	<div ng-init="<?php echo $domId . ' = ' . (int)$this->SiteManager->getValue('SiteSetting', 'AutoRegist.use_automatic_register'); ?>;
+					<?php echo $confirmationDomId . ' = ' . (int)$this->SiteManager->getValue('SiteSetting', 'AutoRegist.confirmation'); ?>">
 
 		<?php echo $this->SiteManager->inputCommon('SiteSetting', 'AutoRegist.use_automatic_register', array(
 				'type' => 'radio',
@@ -30,7 +32,8 @@ $SiteSetting->prepare();
 		<div ng-show="<?php echo $domId; ?>">
 			<?php echo $this->SiteManager->inputCommon('SiteSetting', 'AutoRegist.confirmation', array(
 					'type' => 'select',
-					'options' => $SiteSetting->autoRegistConfirm
+					'options' => $SiteSetting->autoRegistConfirm,
+					'ng-click' => $confirmationDomId . ' = click($event)',
 				)); ?>
 		</div>
 
@@ -92,30 +95,30 @@ $SiteSetting->prepare();
 				)); ?>
 		</div>
 
-		<hr ng-show="<?php echo $domId; ?>">
+		<hr ng-show="(<?php echo $domId . ' && (' . $confirmationDomId . ' === 0' . ' || ' . $confirmationDomId . ' === 2)'; ?>)">
 
-		<div ng-show="<?php echo $domId; ?>">
+		<div ng-show="(<?php echo $domId . ' && (' . $confirmationDomId . ' === 0' . ' || ' . $confirmationDomId . ' === 2)'; ?>)">
 			<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'AutoRegist.approval_mail_subject', array(
 					//'type' => 'textarea',
 				)); ?>
 		</div>
 
-		<div ng-show="<?php echo $domId; ?>">
+		<div ng-show="(<?php echo $domId . ' && (' . $confirmationDomId . ' === 0' . ' || ' . $confirmationDomId . ' === 2)'; ?>)">
 			<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'AutoRegist.approval_mail_body', array(
 					'type' => 'textarea',
 					'mailHelp' => true,
 				)); ?>
 		</div>
 
-		<hr ng-show="<?php echo $domId; ?>">
+		<hr ng-show="(<?php echo $domId . ' && ' . $confirmationDomId . ' === 2'; ?>)">
 
-		<div ng-show="<?php echo $domId; ?>">
+		<div ng-show="(<?php echo $domId . ' && ' . $confirmationDomId . ' === 2'; ?>)">
 			<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'AutoRegist.acceptance_mail_subject', array(
 					//'type' => 'textarea',
 				)); ?>
 		</div>
 
-		<div ng-show="<?php echo $domId; ?>">
+		<div ng-show="(<?php echo $domId . ' && ' . $confirmationDomId . ' === 2'; ?>)">
 			<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'AutoRegist.acceptance_mail_body', array(
 					'type' => 'textarea',
 					'mailHelp' => true,
