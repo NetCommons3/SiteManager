@@ -69,16 +69,6 @@ $SiteSetting->prepare();
 				)); ?>
 		</div>
 
-		<div ng-show="<?php echo $domId; ?>">
-			<?php echo $this->SiteManager->inputCommon('SiteSetting', 'AutoRegist.prarticipate_default_room', array(
-					'type' => 'radio',
-					'options' => array(
-						'1' => __d('net_commons', 'Yes'),
-						'0' => __d('net_commons', 'No'),
-					),
-				)); ?>
-		</div>
-
 		<div class="panel panel-default" ng-show="<?php echo $domId; ?>">
 			<div class="panel-heading">
 				<?php echo __d('site_manager', 'Input items'); ?>

@@ -128,14 +128,14 @@ class SiteManagerValidateBehavior extends SiteSettingValidateBehavior {
 						__d('net_commons', 'Invalid request.'));
 			}
 			// * 自動登録時にデフォルトルームに参加する
-			$value = (string)Hash::get(
-				$data[$model->alias]['AutoRegist.prarticipate_default_room'],
-				'0.value'
-			);
-			if (! in_array($value, ['0', '1'], true)) {
-				$this->_setValidationMessage($model, 'AutoRegist.prarticipate_default_room', '0',
-						__d('net_commons', 'Invalid request.'));
-			}
+			//$value = (string)Hash::get(
+			//	$data[$model->alias]['AutoRegist.prarticipate_default_room'],
+			//	'0.value'
+			//);
+			//if (! in_array($value, ['0', '1'], true)) {
+			//	$this->_setValidationMessage($model, 'AutoRegist.prarticipate_default_room', '0',
+			//			__d('net_commons', 'Invalid request.'));
+			//}
 		} else {
 			//自動会員登録を許可しない場合、リクエストデータから破棄
 			$settingKeys = $data[$model->alias];
