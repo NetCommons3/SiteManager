@@ -203,10 +203,10 @@ msgid "AutoRegist.acceptance_mail_body help"
 msgstr "{X-SITE_NAME} : サイト名<br>{X-URL} : URL"
 
 msgid "AutoRegist.mail_subject"
-msgstr "会員登録メールの件名"
+msgstr "会員管理からの登録通知メールの件名"
 
 msgid "AutoRegist.mail_body"
-msgstr "会員登録メールの本文"
+msgstr "会員管理からの登録通知メールの本文"
 
 msgid "AutoRegist.mail_body help"
 msgstr "{X-SITE_NAME}：サイト名<br>{X-HANDLE}：ハンドル名<br>{X-LOGIN_ID}：ログインID<br>{X-PASSWORD}：パスワード<br>{X-EMAIL}：e-mail<br>{X-URL}：URL"
