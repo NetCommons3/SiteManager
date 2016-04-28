@@ -12,6 +12,7 @@
 App::uses('Current', 'NetCommons.Utility');
 App::uses('SiteManagerAppModel', 'SiteManager.Model');
 App::uses('M17nHelper', 'M17n.View/Helper');
+App::uses('AutoUserRegist', 'Auth.Model');
 
 /**
  * SiteSetting Model
@@ -96,9 +97,15 @@ class SiteSetting extends SiteManagerAppModel {
  * @var array
  */
 	public $autoRegistConfirm = array(
-		'0' => array('site_manager', 'Automatic registration by user(advised)'),
-		'1' => array('site_manager', 'User registration by automatic'),
-		'2' => array('site_manager', 'Approval by administrator'),
+		AutoUserRegist::CONFIRMATION_USER_OWN => array(
+			'site_manager', 'Automatic registration by user(advised)'
+		),
+		AutoUserRegist::CONFIRMATION_AUTO_REGIST => array(
+			'site_manager', 'User registration by automatic'
+		),
+		AutoUserRegist::CONFIRMATION_ADMIN_APPROVAL => array(
+			'site_manager', 'Approval by administrator'
+		),
 	);
 
 /**
