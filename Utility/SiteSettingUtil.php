@@ -62,8 +62,8 @@ class SiteSettingUtil {
  * @return void
  */
 	public static function setup($key) {
-		$this->SiteSetting = ClassRegistry::init('SiteManager.SiteSetting');
-		$result = $this->SiteSetting->find('all', array(
+		$SiteSetting = ClassRegistry::init('SiteManager.SiteSetting');
+		$result = $SiteSetting->find('all', array(
 			'recursive' => -1,
 			'fields' => array(
 				'language_id', 'key', 'value'
