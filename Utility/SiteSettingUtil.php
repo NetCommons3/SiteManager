@@ -41,18 +41,61 @@ class SiteSettingUtil {
  * @return void
  */
 	public static function initialize() {
+		$SiteSetting = ClassRegistry::init('SiteManager.SiteSetting');
+
 		self::setup(array(
-			//サイト名
+			// * サイト名
 			'App.site_name',
-			//システム標準使用言語
+			// * システム標準使用言語
 			'Config.language',
 
-			//サイトを一時停止する
+			// * 標準の開始ルーム
+			'App.default_start_room',
+			// * サイトタイムゾーン
+			'App.default_timezone',
+			// * グループルームの容量
+			'App.disk_for_group_room',
+			// * プライベートルームの容量
+			'App.disk_for_private_room',
+
+			// * デバッグモード
+			'debug',
+			// * デフォルトテーマ
+			'theme',
+
+			// * サイトの一時停止
+			// ** サイトを一時停止する
 			'App.close_site',
 
-			//パスワード再発行を使う
+			// * パスワード再発行
+			// ** パスワード再発行を使う
 			'ForgotPass.use_password_reissue',
+
+			// * 入会設定
+			// ** 自動会員登録を許可する
+			'AutoRegist.use_automatic_register',
 		));
+
+		//テーマのみデフォルト値セット
+		if (! Hash::check(self::$_data, 'theme')) {
+			self::write('theme', 'Default', '0');
+		}
+
+		//下記は設定は、Configureにもwriteする
+		$siteSetting = array(
+			'Config.language',
+			'debug',
+			'theme',
+		);
+		foreach ($siteSetting as $key) {
+			Configure::write($key, self::read($key));
+		}
+
+		//debugについては、セッションがある場合セッションを優先する
+		$debugs = $SiteSetting->debugOptions;
+		if (in_array(CakeSession::read('debug'), array_keys($debugs), true)) {
+			Configure::write('debug', CakeSession::read('debug'));
+		}
 	}
 
 /**
@@ -89,15 +132,16 @@ class SiteSettingUtil {
  * ```
  *
  * @param string|null $keyPath Hashクラスのpath
+ * @param mixed $default デフォルト値
  * @param int $langId 言語ID(Language.id)
  * @return array|null SiteSettingデータ
  */
-	public static function read($keyPath, $langId = null) {
+	public static function read($keyPath, $default = null, $langId = null) {
 		if (! isset($langId)) {
 			$langId = Current::read('Language.id', '0');
 		}
 
-		if (! Hash::check($keyPath)) {
+		if (! Hash::check(self::$_data, $keyPath)) {
 			self::setup($keyPath);
 		}
 
@@ -109,7 +153,7 @@ class SiteSettingUtil {
 			return Hash::get(self::$_data, $keyPath . '.' . '0');
 		}
 
-		return null;
+		return $default;
 	}
 
 /**
