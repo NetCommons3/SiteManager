@@ -10,9 +10,10 @@
  */
 
 App::uses('Current', 'NetCommons.Utility');
+App::uses('SiteSettingUtil', 'SiteManager.Utility');
 App::uses('SiteManagerAppModel', 'SiteManager.Model');
-App::uses('M17nHelper', 'M17n.View/Helper');
 App::uses('AutoUserRegist', 'Auth.Model');
+App::uses('M17nHelper', 'M17n.View/Helper');
 
 /**
  * SiteSetting Model
