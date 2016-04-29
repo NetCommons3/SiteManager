@@ -10,9 +10,10 @@
  */
 
 App::uses('Current', 'NetCommons.Utility');
+App::uses('SiteSettingUtil', 'SiteManager.Utility');
 App::uses('SiteManagerAppModel', 'SiteManager.Model');
-App::uses('M17nHelper', 'M17n.View/Helper');
 App::uses('AutoUserRegist', 'Auth.Model');
+App::uses('M17nHelper', 'M17n.View/Helper');
 
 /**
  * SiteSetting Model
@@ -225,13 +226,6 @@ class SiteSetting extends SiteManagerAppModel {
 	);
 
 /**
- * Behaviors
- *
- * @var array
- */
-	public static $siteSetting;
-
-/**
  * 設定画面の前準備
  *
  * @return void
@@ -271,44 +265,6 @@ class SiteSetting extends SiteManagerAppModel {
 	}
 
 /**
- * サイト設定の初期データ取得
- *
- * @return array
- */
-	public function getInitializeSiteSetting() {
-		if (self::$siteSetting) {
-			return self::$siteSetting;
-		}
-
-		$result = $this->find('list', array(
-			'recursive' => -1,
-			'fields' => array('key', 'value'),
-			'conditions' => array(
-				'language_id' => array('0', Current::read('Language.id')),
-				'key' => array(
-					'App.close_site',
-					'App.default_start_room',
-					'App.default_timezone',
-					'App.disk_for_group_room',
-					'App.disk_for_private_room',
-					'App.site_closing_reason',
-					'App.site_name',
-					'Auth.use_ssl',
-					'Config.language',
-					'debug',
-					//'Php.memory_limit',
-					//'Session.ini.session.cookie_lifetime',
-					//'Session.ini.session.gc_maxlifetime',
-					//'Session.ini.session.name',
-					'theme',
-				)
-			),
-		));
-		self::$siteSetting = $result;
-		return $result;
-	}
-
-/**
  * デフォルト開始ページの取得
  *
  * @return string or null
@@ -319,17 +275,17 @@ class SiteSetting extends SiteManagerAppModel {
 			'Room' => 'Rooms.Room',
 		]);
 		//パブリックスペースの場合
-		if (Configure::read('App.default_start_room') === Room::PUBLIC_PARENT_ID) {
+		if (SiteSettingUtil::read('App.default_start_room') === Room::PUBLIC_PARENT_ID) {
 			return '/';
 		}
 		//プライベートの場合、プライベートの利用可をチェックする
-		if (Configure::read('App.default_start_room') === Room::PRIVATE_PARENT_ID &&
+		if (SiteSettingUtil::read('App.default_start_room') === Room::PRIVATE_PARENT_ID &&
 				! Current::read('User.UserRoleSetting.use_private_room')) {
 			return '/';
 		}
 
 		$query = $this->Room->getReadableRoomsConditions(array(
-			'Room.parent_id' => Configure::read('App.default_start_room')
+			'Room.parent_id' => SiteSettingUtil::read('App.default_start_room')
 		));
 		$room = $this->Room->find('first', Hash::merge($query, array('recursive' => -1)));
 		if (! $room) {
@@ -353,8 +309,7 @@ class SiteSetting extends SiteManagerAppModel {
  * @return string or null
  */
 	public function getSiteTheme() {
-		$siteSetting = $this->getInitializeSiteSetting();
-		return Hash::get($siteSetting, 'theme');
+		return SiteSettingUtil::read('theme');
 	}
 
 /**
@@ -363,10 +318,7 @@ class SiteSetting extends SiteManagerAppModel {
  * @return string timezone
  */
 	public function getSiteTimezone() {
-		$languageId = Current::read('Language.id');
-		$setting = $this->findByLanguageIdAndKey($languageId, 'App.default_timezone');
-		$timezone = $setting['SiteSetting']['value'];
-		return $timezone;
+		return SiteSettingUtil::read('App.default_timezone');
 	}
 
 /**
@@ -450,6 +402,41 @@ class SiteSetting extends SiteManagerAppModel {
 			//登録処理
 			$saveData = Hash::extract($data, 'SiteSetting.{s}.{n}');
 			if (! $this->saveMany($saveData, ['validate' => false])) {
+				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+			}
+
+			//トランザクションCommit
+			$this->commit();
+
+		} catch (Exception $ex) {
+			//トランザクションRollback
+			$this->rollback($ex);
+		}
+
+		return true;
+	}
+
+/**
+ * サイト設定の登録処理
+ *
+ * @param string $key 更新するキー
+ * @param mixed $value 更新する値
+ * @return bool True on success, false on validation errors
+ * @throws InternalErrorException
+ */
+	public function saveSiteSettingByKey($key, $value) {
+		//トランザクションBegin
+		$this->begin();
+
+		try {
+			$siteSetting = $this->find('first', array(
+				'recursive' => -1,
+				'conditions' => array('key' => $key)
+			));
+			$this->id = $siteSetting['SiteSetting']['id'];
+
+			//登録処理
+			if (! $this->SiteSetting->saveField('value', $value)) {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
 
