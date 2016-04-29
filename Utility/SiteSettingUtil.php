@@ -132,7 +132,7 @@ class SiteSettingUtil {
 			'fields' => array(
 				'language_id', 'key', 'value'
 			),
-			'conditions' => array('key' => $conditions)
+			'conditions' => array('SiteSetting.key' => $conditions)
 		));
 
 		foreach ($result as $siteSetting) {
