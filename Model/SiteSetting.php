@@ -417,6 +417,41 @@ class SiteSetting extends SiteManagerAppModel {
 	}
 
 /**
+ * サイト設定の登録処理
+ *
+ * @param string $key 更新するキー
+ * @param mixed $value 更新する値
+ * @return bool True on success, false on validation errors
+ * @throws InternalErrorException
+ */
+	public function saveSiteSettingByKey($key, $value) {
+		//トランザクションBegin
+		$this->begin();
+
+		try {
+			$siteSetting = $this->find('first', array(
+				'recursive' => -1,
+				'conditions' => array('key' => $key)
+			));
+			$this->id = $siteSetting['SiteSetting']['id'];
+
+			//登録処理
+			if (! $this->SiteSetting->saveField('value', $value)) {
+				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+			}
+
+			//トランザクションCommit
+			$this->commit();
+
+		} catch (Exception $ex) {
+			//トランザクションRollback
+			$this->rollback($ex);
+		}
+
+		return true;
+	}
+
+/**
  * サイト設定のValidate処理
  *
  * @param array $data リクエストデータ配列

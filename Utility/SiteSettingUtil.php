@@ -101,17 +101,38 @@ class SiteSettingUtil {
 /**
  * データをセットする
  *
- * @param string|array $key Hashクラスのpath
+ * @param array $keyPaths Hashクラスのpath
+ * @param bool $force 強制的に書き込むかどうか。falseの場合、既にあれば書き込みを行わない。
  * @return void
+ * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
  */
-	public static function setup($key) {
+	public static function setup($keyPaths, $force = false) {
 		$SiteSetting = ClassRegistry::init('SiteManager.SiteSetting');
+
+		if ($force) {
+			$conditions = $keyPaths;
+		} else {
+			if (is_string($keyPaths)) {
+				$keyPaths = array($keyPaths);
+			}
+			$conditions = array();
+			foreach ($keyPaths as $keyPath) {
+				if (! Hash::check(self::$_data, $keyPath)) {
+					$conditions[] = $keyPath;
+				}
+			}
+		}
+
+		if (! $conditions) {
+			return;
+		}
+
 		$result = $SiteSetting->find('all', array(
 			'recursive' => -1,
 			'fields' => array(
 				'language_id', 'key', 'value'
 			),
-			'conditions' => array('key' => $key)
+			'conditions' => array('key' => $conditions)
 		));
 
 		foreach ($result as $siteSetting) {
@@ -165,7 +186,7 @@ class SiteSettingUtil {
  * ```
  *
  * @param string $keyPath Hashクラスのpath、nullの場合、Hash::mergeする
- * @param mixted $value セットする値
+ * @param mixed $value セットする値
  * @param int $langId 言語ID(Language.id)
  * @return void
  */
