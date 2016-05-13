@@ -25,6 +25,7 @@ class SystemManagerSaveBehavior extends ModelBehavior {
  * @param Model $model ビヘイビア呼び出し元モデル
  * @param array $data リクエストデータ配列
  * @return array リクエストデータ
+ * @throws InternalErrorException
  */
 	public function saveRoomDiskSize(Model $model, $data) {
 		if (! isset($data[$model->alias]['App.disk_for_group_room']) ||
