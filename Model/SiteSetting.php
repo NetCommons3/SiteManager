@@ -222,6 +222,7 @@ class SiteSetting extends SiteManagerAppModel {
 		'DataTypes.Timezone',
 		'SiteManager.SiteManagerValidate',
 		'SiteManager.SystemManagerValidate',
+		'SiteManager.SystemManagerSave',
 		'ThemeSettings.Theme',
 	);
 
@@ -400,6 +401,8 @@ class SiteSetting extends SiteManagerAppModel {
 
 		try {
 			//登録処理
+			$data = $this->saveRoomDiskSize($data);
+
 			$saveData = Hash::extract($data, 'SiteSetting.{s}.{n}');
 			if (! $this->saveMany($saveData, ['validate' => false])) {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
