@@ -57,18 +57,6 @@ class SystemManagerRecords extends NetCommonsMigration {
 				'key' => 'App.default_timezone',
 				'value' => 'UTC',
 			),
-			// * グループルームの容量
-			array(
-				'language_id' => 0,
-				'key' => 'App.disk_for_group_room',
-				'value' => '524288000',
-			),
-			// * プライベートルームの容量
-			array(
-				'language_id' => 0,
-				'key' => 'App.disk_for_private_room',
-				'value' => '52428800',
-			),
 
 			//セッションタイムアウト
 			// * 自動ログアウトする時間(cookie_lifetime)(6時間)
