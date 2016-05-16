@@ -15,7 +15,7 @@
 
 <?php echo $this->NetCommonsForm->create('SiteSetting', array(
 		'ng-controller' => 'SiteManager',
-		'ng-init' => $this->SiteManager->domId('membershipTab') . ' = \'' . h($membershipTab) . '\''
+		'ng-init' => 'membershipInit(\'' . $this->NetCommonsHtml->url(['action' => 'edit']) . '?membershipTab=' . '\', \'' . h($membershipTab) . '\')',
 	)); ?>
 
 	<?php $this->NetCommonsForm->unlockField('membershipTab'); ?>
@@ -42,11 +42,11 @@
 		</div>
 
 		<div class="panel-footer text-center">
-			<?php echo $this->BackTo->linkButton(__d('net_commons', 'Cancel'), '', array(
-				'ng-href' => $this->NetCommonsHtml->url(array('action' => 'edit')) . '?membershipTab=' . '{{' . $this->SiteManager->domId('membershipTab') . '}}'
-			)); ?>
-
-			<?php echo $this->Button->save(	__d('net_commons', 'OK')); ?>
+			<?php echo $this->Button->cancelAndSave(
+					__d('net_commons', 'Cancel'),
+					__d('net_commons', 'OK'),
+					'#', array('ng-click' => 'membershipCancel()')
+				); ?>
 		</div>
 	</div>
 
