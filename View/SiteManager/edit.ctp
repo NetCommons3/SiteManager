@@ -52,7 +52,7 @@
 			<?php echo $this->Button->cancelAndSave(
 					__d('net_commons', 'Cancel'),
 					__d('net_commons', 'OK'),
-					$this->NetCommonsHtml->url(array('action' => 'edit'))
+					'#', array('ng-click' => 'cancel()')
 				); ?>
 		</div>
 	</div>
