@@ -10,6 +10,7 @@
  */
 
 App::uses('SiteSettingValidateBehavior', 'SiteManager.Model/Behavior');
+App::uses('Current', 'NetCommons.Utility');
 
 /**
  * IpAddress管理 Behavior

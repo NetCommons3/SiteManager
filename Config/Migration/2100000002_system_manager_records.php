@@ -228,7 +228,7 @@ class SystemManagerRecords extends NetCommonsMigration {
 			array(
 				'language_id' => 0,
 				'key' => 'debug',
-				'value' => '1',
+				'value' => '2',
 			),
 		),
 	);
