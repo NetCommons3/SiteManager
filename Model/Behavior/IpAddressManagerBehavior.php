@@ -93,7 +93,7 @@ class IpAddressManagerBehavior extends SiteSettingValidateBehavior {
  * 現在アクセスしているIPアドレスの取得
  *
  * @param Model $model ビヘイビア呼び出し元モデル
- * @return bool
+ * @return string
  */
 	public function getCurrentIp(Model $model) {
 		return Hash::get($_SERVER, 'HTTP_X_FORWARDED_FOR', Hash::get($_SERVER, 'REMOTE_ADDR'));
