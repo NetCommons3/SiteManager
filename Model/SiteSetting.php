@@ -220,6 +220,7 @@ class SiteSetting extends SiteManagerAppModel {
  */
 	public $actsAs = array(
 		'DataTypes.Timezone',
+		'SiteManager.IpAddressManager',
 		'SiteManager.SiteManagerValidate',
 		'SiteManager.SystemManagerValidate',
 		'SiteManager.SystemManagerSave',
