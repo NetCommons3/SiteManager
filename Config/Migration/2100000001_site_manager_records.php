@@ -160,13 +160,13 @@ Login id: {X-USERNAME}',
 			array(
 				'language_id' => '2',
 				'key' => 'App.site_closing_reason',
-				'value' => 'このサイトはただいまメンテナンス中です。後程お越しください。',
+				'value' => '<div class="jumbotron"><h1>{X-SITE_NAME}</h1><h2>このサイトはただいまメンテナンス中です。後程お越しください。</h2></div>',
 			),
 			// ** 英語
 			array(
 				'language_id' => '1',
 				'key' => 'App.site_closing_reason',
-				'value' => 'This site is on maintenance. Please try again later.',
+				'value' => '<div class="jumbotron"><h1>{X-SITE_NAME}</h1><h2>This site is on maintenance. Please try again later.</h2></div>',
 			),
 
 			//メタ情報

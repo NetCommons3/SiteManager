@@ -25,7 +25,7 @@
 
 		<div ng-show="<?php echo $domId; ?>">
 			<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'UserCancel.disclaimer', array(
-					'type' => 'textarea',
+					'type' => 'wysiwyg',
 					'help' => true,
 				)); ?>
 		</div>

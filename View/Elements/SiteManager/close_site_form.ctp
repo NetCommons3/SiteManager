@@ -26,8 +26,9 @@
 
 		<div ng-show="<?php echo $domId; ?>">
 			<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'App.site_closing_reason', array(
-					'type' => 'textarea',
+					'type' => 'wysiwyg',
 				)); ?>
+			<?php echo $this->NetCommonsForm->help($this->SiteManager->helpSiteClose()); ?>
 		</div>
 	</div>
 </article>

@@ -97,6 +97,13 @@ msgstr "Select yes to turn your site off so that only users in selected groups h
 msgid "App.site_closing_reason"
 msgstr "Reason for turning off the site"
 
+msgid "Can use an embedded keyword in the reason for turning off the site"
+msgstr ""
+
+msgid "{X-SITE_NAME} : Site name"
+msgstr ""
+
+
 #
 # メタ情報
 #

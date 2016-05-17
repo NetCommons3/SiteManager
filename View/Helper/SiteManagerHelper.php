@@ -294,11 +294,31 @@ class SiteManagerHelper extends AppHelper {
 			//hidden
 			$output .= $this->inputHidden($model, $requestKey, $languageId);
 
-			$output .= $this->NetCommonsForm->input($inputValue . '.value',
-				Hash::merge(array(
-					'label' => $this->SwitchLanguage->inputLabel(__d($labelPlugin, $key), $languageId),
-				), $options)
-			);
+			if (Hash::get($options, 'type') === 'wysiwyg') {
+				//$options = Hash::remove($options, 'type');
+				$field = $inputValue . '.value';
+				$field = strtr($field, SiteManagerComponent::STRTR_TO, SiteManagerComponent::STRTR_FROM);
+
+				$value = h(json_encode($this->getValue($model, $key, $languageId)));
+
+				$output .= '<div ng-init="' . $this->domId($field) . ' = ' . $value . '">';
+				$output .= $this->NetCommonsForm->wysiwyg($inputValue . '.value',
+					Hash::merge(
+						array(
+							'label' => $this->SwitchLanguage->inputLabel(__d($labelPlugin, $key), $languageId),
+							'ng-model' => $this->domId($field),
+						),
+						$options
+					)
+				);
+				$output .= '</div>';
+			} else {
+				$output .= $this->NetCommonsForm->input($inputValue . '.value',
+					Hash::merge(array(
+						'label' => $this->SwitchLanguage->inputLabel(__d($labelPlugin, $key), $languageId),
+					), $options)
+				);
+			}
 
 			$output .= '</div>';
 		}
@@ -317,6 +337,30 @@ class SiteManagerHelper extends AppHelper {
 	public function getValue($model, $key, $languageId = '0') {
 		$requestKey = strtr($key, SiteManagerComponent::STRTR_FROM, SiteManagerComponent::STRTR_TO);
 		return Hash::get($this->_View->request->data[$model][$requestKey], $languageId . '.value');
+	}
+
+/**
+ * サイト停止のヘルプの表示
+ *
+ * @param string $placement ポジション
+ * @return string ヘルプHTML出力
+ */
+	public function helpSiteClose($placement = 'bottom') {
+		$html = '';
+
+		$content = __d('site_manager', '{X-SITE_NAME} : Site name');
+		$content = __d('mails', 'Each of the embedded keywords, will be sent is converted ' .
+				'to the corresponding content. <br />') . $content;
+
+		$html .= __d('site_manager', 'Can use an embedded keyword.') . ' ';
+		$html .= '<a href="" data-toggle="popover" data-placement="' . $placement . '"' .
+					' title="' . __d('mails', 'Embedded keyword?') . '"' . ' data-content="' . $content . '">';
+		$html .= '<span class="glyphicon glyphicon-question-sign"></span>';
+		$html .= '</a>';
+		$html .= '<script type="text/javascript">' .
+			'$(function () { $(\'[data-toggle="popover"]\').popover({html: true}) });</script>';
+
+		return $html;
 	}
 
 }
