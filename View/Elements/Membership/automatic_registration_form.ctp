@@ -83,7 +83,7 @@ $SiteSetting->prepare();
 
 				<div ng-show="<?php echo $domId; ?>">
 					<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'AutoRegist.disclaimer', array(
-							'type' => 'textarea',
+							'type' => 'wysiwyg',
 							'help' => true,
 						)); ?>
 				</div>
