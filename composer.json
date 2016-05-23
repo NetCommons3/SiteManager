@@ -8,16 +8,19 @@
         }
     },
     "require": {
-        "cakephp/cakephp":              "~2.6",
-        "cakephp/debug_kit":            "~2.2",
         "cakedc/migrations":            "~2.2",
-        "phpunit/phpunit":              "~3.7.38",
-        "sebastian/phpcpd":             "~2.0"
+        "netcommons/auth":              "dev-master",
+        "netcommons/control-panel":     "dev-master",
+        "netcommons/data-types":        "dev-master",
+        "netcommons/m17n":              "dev-master",
+        "netcommons/net-commons":       "dev-master",
+        "netcommons/pages":             "dev-master",
+        "netcommons/plugin-manager":    "dev-master",
+        "netcommons/rooms":             "dev-master",
+        "netcommons/theme-settings":    "dev-master"
     },
     "require-dev": {
-        "mustangostang/spyc":           "dev-master",
-        "netcommons/net-commons":       "dev-master",
-        "satooshi/php-coveralls":       "dev-master"
+        "netcommons/users":             "dev-master"
     },
     "license": "NetCommons License",
     "authors": [
