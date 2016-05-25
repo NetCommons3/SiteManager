@@ -72,6 +72,15 @@ class SiteSettingFixture extends CakeTestFixture {
 			'label' => 'Mail.from',
 			'weight' => '1',
 		),
+		array(
+			'id' => '6',
+			'language_id' => '0',
+			'key' => 'Upload.allow_extension',
+			'value' => 'gif,jpg,png,zip,mp4',
+			'label' => 'Upload.allow_extension',
+			'weight' => '1',
+		)
+
 	);
 
 }
