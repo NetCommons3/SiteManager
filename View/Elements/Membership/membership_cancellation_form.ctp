@@ -10,7 +10,7 @@
  */
 ?>
 
-<article>
+<article ng-controller="WysiwygSiteManager">
 	<?php $domId = $this->SiteManager->domId('SiteSetting.UserCancel.use_cancel_feature'); ?>
 	<div ng-init="<?php echo $domId . ' = ' . (int)$this->SiteManager->getValue('SiteSetting', 'UserCancel.use_cancel_feature'); ?>">
 

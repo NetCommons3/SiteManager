@@ -17,7 +17,7 @@ $SiteSetting->prepare();
 
 <div class="panel panel-default">
 	<div class="panel-body">
-		<article>
+		<article ng-controller="WysiwygSiteManager">
 			<?php $domId = $this->SiteManager->domId('SiteSetting.AutoRegist.use_automatic_register'); ?>
 			<?php $confirmationDomId = $this->SiteManager->domId('SiteSetting.AutoRegist.confirmation'); ?>
 			<div ng-init="<?php echo $domId . ' = ' . (int)$this->SiteManager->getValue('SiteSetting', 'AutoRegist.use_automatic_register'); ?>;
