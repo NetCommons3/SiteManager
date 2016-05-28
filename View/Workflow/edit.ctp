@@ -12,7 +12,6 @@
 
 <?php echo $this->SiteManager->tabs(); ?>
 
-
 <?php echo $this->NetCommonsForm->create('SiteSetting', array(
 		'ng-controller' => 'SiteManager',
 	)); ?>

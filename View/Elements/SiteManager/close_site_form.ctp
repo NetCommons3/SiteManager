@@ -10,7 +10,7 @@
  */
 ?>
 
-<article>
+<article ng-controller="WysiwygSiteManager">
 	<?php $domId = $this->SiteManager->domId('SiteSetting.App.close_site'); ?>
 	<div ng-init="<?php echo $domId . ' = ' . (int)$this->SiteManager->getValue('SiteSetting', 'App.close_site'); ?>">
 
