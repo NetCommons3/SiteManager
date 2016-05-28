@@ -95,7 +95,7 @@ class SiteManagerRecords extends NetCommonsMigration {
 				'language_id' => '2',
 				'key' => 'ForgotPass.issue_mail_body',
 				'value' => '{X-SITE_NAME}におけるログイン用パスワードの新規発行リクエストがありました。
-新たにパスワードを発行する場合は、認証キー入力画面で、下記の認証キーを入力して下さい。
+新たにパスワードを発行する場合は、認証キー入力画面で、下記の認証キーを入力してください。
 
 このリクエストが手違いの場合はこのメールを破棄してください。
 今までのパスワードでログインすることができます。
@@ -109,7 +109,7 @@ class SiteManagerRecords extends NetCommonsMigration {
 				'key' => 'ForgotPass.issue_mail_body',
 				'value' => 'A web user has just requested for a new password for your account at {X-SITE_NAME} site.
 If you didn\'t ask for one, don\'t worry.  Just delete this e-mail.
-新たにパスワードを発行する場合は、認証キー入力画面で、下記の認証キーを入力して下さい。
+新たにパスワードを発行する場合は、認証キー入力画面で、下記の認証キーを入力してください。
 
 Authorization key：
 {X-AUTHORIZATION_KEY}',
@@ -133,7 +133,7 @@ Authorization key：
 				'language_id' => '2',
 				'key' => 'ForgotPass.request_mail_body',
 				'value' => '{X-SITE_NAME}におけるログイン用パスワードの新規発行リクエストがありました。
-下記のログインIDを使用して、新しいパスワードを再登録して下さい。
+下記のログインIDを使用して、新しいパスワードを再登録してください。
 
 ハンドル: {X-HANDLENAME}
 ログインID: {X-USERNAME}',
@@ -143,7 +143,7 @@ Authorization key：
 				'language_id' => '1',
 				'key' => 'ForgotPass.request_mail_body',
 				'value' => 'A web user has just requested for a new password for your account at {X-SITE_NAME} site.
-下記のログインIDを使用して、新しいパスワードを再登録して下さい。
+下記のログインIDを使用して、新しいパスワードを再登録してください。
 
 Handle: {X-HANDLENAME}
 Login id: {X-USERNAME}',

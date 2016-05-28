@@ -247,7 +247,7 @@ class SiteManagerHelper extends AppHelper {
 		if (Hash::get($options, 'type', 'text') === 'radio') {
 			$options = Hash::merge(array(
 				'class' => false,
-				'childDiv' => array('class' => 'form-inline'),
+				'inline' => true
 			), $options);
 		}
 
@@ -284,7 +284,7 @@ class SiteManagerHelper extends AppHelper {
 			$inputValue = $model . '.' . $requestKey . '.' . $languageId;
 
 			if ((string)$activeLangId === (string)$languageId) {
-				$active = 'active';
+				$active = ' active';
 			} else {
 				$active = '';
 			}

@@ -11,24 +11,7 @@
  * @param {function($scope, $window)} Controller
  */
 NetCommonsApp.controller('SiteManager',
-    ['$scope', '$window', 'NetCommonsWysiwyg', function($scope, $window, NetCommonsWysiwyg) {
-
-      /**
-       * tinymce
-       *
-       * @type {object}
-       */
-      $scope.tinymce = NetCommonsWysiwyg.new();
-      $scope.tinymce.options.toolbar = [
-         'fontselect fontsizeselect formatselect ' +
-            '| bold italic underline strikethrough ' +
-            '| subscript superscript | forecolor backcolor ' +
-            '| removeformat ' +
-            '| undo redo | alignleft aligncenter alignright ' +
-            '| bullist numlist | indent outdent blockquote ' +
-            '| table | hr | titleicons | tex | link unlink ' +
-            '| pastetext code nc3Preview'
-      ];
+    ['$scope', '$window', function($scope, $window) {
 
       /**
        * 入会退会URL
@@ -81,5 +64,34 @@ NetCommonsApp.controller('SiteManager',
       $scope.cancel = function() {
         $window.location.reload();
       };
+
+    }]);
+
+
+/**
+ * SiteManager Javascript
+ *
+ * @param {string} Controller name
+ * @param {function($scope, $window)} Controller
+ */
+NetCommonsApp.controller('WysiwygSiteManager',
+    ['$scope', 'NetCommonsWysiwyg', function($scope, NetCommonsWysiwyg) {
+
+      /**
+       * tinymce
+       *
+       * @type {object}
+       */
+      $scope.tinymce = NetCommonsWysiwyg.new();
+      $scope.tinymce.options.toolbar = [
+         'fontselect fontsizeselect formatselect ' +
+            '| bold italic underline strikethrough ' +
+            '| subscript superscript | forecolor backcolor ' +
+            '| removeformat ' +
+            '| undo redo | alignleft aligncenter alignright ' +
+            '| bullist numlist | indent outdent blockquote ' +
+            '| table | hr | titleicons | tex | link unlink ' +
+            '| pastetext code nc3Preview'
+      ];
 
     }]);
