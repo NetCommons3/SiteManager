@@ -76,7 +76,7 @@ class SiteManagerHelper extends AppHelper {
  */
 	public function beforeRender($viewFile) {
 		$this->NetCommonsHtml->css(array(
-			'/site_manager/css/style.css', '/data_types/css/style.css'
+			'/site_manager/css/style.css'
 		));
 		$this->NetCommonsHtml->script(array(
 			'/site_manager/js/site_manager.js'
