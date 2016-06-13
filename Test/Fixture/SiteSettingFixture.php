@@ -50,15 +50,7 @@ class SiteSettingFixture extends CakeTestFixture {
 		),
 		array(
 			'id' => '3',
-			'language_id' => '2',
-			'key' => 'App.default_timezone',
-			'value' => 'Asia/Tokyo',
-			'label' => 'SiteTimezone',
-			'weight' => '1',
-		),
-		array(
-			'id' => '4',
-			'language_id' => '1',
+			'language_id' => '0',
 			'key' => 'App.default_timezone',
 			'value' => 'Asia/Tokyo',
 			'label' => 'SiteTimezone',

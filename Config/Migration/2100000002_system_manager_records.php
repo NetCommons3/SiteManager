@@ -47,15 +47,9 @@ class SystemManagerRecords extends NetCommonsMigration {
 			// * サイトタイムゾーン
 			// ** 日本語
 			array(
-				'language_id' => '2',
+				'language_id' => 0,
 				'key' => 'App.default_timezone',
 				'value' => 'Asia/Tokyo',
-			),
-			// ** 英語
-			array(
-				'language_id' => '1',
-				'key' => 'App.default_timezone',
-				'value' => 'UTC',
 			),
 
 			//セッションタイムアウト
