@@ -63,12 +63,10 @@ class SystemManagerValidateBehavior extends SiteSettingValidateBehavior {
 		}
 
 		//デフォルトのタイムゾーン
-		foreach ($data[$model->alias]['App.default_timezone'] as $langId => $check) {
-			$value = Hash::get($check, 'value');
-			if (! in_array($value, array_keys($model->SiteSetting->defaultTimezones), true)) {
-				$this->_setValidationMessage($model, 'App.default_timezone', $langId,
-						__d('net_commons', 'Invalid request.'));
-			}
+		$value = Hash::get($data[$model->alias]['App.default_timezone'], '0.value');
+		if (! in_array($value, array_keys($model->SiteSetting->defaultTimezones), true)) {
+			$this->_setValidationMessage($model, 'App.default_timezone', '0',
+					__d('net_commons', 'Invalid request.'));
 		}
 
 		//グループルームの容量
