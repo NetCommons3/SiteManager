@@ -126,13 +126,13 @@ $SiteSetting->prepare();
 	<div class="panel-body">
 		<article>
 			<div>
-				<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'AutoRegist.mail_subject', array(
+				<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'UserRegist.mail_subject', array(
 						//'type' => 'textarea',
 					)); ?>
 			</div>
 
 			<div>
-				<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'AutoRegist.mail_body', array(
+				<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'UserRegist.mail_body', array(
 						'type' => 'textarea',
 						'mailHelp' => true,
 					)); ?>
