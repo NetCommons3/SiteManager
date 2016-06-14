@@ -55,8 +55,10 @@ class MembershipController extends SiteManagerAppController {
 				'membershipTab',
 				Hash::get($this->request->data['SiteSetting'], 'membershipTab', 'automatic-registration')
 			);
+			$this->request->data['SiteSetting'] = Hash::remove(
+				$this->request->data['SiteSetting'], 'membershipTab'
+			);
 
-			//権限リストをモデルにセット
 			$this->SiteSetting->autoRegistRoles = $userRoles;
 
 			//登録処理
@@ -96,10 +98,11 @@ class MembershipController extends SiteManagerAppController {
 					'AutoRegist.acceptance_mail_subject',
 					// ** 会員登録受付メールの本文
 					'AutoRegist.acceptance_mail_body',
+
 					// ** 会員登録メールの件名
-					'AutoRegist.mail_subject',
+					'UserRegist.mail_subject',
 					// ** 会員登録メールの本文
-					'AutoRegist.mail_body',
+					'UserRegist.mail_body',
 
 					// * 退会設定
 					// ** 退会機能の設定

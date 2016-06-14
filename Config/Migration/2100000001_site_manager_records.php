@@ -366,46 +366,6 @@ Clicking on the link below will activate the account of this user.
 
 {X-URL}',
 			),
-			// ** 会員登録メールの件名
-			// *** 日本語
-			array(
-				'language_id' => '2',
-				'key' => 'AutoRegist.mail_subject',
-				'value' => '{X-SITE_NAME}へようこそ',
-			),
-			// *** 英語
-			array(
-				'language_id' => '1',
-				'key' => 'AutoRegist.mail_subject',
-				'value' => 'Welcome to {X-SITE_NAME}.',
-			),
-			// ** 会員登録メールの本文
-			// *** 日本語
-			array(
-				'language_id' => '2',
-				'key' => 'AutoRegist.mail_body',
-				'value' => '会員登録が完了しましたのでお知らせします。
-ハンドル：{X-HANDLE}
-ログインID：{X-LOGIN_ID}
-パスワード：{X-PASSWORD}
-e-mail：{X-EMAIL}
-
-下記アドレスからログインしてください。
-{X-URL}',
-			),
-			// *** 英語
-			array(
-				'language_id' => '1',
-				'key' => 'AutoRegist.mail_body',
-				'value' => 'Thank you for registering for {X-SITE_NAME}.
-Handle:{X-HANDLENAME}
-Login_id:{X-USERNAME}
-Password:{X-PASSWORD}
-e-mail:{X-EMAIL}
-
-You may now log in by clicking on this link or copying and pasting it in your browser:
-{X-URL}',
-			),
 
 			// * 退会設定
 			// ** 退会機能の設定

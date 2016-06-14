@@ -222,6 +222,7 @@ class SiteSetting extends SiteManagerAppModel {
 		'DataTypes.Timezone',
 		'SiteManager.IpAddressManager',
 		'SiteManager.SiteManagerValidate',
+		'SiteManager.SiteManagerSave',
 		'SiteManager.SystemManagerValidate',
 		'SiteManager.SystemManagerSave',
 		'ThemeSettings.Theme',
@@ -330,6 +331,10 @@ class SiteSetting extends SiteManagerAppModel {
  * @return array サイト設定データ配列
  */
 	public function getSiteSettingForEdit($conditions = array()) {
+		$this->loadModels(array(
+			'MailSettingFixedPhrase' => 'Mails.MailSettingFixedPhrase',
+		));
+
 		$settings = $this->find('all', array(
 			'recursive' => -1,
 			'conditions' => $conditions
@@ -339,6 +344,34 @@ class SiteSetting extends SiteManagerAppModel {
 			'{n}.SiteSetting',
 			'{n}.SiteSetting.key'
 		);
+
+		if (isset($conditions['SiteSetting.key']) &&
+				in_array('UserRegist.mail_subject', $conditions['SiteSetting.key'], true)) {
+
+			$mails = $this->MailSettingFixedPhrase->find('all', array(
+				'recursive' => -1,
+				'conditions' => array(
+					'plugin_key' => 'user_manager',
+					'type_key' => 'save_notify',
+				),
+			));
+
+			foreach ($mails as $mail) {
+				$langId = $mail['MailSettingFixedPhrase']['language_id'];
+				$settings['UserRegist.mail_subject'][$langId] = array(
+					'id' => null,
+					'key' => 'UserRegist.mail_subject',
+					'language_id' => $langId,
+					'value' => $mail['MailSettingFixedPhrase']['mail_fixed_phrase_subject'],
+				);
+				$settings['UserRegist.mail_body'][$langId] = array(
+					'id' => null,
+					'key' => 'UserRegist.mail_body',
+					'language_id' => $langId,
+					'value' => $mail['MailSettingFixedPhrase']['mail_fixed_phrase_body'],
+				);
+			}
+		}
 
 		return $settings;
 	}
@@ -403,10 +436,12 @@ class SiteSetting extends SiteManagerAppModel {
 		try {
 			//登録処理
 			$data = $this->saveRoomDiskSize($data);
+			$data = $this->saveUserRegist($data);
 
 			$saveData = Hash::extract($data, 'SiteSetting.{s}.{n}');
-			if (! $this->saveMany($saveData, ['validate' => false])) {
-				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+
+			if ($saveData && ! $this->saveMany($saveData, ['validate' => false])) {
+				throw new InternalErrorException(__d('net_commons', 'Internal Server Error 2'));
 			}
 
 			//トランザクションCommit
