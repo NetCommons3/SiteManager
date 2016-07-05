@@ -15,20 +15,20 @@ $SiteSetting->prepare();
 ?>
 
 <article>
-	<?php echo $this->SiteManager->inputCommon('SiteSetting', 'Meta.author', array(
+	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Meta.author', array(
 		'help' => true
 	)); ?>
 
-	<?php echo $this->SiteManager->inputCommon('SiteSetting', 'Meta.copyright', array(
+	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Meta.copyright', array(
 		'help' => true
 	)); ?>
 
-	<?php echo $this->SiteManager->inputCommon('SiteSetting', 'Meta.keywords', array(
+	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Meta.keywords', array(
 		'type' => 'textarea',
 		'help' => true
 	)); ?>
 
-	<?php echo $this->SiteManager->inputCommon('SiteSetting', 'Meta.description', array(
+	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Meta.description', array(
 		'type' => 'textarea',
 		'help' => true
 	)); ?>
