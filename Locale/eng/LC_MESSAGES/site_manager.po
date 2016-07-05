@@ -161,10 +161,13 @@ msgstr "by administrator"
 msgid "AutoRegist.use_secret_key"
 msgstr "Use secret key?"
 
+msgid "AutoRegist.use_secret_key help"
+msgstr "認証キーを使用するとキーを知っている人のみ自動会員登録が可能となります。"
+
 msgid "AutoRegist.secret_key"
 msgstr ""
 
-msgid "AutoRegist.secret_key help"
+msgid "AutoRegist.secret_key placeholder"
 msgstr "キーを入力してください。"
 
 msgid "AutoRegist.role_key"

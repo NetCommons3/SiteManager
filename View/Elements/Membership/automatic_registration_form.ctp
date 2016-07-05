@@ -59,9 +59,12 @@ $SiteSetting->prepare();
 							<?php echo $this->SiteManager->inputCommon('SiteSetting', 'AutoRegist.secret_key', array(
 									'type' => 'text',
 									'label' => false,
-									'placeholder' => __d('site_manager', 'AutoRegist.secret_key help')
+									'placeholder' => __d('site_manager', 'AutoRegist.secret_key placeholder'),
+									'div' => false,
 								)); ?>
 						</div>
+
+						<?php echo $this->NetCommonsForm->help(__d('site_manager', 'AutoRegist.use_secret_key help')); ?>
 					</div>
 				</div>
 
