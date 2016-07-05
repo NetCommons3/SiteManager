@@ -69,6 +69,7 @@ $SiteSetting->prepare();
 					<?php echo $this->SiteManager->inputCommon('SiteSetting', 'AutoRegist.role_key', array(
 							'type' => 'select',
 							'options' => $userRoles,
+							'help' => true,
 						)); ?>
 				</div>
 

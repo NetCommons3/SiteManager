@@ -170,6 +170,10 @@ msgstr "キーを入力してください。"
 msgid "AutoRegist.role_key"
 msgstr "Authority setting"
 
+msgid "AutoRegist.role_key help"
+msgstr "If you want to increase the authority, please increase from `Role manager`. "
+"However, it can not be the authority at the time of automatic registration privileges that can be used by the publisher plug-ins."
+
 msgid "AutoRegist.prarticipate_default_room"
 msgstr "Participate in the default room."
 

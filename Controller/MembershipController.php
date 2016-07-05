@@ -43,7 +43,7 @@ class MembershipController extends SiteManagerAppController {
 			'conditions' => array(
 				'UserRole.type' => UserRole::ROLE_TYPE_USER,
 				'UserRole.language_id' => Current::read('Language.id'),
-				'UserRoleSetting.origin_role_key' => UserRole::USER_ROLE_KEY_COMMON_USER
+				'UserRoleSetting.is_site_plugins' => false
 			),
 			'order' => array('UserRole.id' => 'asc')
 		));
