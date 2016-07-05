@@ -32,7 +32,7 @@ msgid "Tab.membership"
 msgstr "入会・退会"
 
 msgid "Tab.workflow"
-msgstr "コンテンツ承認"
+msgstr "承認メール"
 
 #
 # 一般設定
