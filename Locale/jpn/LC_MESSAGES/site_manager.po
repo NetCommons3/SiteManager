@@ -165,16 +165,22 @@ msgid "Approval by administrator"
 msgstr "管理者による承認"
 
 msgid "AutoRegist.use_secret_key"
-msgstr "入力キーの使用"
+msgstr "認証キーの使用"
+
+msgid "AutoRegist.use_secret_key help"
+msgstr "認証キーを使用するとキーを知っている人のみ自動会員登録が可能となります。"
 
 msgid "AutoRegist.secret_key"
 msgstr ""
 
-msgid "AutoRegist.secret_key help"
+msgid "AutoRegist.secret_key placeholder"
 msgstr "キーを入力してください。"
 
 msgid "AutoRegist.role_key"
 msgstr "自動登録時の権限"
+
+msgid "AutoRegist.role_key help"
+msgstr "権限を増やす場合は、「権限管理」から行ってください。ただし、サイト運営プラグインが使える権限を自動登録時の権限とすることはできません。"
 
 msgid "AutoRegist.prarticipate_default_room"
 msgstr "自動登録時にデフォルトルームに参加する"
