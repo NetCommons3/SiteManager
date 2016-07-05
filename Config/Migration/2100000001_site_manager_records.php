@@ -200,12 +200,6 @@ Login id: {X-USERNAME}',
 				'key' => 'Meta.robots',
 				'value' => 'index,follow',
 			),
-			// * 閲覧対象年齢層の指定
-			array(
-				'language_id' => 0,
-				'key' => 'Meta.rating',
-				'value' => 'General',
-			),
 
 			//ページスタイル
 			// * テーマ(Roomデータを参照する)

@@ -53,8 +53,6 @@ class MetaSettingsController extends SiteManagerAppController {
 					'Meta.description',
 					//ロボット型検索エンジンへの対応
 					'Meta.robots',
-					//閲覧対象年齢層の指定
-					'Meta.rating',
 				)
 			));
 		}

@@ -22,6 +22,8 @@
 
 	<div class="panel panel-default">
 		<div class="panel-body">
+			<?php echo $this->SwitchLanguage->tablist('meta-settings-'); ?>
+
 			<?php echo $this->element('MetaSettings/meta_form'); ?>
 		</div>
 

@@ -32,7 +32,7 @@ msgid "Tab.membership"
 msgstr "Membership"
 
 msgid "Tab.workflow"
-msgstr "コンテンツ承認"
+msgstr "Workflow mail"
 
 #
 # 一般設定
@@ -136,9 +136,6 @@ msgstr "Welcome robots?"
 
 msgid "Meta.robots help"
 msgstr "\"index\" means that you allow search robots to crawl on your site, and \"follow\" means that you allow search robots to link to your site."
-
-msgid "Meta.rating"
-msgstr "Classifications and Ratings"
 
 #
 # 入会設定

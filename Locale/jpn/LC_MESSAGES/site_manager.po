@@ -32,7 +32,7 @@ msgid "Tab.membership"
 msgstr "入会・退会"
 
 msgid "Tab.workflow"
-msgstr "コンテンツ承認"
+msgstr "承認メール"
 
 #
 # 一般設定
@@ -142,9 +142,6 @@ msgstr "ロボット型検索エンジンへの対応"
 
 msgid "Meta.robots help"
 msgstr "ロボット型検索エンジンが登録の対象にしてよいか(index)、リンクを辿ってよいか(follow)の組み合わせを選択できます。"
-
-msgid "Meta.rating"
-msgstr "閲覧対象年齢層の指定"
 
 #
 # 入会設定
