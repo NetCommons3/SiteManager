@@ -62,19 +62,6 @@ class SiteSetting extends SiteManagerAppModel {
 	);
 
 /**
- * METAタグの閲覧対象年齢層の指定のオプション
- * 文言は、prepare()でセットする
- *
- * @var array
- */
-	public $metaRating = array(
-		'General' => array('site_manager', 'General'),
-		'14 years' => array('site_manager', '14 years'),
-		'restricted' => array('site_manager', 'Restricted'),
-		'mature' => array('site_manager', 'Mature'),
-	);
-
-/**
  * 自動ログアウトの時間
  *
  * @var array
@@ -237,10 +224,6 @@ class SiteSetting extends SiteManagerAppModel {
 		//METAタグのロボット型検索エンジンへの対応のオプション
 		foreach ($this->metaRobots as $key => $message) {
 			$this->metaRobots[$key] = __d($message[0], $message[1]);
-		}
-		//METAタグの閲覧対象年齢層の指定のオプション
-		foreach ($this->metaRating as $key => $message) {
-			$this->metaRating[$key] = __d($message[0], $message[1]);
 		}
 		//メール形式のオプション
 		foreach ($this->mailMessageType as $key => $message) {

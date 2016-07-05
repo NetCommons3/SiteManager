@@ -38,9 +38,4 @@ $SiteSetting->prepare();
 		'options' => $SiteSetting->metaRobots,
 		'help' => true
 	)); ?>
-
-	<?php echo $this->SiteManager->inputCommon('SiteSetting', 'Meta.rating', array(
-		'type' => 'select',
-		'options' => $SiteSetting->metaRating,
-	)); ?>
 </article>
