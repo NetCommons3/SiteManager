@@ -78,7 +78,9 @@ class DefaultPageSettingsController extends SiteManagerAppController {
 
 		} else {
 			$this->request->data['Room'] = $this->viewVars['rooms'][$this->viewVars['activeRoomId']]['Room'];
-			$this->theme = Hash::get($this->request->query, 'theme', $this->theme);
+			$this->theme = Hash::get(
+				$this->request->query, 'theme', Hash::get($this->request->data, 'Room.theme', $this->theme)
+			);
 		}
 	}
 }
