@@ -97,12 +97,6 @@ msgstr "管理者以外はサイトにアクセスすることができないよ
 msgid "App.site_closing_reason"
 msgstr "メンテナンス画面に表示する文言"
 
-msgid "Can use an embedded keyword."
-msgstr "埋め込みキーワードが使えます。"
-
-msgid "{X-SITE_NAME} : Site name"
-msgstr "{X-SITE_NAME} : サイト名"
-
 
 #
 # メタ情報
