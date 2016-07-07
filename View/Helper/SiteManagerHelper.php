@@ -348,11 +348,11 @@ class SiteManagerHelper extends AppHelper {
 	public function helpSiteClose($placement = 'bottom') {
 		$html = '';
 
-		$content = __d('site_manager', '{X-SITE_NAME} : Site name');
-		$content = __d('mails', 'Each of the embedded keywords, will be sent is converted ' .
+		$content = __d('net_commons', '{X-SITE_NAME} : Site name');
+		$content = __d('net_commons', 'Each of the embedded keywords, will be converted ' .
 				'to the corresponding content. <br />') . $content;
 
-		$html .= __d('site_manager', 'Can use an embedded keyword.') . ' ';
+		$html .= __d('net_commons', 'Can use an embedded keyword.') . ' ';
 		$html .= '<a href="" data-toggle="popover" data-placement="' . $placement . '"' .
 					' title="' . __d('mails', 'Embedded keyword?') . '"' . ' data-content="' . $content . '">';
 		$html .= '<span class="glyphicon glyphicon-question-sign"></span>';
