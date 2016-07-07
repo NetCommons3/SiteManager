@@ -349,7 +349,7 @@ class SiteManagerHelper extends AppHelper {
 		$html = '';
 
 		$content = __d('site_manager', '{X-SITE_NAME} : Site name');
-		$content = __d('mails', 'Each of the embedded keywords, will be sent is converted ' .
+		$content = __d('net_commons', 'Each of the embedded keywords, will be converted ' .
 				'to the corresponding content. <br />') . $content;
 
 		$html .= __d('site_manager', 'Can use an embedded keyword.') . ' ';
