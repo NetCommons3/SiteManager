@@ -74,6 +74,65 @@ NetCommonsApp.controller('SiteManager',
  * @param {string} Controller name
  * @param {function($scope, $window)} Controller
  */
+NetCommonsApp.controller('MembershipInputItems',
+    ['$scope', function($scope) {
+
+      /**
+       * userAttributes
+       *
+       * @type {object}
+       */
+      $scope.userAttributes = [];
+
+      /**
+       * initialize
+       *
+       * @return {void}
+       */
+      $scope.initialize = function(data) {
+        angular.forEach(data.userAttributes, function(value) {
+          $scope.userAttributes.push(value);
+        });
+      };
+
+      /**
+       * move
+       *
+       * @return {void}
+       */
+      $scope.move = function(type, index) {
+        var dest = (type === 'up') ? index - 1 : index + 1;
+        if (angular.isUndefined($scope.userAttributes[dest])) {
+          return false;
+        }
+
+        var destUserAttr = angular.copy($scope.userAttributes[dest]);
+        var targetdest = angular.copy($scope.userAttributes[index]);
+        $scope.userAttributes[index] = destUserAttr;
+        $scope.userAttributes[dest] = targetdest;
+      };
+
+      /**
+       * desiplay
+       *
+       * @return {void}
+       */
+      $scope.display = function(index, value) {
+        if (angular.isUndefined($scope.userAttributes[index])) {
+          return false;
+        }
+        $scope.userAttributes[index]['userAttributeSetting']['autoRegistDisplay'] = value;
+      };
+
+    }]);
+
+
+/**
+ * SiteManager Javascript
+ *
+ * @param {string} Controller name
+ * @param {function($scope, $window)} Controller
+ */
 NetCommonsApp.controller('WysiwygSiteManager',
     ['$scope', 'NetCommonsWysiwyg', function($scope, NetCommonsWysiwyg) {
 

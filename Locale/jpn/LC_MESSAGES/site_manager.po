@@ -180,7 +180,10 @@ msgid "AutoRegist.prarticipate_default_room"
 msgstr "自動登録時にデフォルトルームに参加する"
 
 msgid "Input items"
-msgstr "入力項目"
+msgstr "自動登録時で入力させる項目"
+
+msgid "Member items that are required is a change not allowed."
+msgstr "必須とされている会員項目は、自動登録時も必須項目となり、「表示」から変更できません。"
 
 msgid "AutoRegist.disclaimer"
 msgstr "利用許諾文"

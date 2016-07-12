@@ -20,14 +20,38 @@ App::uses('ModelBehavior', 'Model');
 class SiteManagerSaveBehavior extends ModelBehavior {
 
 /**
- *  ルームの容量の登録
+ * 自動登録時で入力させる項目の登録
  *
  * @param Model $model ビヘイビア呼び出し元モデル
  * @param array $data リクエストデータ配列
  * @return array リクエストデータ
  * @throws InternalErrorException
  */
-	public function saveUserRegist(Model $model, $data) {
+	public function saveUserAttributeSettingByUserRegist(Model $model, $data) {
+		if (! isset($data['UserAttributeSetting'])) {
+			return $data;
+		}
+		$model->loadModels([
+			'UserAttributeSetting' => 'UserAttributes.UserAttributeSetting',
+		]);
+		if (! $model->UserAttributeSetting->saveMany($data['UserAttributeSetting'])) {
+			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+		}
+
+		unset($data['UserAttributeSetting']);
+
+		return $data;
+	}
+
+/**
+ * 自動登録メール件名・本文の登録
+ *
+ * @param Model $model ビヘイビア呼び出し元モデル
+ * @param array $data リクエストデータ配列
+ * @return array リクエストデータ
+ * @throws InternalErrorException
+ */
+	public function saveUserRegistMail(Model $model, $data) {
 		if (! isset($data[$model->alias]['UserRegist.mail_subject']) ||
 				! isset($data[$model->alias]['UserRegist.mail_body'])) {
 			return $data;

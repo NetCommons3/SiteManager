@@ -76,13 +76,16 @@ $SiteSetting->prepare();
 						)); ?>
 				</div>
 
-				<div class="panel panel-default" ng-show="<?php echo $domId; ?>">
-					<div class="panel-heading">
-						<?php echo __d('site_manager', 'Input items'); ?>
-					</div>
-					<div class="panel-body">
-
-					</div>
+				<div class="panel panel-default automatic-input-items"
+						ng-init="AutomaticInputItems = <?php echo $automaticInputItems; ?>"
+						ng-show="(<?php echo $domId; ?> || AutomaticInputItems)">
+					<?php
+						echo $this->NetCommonsForm->hidden('_siteManager.automaticInputItems', array(
+							'value' => '{{AutomaticInputItems}}'
+						));
+						$this->NetCommonsForm->unlockField('_siteManager.automaticInputItems');
+					?>
+					<?php echo $this->element('Membership/automatic_input_items'); ?>
 				</div>
 
 				<div ng-show="<?php echo $domId; ?>">
