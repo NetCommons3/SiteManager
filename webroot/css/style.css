@@ -12,3 +12,23 @@
 	padding: 8px;
 	margin-top: 0px;
 }
+
+/**
+ * 入会・退会設定
+ */
+ul.automatic-user-attribute {
+	padding-left: 0px;
+}
+ul.automatic-user-attribute li.list-group-item {
+	padding: 4px 8px;
+}
+ul.automatic-user-attribute li.list-group-item .pull-left {
+	margin-right: 16px;
+}
+ul.automatic-user-attribute .user-attributes-display-btn {
+	min-width: 64px;
+}
+.automatic-input-items .panel-heading {
+	cursor: pointer;
+	font-weight: bold;
+}

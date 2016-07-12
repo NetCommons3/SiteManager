@@ -419,7 +419,8 @@ class SiteSetting extends SiteManagerAppModel {
 		try {
 			//登録処理
 			$data = $this->saveRoomDiskSize($data);
-			$data = $this->saveUserRegist($data);
+			$data = $this->saveUserAttributeSettingByUserRegist($data);
+			$data = $this->saveUserRegistMail($data);
 
 			$saveData = Hash::extract($data, 'SiteSetting.{s}.{n}');
 

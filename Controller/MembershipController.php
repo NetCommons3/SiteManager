@@ -27,6 +27,7 @@ class MembershipController extends SiteManagerAppController {
  */
 	public $uses = array(
 		'SiteManager.SiteSetting',
+		'UserAttributes.UserAttribute',
 		'UserRoles.UserRole',
 	);
 
@@ -36,18 +37,8 @@ class MembershipController extends SiteManagerAppController {
  * @return void
  */
 	public function edit() {
-		//権限リスト取得
-		$userRoles = $this->UserRole->find('list', array(
-			'recursive' => 0,
-			'fields' => array('UserRole.key', 'UserRole.name'),
-			'conditions' => array(
-				'UserRole.type' => UserRole::ROLE_TYPE_USER,
-				'UserRole.language_id' => Current::read('Language.id'),
-				'UserRoleSetting.is_site_plugins' => false
-			),
-			'order' => array('UserRole.id' => 'asc')
-		));
-		$this->set('userRoles', $userRoles);
+		//事前準備
+		$this->__prepare();
 
 		//リクエストセット
 		if ($this->request->is('post')) {
@@ -59,7 +50,14 @@ class MembershipController extends SiteManagerAppController {
 				$this->request->data['SiteSetting'], 'membershipTab'
 			);
 
-			$this->SiteSetting->autoRegistRoles = $userRoles;
+			$automaticInputItems = Hash::get(
+				$this->request->data, '_siteManager.automaticInputItems', 'false'
+			);
+			$this->Session->write('automaticInputItems', $automaticInputItems);
+
+			$this->__parseRequestData();
+
+			$this->SiteSetting->autoRegistRoles = $this->viewVars['userRoles'];
 
 			//登録処理
 			$this->SiteManager->saveData();
@@ -69,6 +67,13 @@ class MembershipController extends SiteManagerAppController {
 				'membershipTab',
 				Hash::get($this->request->query, 'membershipTab', 'automatic-registration')
 			);
+			if ($this->Session->read('automaticInputItems')) {
+				$automaticInputItems = $this->Session->read('automaticInputItems');
+				$this->Session->delete('automaticInputItems');
+			} else {
+				$automaticInputItems = 'false';
+			}
+			$this->set('automaticInputItems', $automaticInputItems);
 
 			$this->request->data['SiteSetting'] = $this->SiteSetting->getSiteSettingForEdit(
 				array('SiteSetting.key' => array(
@@ -119,4 +124,73 @@ class MembershipController extends SiteManagerAppController {
 			));
 		}
 	}
+
+/**
+ * 前準備
+ *
+ * @return void
+ */
+	private function __prepare() {
+		//権限リスト取得
+		$userRoles = $this->UserRole->find('list', array(
+			'recursive' => 0,
+			'fields' => array('UserRole.key', 'UserRole.name'),
+			'conditions' => array(
+				'UserRole.type' => UserRole::ROLE_TYPE_USER,
+				'UserRole.language_id' => Current::read('Language.id'),
+				'UserRoleSetting.is_site_plugins' => false
+			),
+			'order' => array('UserRole.id' => 'asc')
+		));
+		$this->set('userRoles', $userRoles);
+
+		//会員項目リスト取得
+		$userAttributes = $this->UserAttribute->find('all', array(
+			'recursive' => 0,
+			'fields' => array(
+				'UserAttribute.name',
+				'UserAttributeSetting.id',
+				'UserAttributeSetting.required',
+				'UserAttributeSetting.auto_regist_display',
+				'UserAttributeSetting.auto_regist_weight',
+			),
+			'conditions' => array(
+				'UserAttribute.language_id' => Current::read('Language.id'),
+				'UserAttributeSetting.data_type_key NOT' => array('img', 'label'),
+				'OR' => array(
+					'UserAttributeSetting.user_attribute_key' => 'username',
+					'UserAttributeSetting.only_administrator_editable' => false,
+				),
+			),
+			'order' => array(
+				'UserAttributeSetting.auto_regist_weight' => 'asc',
+				'UserAttributeSetting.row' => 'asc',
+				'UserAttributeSetting.col' => 'asc',
+				'UserAttributeSetting.weight' => 'asc',
+			)
+		));
+		$this->set('userAttributes', $userAttributes);
+	}
+
+/**
+ * リクエストデータのパース処理
+ *
+ * @return void
+ */
+	private function __parseRequestData() {
+		$requestData = $this->request->data['UserAttributeSetting'];
+
+		foreach ($this->viewVars['userAttributes'] as $userAttribute) {
+			$id = $userAttribute['UserAttributeSetting']['id'];
+			if ($userAttribute['UserAttributeSetting']['required']) {
+				$requestData[$id]['auto_regist_display'] = null;
+			} elseif (! $requestData[$id]['auto_regist_display']) {
+				$requestData[$id]['auto_regist_display'] = null;
+				$requestData[$id]['auto_regist_weight'] = UserAttributeSetting::DEFAULT_AUTO_REGIST_DISPLAY;
+			}
+		}
+
+		$this->request->data['UserAttributeSetting'] = $requestData;
+	}
+
 }
