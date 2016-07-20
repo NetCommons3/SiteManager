@@ -76,8 +76,15 @@ class SiteSettingFixture extends CakeTestFixture {
 			'value' => 'gif,jpg,png,zip,mp4',
 			'label' => 'Upload.allow_extension',
 			'weight' => '1',
-		)
-
+		),
+		array(
+			'id' => '7',
+			'language_id' => '0',
+			'key' => 'Config.language',
+			'value' => 'ja',
+			'label' => '',
+			'weight' => null,
+		),
 	);
 
 }
