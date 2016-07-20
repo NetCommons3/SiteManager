@@ -9,8 +9,6 @@
  * @copyright Copyright 2014, NetCommons Project
  */
 
-App::uses('ClassRegistry', 'Utility');
-
 /**
  * SiteSetting Utility
  *
