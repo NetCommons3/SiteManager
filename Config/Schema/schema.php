@@ -17,7 +17,7 @@
  * @SuppressWarnings(PHPMD.LongVariable)
  * @SuppressWarnings(PHPMD.TooManyFields)
  */
-class NetCommonsSchema extends CakeSchema {
+class SiteManagerSchema extends CakeSchema {
 
 /**
  * Database connection
