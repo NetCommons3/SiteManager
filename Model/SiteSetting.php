@@ -151,6 +151,16 @@ class SiteSetting extends SiteManagerAppModel {
 	);
 
 /**
+ * データベースタイプ（MATCH AGAINST）
+ */
+	const DATABASE_SEARCH_MATCH_AGAIN = 'match_against';
+
+/**
+ * データベースタイプ（LIKE）
+ */
+	const DATABASE_SEARCH_LIKE = 'like';
+
+/**
  * デフォルトのタイムゾーンのオプション
  * データは、prepare()でセットする
  *
