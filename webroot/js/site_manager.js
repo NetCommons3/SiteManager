@@ -11,7 +11,7 @@
  * @param {function($scope, $window)} Controller
  */
 NetCommonsApp.controller('SiteManager',
-    ['$scope', '$window', function($scope, $window) {
+    ['$scope', '$window', 'NC3_URL', function($scope, $window, NC3_URL) {
 
       /**
        * 入会退会URL
@@ -39,11 +39,11 @@ NetCommonsApp.controller('SiteManager',
        * @return {void}
        */
       $scope.membershipCancel = function() {
-        var url = $scope.baseUrl + $scope.membershipUrl + $scope.membershipTab;
+        var url = NC3_URL + $scope.membershipUrl + $scope.membershipTab;
         if ($window.location.href === url) {
           $window.location.reload();
         } else {
-          $window.location.href = $scope.baseUrl + $scope.membershipUrl + $scope.membershipTab;
+          $window.location.href = NC3_URL + $scope.membershipUrl + $scope.membershipTab;
         }
       };
 
