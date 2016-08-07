@@ -39,11 +39,12 @@ NetCommonsApp.controller('SiteManager',
        * @return {void}
        */
       $scope.membershipCancel = function() {
-        var url = $scope.baseUrl + $scope.membershipUrl + $scope.membershipTab;
+        $scope.sending = true;
+        var url = $scope.membershipUrl + $scope.membershipTab;
         if ($window.location.href === url) {
           $window.location.reload();
         } else {
-          $window.location.href = $scope.baseUrl + $scope.membershipUrl + $scope.membershipTab;
+          $window.location.href = $scope.membershipUrl + $scope.membershipTab;
         }
       };
 
@@ -62,7 +63,22 @@ NetCommonsApp.controller('SiteManager',
        * @return {void}
        */
       $scope.cancel = function() {
+        $scope.sending = true;
         $window.location.reload();
+      };
+
+      /**
+       * キャンセル
+       *
+       * @return {void}
+       */
+      $scope.themePreview = function(url) {
+        $scope.sending = true;
+        if ($window.location.href === url) {
+          $window.location.reload();
+        } else {
+          $window.location.href = url;
+        }
       };
 
     }]);
