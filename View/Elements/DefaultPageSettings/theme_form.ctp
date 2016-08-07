@@ -17,19 +17,17 @@ $url = array(
 
 <article>
 	<?php echo $this->NetCommonsForm->create('Room', array(
-			'url' => $this->NetCommonsHtml->url(array('key' => $activeRoomId)),
+			'url' => NetCommonsUrl::actionUrlAsArray(array('key' => $activeRoomId)),
 		)); ?>
 
 		<?php echo $this->NetCommonsForm->hidden('Room.id'); ?>
 		<?php echo $this->NetCommonsForm->hidden('Room.theme', array('value' => $theme['key'])); ?>
 
-		<a class="btn btn-default btn-xs" href="<?php echo $this->NetCommonsHtml->url(array(
-				'key' => h($activeRoomId),
-				'?' => array('theme' => h($theme['key'])),
-			)); ?>">
-
-			<?php echo __d('net_commons', 'Preview')?>
-		</a>
+		<?php echo $this->NetCommonsHtml->link(__d('net_commons', 'Preview'), '#', array(
+			'class' => 'btn btn-default btn-xs',
+			'ng-disabled' => 'sending',
+			'ng-click' => 'themePreview(\'' . $this->NetCommonsHtml->url(['key' => h($activeRoomId), '?' => array('theme' => h($theme['key']))]) . '\')',
+		)); ?>
 
 		<?php echo $this->Button->save(__d('net_commons', 'OK'), array('class' => 'btn btn-primary btn-xs')); ?>
 	<?php echo $this->NetCommonsForm->end(); ?>

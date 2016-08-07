@@ -14,7 +14,7 @@
 
 <?php echo $this->SiteManager->roomTabs(); ?>
 
-<div class="panel panel-default">
+<div class="panel panel-default" ng-controller="SiteManager">
 	<div class="panel-body">
 		<?php echo $this->ThemeSettings->render('DefaultPageSettings/theme_form'); ?>
 	</div>
