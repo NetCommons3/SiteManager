@@ -24,11 +24,13 @@
 				'help' => __d('site_manager', 'App.close_site help')
 			)); ?>
 
-		<div ng-show="<?php echo $domId; ?>">
-			<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'App.site_closing_reason', array(
-					'type' => 'wysiwyg',
-				)); ?>
-			<?php echo $this->NetCommonsForm->help($this->SiteManager->helpSiteClose()); ?>
+		<div class="row"  ng-show="<?php echo $domId; ?>" ng-cloak>
+			<div class="col-xs-offset-1 col-xs-11">
+				<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'App.site_closing_reason', array(
+						'type' => 'wysiwyg',
+					)); ?>
+				<?php echo $this->NetCommonsForm->help($this->SiteManager->helpSiteClose()); ?>
+			</div>
 		</div>
 	</div>
 </article>

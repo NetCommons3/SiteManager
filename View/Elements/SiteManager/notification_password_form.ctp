@@ -23,26 +23,28 @@
 				),
 			)); ?>
 
-		<div ng-show="<?php echo $domId; ?>">
-			<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'ForgotPass.issue_mail_subject', array(
-					//'type' => 'textarea',
-				)); ?>
+		<div class="row" ng-show="<?php echo $domId; ?>" ng-cloak>
+			<div class="col-xs-offset-1 col-xs-11">
+				<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'ForgotPass.issue_mail_subject', array(
+						//'type' => 'textarea',
+					)); ?>
 
-			<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'ForgotPass.issue_mail_body', array(
-					'type' => 'textarea',
-					'mailHelp' => true,
-				)); ?>
+				<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'ForgotPass.issue_mail_body', array(
+						'type' => 'textarea',
+						'mailHelp' => true,
+					)); ?>
 
-			<hr>
+				<hr>
 
-			<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'ForgotPass.request_mail_subject', array(
-					//'type' => 'textarea',
-				)); ?>
+				<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'ForgotPass.request_mail_subject', array(
+						//'type' => 'textarea',
+					)); ?>
 
-			<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'ForgotPass.request_mail_body', array(
-					'type' => 'textarea',
-					'mailHelp' => true,
-				)); ?>
+				<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'ForgotPass.request_mail_body', array(
+						'type' => 'textarea',
+						'mailHelp' => true,
+					)); ?>
+			</div>
 		</div>
 	</div>
 </article>
