@@ -208,7 +208,7 @@ class SiteManagerHelper extends AppHelper {
  * @return array オプション
  */
 	private function __getHelpOption($key, $options = array(), $labelPlugin = 'site_manager') {
-		if (Hash::get($options, 'help', false)) {
+		if (Hash::get($options, 'help', false) === true) {
 			$options = Hash::insert($options, 'help', __d($labelPlugin, $key . ' help'));
 		}
 		if (Hash::get($options, 'mailHelp', false)) {
