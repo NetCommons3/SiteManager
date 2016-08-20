@@ -240,7 +240,7 @@ msgid "UserCancel.mail_subject"
 msgstr "退会完了メールの件名"
 
 msgid "UserCancel.mail_body"
-msgstr "退会完了メールの内容"
+msgstr "退会完了メールの本文"
 
 msgid "UserCancel.mail_body help"
 msgstr "{X-SITE_NAME} : サイト名<br>{X-URL} : URL"
