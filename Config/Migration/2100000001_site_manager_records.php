@@ -249,47 +249,45 @@ Login id: {X-USERNAME}',
 			array(
 				'language_id' => '2',
 				'key' => 'AutoRegist.disclaimer',
-				'value' => '本規約は、当サイトにより提供されるコンテンツの利用条件を定めるものです。以下の利用条件をよくお読みになり、これに同意される場合にのみご登録いただきますようお願いいたします。<br>
-<br>
-当サイトを利用するにあたり、以下に該当する又はその恐れのある行為を行ってはならないものとします。<br>
-<br>
-・公序良俗に反する行為<br>
-・法令に違反する行為<br>
-・犯罪行為及び犯罪行為に結びつく行為<br>
-・他の利用者、第三者、当サイトの権利を侵害する行為<br>
-・他の利用者、第三者、当サイトを誹謗、中傷する行為及び名誉・信用を傷つける行為<br>
-・他の利用者、第三者、当サイトに不利益を与える行為<br>
-・当サイトの運営を妨害する行為<br>
-・事実でない情報を発信する行為<br>
-・プライバシー侵害の恐れのある個人情報の投稿<br>
-・その他、当サイトが不適当と判断する行為<br>
-<br>
-【免責】<br>
-<br>
-利用者が当サイト及び当サイトに関連するコンテンツ、リンク先サイトにおける一切のサービス等をご利用されたことに起因または関連して生じた一切の損害（間接的であると直接的であるとを問わない）について、当サイトは責任を負いません。<br>',
+				'value' => '<p>本規約は、当サイトにより提供されるコンテンツの利用条件を定めるものです。以下の利用条件をよくお読みになり、これに同意される場合にのみご登録いただきますようお願いいたします。</p>
+<p>当サイトを利用するにあたり、以下に該当する又はその恐れのある行為を行ってはならないものとします。</p>
+<ul>
+    <li>公序良俗に反する行為</li>
+    <li>法令に違反する行為</li>
+    <li>犯罪行為及び犯罪行為に結びつく行為</li>
+    <li>他の利用者、第三者、当サイトの権利を侵害する行為</li>
+    <li>他の利用者、第三者、当サイトを誹謗、中傷する行為及び名誉・信用を傷つける行為</li>
+    <li>他の利用者、第三者、当サイトに不利益を与える行為</li>
+    <li>当サイトの運営を妨害する行為</li>
+    <li>事実でない情報を発信する行為</li>
+    <li>プライバシー侵害の恐れのある個人情報の投稿</li>
+    <li>その他、当サイトが不適当と判断する行為</li>
+</ul>
+<p>【免責】</p>
+<p>
+    利用者が当サイト及び当サイトに関連するコンテンツ、リンク先サイトにおける一切のサービス等をご利用されたことに起因または関連して生じた一切の損害（間接的であると直接的であるとを問わない）について、当サイトは責任を負いません。
+</p>',
 			),
 			// *** 英語
 			array(
 				'language_id' => '1',
 				'key' => 'AutoRegist.disclaimer',
-				'value' => 'The terms & conditions for using the contents of this site is governed by this agreement. Please read carefully the following conditions, and register only if you agree to them.<br>
-<br>
-By using this site, I agree to refrain from the following actions, or behavior that may lead to the following actions.<br>
-<br>
-actions that are against public order or morals<br>
-actions that are against the laws or ordinances<br>
-criminal acts or actions connected to criminal acts<br>
-actions that violate rights of other users, third party, or this site<br>
-actions that slander, defame, or cause the loss of prestige or credibility of other users, third party, or this site<br>
-actions that result in liability to other users, third party, or this site<br>
-actions that hinder the operation of this site<br>
-actions that disseminate information that are not true<br>
-postings of personal information that may lead to invasion of privacy<br>
-other actions that are deemed unsuitable by this site<br>
-<br>
-Disclaimer<br>
-<br>
-This site is not responsible for damage (direct or indirect) to user that is caused by, is resulted from the connection of, the usage of this site, contents related to this site, services from links stemming from this site, etc.<br>',
+				'value' => '<p>The terms & conditions for using the contents of this site is governed by this agreement. Please read carefully the following conditions, and register only if you agree to them.</p>
+<p>By using this site, I agree to refrain from the following actions, or behavior that may lead to the following actions.</p>
+<ul>
+    <li>actions that are against public order or morals</li>
+    <li>actions that are against the laws or ordinances</li>
+    <li>criminal acts or actions connected to criminal acts</li>
+    <li>actions that violate rights of other users, third party, or this site</li>
+    <li>actions that slander, defame, or cause the loss of prestige or credibility of other users, third party, or this site</li>
+    <li>actions that result in liability to other users, third party, or this site</li>
+    <li>actions that hinder the operation of this site</li>
+    <li>actions that disseminate information that are not true<b/lir>
+    <li>postings of personal information that may lead to invasion of privacy</li>
+    <li>other actions that are deemed unsuitable by this site</li>
+</ul>
+<p>Disclaimer</p>
+<p>This site is not responsible for damage (direct or indirect) to user that is caused by, is resulted from the connection of, the usage of this site, contents related to this site, services from links stemming from this site, etc.</p>',
 			),
 			// ** 会員登録承認メールの件名
 			// *** 日本語
