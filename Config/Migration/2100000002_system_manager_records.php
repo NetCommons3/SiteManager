@@ -175,6 +175,12 @@ class SystemManagerRecords extends NetCommonsMigration {
 				'key' => 'Mail.smtp.pass',
 				'value' => '',
 			),
+			// ** STARTTLSを使用する
+			array(
+				'language_id' => 0,
+				'key' => 'Mail.smtp.tls',
+				'value' => '0',
+			),
 			// ** Cronを使用する
 			array(
 				'language_id' => 0,
