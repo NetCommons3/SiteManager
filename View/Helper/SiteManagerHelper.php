@@ -212,8 +212,13 @@ class SiteManagerHelper extends AppHelper {
 			$options = Hash::insert($options, 'help', __d($labelPlugin, $key . ' help'));
 		}
 		if (Hash::get($options, 'mailHelp', false)) {
-			$help = $this->NetCommonsHtml->mailHelp(__d($labelPlugin, $key . ' help'));
+			$help = '';
+			if (is_array(Hash::get($options, 'mailHelp'))) {
+				$help .= Hash::get($options, 'mailHelp.addMessage');
+			}
+			$help .= $this->NetCommonsHtml->mailHelp(__d($labelPlugin, $key . ' help'));
 			$options = Hash::insert($options, 'help', $help);
+			$options = Hash::remove($options, 'mailHelp');
 		}
 
 		return $options;

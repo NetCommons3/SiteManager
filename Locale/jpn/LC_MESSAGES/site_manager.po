@@ -278,6 +278,22 @@ msgstr "承認完了通知メールの本文"
 msgid "Workflow.approval_completion_mail_body help"
 msgstr "{X-PLUGIN_MAIL_SUBJECT}：プラグインのメール件名<br>{X-PLUGIN_NAME} : プラグイン名<br>{X-USER}：投稿者<br>{X-WORKFLOW_COMMENT} : 承認コメント<br>{X-PLUGIN_MAIL_BODY}プラグインのメール本文"
 
+msgid "Against approval is required content, you can set the e-mail subject line, "
+"text that is sent to complete approval from the application request (remand)."
+msgstr "承認が必要なコンテンツに対して、申請から承認完了（差し戻し）までに送信されるメールの件名と本文が設定できます。"
+
+msgid "It is the body and the application request e-mail subject line to be sent to the room administrator when you registered the content."
+msgstr "コンテンツを登録した際にルーム管理者(編集長)に送られる申請依頼メールの件名と本文です。"
+
+msgid "The email subject and body of the applicant request that is sent to the room administrator when you registered the content."
+msgstr "コンテンツを登録した際にルーム管理者(編集長)に送られる申請依頼メールの件名と本文です。"
+
+msgid "The email subject and body that is sent to the contributor when remanded the content."
+msgstr "コンテンツを差し戻した際に投稿者に送られるメールの件名と本文です。"
+
+msgid "The email subject and body that is sent to the contributor when you have completed approved the content."
+msgstr "コンテンツを承認完了した際に投稿者に送られるメールの件名と本文です。"
+
 
 #
 # メール署名

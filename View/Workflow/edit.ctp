@@ -11,6 +11,10 @@
 ?>
 
 <?php echo $this->SiteManager->tabs(); ?>
+<?php echo $this->MessageFlash->description(
+		__d('site_manager', 'Against approval is required content, you can set the e-mail subject line, ' .
+							'text that is sent to complete approval from the application request (remand).')
+	); ?>
 
 <?php echo $this->NetCommonsForm->create('SiteSetting', array(
 		'ng-controller' => 'SiteManager',

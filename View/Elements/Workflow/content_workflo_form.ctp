@@ -18,7 +18,12 @@
 
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.approval_mail_body', array(
 			'type' => 'textarea',
-			'mailHelp' => true,
+			'mailHelp' => array(
+				'addMessage' => __d(
+					'site_manager',
+					'The email subject and body of the applicant request that is sent to the room administrator when you registered the content.'
+				) . '<br>'
+			),
 			'required' => true,
 		)); ?>
 
@@ -31,7 +36,12 @@
 
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.disapproval_mail_body', array(
 			'type' => 'textarea',
-			'mailHelp' => true,
+			'mailHelp' => array(
+				'addMessage' => __d(
+					'site_manager',
+					'The email subject and body that is sent to the contributor when remanded the content.'
+				) . '<br>'
+			),
 			'required' => true,
 		)); ?>
 
@@ -44,7 +54,12 @@
 
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.approval_completion_mail_body', array(
 			'type' => 'textarea',
-			'mailHelp' => true,
+			'mailHelp' => array(
+				'addMessage' => __d(
+					'site_manager',
+					'The email subject and body that is sent to the contributor when you have completed approved the content.'
+				) . '<br>'
+			),
 			'required' => true,
 		)); ?>
 
