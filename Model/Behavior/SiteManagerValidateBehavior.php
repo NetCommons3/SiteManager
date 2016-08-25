@@ -207,6 +207,19 @@ class SiteManagerValidateBehavior extends SiteSettingValidateBehavior {
 			}
 		}
 
+		$data = $this->__validateMembershipUserRegist($model, $data);
+
+		return $data;
+	}
+
+/**
+ * 入会のValidate処理
+ *
+ * @param Model $model ビヘイビア呼び出し元モデル
+ * @param array $data リクエストデータ配列
+ * @return array リクエストデータ
+ */
+	private function __validateMembershipUserRegist(Model $model, $data) {
 		//会員管理からの登録通知メール
 		$settingKeys = array(
 			'UserRegist.mail_subject',
