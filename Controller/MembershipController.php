@@ -60,9 +60,11 @@ class MembershipController extends SiteManagerAppController {
 			$this->SiteSetting->autoRegistRoles = $this->viewVars['userRoles'];
 
 			//登録処理
-			$this->SiteManager->saveData(
-				$this->referer() . '?membershipTab=' . $this->viewVars['membershipTab']
+			$redirect = Router::parse($this->referer());
+			$redirect['?'] = array(
+				'membershipTab' => $this->viewVars['membershipTab']
 			);
+			$this->SiteManager->saveData($redirect);
 
 		} else {
 			$this->set(
