@@ -79,7 +79,7 @@ $SiteSetting->prepare();
 
 						<div class="panel panel-default automatic-input-items"
 								ng-init="AutomaticInputItems = <?php echo $automaticInputItems; ?>"
-								ng-show="(AutomaticInputItems)">
+								ng-show="(AutomaticInputItems || <?php echo $domId; ?>)">
 							<?php
 								echo $this->NetCommonsForm->hidden('_siteManager.automaticInputItems', array(
 									'value' => '{{AutomaticInputItems}}'
@@ -101,6 +101,7 @@ $SiteSetting->prepare();
 						<div ng-show="<?php echo '(' . $confirmationDomId . ' === 0' . ' || ' . $confirmationDomId . ' === 2)'; ?>">
 							<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'AutoRegist.approval_mail_subject', array(
 									//'type' => 'textarea',
+									'required' => true,
 								)); ?>
 						</div>
 
@@ -108,6 +109,7 @@ $SiteSetting->prepare();
 							<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'AutoRegist.approval_mail_body', array(
 									'type' => 'textarea',
 									'mailHelp' => true,
+									'required' => true,
 								)); ?>
 						</div>
 
@@ -116,6 +118,7 @@ $SiteSetting->prepare();
 						<div ng-show="(<?php echo $confirmationDomId . ' === 2'; ?>)">
 							<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'AutoRegist.acceptance_mail_subject', array(
 									//'type' => 'textarea',
+									'required' => true,
 								)); ?>
 						</div>
 
@@ -123,6 +126,7 @@ $SiteSetting->prepare();
 							<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'AutoRegist.acceptance_mail_body', array(
 									'type' => 'textarea',
 									'mailHelp' => true,
+									'required' => true,
 								)); ?>
 						</div>
 					</div>
@@ -138,6 +142,7 @@ $SiteSetting->prepare();
 			<div>
 				<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'UserRegist.mail_subject', array(
 						//'type' => 'textarea',
+						'required' => true,
 					)); ?>
 			</div>
 
@@ -145,6 +150,7 @@ $SiteSetting->prepare();
 				<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'UserRegist.mail_body', array(
 						'type' => 'textarea',
 						'mailHelp' => true,
+						'required' => true,
 					)); ?>
 			</div>
 		</article>

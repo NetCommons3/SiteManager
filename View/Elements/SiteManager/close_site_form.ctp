@@ -28,6 +28,7 @@
 			<div class="col-xs-offset-1 col-xs-11">
 				<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'App.site_closing_reason', array(
 						'type' => 'wysiwyg',
+						'required' => true,
 					)); ?>
 				<?php echo $this->NetCommonsForm->help($this->SiteManager->helpSiteClose()); ?>
 			</div>

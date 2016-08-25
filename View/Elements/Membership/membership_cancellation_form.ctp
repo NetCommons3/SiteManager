@@ -46,11 +46,13 @@
 						<div class="col-xs-offset-1 col-xs-11">
 							<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'UserCancel.mail_subject', array(
 									//'type' => 'textarea',
+									'required' => true,
 								)); ?>
 
 							<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'UserCancel.mail_body', array(
 									'type' => 'textarea',
 									'mailHelp' => true,
+									'required' => true,
 								)); ?>
 						</div>
 					</div>

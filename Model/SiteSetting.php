@@ -494,8 +494,11 @@ class SiteSetting extends SiteManagerAppModel {
 		$this->prepare();
 
 		$data = $this->validateAppSetting($data);
+		$data = $this->validatePasswordReissue($data);
 		$data = $this->validateSiteClose($data);
 		$data = $this->validateMembership($data);
+		$data = $this->validateWorkflow($data);
+
 		$data = $this->validateProxy($data);
 		$data = $this->validateSystemSetting($data);
 		$data = $this->validateSession($data);

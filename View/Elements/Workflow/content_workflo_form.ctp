@@ -13,33 +13,39 @@
 <article>
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.approval_mail_subject', array(
 			//'type' => 'textarea',
+			'required' => true,
 		)); ?>
 
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.approval_mail_body', array(
 			'type' => 'textarea',
 			'mailHelp' => true,
+			'required' => true,
 		)); ?>
 
 	<hr>
 
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.disapproval_mail_subject', array(
 			//'type' => 'textarea',
+			'required' => true,
 		)); ?>
 
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.disapproval_mail_body', array(
 			'type' => 'textarea',
 			'mailHelp' => true,
+			'required' => true,
 		)); ?>
 
 	<hr>
 
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.approval_completion_mail_subject', array(
 			//'type' => 'textarea',
+			'required' => true,
 		)); ?>
 
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.approval_completion_mail_body', array(
 			'type' => 'textarea',
 			'mailHelp' => true,
+			'required' => true,
 		)); ?>
 
 </article>

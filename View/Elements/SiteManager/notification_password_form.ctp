@@ -27,22 +27,26 @@
 			<div class="col-xs-offset-1 col-xs-11">
 				<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'ForgotPass.issue_mail_subject', array(
 						//'type' => 'textarea',
+						'required' => true,
 					)); ?>
 
 				<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'ForgotPass.issue_mail_body', array(
 						'type' => 'textarea',
 						'mailHelp' => true,
+						'required' => true,
 					)); ?>
 
 				<hr>
 
 				<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'ForgotPass.request_mail_subject', array(
 						//'type' => 'textarea',
+						'required' => true,
 					)); ?>
 
 				<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'ForgotPass.request_mail_body', array(
 						'type' => 'textarea',
 						'mailHelp' => true,
+						'required' => true,
 					)); ?>
 			</div>
 		</div>

@@ -88,9 +88,10 @@ class SiteManagerComponent extends Component {
 /**
  * saveSiteSettingに登録する処理
  *
+ * @param string $redirect リダイレクト
  * @return void
  */
-	public function saveData() {
+	public function saveData($redirect = null) {
 		$controller = $this->controller;
 
 		//不要パラメータ除去
@@ -103,7 +104,11 @@ class SiteManagerComponent extends Component {
 			$controller->NetCommons->setFlashNotification(__d('net_commons', 'Successfully saved.'), array(
 				'class' => 'success',
 			));
-			$controller->redirect($controller->referer());
+			if (isset($redirect)) {
+				$controller->redirect($redirect);
+			} else {
+				$controller->redirect($controller->referer());
+			}
 		} else {
 			$controller->NetCommons->handleValidationError($controller->SiteSetting->validationErrors);
 		}

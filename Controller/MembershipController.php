@@ -60,7 +60,9 @@ class MembershipController extends SiteManagerAppController {
 			$this->SiteSetting->autoRegistRoles = $this->viewVars['userRoles'];
 
 			//登録処理
-			$this->SiteManager->saveData();
+			$this->SiteManager->saveData(
+				$this->referer() . '?membershipTab=' . $this->viewVars['membershipTab']
+			);
 
 		} else {
 			$this->set(
@@ -73,7 +75,6 @@ class MembershipController extends SiteManagerAppController {
 			} else {
 				$automaticInputItems = 'false';
 			}
-			$this->set('automaticInputItems', $automaticInputItems);
 
 			$this->request->data['SiteSetting'] = $this->SiteSetting->getSiteSettingForEdit(
 				array('SiteSetting.key' => array(
@@ -123,6 +124,7 @@ class MembershipController extends SiteManagerAppController {
 				)
 			));
 		}
+		$this->set('automaticInputItems', $automaticInputItems);
 	}
 
 /**

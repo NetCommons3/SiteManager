@@ -69,6 +69,53 @@ class SiteManagerValidateBehavior extends SiteSettingValidateBehavior {
 					__d('net_commons', 'Invalid request.'));
 		}
 
+		$settingKeys = array(
+			'App.site_closing_reason',
+		);
+		foreach ($settingKeys as $key) {
+			if (Hash::get($data[$model->alias]['App.close_site'], '0.value')) {
+				$data = $this->_validateRequired($model, $data, $key);
+			} else {
+				unset($data[$model->alias][$key]);
+			}
+		}
+
+		return $data;
+	}
+
+/**
+ * パスワード再発行のValidate処理
+ *
+ * @param Model $model ビヘイビア呼び出し元モデル
+ * @param array $data リクエストデータ配列
+ * @return array リクエストデータ
+ */
+	public function validatePasswordReissue(Model $model, $data) {
+		if (! isset($data[$model->alias]['ForgotPass.use_password_reissue'])) {
+			return $data;
+		}
+
+		$value = (string)Hash::get($data[$model->alias]['ForgotPass.use_password_reissue'], '0.value');
+		if (! in_array($value, ['0', '1'], true)) {
+			$this->_setValidationMessage($model, 'ForgotPass.use_password_reissue', '0',
+					__d('net_commons', 'Invalid request.'));
+		}
+
+		//新規パスワード通知, 新規パスワード発行メール
+		$settingKeys = array(
+			'ForgotPass.issue_mail_subject',
+			'ForgotPass.issue_mail_body',
+			'ForgotPass.request_mail_subject',
+			'ForgotPass.request_mail_body'
+		);
+		foreach ($settingKeys as $key) {
+			if (Hash::get($data[$model->alias]['ForgotPass.use_password_reissue'], '0.value')) {
+				$data = $this->_validateRequired($model, $data, $key);
+			} else {
+				unset($data[$model->alias][$key]);
+			}
+		}
+
 		return $data;
 	}
 
@@ -136,6 +183,17 @@ class SiteManagerValidateBehavior extends SiteSettingValidateBehavior {
 			//	$this->_setValidationMessage($model, 'AutoRegist.prarticipate_default_room', '0',
 			//			__d('net_commons', 'Invalid request.'));
 			//}
+
+			//会員登録承認メール、会員登録受付メール
+			$settingKeys = array(
+				'AutoRegist.approval_mail_subject',
+				'AutoRegist.approval_mail_body',
+				'AutoRegist.acceptance_mail_subject',
+				'AutoRegist.acceptance_mail_body'
+			);
+			foreach ($settingKeys as $key) {
+				$data = $this->_validateRequired($model, $data, $key);
+			}
 		} else {
 			//自動会員登録を許可しない場合、リクエストデータから破棄
 			$settingKeys = $data[$model->alias];
@@ -147,6 +205,15 @@ class SiteManagerValidateBehavior extends SiteSettingValidateBehavior {
 					unset($data[$model->alias][$key]);
 				}
 			}
+		}
+
+		//会員管理からの登録通知メール
+		$settingKeys = array(
+			'UserRegist.mail_subject',
+			'UserRegist.mail_body',
+		);
+		foreach ($settingKeys as $key) {
+			$data = $this->_validateRequired($model, $data, $key);
 		}
 
 		return $data;
@@ -175,6 +242,19 @@ class SiteManagerValidateBehavior extends SiteSettingValidateBehavior {
 				$this->_setValidationMessage($model, 'UserCancel.notify_administrators', '0',
 						__d('net_commons', 'Invalid request.'));
 			}
+
+			//退会完了メール
+			$settingKeys = array(
+				'UserCancel.mail_subject',
+				'UserCancel.mail_body',
+			);
+			foreach ($settingKeys as $key) {
+				if (Hash::get($data[$model->alias]['UserCancel.notify_administrators'], '0.value')) {
+					$data = $this->_validateRequired($model, $data, $key);
+				} else {
+					unset($data[$model->alias][$key]);
+				}
+			}
 		} else {
 			//退会機能を使用しない場合、リクエストデータから破棄
 			$settingKeys = $data[$model->alias];
@@ -186,6 +266,34 @@ class SiteManagerValidateBehavior extends SiteSettingValidateBehavior {
 					unset($data[$model->alias][$key]);
 				}
 			}
+		}
+
+		return $data;
+	}
+
+/**
+ * 承認メールのValidate処理
+ *
+ * @param Model $model ビヘイビア呼び出し元モデル
+ * @param array $data リクエストデータ配列
+ * @return array リクエストデータ
+ */
+	public function validateWorkflow(Model $model, $data) {
+		if (! isset($data[$model->alias]['Workflow.approval_mail_subject'])) {
+			return $data;
+		}
+
+		//申請メール, 差し戻しメール, 承認完了通知メール
+		$settingKeys = array(
+			'Workflow.approval_mail_subject',
+			'Workflow.approval_mail_body',
+			'Workflow.disapproval_mail_subject',
+			'Workflow.disapproval_mail_body',
+			'Workflow.approval_completion_mail_subject',
+			'Workflow.approval_completion_mail_body',
+		);
+		foreach ($settingKeys as $key) {
+			$data = $this->_validateRequired($model, $data, $key);
 		}
 
 		return $data;
