@@ -62,7 +62,7 @@ msgid "Notification of password"
 msgstr ""
 
 msgid "ForgotPass.use_password_reissue"
-msgstr "パスワード再発行の機能を使う"
+msgstr "Using the function of password re-issue?"
 
 msgid "ForgotPass.issue_mail_subject"
 msgstr "Subject of new password issue mail."
@@ -162,13 +162,13 @@ msgid "AutoRegist.use_secret_key"
 msgstr "Use secret key?"
 
 msgid "AutoRegist.use_secret_key help"
-msgstr "認証キーを使用するとキーを知っている人のみ自動会員登録が可能となります。"
+msgstr "Automatic member registration only people who know the key by using the authentication key will be possible."
 
 msgid "AutoRegist.secret_key"
 msgstr ""
 
 msgid "AutoRegist.secret_key placeholder"
-msgstr "キーを入力してください。"
+msgstr "Please enter the key."
 
 msgid "AutoRegist.role_key"
 msgstr "Authority setting"
@@ -223,7 +223,7 @@ msgid "Membership cancellation"
 msgstr ""
 
 msgid "UserCancel.use_cancel_feature"
-msgstr "会員本人による退会を許可する"
+msgstr "Allow withdrawal by the member himself?"
 
 msgid "UserCancel.disclaimer"
 msgstr "Agreement"
@@ -280,13 +280,13 @@ msgstr "{X-PLUGIN_MAIL_SUBJECT} : Plugin e-mail subject<br>{X-PLUGIN_NAME} : Plu
 # メール署名
 #
 msgid "Mail.body_header"
-msgstr "本文ヘッダー"
+msgstr "Text header"
 
 msgid "Mail.body_header help"
-msgstr "全てのメール本文の冒頭に付与する内容です。"
+msgstr "It is the content to be applied to the beginning of all of the mail text."
 
 msgid "Mail.signature"
-msgstr "署名"
+msgstr "Signature"
 
 msgid "Mail.signature help"
-msgstr "全てのメール本文の末尾に付与する内容です。"
+msgstr "It is the content to be added to the end of all of the mail text."

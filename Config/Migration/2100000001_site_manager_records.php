@@ -109,7 +109,7 @@ class SiteManagerRecords extends NetCommonsMigration {
 				'key' => 'ForgotPass.issue_mail_body',
 				'value' => 'A web user has just requested for a new password for your account at {X-SITE_NAME} site.
 If you didn\'t ask for one, don\'t worry.  Just delete this e-mail.
-新たにパスワードを発行する場合は、認証キー入力画面で、下記の認証キーを入力してください。
+If you want to issue a new password, the authentication key input screen, please enter the authentication key below.
 
 Authorization key：
 {X-AUTHORIZATION_KEY}',
@@ -143,7 +143,7 @@ Authorization key：
 				'language_id' => '1',
 				'key' => 'ForgotPass.request_mail_body',
 				'value' => 'A web user has just requested for a new password for your account at {X-SITE_NAME} site.
-下記のログインIDを使用して、新しいパスワードを再登録してください。
+Using the login ID of the following, please re-register the new password.
 
 Handle: {X-HANDLENAME}
 Login id: {X-USERNAME}',
