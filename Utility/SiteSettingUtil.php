@@ -166,6 +166,12 @@ class SiteSettingUtil {
 			self::setup($keyPath);
 		}
 
+		if ($keyPath === 'Config.language' &&
+				Hash::get(self::$_data, $keyPath . '.' . '0') === '') {
+
+			return self::__acceptLanguage();
+		}
+
 		if (Hash::check(self::$_data, $keyPath . '.' . $langId)) {
 			return Hash::get(self::$_data, $keyPath . '.' . $langId);
 		}
@@ -175,6 +181,46 @@ class SiteSettingUtil {
 		}
 
 		return $default;
+	}
+
+/**
+ * AcceptLanguageの値を返します。
+ *
+ * @return array|null SiteSettingデータ
+ */
+	private static function __acceptLanguage() {
+		//言語データ取得
+		$Language = ClassRegistry::init('M17n.Language');
+		$languages = $Language->find('list', array(
+			'recursive' => -1,
+			'fields' => array('code', 'code'),
+			'conditions' => array('is_active' => true),
+			'order' => 'weight'
+		));
+
+		$maximalNum = 0;
+		$acceptLanguage = explode(',', Hash::get($_SERVER, 'HTTP_ACCEPT_LANGUAGE', 'ja'));
+		$usedLanguage = 'ja';
+		foreach ($acceptLanguage as $value) {
+			$pri = explode(';', trim($value));
+			if (isset($pri[1])) {
+				$num = (float)preg_replace('/^q=/', '', $pri[1]);
+			} else {
+				$num = 1;
+			}
+			if ($num > $maximalNum) {
+				if (array_key_exists($pri[0], $languages)) {
+					$priKey = $pri[0];
+				} elseif (strpos($pri[0], '-') !== false) {
+					$priKey = substr($pri[0], 0, strpos($pri[0], '-'));
+				}
+				if (array_key_exists($priKey, $languages)) {
+					$maximalNum = $num;
+					$usedLanguage = $languages[$priKey];
+				}
+			}
+		}
+		return $usedLanguage;
 	}
 
 /**
