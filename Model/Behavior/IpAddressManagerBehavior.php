@@ -116,12 +116,20 @@ class IpAddressManagerBehavior extends SiteSettingValidateBehavior {
 			$ips = explode('|', $ips);
 		}
 
-		$current = $this->getCurrentIp($model);
-		if (! $current) {
+		$currentIp = $this->getCurrentIp($model);
+		if (! $currentIp) {
 			return false;
 		}
-		foreach ($ips as $ip) {
-			if (preg_match('/^' . preg_quote($ip, '/') . '/', $current)) {
+		foreach ($ips as $accept) {
+			if (strpos($accept, '/')) {
+				list($acceptIp, $mask) = explode('/', $accept);
+			} else {
+				$acceptIp = $accept;
+				$mask = 32;
+			}
+			$acceptLong = ip2long($acceptIp) >> (32 - $mask);
+			$currentLong = ip2long($currentIp) >> (32 - $mask);
+			if ($acceptLong === $currentLong) {
 				return true;
 			}
 		}
@@ -150,8 +158,16 @@ class IpAddressManagerBehavior extends SiteSettingValidateBehavior {
 		$formatErrorMessage = __d(
 			'net_commons', 'Unauthorized pattern for %s. Please input the data in %s format.'
 		);
-		foreach ($ips as $ip) {
-			if (! Validation::ip($ip)) {
+		foreach ($ips as $accept) {
+			if (strpos($accept, '/')) {
+				list($acceptIp, $mask) = explode('/', $accept);
+			} else {
+				$acceptIp = $accept;
+				$mask = 32;
+			}
+			$acceptLong = ip2long($acceptIp) >> (32 - $mask);
+
+			if (ip2long($acceptIp) === -1 || ip2long($acceptIp) === false || ! $acceptLong) {
 				$this->_setValidationMessage(
 					$model, $key, '0',
 					sprintf($formatErrorMessage, __d('system_manager', $key), __d('net_commons', 'IP Address'))
