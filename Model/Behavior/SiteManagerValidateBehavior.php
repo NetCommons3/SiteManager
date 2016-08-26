@@ -198,7 +198,7 @@ class SiteManagerValidateBehavior extends SiteSettingValidateBehavior {
 			//自動会員登録を許可しない場合、リクエストデータから破棄
 			$settingKeys = $data[$model->alias];
 			unset($settingKeys['AutoRegist.use_automatic_register']);
-			$settingKeys = array_keys($data[$model->alias]);
+			$settingKeys = array_keys($settingKeys);
 
 			foreach ($settingKeys as $key) {
 				if (substr($key, 0, strlen('AutoRegist.')) === 'AutoRegist.') {
