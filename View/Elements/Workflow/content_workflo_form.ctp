@@ -63,4 +63,22 @@
 			'required' => true,
 		)); ?>
 
+	<hr>
+
+	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.contact_after_approval_mail_subject', array(
+		//'type' => 'textarea',
+		'required' => true,
+	)); ?>
+
+	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.contact_after_approval_mail_body', array(
+		'type' => 'textarea',
+		'mailHelp' => array(
+			'addMessage' => __d(
+					'site_manager',
+					'Already is the text and e-mail subject line that is sent to the contributor at the time you enter to contact the person in charge of editing the content that has been approved.'
+				) . '<br>'
+		),
+		'required' => true,
+	)); ?>
+
 </article>

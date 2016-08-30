@@ -304,6 +304,8 @@ class SiteManagerValidateBehavior extends SiteSettingValidateBehavior {
 			'Workflow.disapproval_mail_body',
 			'Workflow.approval_completion_mail_subject',
 			'Workflow.approval_completion_mail_body',
+			'Workflow.contact_after_approval_mail_subject',
+			'Workflow.contact_after_approval_mail_body',
 		);
 		foreach ($settingKeys as $key) {
 			$data = $this->_validateRequired($model, $data, $key);

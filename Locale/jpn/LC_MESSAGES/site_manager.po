@@ -278,6 +278,15 @@ msgstr "承認完了通知メールの本文"
 msgid "Workflow.approval_completion_mail_body help"
 msgstr "{X-PLUGIN_MAIL_SUBJECT}：プラグインのメール件名<br>{X-PLUGIN_NAME} : プラグイン名<br>{X-USER}：投稿者<br>{X-WORKFLOW_COMMENT} : 承認コメント<br>{X-PLUGIN_MAIL_BODY}プラグインのメール本文"
 
+msgid "Workflow.contact_after_approval_mail_subject"
+msgstr "担当者への連絡通知メールの件名"
+
+msgid "Workflow.contact_after_approval_mail_body"
+msgstr "担当者への連絡通知メールの本文"
+
+msgid "Workflow.contact_after_approval_mail_body help"
+msgstr "{X-PLUGIN_MAIL_SUBJECT}：プラグインのメール件名<br>{X-PLUGIN_NAME} : プラグイン名<br>{X-USER}：投稿者<br>{X-WORKFLOW_COMMENT} : 承認コメント<br>{X-PLUGIN_MAIL_BODY}プラグインのメール本文"
+
 msgid "Against approval is required content, you can set the e-mail subject line, "
 "text that is sent to complete approval from the application request (remand)."
 msgstr "承認が必要なコンテンツに対して、申請から承認完了（差し戻し）までに送信されるメールの件名と本文が設定できます。"
@@ -294,6 +303,8 @@ msgstr "コンテンツを差し戻した際に投稿者に送られるメール
 msgid "The email subject and body that is sent to the contributor when you have completed approved the content."
 msgstr "コンテンツを承認完了した際に投稿者に送られるメールの件名と本文です。"
 
+msgid "Already is the text and e-mail subject line that is sent to the contributor at the time you enter to contact the person in charge of editing the content that has been approved."
+msgstr "既に承認したコンテンツを編集して担当者への連絡を入力した際に投稿者に送られるメールの件名と本文です。"
 
 #
 # メール署名

@@ -276,6 +276,15 @@ msgstr "Approval completion notification e-mail text"
 msgid "Workflow.approval_completion_mail_body help"
 msgstr "{X-PLUGIN_MAIL_SUBJECT} : Plugin e-mail subject<br>{X-PLUGIN_NAME} : Plugin name<br>{X-USER} : Posted<br>{X-WORKFLOW_COMMENT} : Approval Comments<br>{X-PLUGIN_MAIL_BODY} E-mail plugin text"
 
+msgid "Workflow.contact_after_approval_mail_subject"
+msgstr "Subject of contact notification e-mail to the person in charge"
+
+msgid "Workflow.contact_after_approval_mail_body"
+msgstr "The body of the contact notification e-mail to the person in charge"
+
+msgid "Workflow.contact_after_approval_mail_body help"
+msgstr "{X-PLUGIN_MAIL_SUBJECT} : Plugin e-mail subject<br>{X-PLUGIN_NAME} : Plugin name<br>{X-USER} : Posted<br>{X-WORKFLOW_COMMENT} : Approval Comments<br>{X-PLUGIN_MAIL_BODY} E-mail plugin text"
+
 #
 # メール署名
 #
