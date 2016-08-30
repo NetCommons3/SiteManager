@@ -55,6 +55,10 @@ class WorkflowController extends SiteManagerAppController {
 					'Workflow.approval_completion_mail_subject',
 					// ** 承認完了メールの本文
 					'Workflow.approval_completion_mail_body',
+					// ** 担当者への連絡メールの件名
+					'Workflow.contact_after_approval_mail_subject',
+					// ** 担当者への連絡メールの本文
+					'Workflow.contact_after_approval_mail_body',
 				)
 			));
 		}
