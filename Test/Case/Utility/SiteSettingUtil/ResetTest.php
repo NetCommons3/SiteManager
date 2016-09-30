@@ -28,6 +28,16 @@ class SiteManagerUtilitySiteSettingUtilResetTest extends NetCommonsCakeTestCase 
 	public $plugin = 'site_manager';
 
 /**
+ * setUp method
+ *
+ * @return void
+ */
+	public function setUp() {
+		parent::setUp();
+		SiteSettingUtil::reset();
+	}
+
+/**
  * tearDown method
  *
  * @return void
