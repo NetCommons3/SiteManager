@@ -94,16 +94,17 @@ class SystemManagerValidateBehavior extends SiteSettingValidateBehavior {
  * @return array リクエストデータ
  */
 	public function validateSession(Model $model, $data) {
-		if (! isset($data[$model->alias]['Session.ini.session.cookie_lifetime'])) {
+		if (! isset($data[$model->alias]['Session.ini.[session.cookie_lifetime]'])) {
 			return $data;
 		}
 
 		//自動ログアウトするまでの時間
-		$value = (int)Hash::get($data[$model->alias]['Session.ini.session.cookie_lifetime'], '0.value');
-		if (! in_array($value, array_keys($model->SiteSetting->sessionTimeout), true)) {
-			$this->_setValidationMessage($model, 'Session.ini.session.cookie_lifetime', '0',
+		$value = Hash::get($data[$model->alias]['Session.ini.[session.cookie_lifetime]'], '0.value');
+		if (! in_array((int)$value, array_keys($model->SiteSetting->sessionTimeout), true)) {
+			$this->_setValidationMessage($model, 'Session.ini.[session.cookie_lifetime]', '0',
 					__d('net_commons', 'Invalid request.'));
 		}
+		$data[$model->alias]['Session.ini.[session.gc_maxlifetime]']['0']['value'] = $value;
 
 		return $data;
 	}

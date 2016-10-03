@@ -21,13 +21,6 @@ App::uses('SiteSettingUtil', 'SiteManager.Utility');
 class SiteManagerUtilitySiteSettingUtilSetupTest extends NetCommonsCakeTestCase {
 
 /**
- * Plugin name
- *
- * @var string
- */
-	public $plugin = 'site_manager';
-
-/**
  * Fixtures
  *
  * @var array
@@ -35,6 +28,13 @@ class SiteManagerUtilitySiteSettingUtilSetupTest extends NetCommonsCakeTestCase 
 	public $fixtures = array(
 		'plugin.site_manager.site_setting4test',
 	);
+
+/**
+ * Plugin name
+ *
+ * @var string
+ */
+	public $plugin = 'site_manager';
 
 /**
  * setUp method

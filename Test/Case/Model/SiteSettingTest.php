@@ -30,6 +30,8 @@ class SiteSettingTest extends NetCommonsCakeTestCase {
  */
 	public function setUp() {
 		parent::setUp();
+		SiteSettingUtil::reset();
+
 		$this->SiteSetting = ClassRegistry::init('SiteManager.SiteSetting');
 		Configure::write('Config.language', 'ja');
 		Current::$current['Language']['id'] = 2; // ja
@@ -43,6 +45,7 @@ class SiteSettingTest extends NetCommonsCakeTestCase {
 	public function tearDown() {
 		unset($this->SiteSetting);
 		Configure::write('Config.language', null);
+		SiteSettingUtil::reset();
 
 		parent::tearDown();
 	}
@@ -62,7 +65,9 @@ class SiteSettingTest extends NetCommonsCakeTestCase {
 		));
 		$ck1 = $this->SiteSetting->delete($ck['SiteSetting']['id']);
 		$this->assertTrue($ck1);
+
 		//問い合わせた結果データは無いのでnullが戻る
+		SiteSettingUtil::reset();
 		$ck = $this->SiteSetting->getSiteTheme();
 		$this->assertEquals(null, $ck);
 	}

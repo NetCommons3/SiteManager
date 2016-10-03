@@ -57,6 +57,7 @@ class SiteManagerUtilitySiteSettingUtilRemoveTest extends NetCommonsCakeTestCase
  *  - expected 期待値
  *
  * @return array データ
+ * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
  */
 	public function dataProvider() {
 		return array(

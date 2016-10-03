@@ -9,6 +9,8 @@
  * @copyright Copyright 2014, NetCommons Project
  */
 
+App::uses('CakeText', 'Utility');
+App::uses('SiteSettingUtilFunc', 'SiteManager.Utility');
 
 /**
  * SiteSetting Utility
@@ -60,8 +62,8 @@ class SiteSettingUtil {
 
 			// * デバッグモード
 			'debug',
-			// * デフォルトテーマ
-			'theme',
+			//// * デフォルトテーマ
+			//'theme',
 
 			// * サイトの一時停止
 			// ** サイトを一時停止する
@@ -74,6 +76,9 @@ class SiteSettingUtil {
 			// * 入会設定
 			// ** 自動会員登録を許可する
 			'AutoRegist.use_automatic_register',
+
+			// * セッション
+			'Session',
 		));
 
 		//テーマのみデフォルト値セット
@@ -90,6 +95,10 @@ class SiteSettingUtil {
 		foreach ($siteSetting as $key) {
 			Configure::write($key, self::read($key));
 		}
+
+		//Sessionの設定値を変えるため、Configureにセットする
+		$session = Hash::merge(Configure::read('Session'), self::read('Session'));
+		Configure::write('Session', $session);
 
 		//debugについては、セッションがある場合セッションを優先する
 		$debugs = $SiteSetting->debugOptions;
@@ -109,17 +118,15 @@ class SiteSettingUtil {
 	public static function setup($keyPaths, $force = false) {
 		$SiteSetting = ClassRegistry::init('SiteManager.SiteSetting');
 
-		if ($force) {
-			$conditions = $keyPaths;
-		} else {
-			if (is_string($keyPaths)) {
-				$keyPaths = array($keyPaths);
-			}
-			$conditions = array();
-			foreach ($keyPaths as $keyPath) {
-				if (! Hash::check(self::$_data, $keyPath)) {
-					$conditions[] = $keyPath;
-				}
+		if (is_string($keyPaths)) {
+			$keyPaths = array($keyPaths);
+		}
+		$conditions = array();
+		foreach ($keyPaths as $keyPath) {
+			if ($force || ! Hash::check(self::$_data, $keyPath)) {
+				$conditions[] = array(
+					'SiteSetting.key LIKE' => $keyPath . '%'
+				);
 			}
 		}
 
@@ -132,7 +139,7 @@ class SiteSettingUtil {
 			'fields' => array(
 				'language_id', 'key', 'value'
 			),
-			'conditions' => array('SiteSetting.key' => $conditions)
+			'conditions' => array('OR' => $conditions)
 		));
 
 		foreach ($result as $siteSetting) {
@@ -162,65 +169,45 @@ class SiteSettingUtil {
 			$langId = Current::read('Language.id', '0');
 		}
 
-		if (! Hash::check(self::$_data, $keyPath)) {
+		$pathes = array();
+		if (! is_array($keyPath)) {
+			$basePathes = self::_tokenize($keyPath);
+		} else {
+			$basePathes = $keyPath;
+		}
+
+		$pathes = $basePathes;
+		if (Hash::get(self::$_data, $pathes) === null) {
 			self::setup($keyPath);
 		}
 
 		if ($keyPath === 'Config.language' &&
 				Hash::get(self::$_data, $keyPath . '.' . '0') === '') {
 
-			return self::__acceptLanguage();
+			return (new SiteSettingUtilFunc())->acceptLanguage();
 		}
 
-		if (Hash::check(self::$_data, $keyPath . '.' . $langId)) {
-			return Hash::get(self::$_data, $keyPath . '.' . $langId);
+		$pathes = $basePathes;
+		$pathes[] = $langId;
+		if (Hash::get(self::$_data, $pathes)) {
+			return Hash::get(self::$_data, $pathes);
 		}
 
-		if (Hash::check(self::$_data, $keyPath . '.' . '0')) {
-			return Hash::get(self::$_data, $keyPath . '.' . '0');
+		$pathes = $basePathes;
+		$pathes[] = '0';
+		if (Hash::get(self::$_data, $pathes)) {
+			return Hash::get(self::$_data, $pathes);
+		}
+
+		$pathes = $basePathes;
+		if (is_array(Hash::get(self::$_data, $pathes))) {
+			$valueArray = Hash::get(self::$_data, $pathes);
+			$result = array();
+			$result = (new SiteSettingUtilFunc())->getReadData($result, $valueArray, $default, $langId);
+			return $result;
 		}
 
 		return $default;
-	}
-
-/**
- * AcceptLanguageの値を返します。
- *
- * @return array|null SiteSettingデータ
- */
-	private static function __acceptLanguage() {
-		//言語データ取得
-		$Language = ClassRegistry::init('M17n.Language');
-		$languages = $Language->find('list', array(
-			'recursive' => -1,
-			'fields' => array('code', 'code'),
-			'conditions' => array('is_active' => true),
-			'order' => 'weight'
-		));
-
-		$maximalNum = 0;
-		$acceptLanguage = explode(',', Hash::get($_SERVER, 'HTTP_ACCEPT_LANGUAGE', 'ja'));
-		$usedLanguage = 'ja';
-		foreach ($acceptLanguage as $value) {
-			$pri = explode(';', trim($value));
-			if (isset($pri[1])) {
-				$num = (float)preg_replace('/^q=/', '', $pri[1]);
-			} else {
-				$num = 1;
-			}
-			if ($num > $maximalNum) {
-				if (array_key_exists($pri[0], $languages)) {
-					$priKey = $pri[0];
-				} elseif (strpos($pri[0], '-') !== false) {
-					$priKey = substr($pri[0], 0, strpos($pri[0], '-'));
-				}
-				if (array_key_exists($priKey, $languages)) {
-					$maximalNum = $num;
-					$usedLanguage = $languages[$priKey];
-				}
-			}
-		}
-		return $usedLanguage;
 	}
 
 /**
@@ -237,7 +224,34 @@ class SiteSettingUtil {
  * @return void
  */
 	public static function write($keyPath, $value, $langId) {
-		self::$_data = Hash::insert(self::$_data, $keyPath . '.' . $langId, $value);
+		//`$keyPath = 'App.site_name';　$value = 'aaaa';` を
+		//`$keyPath = 'App';　$value = array('site_name' => 'aaaa');` に変換する
+		if (strpos($keyPath, '.') !== false) {
+			$pathes = self::_tokenize($keyPath);
+
+			//配列の平坦化から多次元配列に変換
+			$keyPath = array_shift($pathes);
+			$valueArray = array();
+			$tmp =& $valueArray;
+			foreach ($pathes as $key) {
+				$tmp[$key] = array();
+				$tmp =& $tmp[$key];
+			}
+			$tmp = $value;
+			$value = $valueArray;
+		}
+
+		if (is_array($value)) {
+			$data = array();
+			if (! isset(self::$_data[$keyPath])) {
+				self::$_data[$keyPath] = array();
+			}
+			self::$_data[$keyPath] = array_replace_recursive(
+				self::$_data[$keyPath], (new SiteSettingUtilFunc())->writeArray($data, $value, $langId)
+			);
+		} else {
+			self::$_data = Hash::insert(self::$_data, $keyPath . '.' . $langId, $value);
+		}
 	}
 
 /**
@@ -253,11 +267,27 @@ class SiteSettingUtil {
  * @return void
  */
 	public static function remove($keyPath, $langId = null) {
-		if (isset($langId)) {
-			self::$_data = Hash::remove(self::$_data, $keyPath . '.' . $langId);
+		if (! isset($langId) && strpos($keyPath, '.') !== false) {
+			$pathes = self::_tokenize($keyPath);
+
+			$tmp =& self::$_data;
+			$index = 0;
+			foreach ($pathes as $key) {
+				$index++;
+				if (count($pathes) === $index) {
+					unset($tmp[$key]);
+				} else {
+					$tmp =& $tmp[$key];
+				}
+			}
 		} else {
-			self::$_data = Hash::remove(self::$_data, $keyPath);
+			if (isset($langId)) {
+				self::$_data = Hash::remove(self::$_data, $keyPath . '.' . $langId);
+			} else {
+				self::$_data = Hash::remove(self::$_data, $keyPath);
+			}
 		}
+		self::$_data = array_filter(self::$_data);
 	}
 
 /**
@@ -267,6 +297,28 @@ class SiteSettingUtil {
  */
 	public static function reset() {
 		self::$_data = array();
+	}
+
+/**
+ * 全てのデータを取得
+ *
+ * @return array
+ */
+	public static function readAll() {
+		return self::$_data;
+	}
+
+/**
+ * CakeText::tokenizeをSiteSetting用に修正
+ *
+ * @param string $keyPath Hashクラスのpath
+ * @return array
+ */
+	protected static function _tokenize($keyPath) {
+		$pathes = CakeText::tokenize($keyPath, '.', '[', ']');
+		$pathes = preg_replace('/[\[\]]/', '', $pathes);
+
+		return $pathes;
 	}
 
 }

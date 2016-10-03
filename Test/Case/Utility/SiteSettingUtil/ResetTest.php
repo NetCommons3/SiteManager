@@ -28,6 +28,15 @@ class SiteManagerUtilitySiteSettingUtilResetTest extends NetCommonsCakeTestCase 
 	public $plugin = 'site_manager';
 
 /**
+ * Fixtures
+ *
+ * @var array
+ */
+	public $fixtures = array(
+		'plugin.site_manager.site_setting4test',
+	);
+
+/**
  * setUp method
  *
  * @return void
@@ -54,7 +63,7 @@ class SiteManagerUtilitySiteSettingUtilResetTest extends NetCommonsCakeTestCase 
  */
 	public function testReset() {
 		//データ生成
-		SiteSettingUtil::write('aaaa', 'Test');
+		SiteSettingUtil::write('aaaa', 'Test', '0');
 		$this->assertEquals('Test', SiteSettingUtil::read('aaaa'));
 
 		//テスト実施

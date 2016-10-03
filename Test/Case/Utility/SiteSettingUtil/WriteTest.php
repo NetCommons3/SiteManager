@@ -48,7 +48,7 @@ class SiteManagerUtilitySiteSettingUtilWriteTest extends NetCommonsCakeTestCase 
 	}
 
 /**
- * alphaNumericSymbols()テストのDataProvider
+ * write()テストのDataProvider
  *
  * ### 戻り値
  *  - keyPath keyパス
@@ -77,7 +77,7 @@ class SiteManagerUtilitySiteSettingUtilWriteTest extends NetCommonsCakeTestCase 
 				),
 			),
 			array(
-				'keyPath' => 'Session.ini[session.cookie_lifetime]',
+				'keyPath' => 'Session.ini.[session.cookie_lifetime]',
 				'value' => 129600,
 				'langId' => '0',
 				'expected' => array(
