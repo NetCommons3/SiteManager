@@ -60,8 +60,8 @@ class SiteManagerHelper extends AppHelper {
 			'controller' => 'workflow',
 			'action' => 'edit',
 		),
-		'mail_settings' => array(
-			'controller' => 'mail_settings',
+		'mail_signature_settings' => array(
+			'controller' => 'mail_signature_settings',
 			'action' => 'edit',
 		),
 	);
