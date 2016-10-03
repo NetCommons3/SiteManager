@@ -44,12 +44,32 @@ class SiteManagerComponent extends Component {
 /**
  * strtrで変換する文字列(from)
  */
-	const STRTR_FROM = '.';
+	const STRTR_FROM_DOT = '.';
 
 /**
  * strtrで変換する文字列(to)
  */
-	const STRTR_TO = '/';
+	const STRTR_TO_DOT = '/';
+
+/**
+ * strtrで変換する文字列(from)
+ */
+	const STRTR_FROM_BRACKETS_LEFT = '[';
+
+/**
+ * strtrで変換する文字列(to)
+ */
+	const STRTR_TO_BRACKETS_LEFT = '{';
+
+/**
+ * strtrで変換する文字列(from)
+ */
+	const STRTR_FROM_BRACKETS_RIGHT = ']';
+
+/**
+ * strtrで変換する文字列(to)
+ */
+	const STRTR_TO_BRACKETS_RIGHT = '}';
 
 /**
  * Called before the Controller::beforeFilter().
@@ -77,7 +97,7 @@ class SiteManagerComponent extends Component {
 
 		if (isset($controller->request->data['SiteSetting'])) {
 			foreach ($controller->request->data['SiteSetting'] as $key => $data) {
-				$requestKey = strtr($key, self::STRTR_TO, self::STRTR_FROM);
+				$requestKey = self::invertRequestKey($key);
 
 				unset($controller->request->data['SiteSetting'][$key]);
 				$controller->request->data['SiteSetting'][$requestKey] = $data;
@@ -125,7 +145,7 @@ class SiteManagerComponent extends Component {
 	public function beforeRender(Controller $controller) {
 		if (isset($controller->request->data['SiteSetting'])) {
 			foreach ($controller->request->data['SiteSetting'] as $key => $data) {
-				$requestKey = strtr($key, self::STRTR_FROM, self::STRTR_TO);
+				$requestKey = self::convertRequestKey($key);
 
 				unset($controller->request->data['SiteSetting'][$key]);
 				$controller->request->data['SiteSetting'][$requestKey] = $data;
@@ -134,12 +154,52 @@ class SiteManagerComponent extends Component {
 
 		if (property_exists($controller, 'SiteSetting')) {
 			foreach ($controller->SiteSetting->validationErrors as $key => $data) {
-				$requestKey = strtr($key, self::STRTR_FROM, self::STRTR_TO);
+				$requestKey = self::convertRequestKey($key);
 
 				unset($controller->SiteSetting->validationErrors[$key]);
 				$controller->SiteSetting->validationErrors[$requestKey] = $data;
 			}
 		}
+	}
+
+/**
+ * リクエストキーを変換する
+ *
+ * @param string $requestKey リクエストキー文字列
+ * @return string
+ */
+	public static function convertRequestKey($requestKey) {
+		$requestKey = strtr(
+			$requestKey, self::STRTR_FROM_DOT, self::STRTR_TO_DOT
+		);
+		$requestKey = strtr(
+			$requestKey, self::STRTR_FROM_BRACKETS_LEFT, self::STRTR_TO_BRACKETS_LEFT
+		);
+		$requestKey = strtr(
+			$requestKey, self::STRTR_FROM_BRACKETS_RIGHT, self::STRTR_TO_BRACKETS_RIGHT
+		);
+
+		return $requestKey;
+	}
+
+/**
+ * 変換したリクエストキーを戻す
+ *
+ * @param string $requestKey リクエストキー文字列
+ * @return string
+ */
+	public static function invertRequestKey($requestKey) {
+		$requestKey = strtr(
+			$requestKey, self::STRTR_TO_DOT, self::STRTR_FROM_DOT
+		);
+		$requestKey = strtr(
+			$requestKey, self::STRTR_TO_BRACKETS_LEFT, self::STRTR_FROM_BRACKETS_LEFT
+		);
+		$requestKey = strtr(
+			$requestKey, self::STRTR_TO_BRACKETS_RIGHT, self::STRTR_FROM_BRACKETS_RIGHT
+		);
+
+		return $requestKey;
 	}
 
 }

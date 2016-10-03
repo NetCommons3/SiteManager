@@ -1,6 +1,6 @@
 <?php
 /**
- * Cookie名のkeyを修正
+ * 自動ログアウトする時間のkeyを修正
  *
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @link http://www.netcommons.org NetCommons Project
@@ -11,18 +11,18 @@
 App::uses('NetCommonsMigration', 'NetCommons.Config/Migration');
 
 /**
- * Cookie名のkeyを修正
+ * 自動ログアウトする時間のkeyを修正
  *
  * @package NetCommons\SiteManager\Config\Migration
  */
-class RenameSessionCookie extends NetCommonsMigration {
+class RenameSessionMaxTime extends NetCommonsMigration {
 
 /**
  * Migration description
  *
  * @var string
  */
-	public $description = 'rename_session_cookie';
+	public $description = 'rename_session_max_time';
 
 /**
  * Actions to be performed
@@ -65,11 +65,24 @@ class RenameSessionCookie extends NetCommonsMigration {
 		}
 
 		$Model = $this->generateModel('SiteSetting');
+
+		// * 自動ログアウトする時間(cookie_lifetime)(6時間)
 		$conditions = array(
-			'SiteSetting.key' => 'Session.ini.session.name'
+			'SiteSetting.key' => 'Session.ini.session.cookie_lifetime'
 		);
 		$update = array(
-			'SiteSetting.key' => '\'Session.cookie\''
+			'SiteSetting.key' => '\'Session.ini.[session.cookie_lifetime]\''
+		);
+		if (! $Model->updateAll($update, $conditions)) {
+			return false;
+		}
+
+		// * 自動ログアウトする時間(gc_maxlifetime)(6時間)
+		$conditions = array(
+			'SiteSetting.key' => 'Session.ini.session.gc_maxlifetime'
+		);
+		$update = array(
+			'SiteSetting.key' => '\'Session.ini.[session.gc_maxlifetime]\''
 		);
 		if (! $Model->updateAll($update, $conditions)) {
 			return false;

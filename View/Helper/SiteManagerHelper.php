@@ -182,7 +182,7 @@ class SiteManagerHelper extends AppHelper {
 	public function inputHidden($model, $key, $languageId) {
 		$output = '';
 
-		$requestKey = strtr($key, SiteManagerComponent::STRTR_FROM, SiteManagerComponent::STRTR_TO);
+		$requestKey = SiteManagerComponent::convertRequestKey($key);
 		if (! isset($this->_View->request->data[$model][$requestKey])) {
 			return $output;
 		}
@@ -236,7 +236,7 @@ class SiteManagerHelper extends AppHelper {
 	public function inputCommon($model, $key, $options = array(), $labelPlugin = 'site_manager') {
 		$output = '';
 
-		$requestKey = strtr($key, SiteManagerComponent::STRTR_FROM, SiteManagerComponent::STRTR_TO);
+		$requestKey = SiteManagerComponent::convertRequestKey($key);
 		if (! isset($this->_View->request->data[$model][$requestKey])) {
 			return $output;
 		}
@@ -276,7 +276,7 @@ class SiteManagerHelper extends AppHelper {
 	public function inputLanguage($model, $key, $options = array(), $labelPlugin = 'site_manager') {
 		$output = '';
 
-		$requestKey = strtr($key, SiteManagerComponent::STRTR_FROM, SiteManagerComponent::STRTR_TO);
+		$requestKey = SiteManagerComponent::convertRequestKey($key);
 		if (! isset($this->_View->request->data[$model][$requestKey])) {
 			return $output;
 		}
@@ -301,8 +301,7 @@ class SiteManagerHelper extends AppHelper {
 
 			if (Hash::get($options, 'type') === 'wysiwyg') {
 				//$options = Hash::remove($options, 'type');
-				$field = $inputValue . '.value';
-				$field = strtr($field, SiteManagerComponent::STRTR_TO, SiteManagerComponent::STRTR_FROM);
+				$field = SiteManagerComponent::invertRequestKey($inputValue . '.value');
 
 				$value = h(json_encode($this->getValue($model, $key, $languageId)));
 
@@ -340,7 +339,7 @@ class SiteManagerHelper extends AppHelper {
  * @return string HTML
  */
 	public function getValue($model, $key, $languageId = '0') {
-		$requestKey = strtr($key, SiteManagerComponent::STRTR_FROM, SiteManagerComponent::STRTR_TO);
+		$requestKey = SiteManagerComponent::convertRequestKey($key);
 		return Hash::get($this->_View->request->data[$model][$requestKey], $languageId . '.value');
 	}
 
