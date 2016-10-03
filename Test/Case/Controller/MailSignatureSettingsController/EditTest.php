@@ -80,6 +80,10 @@ class MailSignatureSettingsControllerEditTest extends NetCommonsControllerTestCa
 
 		//チェック
 		$this->__assertEditGet();
+		$this->assertInput('textarea', 'data[SiteSetting][Mail/body_header][1][value]', null, $this->view);
+		$this->assertInput('textarea', 'data[SiteSetting][Mail/body_header][2][value]', null, $this->view);
+		$this->assertInput('textarea', 'data[SiteSetting][Mail/signature][1][value]', null, $this->view);
+		$this->assertInput('textarea', 'data[SiteSetting][Mail/signature][2][value]', null, $this->view);
 	}
 
 /**
@@ -94,22 +98,18 @@ class MailSignatureSettingsControllerEditTest extends NetCommonsControllerTestCa
 		$this->assertInput('input', 'data[SiteSetting][Mail/body_header][1][id]', '59', $this->view);
 		$this->assertInput('input', 'data[SiteSetting][Mail/body_header][1][key]', 'Mail.body_header', $this->view);
 		$this->assertInput('input', 'data[SiteSetting][Mail/body_header][1][language_id]', '1', $this->view);
-		$this->assertInput('textarea', 'data[SiteSetting][Mail/body_header][1][value]', null, $this->view);
 
 		$this->assertInput('input', 'data[SiteSetting][Mail/body_header][2][id]', '58', $this->view);
 		$this->assertInput('input', 'data[SiteSetting][Mail/body_header][2][key]', 'Mail.body_header', $this->view);
 		$this->assertInput('input', 'data[SiteSetting][Mail/body_header][2][language_id]', '2', $this->view);
-		$this->assertInput('textarea', 'data[SiteSetting][Mail/body_header][2][value]', null, $this->view);
 
 		$this->assertInput('input', 'data[SiteSetting][Mail/signature][1][id]', '61', $this->view);
 		$this->assertInput('input', 'data[SiteSetting][Mail/signature][1][key]', 'Mail.signature', $this->view);
 		$this->assertInput('input', 'data[SiteSetting][Mail/signature][1][language_id]', '1', $this->view);
-		$this->assertInput('textarea', 'data[SiteSetting][Mail/signature][1][value]', null, $this->view);
 
 		$this->assertInput('input', 'data[SiteSetting][Mail/signature][2][id]', '60', $this->view);
 		$this->assertInput('input', 'data[SiteSetting][Mail/signature][2][key]', 'Mail.signature', $this->view);
 		$this->assertInput('input', 'data[SiteSetting][Mail/signature][2][language_id]', '2', $this->view);
-		$this->assertInput('textarea', 'data[SiteSetting][Mail/signature][2][value]', null, $this->view);
 	}
 
 /**
@@ -168,6 +168,16 @@ class MailSignatureSettingsControllerEditTest extends NetCommonsControllerTestCa
 		//テスト実行
 		$this->_testPostAction('post', $this->__data(),
 				array('action' => 'edit'), null, 'view');
+
+		$this->_testGetAction(array('action' => 'edit'),
+				array('method' => 'assertNotEmpty'), null, 'view');
+
+		//チェック
+		$this->__assertEditGet();
+		$this->assertInput('textarea', 'data[SiteSetting][Mail/body_header][1][value]', 'Mail.body_header Test EN', $this->view);
+		$this->assertInput('textarea', 'data[SiteSetting][Mail/body_header][2][value]', 'Mail.body_header Test JA', $this->view);
+		$this->assertInput('textarea', 'data[SiteSetting][Mail/signature][1][value]', 'Mail.signature Test EN', $this->view);
+		$this->assertInput('textarea', 'data[SiteSetting][Mail/signature][2][value]', 'Mail.signature Test JA', $this->view);
 	}
 
 }
