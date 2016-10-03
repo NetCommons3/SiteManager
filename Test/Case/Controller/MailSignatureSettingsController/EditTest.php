@@ -128,7 +128,7 @@ class MailSignatureSettingsControllerEditTest extends NetCommonsControllerTestCa
 						'value' => 'Mail.body_header Test EN',
 					),
 					'2' => array(
-						'id' => '60',
+						'id' => '58',
 						'key' => 'Mail.body_header',
 						'language_id' => '2',
 						'value' => 'Mail.body_header Test JA',
@@ -136,7 +136,7 @@ class MailSignatureSettingsControllerEditTest extends NetCommonsControllerTestCa
 				),
 				'Mail/signature' => array(
 					'1' => array(
-						'id' => '59',
+						'id' => '61',
 						'key' => 'Mail.signature',
 						'language_id' => '1',
 						'value' => 'Mail.signature Test EN',
