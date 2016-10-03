@@ -20,7 +20,7 @@
 		<div class="panel-body">
 			<?php echo $this->SwitchLanguage->tablist('site-settings-'); ?>
 
-			<?php echo $this->element('MailSettings/signature_form'); ?>
+			<?php echo $this->element('MailSignatureSettings/signature_form'); ?>
 		</div>
 
 		<div class="panel-footer text-center">

@@ -19,7 +19,7 @@ msgstr ""
 msgid "Tab.site_manager"
 msgstr "General setting"
 
-msgid "Tab.mail_settings"
+msgid "Tab.mail_signature_settings"
 msgstr "E-mail signature"
 
 msgid "Tab.meta_settings"

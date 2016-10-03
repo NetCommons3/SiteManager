@@ -1,6 +1,6 @@
 <?php
 /**
- * MailSettings Controller
+ * MailSignatureSettings Controller
  *
  * @author Noriko Arai <arai@nii.ac.jp>
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
@@ -17,7 +17,7 @@ App::uses('SiteManagerAppController', 'SiteManager.Controller');
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @package NetCommons\SiteManager\Controller
  */
-class MailSettingsController extends SiteManagerAppController {
+class MailSignatureSettingsController extends SiteManagerAppController {
 
 /**
  * use model
