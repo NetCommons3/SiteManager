@@ -78,7 +78,7 @@ class SiteSettingUtil {
 			'AutoRegist.use_automatic_register',
 
 			// * セッション
-			//'Session.cookie',
+			'Session',
 		));
 
 		//テーマのみデフォルト値セット
@@ -97,8 +97,8 @@ class SiteSettingUtil {
 		}
 
 		//Sessionの設定値を変えるため、Configureにセットする
-		//$session = Hash::merge(Configure::read('Session'), self::read('Session'));
-		//Configure::write('Session', $session);
+		$session = Hash::merge(Configure::read('Session'), self::read('Session'));
+		Configure::write('Session', $session);
 
 		//debugについては、セッションがある場合セッションを優先する
 		$debugs = $SiteSetting->debugOptions;
