@@ -46,25 +46,25 @@ class SiteSetting4testFixture extends SiteSettingFixture {
  * @return void
  */
 	public function init() {
-		require_once App::pluginPath('SiteManager') . 'Config' . DS . 'Migration' . DS . '2100000001_site_manager_records.php';
+		require_once App::pluginPath('SiteManager') . 'Config' . DS . 'Migration' . DS . '1469687773_site_manager_records.php';
 		$records = (new SiteManagerRecords())->records[$this->name];
 		$this->records = array_merge($this->records, $records);
 		$this->records[0]['value'] = 'NetCommons3 JA';
 		$this->records[1]['value'] = 'NetCommons3 EN';
 
-		require_once App::pluginPath('SiteManager') . 'Config' . DS . 'Migration' . DS . '2100000002_system_manager_records.php';
+		require_once App::pluginPath('SiteManager') . 'Config' . DS . 'Migration' . DS . '1469687774_system_manager_records.php';
 		$records = (new SystemManagerRecords())->records[$this->name];
 		$this->records = array_merge($this->records, $records);
 
-		require_once App::pluginPath('SiteManager') . 'Config' . DS . 'Migration' . DS . '2100000003_meta_of_m17n.php';
+		require_once App::pluginPath('SiteManager') . 'Config' . DS . 'Migration' . DS . '1469687775_meta_of_m17n.php';
 		$records = (new MetaOfM17n())->records[$this->name];
 		$this->records = array_merge($this->records, $records);
 
-		require_once App::pluginPath('SiteManager') . 'Config' . DS . 'Migration' . DS . '2100000004_mail_smtp_tls.php';
+		require_once App::pluginPath('SiteManager') . 'Config' . DS . 'Migration' . DS . '1469687776_mail_smtp_tls.php';
 		$records = (new MailSmtpTls())->records[$this->name];
 		$this->records = array_merge($this->records, $records);
 
-		require_once App::pluginPath('SiteManager') . 'Config' . DS . 'Migration' . DS . '2100000005_contact_after_approval_mail.php';
+		require_once App::pluginPath('SiteManager') . 'Config' . DS . 'Migration' . DS . '1469687777_contact_after_approval_mail.php';
 		$records = (new ContactAfterApprovalMail())->records[$this->name];
 		$this->records = array_merge($this->records, $records);
 
