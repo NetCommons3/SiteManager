@@ -90,11 +90,8 @@ class SiteSettingUtilFunc {
 	public function acceptLanguage() {
 		//言語データ取得
 		$Language = ClassRegistry::init('M17n.Language');
-		$languages = $Language->find('list', array(
-			'recursive' => -1,
+		$languages = $Language->getLanguage('list', array(
 			'fields' => array('code', 'code'),
-			'conditions' => array('is_active' => true),
-			'order' => 'weight'
 		));
 
 		$maximalNum = 0;
@@ -108,6 +105,7 @@ class SiteSettingUtilFunc {
 				$num = 1;
 			}
 			if ($num > $maximalNum) {
+				$priKey = '';
 				if (array_key_exists($pri[0], $languages)) {
 					$priKey = $pri[0];
 				} elseif (strpos($pri[0], '-') !== false) {
