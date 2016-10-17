@@ -43,8 +43,6 @@ class SiteSettingUtil {
  * @return void
  */
 	public static function initialize() {
-		$SiteSetting = ClassRegistry::init('SiteManager.SiteSetting');
-
 		self::setup(array(
 			// * サイト名
 			'App.site_name',
