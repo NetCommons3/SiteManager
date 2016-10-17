@@ -43,8 +43,6 @@ class SiteSettingUtil {
  * @return void
  */
 	public static function initialize() {
-		$SiteSetting = ClassRegistry::init('SiteManager.SiteSetting');
-
 		self::setup(array(
 			// * サイト名
 			'App.site_name',
@@ -89,7 +87,6 @@ class SiteSettingUtil {
 		//下記は設定は、Configureにもwriteする
 		$siteSetting = array(
 			'Config.language',
-			'debug',
 			'theme',
 		);
 		foreach ($siteSetting as $key) {
@@ -99,12 +96,6 @@ class SiteSettingUtil {
 		//Sessionの設定値を変えるため、Configureにセットする
 		$session = Hash::merge(Configure::read('Session'), self::read('Session'));
 		Configure::write('Session', $session);
-
-		//debugについては、セッションがある場合セッションを優先する
-		$debugs = $SiteSetting->debugOptions;
-		if (in_array(CakeSession::read('debug'), array_keys($debugs), true)) {
-			Configure::write('debug', CakeSession::read('debug'));
-		}
 	}
 
 /**
