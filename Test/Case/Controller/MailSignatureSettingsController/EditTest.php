@@ -9,7 +9,7 @@
  * @copyright Copyright 2014, NetCommons Project
  */
 
-App::uses('NetCommonsControllerTestCase', 'NetCommons.TestSuite');
+App::uses('SiteManagerControllerTestCase', 'SiteManager.TestSuite');
 
 /**
  * MailSignatureSettingsController::edit()のテスト
@@ -17,18 +17,7 @@ App::uses('NetCommonsControllerTestCase', 'NetCommons.TestSuite');
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @package NetCommons\SiteManager\Test\Case\Controller\MailSignatureSettingsController
  */
-class MailSignatureSettingsControllerEditTest extends NetCommonsControllerTestCase {
-
-/**
- * Fixtures
- *
- * @var array
- */
-	public $fixtures = array(
-		'plugin.site_manager.site_setting4test',
-		'plugin.site_manager.plugin4test',
-		'plugin.site_manager.plugins_role4test',
-	);
+class MailSignatureSettingsControllerEditTest extends SiteManagerControllerTestCase {
 
 /**
  * Plugin name
