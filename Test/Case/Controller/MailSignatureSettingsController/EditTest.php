@@ -9,7 +9,7 @@
  * @copyright Copyright 2014, NetCommons Project
  */
 
-App::uses('SiteManagerControllerTestCase', 'SiteManager.TestSuite.TestSuite');
+App::uses('SiteManagerControllerTestCase', 'SiteManager.TestSuite');
 
 /**
  * MailSignatureSettingsController::edit()のテスト

@@ -9,13 +9,16 @@
  * @copyright Copyright 2014, NetCommons Project
  */
 
+//@codeCoverageIgnoreStart;
 App::uses('NetCommonsControllerTestCase', 'NetCommons.TestSuite');
+//@codeCoverageIgnoreEnd;
 
 /**
  * SiteManagerControllerTestCase TestCase
  *
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @package NetCommons\SiteManager\TestSuite
+ * @codeCoverageIgnore
  */
 class SiteManagerControllerTestCase extends NetCommonsControllerTestCase {
 
