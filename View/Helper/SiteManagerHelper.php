@@ -11,6 +11,7 @@
 
 App::uses('AppHelper', 'View/Helper');
 App::uses('Room', 'Rooms.Model');
+App::uses('Space', 'Rooms.Model');
 App::uses('SiteManagerComponent', 'SiteManager.Controller/Component');
 
 /**
@@ -50,6 +51,7 @@ class SiteManagerHelper extends AppHelper {
 		'default_page_settings' => array(
 			'controller' => 'default_page_settings',
 			'action' => 'edit',
+			//暫定で残しておく。ここは、__constractでやるように修正する
 			'key' => Room::PUBLIC_PARENT_ID
 		),
 		'membership' => array(
