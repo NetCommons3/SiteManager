@@ -11,6 +11,7 @@
 
 App::uses('AppHelper', 'View/Helper');
 App::uses('Room', 'Rooms.Model');
+App::uses('Space', 'Rooms.Model');
 App::uses('SiteManagerComponent', 'SiteManager.Controller/Component');
 
 /**
@@ -50,7 +51,8 @@ class SiteManagerHelper extends AppHelper {
 		'default_page_settings' => array(
 			'controller' => 'default_page_settings',
 			'action' => 'edit',
-			'key' => Room::PUBLIC_PARENT_ID
+			//ここは、__constractでやるように修正
+			//'key' => Room::PUBLIC_PARENT_ID
 		),
 		'membership' => array(
 			'controller' => 'membership',
@@ -65,6 +67,18 @@ class SiteManagerHelper extends AppHelper {
 			'action' => 'edit',
 		),
 	);
+
+/**
+ * Default Constructor
+ *
+ * @param View $View The View this helper is being attached to.
+ * @param array $settings Configuration settings for the helper.
+ */
+	public function __construct(View $View, $settings = array()) {
+		$this->_tabs['default_page_settings']['key'] = Space::getRoomIdRoot(Space::PUBLIC_SPACE_ID);
+
+		parent::__construct($View, $settings);
+	}
 
 /**
  * Before render callback. beforeRender is called before the view file is rendered.

@@ -14,6 +14,7 @@ App::uses('SiteSettingUtil', 'SiteManager.Utility');
 App::uses('SiteManagerAppModel', 'SiteManager.Model');
 App::uses('AutoUserRegist', 'Auth.Model');
 App::uses('M17nHelper', 'M17n.View/Helper');
+App::uses('Space', 'Rooms.Model');
 
 /**
  * SiteSetting Model
@@ -271,17 +272,18 @@ class SiteSetting extends SiteManagerAppModel {
 			'Room' => 'Rooms.Room',
 		]);
 		//パブリックスペースの場合
-		if (SiteSettingUtil::read('App.default_start_room') === Room::PUBLIC_PARENT_ID) {
+		$defaultStartRoom = SiteSettingUtil::read('App.default_start_room');
+		if ($defaultStartRoom === Space::getRoomIdRoot(Space::PUBLIC_SPACE_ID)) {
 			return '/';
 		}
 		//プライベートの場合、プライベートの利用可をチェックする
-		if (SiteSettingUtil::read('App.default_start_room') === Room::PRIVATE_PARENT_ID &&
+		if ($defaultStartRoom === Space::getRoomIdRoot(Space::PRIVATE_SPACE_ID) &&
 				! Current::read('User.UserRoleSetting.use_private_room')) {
 			return '/';
 		}
 
 		$query = $this->Room->getReadableRoomsConditions(array(
-			'Room.parent_id' => SiteSettingUtil::read('App.default_start_room')
+			'Room.parent_id' => $defaultStartRoom
 		));
 		$room = $this->Room->find('first', Hash::merge($query, array('recursive' => -1)));
 		if (! $room) {

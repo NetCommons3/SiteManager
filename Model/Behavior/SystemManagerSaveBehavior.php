@@ -37,7 +37,7 @@ class SystemManagerSaveBehavior extends ModelBehavior {
 		]);
 
 		$spaces = array(
-			'App.disk_for_group_room' => Space::ROOM_SPACE_ID,
+			'App.disk_for_group_room' => Space::COMMUNITY_SPACE_ID,
 			'App.disk_for_private_room' => Space::PRIVATE_SPACE_ID,
 		);
 		foreach ($spaces as $key => $spaceId) {
