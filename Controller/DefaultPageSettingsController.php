@@ -50,7 +50,7 @@ class DefaultPageSettingsController extends SiteManagerAppController {
 		$rooms = $this->RoomsLanguage->find('all', array(
 			'recursive' => 0,
 			'conditions' => array(
-				'RoomsLanguage.room_id' => Room::$spaceRooms,
+				'RoomsLanguage.room_id' => Room::getSpaceRooms(),
 				'RoomsLanguage.language_id' => Current::read('Language.id')
 			)
 		));

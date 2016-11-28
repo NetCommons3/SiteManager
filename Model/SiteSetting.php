@@ -273,7 +273,7 @@ class SiteSetting extends SiteManagerAppModel {
 		]);
 		//パブリックスペースの場合
 		$defaultStartRoom = SiteSettingUtil::read('App.default_start_room');
-		if ($defaultStartRoom === Space::getRoomIdRoot(Space::PUBLIC_SPACE_ID)) {
+		if ($defaultStartRoom === Space::getRoomIdRoot(Space::PUBLIC_SPACE_ID, 'Room')) {
 			return '/';
 		}
 		//プライベートの場合、プライベートの利用可をチェックする
