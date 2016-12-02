@@ -30,6 +30,7 @@ $SiteSetting->prepare();
 							'1' => __d('net_commons', 'Yes'),
 							'0' => __d('net_commons', 'No'),
 						),
+						'label' => __d('site_manager', 'AutoRegist.use_automatic_register'),
 					)); ?>
 
 				<div col="row" ng-show="<?php echo $domId; ?>" ng-cloak>
@@ -39,6 +40,7 @@ $SiteSetting->prepare();
 									'type' => 'select',
 									'options' => $SiteSetting->autoRegistConfirm,
 									'ng-click' => $confirmationDomId . ' = click($event)',
+									'label' => __d('site_manager', 'AutoRegist.confirmation'),
 								)); ?>
 						</div>
 
@@ -54,6 +56,7 @@ $SiteSetting->prepare();
 											'0' => __d('net_commons', 'No'),
 										),
 										'div' => false,
+										'label' => __d('site_manager', 'AutoRegist.use_secret_key'),
 									)); ?>
 
 								<div class="form-input-outer" ng-show="<?php echo $secretDomId; ?>">
@@ -73,7 +76,8 @@ $SiteSetting->prepare();
 							<?php echo $this->SiteManager->inputCommon('SiteSetting', 'AutoRegist.role_key', array(
 									'type' => 'select',
 									'options' => $userRoles,
-									'help' => true,
+									'label' => __d('site_manager', 'AutoRegist.role_key'),
+									'help' => __d('site_manager', 'AutoRegist.role_key help'),
 								)); ?>
 						</div>
 
@@ -92,7 +96,8 @@ $SiteSetting->prepare();
 						<div>
 							<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'AutoRegist.disclaimer', array(
 									'type' => 'wysiwyg',
-									'help' => true,
+									'label' => __d('site_manager', 'AutoRegist.disclaimer'),
+									'help' => __d('site_manager', 'AutoRegist.disclaimer help'),
 								)); ?>
 						</div>
 
@@ -101,6 +106,7 @@ $SiteSetting->prepare();
 						<div ng-show="<?php echo '(' . $confirmationDomId . ' === 0' . ' || ' . $confirmationDomId . ' === 2)'; ?>">
 							<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'AutoRegist.approval_mail_subject', array(
 									//'type' => 'textarea',
+									'label' => __d('site_manager', 'AutoRegist.approval_mail_subject'),
 									'required' => true,
 								)); ?>
 						</div>
@@ -108,6 +114,8 @@ $SiteSetting->prepare();
 						<div ng-show="<?php echo '(' . $confirmationDomId . ' === 0' . ' || ' . $confirmationDomId . ' === 2)'; ?>">
 							<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'AutoRegist.approval_mail_body', array(
 									'type' => 'textarea',
+									'label' => __d('site_manager', 'AutoRegist.approval_mail_body'),
+									'help' => __d('site_manager', 'AutoRegist.approval_mail_body help'),
 									'mailHelp' => true,
 									'required' => true,
 								)); ?>
@@ -118,6 +126,7 @@ $SiteSetting->prepare();
 						<div ng-show="(<?php echo $confirmationDomId . ' === 2'; ?>)">
 							<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'AutoRegist.acceptance_mail_subject', array(
 									//'type' => 'textarea',
+									'label' => __d('site_manager', 'AutoRegist.acceptance_mail_subject'),
 									'required' => true,
 								)); ?>
 						</div>
@@ -125,6 +134,8 @@ $SiteSetting->prepare();
 						<div ng-show="(<?php echo $confirmationDomId . ' === 2'; ?>)">
 							<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'AutoRegist.acceptance_mail_body', array(
 									'type' => 'textarea',
+									'label' => __d('site_manager', 'AutoRegist.acceptance_mail_body'),
+									'help' => __d('site_manager', 'AutoRegist.acceptance_mail_body help'),
 									'mailHelp' => true,
 									'required' => true,
 								)); ?>
@@ -142,6 +153,7 @@ $SiteSetting->prepare();
 			<div>
 				<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'UserRegist.mail_subject', array(
 						//'type' => 'textarea',
+						'label' => __d('site_manager', 'UserRegist.mail_subject'),
 						'required' => true,
 					)); ?>
 			</div>
@@ -149,6 +161,8 @@ $SiteSetting->prepare();
 			<div>
 				<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'UserRegist.mail_body', array(
 						'type' => 'textarea',
+						'label' => __d('site_manager', 'UserRegist.mail_body'),
+						'help' => __d('site_manager', 'UserRegist.mail_body help'),
 						'mailHelp' => true,
 						'required' => true,
 					)); ?>

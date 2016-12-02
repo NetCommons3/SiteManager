@@ -13,11 +13,14 @@
 <article>
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.approval_mail_subject', array(
 			//'type' => 'textarea',
+			'label' => __d('site_manager', 'Workflow.approval_mail_subject'),
 			'required' => true,
 		)); ?>
 
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.approval_mail_body', array(
 			'type' => 'textarea',
+			'label' => __d('site_manager', 'Workflow.approval_mail_body'),
+			'help' => __d('site_manager', 'Workflow.approval_mail_body help'),
 			'mailHelp' => array(
 				'addMessage' => __d(
 					'site_manager',
@@ -31,11 +34,14 @@
 
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.disapproval_mail_subject', array(
 			//'type' => 'textarea',
+			'label' => __d('site_manager', 'Workflow.disapproval_mail_subject'),
 			'required' => true,
 		)); ?>
 
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.disapproval_mail_body', array(
 			'type' => 'textarea',
+			'label' => __d('site_manager', 'Workflow.disapproval_mail_body'),
+			'help' => __d('site_manager', 'Workflow.disapproval_mail_body help'),
 			'mailHelp' => array(
 				'addMessage' => __d(
 					'site_manager',
@@ -49,11 +55,14 @@
 
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.approval_completion_mail_subject', array(
 			//'type' => 'textarea',
+			'label' => __d('site_manager', 'Workflow.approval_completion_mail_subject'),
 			'required' => true,
 		)); ?>
 
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.approval_completion_mail_body', array(
 			'type' => 'textarea',
+			'label' => __d('site_manager', 'Workflow.approval_completion_mail_body'),
+			'help' => __d('site_manager', 'Workflow.approval_completion_mail_body help'),
 			'mailHelp' => array(
 				'addMessage' => __d(
 					'site_manager',
@@ -67,11 +76,14 @@
 
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.contact_after_approval_mail_subject', array(
 		//'type' => 'textarea',
+		'label' => __d('site_manager', 'Workflow.contact_after_approval_mail_subject'),
 		'required' => true,
 	)); ?>
 
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Workflow.contact_after_approval_mail_body', array(
 		'type' => 'textarea',
+		'label' => __d('site_manager', 'Workflow.contact_after_approval_mail_body'),
+		'help' => __d('site_manager', 'Workflow.contact_after_approval_mail_body help'),
 		'mailHelp' => array(
 			'addMessage' => __d(
 					'site_manager',

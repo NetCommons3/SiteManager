@@ -21,13 +21,15 @@
 					'1' => __d('net_commons', 'Yes'),
 					'0' => __d('net_commons', 'No'),
 				),
+				'label' => __d('site_manager', 'UserCancel.use_cancel_feature'),
 			)); ?>
 
 		<div class="row" ng-show="<?php echo $domId; ?>" ng-cloak>
 			<div class="col-xs-offset-1 col-xs-11">
 				<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'UserCancel.disclaimer', array(
 						'type' => 'wysiwyg',
-						'help' => true,
+						'label' => __d('site_manager', 'UserCancel.disclaimer'),
+						'help' => __d('site_manager', 'UserCancel.disclaimer help'),
 					)); ?>
 
 				<?php $notifyDomId = $this->SiteManager->domId('SiteSetting.UserCancel.notify_administrators'); ?>
@@ -40,17 +42,21 @@
 								'1' => __d('net_commons', 'Yes'),
 								'0' => __d('net_commons', 'No'),
 							),
+							'label' => __d('site_manager', 'UserCancel.notify_administrators'),
 						)); ?>
 
 					<div class="row" ng-show="<?php echo $notifyDomId; ?>">
 						<div class="col-xs-offset-1 col-xs-11">
 							<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'UserCancel.mail_subject', array(
 									//'type' => 'textarea',
+									'label' => __d('site_manager', 'UserCancel.mail_subject'),
 									'required' => true,
 								)); ?>
 
 							<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'UserCancel.mail_body', array(
 									'type' => 'textarea',
+									'label' => __d('site_manager', 'UserCancel.mail_body'),
+									'help' => __d('site_manager', 'UserCancel.mail_body help'),
 									'mailHelp' => true,
 									'required' => true,
 								)); ?>

@@ -21,6 +21,7 @@
 					'1' => __d('net_commons', 'Yes'),
 					'0' => __d('net_commons', 'No'),
 				),
+				'label' => __d('site_manager', 'App.close_site'),
 				'help' => __d('site_manager', 'App.close_site help')
 			)); ?>
 
@@ -28,6 +29,7 @@
 			<div class="col-xs-offset-1 col-xs-11">
 				<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'App.site_closing_reason', array(
 						'type' => 'wysiwyg',
+						'label' => __d('site_manager', 'App.site_closing_reason'),
 						'required' => true,
 					)); ?>
 				<?php echo $this->NetCommonsForm->help($this->SiteManager->helpSiteClose()); ?>
