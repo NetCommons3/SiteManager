@@ -18,156 +18,155 @@ msgstr ""
 #
 #: SiteManager/View/Helper/SiteManagerHelper.php:116
 msgid "Tab.site_manager"
-msgstr "一般設定"
+msgstr ""
 
 #: SiteManager/View/Helper/SiteManagerHelper.php:116
 msgid "Tab.mail_signature_settings"
-msgstr "メール署名"
+msgstr ""
 
 #: SiteManager/View/Helper/SiteManagerHelper.php:116
 msgid "Tab.meta_settings"
-msgstr "メタ情報"
+msgstr ""
 
 #: SiteManager/View/Helper/SiteManagerHelper.php:116
 msgid "Tab.default_page_settings"
-msgstr "ページスタイル"
+msgstr ""
 
 #: SiteManager/View/Helper/SiteManagerHelper.php:116
 msgid "Tab.membership"
-msgstr "入会・退会"
+msgstr ""
 
 #: SiteManager/View/Helper/SiteManagerHelper.php:116
 msgid "Tab.workflow"
-msgstr "承認メール"
+msgstr ""
 
 #
 # 一般設定
 #
 #: SiteManager/View/Elements/SiteManager/general_form.ctp:18
 msgid "App.site_name"
-msgstr "サイト名"
+msgstr ""
 
 #: SiteManager/View/Elements/SiteManager/general_form.ctp:24
 msgid "Automatic language"
-msgstr "自動"
+msgstr ""
 
 #: SiteManager/View/Elements/SiteManager/general_form.ctp:26
 msgid "Config.language"
-msgstr "システム標準使用言語"
+msgstr ""
 
 #: SiteManager/View/Elements/SiteManager/general_form.ctp:27
 msgid "Config.language help"
-msgstr "自動の場合はブラウザに設定されている言語を優先します。"
+msgstr ""
 
 #: SiteManager/View/Elements/SiteManager/general_form.ctp:33
 msgid "App.default_start_room"
-msgstr "標準の開始ルーム"
+msgstr ""
 
 #: SiteManager/View/Elements/SiteManager/general_form.ctp:34
 msgid "App.default_start_room help"
-msgstr "ログイン後に最初に表示するルームを指定します。パブリックスペースを指定した場合には、トップページを表示します。"
+msgstr ""
 
 #
 # パスワード再発行
 #
 #: SiteManager/View/SiteManager/edit.ctp:32
 msgid "Notification of password"
-msgstr "パスワード再発行"
+msgstr ""
 
 #: SiteManager/View/Elements/SiteManager/notification_password_form.ctp:24
 msgid "ForgotPass.use_password_reissue"
-msgstr "パスワード再発行の機能を使う"
+msgstr ""
 
 #: SiteManager/View/Elements/SiteManager/notification_password_form.ctp:31
 msgid "ForgotPass.issue_mail_subject"
-msgstr "新規パスワード通知の件名"
+msgstr ""
 
 #: SiteManager/View/Elements/SiteManager/notification_password_form.ctp:37
 msgid "ForgotPass.issue_mail_body"
-msgstr "新規パスワード通知メールの本文"
+msgstr ""
 
 #: SiteManager/View/Elements/SiteManager/notification_password_form.ctp:38
 msgid "ForgotPass.issue_mail_body help"
-msgstr "{X-SITE_NAME} : サイト名<br>{X-URL} : URL"
+msgstr ""
 
 #: SiteManager/View/Elements/SiteManager/notification_password_form.ctp:47
 msgid "ForgotPass.request_mail_subject"
-msgstr "新規パスワード発行の件名"
+msgstr ""
 
 #: SiteManager/View/Elements/SiteManager/notification_password_form.ctp:53
 msgid "ForgotPass.request_mail_body"
-msgstr "新規パスワード発行メールの本文"
+msgstr ""
 
 #: SiteManager/View/Elements/SiteManager/notification_password_form.ctp:54
 msgid "ForgotPass.request_mail_body help"
-msgstr "{X-SITE_NAME} : サイト名<br>{X-URL} : URL"
+msgstr ""
 
 #
 # サイトの一時停止
 #
 #: SiteManager/View/SiteManager/edit.ctp:42
 msgid "Close site settings"
-msgstr "サイトの一時停止"
+msgstr ""
 
 #: SiteManager/View/Elements/SiteManager/close_site_form.ctp:24
 msgid "App.close_site"
-msgstr "サイトを一時停止にする"
+msgstr ""
 
 #: SiteManager/View/Elements/SiteManager/close_site_form.ctp:25
 msgid "App.close_site help"
-msgstr "管理者以外はサイトにアクセスすることができないようにします。"
+msgstr ""
 
 #: SiteManager/View/Elements/SiteManager/close_site_form.ctp:32
 msgid "App.site_closing_reason"
-msgstr "メンテナンス画面に表示する文言"
+msgstr ""
 
 #
 # メタ情報
 #
 #: SiteManager/View/Elements/MetaSettings/meta_form.ctp:19
 msgid "Meta.author"
-msgstr "作成者"
+msgstr ""
 
 #: SiteManager/View/Elements/MetaSettings/meta_form.ctp:20
 msgid "Meta.author help"
-msgstr "作成者METAタグは、サイト文書の作成者の公開情報を定義します。名前、システム管理者のe-mailアドレス、会社名、URLなどを記述します。"
+msgstr ""
 
 #: SiteManager/View/Elements/MetaSettings/meta_form.ctp:24
 msgid "Meta.copyright"
-msgstr "著作権表示"
+msgstr ""
 
 #: SiteManager/View/Elements/MetaSettings/meta_form.ctp:25
 msgid "Meta.copyright help"
-msgstr "METAコピーライトタグは、あなたのサイト上の情報に対するの著作権情報を定義します。"
+msgstr ""
 
 #: SiteManager/View/Elements/MetaSettings/meta_form.ctp:30
 msgid "Meta.keywords"
-msgstr "キーワード"
+msgstr ""
 
 #: SiteManager/View/Elements/MetaSettings/meta_form.ctp:31
 msgid "Meta.keywords help"
-msgstr "このサイトをロボット型検索エンジンに登録するための検索キーワードを設定することができます。キーワードはカンマで区切って記述してください。 (例: NetCommons, 学校, 研究, 東京)"
+msgstr ""
 
 #: SiteManager/View/Elements/MetaSettings/meta_form.ctp:36
 msgid "Meta.description"
-msgstr "サイトの説明"
+msgstr ""
 
 #: SiteManager/View/Elements/MetaSettings/meta_form.ctp:37
 msgid "Meta.description help"
-msgstr "このサイトがロボット型検索エンジンに登録された時に表示される説明文を設定することができます。"
+msgstr ""
 
 #: SiteManager/View/Elements/MetaSettings/meta_form.ctp:43
 msgid "Meta.robots"
-msgstr "ロボット型検索エンジンへの対応"
+msgstr ""
 
 #: SiteManager/View/Elements/MetaSettings/meta_form.ctp:44
 msgid "Meta.robots help"
-msgstr "ロボット型検索エンジンが登録の対象にしてよいか(index)、リンクを辿ってよいか(follow)の組み合わせを選択できます。"
+msgstr ""
 
 #: SiteManager/View/MetaSettings/edit.ctp:15
 msgid "Meta-information (meta tag), is described in the head tag of the html page, is a tag that defines a variety of additional information of the page.The meta-information by setting properly, will also be the SEO measures. Also, if you change the content in each page, it can be changed in the Page Setup."
-msgstr "メタ情報（metaタグ）は、htmlページのheadタグ内に記述される、ページの各種付加情報を定義するタグです。"
-"メタ情報を適切に設定することで、SEOの対策にもなります。また、ページごとで内容を変える場合は、ページ設定で変更することができます。"
+msgstr ""
 
 # この項目は、i18nでセットされない
 #: SiteManager/Model/SiteSetting.php:237
@@ -196,226 +195,226 @@ msgstr ""
 #
 #: SiteManager/View/Elements/Membership/automatic_input_items.ctp:17
 msgid "Input items"
-msgstr "自動登録時で入力させる項目"
+msgstr ""
 
 #: SiteManager/View/Elements/Membership/automatic_input_items.ctp:55
 msgid "Member items that are required is a change not allowed."
-msgstr "必須とされている会員項目は、自動登録時も必須項目となり、「表示」から変更できません。"
+msgstr ""
 
 #: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:33
 msgid "AutoRegist.use_automatic_register"
-msgstr "自動会員登録を許可する"
+msgstr ""
 
 #: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:43
 msgid "AutoRegist.confirmation"
-msgstr "アカウント登録の最終決定"
+msgstr ""
 
 #: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:59
 msgid "AutoRegist.use_secret_key"
-msgstr "認証キーの使用"
+msgstr ""
 
 #: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:66
 msgid "AutoRegist.secret_key placeholder"
-msgstr "キーを入力してください。"
+msgstr ""
 
 #: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:71
 msgid "AutoRegist.use_secret_key help"
-msgstr "認証キーを使用するとキーを知っている人のみ自動会員登録が可能となります。"
+msgstr ""
 
 #: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:79
 msgid "AutoRegist.role_key"
-msgstr "自動登録時の権限"
+msgstr ""
 
 #: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:80
 msgid "AutoRegist.role_key help"
-msgstr "権限を増やす場合は、「権限管理」から行ってください。ただし、サイト運営プラグインが使える権限を自動登録時の権限とすることはできません。"
+msgstr ""
 
 #: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:99
 msgid "AutoRegist.disclaimer"
-msgstr "利用許諾文"
+msgstr ""
 
 #: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:100
 msgid "AutoRegist.disclaimer help"
-msgstr "ユーザの新規登録ページに表示する利用許諾文を入力してください。"
+msgstr ""
 
 #: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:109
 msgid "AutoRegist.approval_mail_subject"
-msgstr "会員登録承認メールの件名"
+msgstr ""
 
 #: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:117
 msgid "AutoRegist.approval_mail_body"
-msgstr "会員登録承認メールの本文"
+msgstr ""
 
 #: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:118
 msgid "AutoRegist.approval_mail_body help"
-msgstr "{X-SITE_NAME} : サイト名<br>{X-URL} : URL"
+msgstr ""
 
 #: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:129
 msgid "AutoRegist.acceptance_mail_subject"
-msgstr "会員登録受付メールの件名"
+msgstr ""
 
 #: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:137
 msgid "AutoRegist.acceptance_mail_body"
-msgstr "会員登録受付メールの本文"
+msgstr ""
 
 #: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:138
 msgid "AutoRegist.acceptance_mail_body help"
-msgstr "{X-SITE_NAME} : サイト名<br>{X-URL} : URL"
+msgstr ""
 
 #: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:156
 msgid "UserRegist.mail_subject"
-msgstr "会員管理からの登録通知メールの件名"
+msgstr ""
 
 #: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:164
 msgid "UserRegist.mail_body"
-msgstr "会員管理からの登録通知メールの本文"
+msgstr ""
 
 #: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:165
 msgid "UserRegist.mail_body help"
-msgstr "{X-SITE_NAME}：サイト名<br>{X-HANDLE}：ハンドル名<br>{X-LOGIN_ID}：ログインID<br>{X-PASSWORD}：パスワード<br>{X-PASSWORD_URL}：パスワード再発行URL<br>{X-EMAIL}：e-mail<br>{X-URL}：URL"
+msgstr ""
 
 #: SiteManager/View/Helper/SiteManagerHelper.php:164
 msgid "Automatic registration"
-msgstr "入会設定"
+msgstr ""
 
 # この項目は、i18nでセットされない
 #: SiteManager/Model/SiteSetting.php:256
 #: @see SiteManager/Model/SiteSetting.php:90
 #: @see SiteManager/View/Elements/Membership/automatic_registration_form.ctp:41
 msgid "Automatic registration by user(advised)"
-msgstr "ユーザ自身による確認(推奨)"
+msgstr ""
 
 #: @see SiteManager/Model/SiteSetting.php:93
 #: @see SiteManager/View/Elements/Membership/automatic_registration_form.ctp:41
 msgid "User registration by automatic"
-msgstr "自動的にアカウントを登録する"
+msgstr ""
 
 #: @see SiteManager/Model/SiteSetting.php:96
 #: @see SiteManager/View/Elements/Membership/automatic_registration_form.ctp:41
 msgid "Approval by administrator"
-msgstr "管理者による承認"
+msgstr ""
 
 #
 # 退会設定
 #
 #: SiteManager/View/Elements/Membership/membership_cancellation_form.ctp:24
 msgid "UserCancel.use_cancel_feature"
-msgstr "会員本人による退会を許可する"
+msgstr ""
 
 #: SiteManager/View/Elements/Membership/membership_cancellation_form.ctp:31
 msgid "UserCancel.disclaimer"
-msgstr "退会規約"
+msgstr ""
 
 #: SiteManager/View/Elements/Membership/membership_cancellation_form.ctp:32
 msgid "UserCancel.disclaimer help"
-msgstr "退会規約を追加で設定する場合、記述してください。システム上の退会規約は、常に表示されます。"
+msgstr ""
 
 #: SiteManager/View/Elements/Membership/membership_cancellation_form.ctp:45
 msgid "UserCancel.notify_administrators"
-msgstr "管理者に退会メールを送付する"
+msgstr ""
 
 #: SiteManager/View/Elements/Membership/membership_cancellation_form.ctp:52
 msgid "UserCancel.mail_subject"
-msgstr "退会完了メールの件名"
+msgstr ""
 
 #: SiteManager/View/Elements/Membership/membership_cancellation_form.ctp:58
 msgid "UserCancel.mail_body"
-msgstr "退会完了メールの本文"
+msgstr ""
 
 #: SiteManager/View/Elements/Membership/membership_cancellation_form.ctp:59
 msgid "UserCancel.mail_body help"
-msgstr "{X-SITE_NAME} : サイト名<br>{X-URL} : URL"
+msgstr ""
 
 #: SiteManager/View/Helper/SiteManagerHelper.php:165
 msgid "Membership cancellation"
-msgstr "退会設定"
+msgstr ""
 
 #
 # コンテンツ承認
 #
 #: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:16
 msgid "Workflow.approval_mail_subject"
-msgstr "申請メールの件名"
+msgstr ""
 
 #: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:22
 msgid "Workflow.approval_mail_body"
-msgstr "申請メールの本文"
+msgstr ""
 
 #: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:23
 msgid "Workflow.approval_mail_body help"
-msgstr "{X-PLUGIN_MAIL_SUBJECT}：プラグインのメール件名<br>{X-PLUGIN_NAME} : プラグイン名<br>{X-USER}：投稿者<br>{X-WORKFLOW_COMMENT} : 承認コメント<br>{X-PLUGIN_MAIL_BODY}プラグインのメール本文"
+msgstr ""
 
 #: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:25
 msgid "The email subject and body of the applicant request that is sent to the room administrator when you registered the content."
-msgstr "コンテンツを登録した際にルーム管理者(編集長)に送られる申請依頼メールの件名と本文です。"
+msgstr ""
 
 #: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:37
 msgid "Workflow.disapproval_mail_subject"
-msgstr "差し戻しメールの件名"
+msgstr ""
 
 #: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:43
 msgid "Workflow.disapproval_mail_body"
-msgstr "差し戻しメールの本文"
+msgstr ""
 
 #: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:44
 msgid "Workflow.disapproval_mail_body help"
-msgstr "{X-PLUGIN_MAIL_SUBJECT}：プラグインのメール件名<br>{X-PLUGIN_NAME} : プラグイン名<br>{X-USER}：投稿者<br>{X-WORKFLOW_COMMENT} : 承認コメント<br>{X-PLUGIN_MAIL_BODY}プラグインのメール本文"
+msgstr ""
 
 #: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:46
 msgid "The email subject and body that is sent to the contributor when remanded the content."
-msgstr "コンテンツを差し戻した際に投稿者に送られるメールの件名と本文です。"
+msgstr ""
 
 #: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:58
 msgid "Workflow.approval_completion_mail_subject"
-msgstr "承認完了通知メールの件名"
+msgstr ""
 
 #: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:64
 msgid "Workflow.approval_completion_mail_body"
-msgstr "承認完了通知メールの本文"
+msgstr ""
 
 #: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:65
 msgid "Workflow.approval_completion_mail_body help"
-msgstr "{X-PLUGIN_MAIL_SUBJECT}：プラグインのメール件名<br>{X-PLUGIN_NAME} : プラグイン名<br>{X-USER}：投稿者<br>{X-WORKFLOW_COMMENT} : 承認コメント<br>{X-PLUGIN_MAIL_BODY}プラグインのメール本文"
+msgstr ""
 
 #: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:67
 msgid "The email subject and body that is sent to the contributor when you have completed approved the content."
-msgstr "コンテンツを承認完了した際に投稿者に送られるメールの件名と本文です。"
+msgstr ""
 
 #: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:79
 msgid "Workflow.contact_after_approval_mail_subject"
-msgstr "担当者への連絡通知メールの件名"
+msgstr ""
 
 #: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:85
 msgid "Workflow.contact_after_approval_mail_body"
-msgstr "担当者への連絡通知メールの本文"
+msgstr ""
 
 #: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:86
 msgid "Workflow.contact_after_approval_mail_body help"
-msgstr "{X-PLUGIN_MAIL_SUBJECT}：プラグインのメール件名<br>{X-PLUGIN_NAME} : プラグイン名<br>{X-USER}：投稿者<br>{X-WORKFLOW_COMMENT} : 承認コメント<br>{X-PLUGIN_MAIL_BODY}プラグインのメール本文"
+msgstr ""
 
 #: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:88
 msgid "Already is the text and e-mail subject line that is sent to the contributor at the time you enter to contact the person in charge of editing the content that has been approved."
-msgstr "既に承認したコンテンツを編集して担当者への連絡を入力した際に投稿者に送られるメールの件名と本文です。"
+msgstr ""
 
 #: SiteManager/View/Workflow/edit.ctp:15
-msgid "Against approval is required content, you can set the e-mail subject line,  text that is sent to complete approval from the application request (remand)."
-msgstr "承認が必要なコンテンツに対して、申請から承認完了（差し戻し）までに送信されるメールの件名と本文が設定できます。"
+msgid "Against approval is required content, you can set the e-mail subject line, text that is sent to complete approval from the application request (remand)."
+msgstr ""
 
 #
 # メール署名
 #
 #: SiteManager/View/Elements/MailSignatureSettings/signature_form.ctp:16
 msgid "Mail.body_header"
-msgstr "本文ヘッダー"
+msgstr ""
 
 #: SiteManager/View/Elements/MailSignatureSettings/signature_form.ctp:17
 msgid "Mail.body_header help"
-msgstr "全てのメール本文の冒頭に付与する内容です。"
+msgstr ""
 
 #: SiteManager/View/Elements/MailSignatureSettings/signature_form.ctp:22
 msgid "Mail.signature"
-msgstr "署名"
+msgstr ""
 
 #: SiteManager/View/Elements/MailSignatureSettings/signature_form.ctp:23
 msgid "Mail.signature help"
-msgstr "全てのメール本文の末尾に付与する内容です。"
+msgstr ""

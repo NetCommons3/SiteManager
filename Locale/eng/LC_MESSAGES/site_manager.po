@@ -16,286 +16,409 @@ msgstr ""
 #
 # タブ文言
 #
+#: SiteManager/View/Helper/SiteManagerHelper.php:116
 msgid "Tab.site_manager"
 msgstr "General setting"
 
+#: SiteManager/View/Helper/SiteManagerHelper.php:116
 msgid "Tab.mail_signature_settings"
 msgstr "E-mail signature"
 
+#: SiteManager/View/Helper/SiteManagerHelper.php:116
 msgid "Tab.meta_settings"
 msgstr "About this site"
 
+#: SiteManager/View/Helper/SiteManagerHelper.php:116
 msgid "Tab.default_page_settings"
 msgstr "Page style"
 
+#: SiteManager/View/Helper/SiteManagerHelper.php:116
 msgid "Tab.membership"
 msgstr "Membership"
 
+#: SiteManager/View/Helper/SiteManagerHelper.php:116
 msgid "Tab.workflow"
 msgstr "Workflow mail"
 
 #
 # 一般設定
 #
+#: SiteManager/View/Elements/SiteManager/general_form.ctp:18
 msgid "App.site_name"
 msgstr "Site name"
 
-msgid "Config.language"
-msgstr "Default language"
-
+#: SiteManager/View/Elements/SiteManager/general_form.ctp:24
 msgid "Automatic language"
 msgstr "Automatic"
 
+#: SiteManager/View/Elements/SiteManager/general_form.ctp:26
+msgid "Config.language"
+msgstr "Default language"
+
+#: SiteManager/View/Elements/SiteManager/general_form.ctp:27
 msgid "Config.language help"
 msgstr "If set to `Automatic`, it decide with browser`s language setting."
 
+#: SiteManager/View/Elements/SiteManager/general_form.ctp:33
 msgid "App.default_start_room"
 msgstr "Default start room"
 
+#: SiteManager/View/Elements/SiteManager/general_form.ctp:34
 msgid "App.default_start_room help"
 msgstr "Set the first room shown after logging in."
 
 #
 # パスワード再発行
 #
+#: SiteManager/View/SiteManager/edit.ctp:32
 msgid "Notification of password"
 msgstr ""
 
+#: SiteManager/View/Elements/SiteManager/notification_password_form.ctp:24
 msgid "ForgotPass.use_password_reissue"
 msgstr "Using the function of password re-issue?"
 
+#: SiteManager/View/Elements/SiteManager/notification_password_form.ctp:31
 msgid "ForgotPass.issue_mail_subject"
 msgstr "Subject of new password issue mail."
 
+#: SiteManager/View/Elements/SiteManager/notification_password_form.ctp:37
 msgid "ForgotPass.issue_mail_body"
 msgstr "Content of new password issue mail."
 
+#: SiteManager/View/Elements/SiteManager/notification_password_form.ctp:38
 msgid "ForgotPass.issue_mail_body help"
 msgstr "{X-SITE_NAME} : Site name<br>{X-URL} : URL"
 
+#: SiteManager/View/Elements/SiteManager/notification_password_form.ctp:47
 msgid "ForgotPass.request_mail_subject"
 msgstr "Subject of new password request."
 
+#: SiteManager/View/Elements/SiteManager/notification_password_form.ctp:53
 msgid "ForgotPass.request_mail_body"
 msgstr "Content of new password request."
 
+#: SiteManager/View/Elements/SiteManager/notification_password_form.ctp:54
 msgid "ForgotPass.request_mail_body help"
 msgstr "{X-SITE_NAME} : Site name<br>{X-URL} : URL"
 
 #
 # サイトの一時停止
 #
+#: SiteManager/View/SiteManager/edit.ctp:42
 msgid "Close site settings"
 msgstr ""
 
+#: SiteManager/View/Elements/SiteManager/close_site_form.ctp:24
 msgid "App.close_site"
 msgstr "Turn your site off?"
 
+#: SiteManager/View/Elements/SiteManager/close_site_form.ctp:25
 msgid "App.close_site help"
 msgstr "Select yes to turn your site off so that only users in selected groups have access to the site."
 
+#: SiteManager/View/Elements/SiteManager/close_site_form.ctp:32
 msgid "App.site_closing_reason"
 msgstr "Reason for turning off the site"
 
 msgid "Can use an embedded keyword in the reason for turning off the site"
 msgstr ""
 
-msgid "{X-SITE_NAME} : Site name"
-msgstr ""
-
-
 #
 # メタ情報
 #
+#: SiteManager/View/Elements/MetaSettings/meta_form.ctp:19
 msgid "Meta.author"
 msgstr "Creator"
 
+#: SiteManager/View/Elements/MetaSettings/meta_form.ctp:20
 msgid "Meta.author help"
 msgstr "You can open the information of the creator (i.e. name and e-mail addresses) of this site."
 
+#: SiteManager/View/Elements/MetaSettings/meta_form.ctp:24
 msgid "Meta.copyright"
 msgstr "Copyright"
 
+#: SiteManager/View/Elements/MetaSettings/meta_form.ctp:25
 msgid "Meta.copyright help"
 msgstr "You can define the copyright of your site."
 
+#: SiteManager/View/Elements/MetaSettings/meta_form.ctp:30
 msgid "Meta.keywords"
 msgstr "Meta Keywords"
 
+#: SiteManager/View/Elements/MetaSettings/meta_form.ctp:31
 msgid "Meta.keywords help"
 msgstr "The keywords meta tag is a series of keywords that represents the content of your site. Type in keywords with each separated by a comma or a space in between. (i.e. NetCommons, elementary school, research, Tokyo)"
 
+#: SiteManager/View/Elements/MetaSettings/meta_form.ctp:36
 msgid "Meta.description"
 msgstr "META(Description)"
 
+#: SiteManager/View/Elements/MetaSettings/meta_form.ctp:37
 msgid "Meta.description help"
 msgstr "The help meta tag is a general help of what is contained in your web page"
 
+#: SiteManager/View/Elements/MetaSettings/meta_form.ctp:43
 msgid "Meta.robots"
 msgstr "Welcome robots?"
 
+#: SiteManager/View/Elements/MetaSettings/meta_form.ctp:44
 msgid "Meta.robots help"
 msgstr "\"index\" means that you allow search robots to crawl on your site, and \"follow\" means that you allow search robots to link to your site."
+
+#: SiteManager/View/MetaSettings/edit.ctp:15
+msgid "Meta-information (meta tag), is described in the head tag of the html page, is a tag that defines a variety of additional information of the page.The meta-information by setting properly, will also be the SEO measures. Also, if you change the content in each page, it can be changed in the Page Setup."
+msgstr ""
+
+# この項目は、i18nでセットされない
+#: SiteManager/Model/SiteSetting.php:237
+#: @see SiteManager/Model/SiteSetting.php:59
+#: @see SiteManager/View/Elements/MetaSettings/meta_form.ctp:42
+msgid "Index, Follow"
+msgstr ""
+
+#: @see SiteManager/Model/SiteSetting.php:60
+#: @see SiteManager/View/Elements/MetaSettings/meta_form.ctp:42
+msgid "No Index, Follow"
+msgstr ""
+
+#: @see SiteManager/Model/SiteSetting.php:61
+#: @see SiteManager/View/Elements/MetaSettings/meta_form.ctp:42
+msgid "Index, No Follow"
+msgstr ""
+
+#: @see SiteManager/Model/SiteSetting.php:62
+#: @see SiteManager/View/Elements/MetaSettings/meta_form.ctp:42
+msgid "No Index, No Follow"
+msgstr ""
 
 #
 # 入会設定
 #
-msgid "Automatic registration"
+#: SiteManager/View/Elements/Membership/automatic_input_items.ctp:17
+msgid "Input items"
 msgstr ""
 
+#: SiteManager/View/Elements/Membership/automatic_input_items.ctp:55
+msgid "Member items that are required is a change not allowed."
+msgstr ""
+
+#: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:33
 msgid "AutoRegist.use_automatic_register"
 msgstr "Allow new user registration?"
 
+#: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:43
 msgid "AutoRegist.confirmation"
 msgstr "Confirmation"
 
-msgid "Automatic registration by user(advised)"
-msgstr "by user(advised)"
-
-msgid "User registration by automatic"
-msgstr "automatic"
-
-msgid "Approval by administrator"
-msgstr "by administrator"
-
+#: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:59
 msgid "AutoRegist.use_secret_key"
 msgstr "Use secret key?"
 
-msgid "AutoRegist.use_secret_key help"
-msgstr "Automatic member registration only people who know the key by using the authentication key will be possible."
-
-msgid "AutoRegist.secret_key"
-msgstr ""
-
+#: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:66
 msgid "AutoRegist.secret_key placeholder"
 msgstr "Please enter the key."
 
+#: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:71
+msgid "AutoRegist.use_secret_key help"
+msgstr "Automatic member registration only people who know the key by using the authentication key will be possible."
+
+#: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:79
 msgid "AutoRegist.role_key"
 msgstr "Authority setting"
 
+#: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:80
 msgid "AutoRegist.role_key help"
 msgstr "If you want to increase the authority, please increase from `Role manager`. "
 "However, it can not be the authority at the time of automatic registration privileges that can be used by the publisher plug-ins."
 
-msgid "AutoRegist.prarticipate_default_room"
-msgstr "Participate in the default room."
-
-msgid "Input items"
-msgstr ""
-
+#: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:99
 msgid "AutoRegist.disclaimer"
 msgstr "Registration disclaimer"
 
+#: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:100
 msgid "AutoRegist.disclaimer help"
 msgstr "Registration disclaimer"
 
+#: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:109
 msgid "AutoRegist.approval_mail_subject"
 msgstr "Subject of user registration approval mail."
 
+#: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:117
 msgid "AutoRegist.approval_mail_body"
 msgstr "Content of user registration approval mail."
 
+#: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:118
 msgid "AutoRegist.approval_mail_body help"
 msgstr "{X-SITE_NAME} : Site name<br>{X-URL} : URL"
 
+#: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:129
 msgid "AutoRegist.acceptance_mail_subject"
 msgstr "Subject of user registration acceptance mail."
 
+#: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:137
 msgid "AutoRegist.acceptance_mail_body"
 msgstr "Content of user registration acceptance mail."
 
+#: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:138
 msgid "AutoRegist.acceptance_mail_body help"
 msgstr "{X-SITE_NAME} : Site name<br>{X-URL} : URL"
 
-msgid "AutoRegist.mail_subject"
+#: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:156
+msgid "UserRegist.mail_subject"
 msgstr "Subject"
 
-msgid "AutoRegist.mail_body"
+#: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:164
+msgid "UserRegist.mail_body"
 msgstr "Body"
 
-msgid "AutoRegist.mail_body help"
+#: SiteManager/View/Elements/Membership/automatic_registration_form.ctp:165
+msgid "UserRegist.mail_body help"
 msgstr "{X-SITE_NAME}：Site name<br>{X-HANDLE}：Handle name<br>{X-LOGIN_ID}：Login id<br>{X-PASSWORD}：Password<br>{X-EMAIL}：e-mail<br>{X-URL}：URL"
+
+#: SiteManager/View/Helper/SiteManagerHelper.php:164
+msgid "Automatic registration"
+msgstr ""
+
+# この項目は、i18nでセットされない
+#: SiteManager/Model/SiteSetting.php:256
+#: @see SiteManager/Model/SiteSetting.php:90
+#: @see SiteManager/View/Elements/Membership/automatic_registration_form.ctp:41
+msgid "Automatic registration by user(advised)"
+msgstr "by user(advised)"
+
+#: @see SiteManager/Model/SiteSetting.php:93
+#: @see SiteManager/View/Elements/Membership/automatic_registration_form.ctp:41
+msgid "User registration by automatic"
+msgstr ""
+
+#: @see SiteManager/Model/SiteSetting.php:96
+#: @see SiteManager/View/Elements/Membership/automatic_registration_form.ctp:41
+msgid "Approval by administrator"
+msgstr "by administrator"
 
 #
 # 退会設定
 #
-msgid "Membership cancellation"
-msgstr ""
-
+#: SiteManager/View/Elements/Membership/membership_cancellation_form.ctp:24
 msgid "UserCancel.use_cancel_feature"
 msgstr "Allow withdrawal by the member himself?"
 
+#: SiteManager/View/Elements/Membership/membership_cancellation_form.ctp:31
 msgid "UserCancel.disclaimer"
 msgstr "Agreement"
 
+#: SiteManager/View/Elements/Membership/membership_cancellation_form.ctp:32
 msgid "UserCancel.disclaimer help"
 msgstr "You may add some articles which you want the users to agree before they cancel the membership."
 
+#: SiteManager/View/Elements/Membership/membership_cancellation_form.ctp:45
 msgid "UserCancel.notify_administrators"
 msgstr "Notify to the administrators"
 
+#: SiteManager/View/Elements/Membership/membership_cancellation_form.ctp:52
 msgid "UserCancel.mail_subject"
 msgstr "Subject"
 
+#: SiteManager/View/Elements/Membership/membership_cancellation_form.ctp:58
 msgid "UserCancel.mail_body"
 msgstr "Body"
 
+#: SiteManager/View/Elements/Membership/membership_cancellation_form.ctp:59
 msgid "UserCancel.mail_body help"
 msgstr "{X-SITE_NAME} : Site name<br>{X-URL} : URL"
+
+#: SiteManager/View/Helper/SiteManagerHelper.php:165
+msgid "Membership cancellation"
+msgstr ""
 
 #
 # コンテンツ承認
 #
-msgid "Content workflow"
-msgstr ""
-
+#: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:16
 msgid "Workflow.approval_mail_subject"
 msgstr "Application e-mail subject"
 
+#: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:22
 msgid "Workflow.approval_mail_body"
 msgstr "Application e-mail text"
 
+#: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:23
 msgid "Workflow.approval_mail_body help"
 msgstr "{X-PLUGIN_MAIL_SUBJECT} : Plugin e-mail subject<br>{X-PLUGIN_NAME} : Plugin name<br>{X-USER} : Posted<br>{X-WORKFLOW_COMMENT} : Approval Comments<br>{X-PLUGIN_MAIL_BODY} E-mail plugin text"
 
+#: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:25
+msgid "The email subject and body of the applicant request that is sent to the room administrator when you registered the content."
+msgstr ""
+
+#: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:37
 msgid "Workflow.disapproval_mail_subject"
 msgstr "Remand e-mail subject"
 
+#: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:43
 msgid "Workflow.disapproval_mail_body"
 msgstr "Remand e-mail text"
 
+#: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:44
 msgid "Workflow.disapproval_mail_body help"
 msgstr "{X-PLUGIN_MAIL_SUBJECT} : Plugin e-mail subject<br>{X-PLUGIN_NAME} : Plugin name<br>{X-USER} : Posted<br>{X-WORKFLOW_COMMENT} : Approval Comments<br>{X-PLUGIN_MAIL_BODY} E-mail plugin text"
 
+#: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:46
+msgid "The email subject and body that is sent to the contributor when remanded the content."
+msgstr ""
+
+#: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:58
 msgid "Workflow.approval_completion_mail_subject"
 msgstr "Approval completion notification e-mail subject"
 
+#: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:64
 msgid "Workflow.approval_completion_mail_body"
 msgstr "Approval completion notification e-mail text"
 
+#: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:65
 msgid "Workflow.approval_completion_mail_body help"
 msgstr "{X-PLUGIN_MAIL_SUBJECT} : Plugin e-mail subject<br>{X-PLUGIN_NAME} : Plugin name<br>{X-USER} : Posted<br>{X-WORKFLOW_COMMENT} : Approval Comments<br>{X-PLUGIN_MAIL_BODY} E-mail plugin text"
 
+#: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:67
+msgid "The email subject and body that is sent to the contributor when you have completed approved the content."
+msgstr ""
+
+#: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:79
 msgid "Workflow.contact_after_approval_mail_subject"
 msgstr "Subject of contact notification e-mail to the person in charge"
 
+#: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:85
 msgid "Workflow.contact_after_approval_mail_body"
 msgstr "The body of the contact notification e-mail to the person in charge"
 
+#: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:86
 msgid "Workflow.contact_after_approval_mail_body help"
 msgstr "{X-PLUGIN_MAIL_SUBJECT} : Plugin e-mail subject<br>{X-PLUGIN_NAME} : Plugin name<br>{X-USER} : Posted<br>{X-WORKFLOW_COMMENT} : Approval Comments<br>{X-PLUGIN_MAIL_BODY} E-mail plugin text"
+
+#: SiteManager/View/Elements/Workflow/content_workflo_form.ctp:88
+msgid "Already is the text and e-mail subject line that is sent to the contributor at the time you enter to contact the person in charge of editing the content that has been approved."
+msgstr ""
+
+#: SiteManager/View/Workflow/edit.ctp:15
+msgid "Against approval is required content, you can set the e-mail subject line, text that is sent to complete approval from the application request (remand)."
+msgstr ""
 
 #
 # メール署名
 #
+#: SiteManager/View/Elements/MailSignatureSettings/signature_form.ctp:16
 msgid "Mail.body_header"
 msgstr "Text header"
 
+#: SiteManager/View/Elements/MailSignatureSettings/signature_form.ctp:17
 msgid "Mail.body_header help"
 msgstr "It is the content to be applied to the beginning of all of the mail text."
 
+#: SiteManager/View/Elements/MailSignatureSettings/signature_form.ctp:22
 msgid "Mail.signature"
 msgstr "Signature"
 
+#: SiteManager/View/Elements/MailSignatureSettings/signature_form.ctp:23
 msgid "Mail.signature help"
 msgstr "It is the content to be added to the end of all of the mail text."
