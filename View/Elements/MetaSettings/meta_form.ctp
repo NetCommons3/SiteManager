@@ -16,26 +16,31 @@ $SiteSetting->prepare();
 
 <article>
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Meta.author', array(
-		'help' => true
+		'label' => __d('site_manager', 'Meta.author'),
+		'help' => __d('site_manager', 'Meta.author help')
 	)); ?>
 
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Meta.copyright', array(
-		'help' => true
+		'label' => __d('site_manager', 'Meta.copyright'),
+		'help' => __d('site_manager', 'Meta.copyright help')
 	)); ?>
 
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Meta.keywords', array(
 		'type' => 'textarea',
-		'help' => true
+		'label' => __d('site_manager', 'Meta.keywords'),
+		'help' => __d('site_manager', 'Meta.keywords help')
 	)); ?>
 
 	<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'Meta.description', array(
 		'type' => 'textarea',
-		'help' => true
+		'label' => __d('site_manager', 'Meta.description'),
+		'help' => __d('site_manager', 'Meta.description help')
 	)); ?>
 
 	<?php echo $this->SiteManager->inputCommon('SiteSetting', 'Meta.robots', array(
 		'type' => 'select',
 		'options' => $SiteSetting->metaRobots,
-		'help' => true
+		'label' => __d('site_manager', 'Meta.robots'),
+		'help' => __d('site_manager', 'Meta.robots help')
 	)); ?>
 </article>

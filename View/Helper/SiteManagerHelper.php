@@ -218,19 +218,15 @@ class SiteManagerHelper extends AppHelper {
  *
  * @param string $key キー
  * @param array $options オプション
- * @param string $labelPlugin __dのプラグイン名
  * @return array オプション
  */
-	private function __getHelpOption($key, $options = array(), $labelPlugin = 'site_manager') {
-		if (Hash::get($options, 'help', false) === true) {
-			$options = Hash::insert($options, 'help', __d($labelPlugin, $key . ' help'));
-		}
+	private function __getHelpOption($key, $options = array()) {
 		if (Hash::get($options, 'mailHelp', false)) {
 			$help = '';
 			if (is_array(Hash::get($options, 'mailHelp'))) {
 				$help .= Hash::get($options, 'mailHelp.addMessage');
 			}
-			$help .= $this->NetCommonsHtml->mailHelp(__d($labelPlugin, $key . ' help'));
+			$help .= $this->NetCommonsHtml->mailHelp(Hash::get($options, 'help'));
 			$options = Hash::insert($options, 'help', $help);
 			$options = Hash::remove($options, 'mailHelp');
 		}
@@ -244,10 +240,9 @@ class SiteManagerHelper extends AppHelper {
  * @param string $model モデル名
  * @param string $key キー
  * @param array $options オプション
- * @param string $labelPlugin __dのプラグイン名
  * @return string HTML
  */
-	public function inputCommon($model, $key, $options = array(), $labelPlugin = 'site_manager') {
+	public function inputCommon($model, $key, $options = array()) {
 		$output = '';
 
 		$requestKey = SiteManagerComponent::convertRequestKey($key);
@@ -255,7 +250,10 @@ class SiteManagerHelper extends AppHelper {
 			return $output;
 		}
 
-		$options = $this->__getHelpOption($key, $options, $labelPlugin);
+		$label = Hash::get($options, 'label');
+		$options = Hash::remove($options, 'label');
+
+		$options = $this->__getHelpOption($key, $options);
 
 		$languageId = '0';
 		$inputValue = $model . '.' . $requestKey . '.' . $languageId;
@@ -272,7 +270,7 @@ class SiteManagerHelper extends AppHelper {
 
 		$output .= $this->NetCommonsForm->input($inputValue . '.value',
 			Hash::merge(array(
-				'label' => __d($labelPlugin, $key),
+				'label' => $label,
 			), $options)
 		);
 		return $output;
@@ -284,10 +282,9 @@ class SiteManagerHelper extends AppHelper {
  * @param string $model モデル名
  * @param string $key キー
  * @param array $options オプション
- * @param string $labelPlugin __dのプラグイン名
  * @return string HTML
  */
-	public function inputLanguage($model, $key, $options = array(), $labelPlugin = 'site_manager') {
+	public function inputLanguage($model, $key, $options = array()) {
 		$output = '';
 
 		$requestKey = SiteManagerComponent::convertRequestKey($key);
@@ -295,7 +292,10 @@ class SiteManagerHelper extends AppHelper {
 			return $output;
 		}
 
-		$options = $this->__getHelpOption($key, $options, $labelPlugin);
+		$label = Hash::get($options, 'label');
+		$options = Hash::remove($options, 'label');
+
+		$options = $this->__getHelpOption($key, $options);
 
 		$activeLangId = $this->_View->viewVars['activeLangId'];
 		$languageIds = array_keys($this->_View->viewVars['languages']);
@@ -323,7 +323,7 @@ class SiteManagerHelper extends AppHelper {
 				$output .= $this->NetCommonsForm->wysiwyg($inputValue . '.value',
 					Hash::merge(
 						array(
-							'label' => $this->SwitchLanguage->inputLabel(__d($labelPlugin, $key), $languageId),
+							'label' => $this->SwitchLanguage->inputLabel($label, $languageId),
 							'ng-model' => $this->domId($field),
 						),
 						$options
@@ -333,7 +333,7 @@ class SiteManagerHelper extends AppHelper {
 			} else {
 				$output .= $this->NetCommonsForm->input($inputValue . '.value',
 					Hash::merge(array(
-						'label' => $this->SwitchLanguage->inputLabel(__d($labelPlugin, $key), $languageId),
+						'label' => $this->SwitchLanguage->inputLabel($label, $languageId),
 					), $options)
 				);
 			}
