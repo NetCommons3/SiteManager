@@ -437,7 +437,7 @@ class SiteSetting extends SiteManagerAppModel {
 			$saveData = Hash::extract($data, 'SiteSetting.{s}.{n}');
 
 			if ($saveData && ! $this->saveMany($saveData, ['validate' => false])) {
-				throw new InternalErrorException(__d('net_commons', 'Internal Server Error 2'));
+				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
 
 			//トランザクションCommit
