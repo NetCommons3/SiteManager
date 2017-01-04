@@ -66,6 +66,10 @@ class SiteManagerHelper extends AppHelper {
 			'controller' => 'mail_signature_settings',
 			'action' => 'edit',
 		),
+		'use_languages' => array(
+			'controller' => 'use_languages',
+			'action' => 'edit',
+		),
 	);
 
 /**
