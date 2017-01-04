@@ -40,6 +40,10 @@ msgstr "入会・退会"
 msgid "Tab.workflow"
 msgstr "承認メール"
 
+#: SiteManager/View/Helper/SiteManagerHelper.php:116
+msgid "Tab.use_languages"
+msgstr "使用言語設定"
+
 #
 # 一般設定
 #
@@ -419,3 +423,10 @@ msgstr "署名"
 #: SiteManager/View/Elements/MailSignatureSettings/signature_form.ctp:23
 msgid "Mail.signature help"
 msgstr "全てのメール本文の末尾に付与する内容です。"
+
+#
+# 使用言語設定
+#
+#: Install/View
+msgid "Please select the language to use."
+msgstr "当システムで使用する言語を選択してください"
