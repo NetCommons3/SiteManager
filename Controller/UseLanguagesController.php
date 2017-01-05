@@ -43,12 +43,10 @@ class UseLanguagesController extends SiteManagerAppController {
  * @return void
  */
 	public function edit() {
-		$this->Language = ClassRegistry::init('M17n.Language');
 		$languages = $this->Language->find('list', array(
 			'fields' => array('code', 'is_active'),
 			'recursive' => -1,
 		));
-
 		$activeLangs = array();
 		$defaultLangs = array_intersect_key(M17nHelper::$languages, $languages);
 		foreach ($defaultLangs as $code => $value) {
@@ -58,9 +56,33 @@ class UseLanguagesController extends SiteManagerAppController {
 			$defaultLangs[$code] = __d('m17n', $value);
 		}
 
+		if ($this->request->is('post')) {
+			try {
+				$this->Language->begin();
+
+				$result = $this->Language->saveActive($this->data);
+				if (! $result) {
+					$this->NetCommons->handleValidationError($this->Language->validationErrors);
+					$this->set('validationErrors', $this->Language->validationErrors);
+					$activeLangs = array();
+				}
+
+				$this->Language->commit();
+
+			} catch (Exception $ex) {
+				$this->Language->rollback($ex);
+			}
+
+			if ($result) {
+				$this->NetCommons->setFlashNotification(__d('net_commons', 'Successfully saved.'), array(
+					'class' => 'success',
+				));
+				return $this->redirect($this->referer());
+			}
+		}
+
 		$this->set('activeLangs', $activeLangs);
 		$this->set('defaultLangs', $defaultLangs);
-
 	}
 
 }
