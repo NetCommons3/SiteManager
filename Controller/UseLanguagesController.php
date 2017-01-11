@@ -10,7 +10,6 @@
  */
 
 App::uses('SiteManagerAppController', 'SiteManager.Controller');
-App::uses('M17n.M17nHelper', 'M17n.Controller');
 
 /**
  * サイト管理【利用言語設定】
@@ -43,18 +42,7 @@ class UseLanguagesController extends SiteManagerAppController {
  * @return void
  */
 	public function edit() {
-		$languages = $this->Language->find('list', array(
-			'fields' => array('code', 'is_active'),
-			'recursive' => -1,
-		));
-		$activeLangs = array();
-		$defaultLangs = array_intersect_key(M17nHelper::$languages, $languages);
-		foreach ($defaultLangs as $code => $value) {
-			if ($languages[$code]) {
-				$activeLangs[] = $code;
-			}
-			$defaultLangs[$code] = __d('m17n', $value);
-		}
+		list($activeLangs, $enableLangs) = $this->Language->getLanguagesWithName();
 
 		if ($this->request->is('post')) {
 			try {
@@ -82,7 +70,7 @@ class UseLanguagesController extends SiteManagerAppController {
 		}
 
 		$this->set('activeLangs', $activeLangs);
-		$this->set('defaultLangs', $defaultLangs);
+		$this->set('enableLangs', $enableLangs);
 	}
 
 }

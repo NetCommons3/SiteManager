@@ -24,7 +24,7 @@
 			<?php echo $this->NetCommonsForm->input('Language.code', array(
 				'type' => 'checkbox',
 				'multiple' => true,
-				'options' => $defaultLangs,
+				'options' => $enableLangs,
 				'default' => $activeLangs,
 				'hiddenField' => false,
 				'error' => false,
