@@ -430,3 +430,11 @@ msgstr "全てのメール本文の末尾に付与する内容です。"
 #: Install/View
 msgid "Please select the language to use."
 msgstr "当システムで使用する言語を選択してください"
+
+#: SiteManager/View/Helper/SiteManagerHelper.php:116
+msgid "Use languages"
+msgstr "使用言語の選択"
+
+#: SiteManager/View/Helper/SiteManagerHelper.php:116
+msgid "Use m17n plugins"
+msgstr "多言語化するプラグインの選択"

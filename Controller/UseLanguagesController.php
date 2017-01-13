@@ -10,6 +10,7 @@
  */
 
 App::uses('SiteManagerAppController', 'SiteManager.Controller');
+App::uses('Plugin', 'PluginManager.Model');
 
 /**
  * サイト管理【利用言語設定】
@@ -25,8 +26,9 @@ class UseLanguagesController extends SiteManagerAppController {
  * @var array
  */
 	public $uses = array(
-		'SiteManager.SiteSetting',
 		'M17n.Language',
+		'SiteManager.SiteSetting',
+		'PluginManager.Plugin',
 	);
 
 /**
@@ -47,6 +49,7 @@ class UseLanguagesController extends SiteManagerAppController {
 		if ($this->request->is('post')) {
 			try {
 				$this->Language->begin();
+				$this->Plugin->begin();
 
 				$result = $this->Language->saveActive($this->data);
 				if (! $result) {
@@ -55,10 +58,14 @@ class UseLanguagesController extends SiteManagerAppController {
 					$activeLangs = array();
 				}
 
+				$this->Plugin->saveEnableM17n($this->data);
+
 				$this->Language->commit();
+				$this->Plugin->commit();
 
 			} catch (Exception $ex) {
 				$this->Language->rollback($ex);
+				$this->Plugin->rollback();
 			}
 
 			if ($result) {
@@ -69,8 +76,34 @@ class UseLanguagesController extends SiteManagerAppController {
 			}
 		}
 
+		$plugins = $this->Plugin->find('list', array(
+			'recursive' => -1,
+			'fields' => array('key', 'name'),
+			'conditions' => array(
+				'type' => Plugin::PLUGIN_TYPE_FOR_FRAME,
+				'language_id' => Current::read('Language.id'),
+			),
+			'order' => array('weight' => 'asc', 'id' => 'asc'),
+		));
+		$this->set('plugins', $plugins);
+
+		$plugins = $this->Plugin->find('list', array(
+			'recursive' => -1,
+			'fields' => array('key', 'key'),
+			'conditions' => array(
+				'type' => Plugin::PLUGIN_TYPE_FOR_FRAME,
+				'language_id' => Current::read('Language.id'),
+				'is_m17n' => true,
+			),
+			'order' => array('weight' => 'asc', 'id' => 'asc'),
+		));
+		$this->set('isM17nPlugins', array_keys($plugins));
+
 		$this->set('activeLangs', $activeLangs);
 		$this->set('enableLangs', $enableLangs);
+
+
+
 	}
 
 }
