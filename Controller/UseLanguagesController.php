@@ -101,9 +101,6 @@ class UseLanguagesController extends SiteManagerAppController {
 
 		$this->set('activeLangs', $activeLangs);
 		$this->set('enableLangs', $enableLangs);
-
-
-
 	}
 
 }
