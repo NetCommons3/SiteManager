@@ -72,7 +72,7 @@ echo $this->NetCommonsHtml->css('/site_manager/css/style.css');
 				<input type="hidden" name="data[UserAttributeSetting][{{userAttr.userAttributeSetting.id}}][auto_regist_weight]" ng-value="{{$index + 1}}">
 
 				<button type="button" class="btn btn-default btn-xs user-attributes-display-btn"
-						ng-disabled="userAttr.userAttributeSetting.required"
+						ng-disabled="(userAttr.userAttributeSetting.required || userAttr.userAttributeSetting.userAttributeKey == 'email')"
 						ng-click="display($index, 0)"
 						ng-show="(userAttr.userAttributeSetting.required || userAttr.userAttributeSetting.autoRegistDisplay)">
 

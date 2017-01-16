@@ -154,6 +154,7 @@ class MembershipController extends SiteManagerAppController {
 			'fields' => array(
 				'UserAttribute.name',
 				'UserAttributeSetting.id',
+				'UserAttributeSetting.user_attribute_key',
 				'UserAttributeSetting.required',
 				'UserAttributeSetting.auto_regist_display',
 				'UserAttributeSetting.auto_regist_weight',

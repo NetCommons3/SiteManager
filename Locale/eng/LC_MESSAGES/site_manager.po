@@ -40,6 +40,10 @@ msgstr "Membership"
 msgid "Tab.workflow"
 msgstr "Workflow mail"
 
+#: SiteManager/View/Helper/SiteManagerHelper.php:116
+msgid "Tab.use_languages"
+msgstr "Use languages"
+
 #
 # 一般設定
 #
