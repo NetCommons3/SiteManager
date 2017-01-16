@@ -1,6 +1,6 @@
 <?php
 /**
- * AddIndex migration
+ * 多言語化対応
  *
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @link http://www.netcommons.org NetCommons Project
@@ -8,19 +8,22 @@
  * @copyright Copyright 2014, NetCommons Project
  */
 
+App::uses('NetCommonsMigration', 'NetCommons.Config/Migration');
+
 /**
- * AddIndex migration
+ * 多言語化対応
  *
+ * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @package NetCommons\SiteManager\Config\Migration
  */
-class AddIndex extends CakeMigration {
+class AddIsOriginalCopy extends NetCommonsMigration {
 
 /**
  * Migration description
  *
  * @var string
  */
-	public $description = 'add_index';
+	public $description = 'add_is_original_copy';
 
 /**
  * Actions to be performed
@@ -29,27 +32,15 @@ class AddIndex extends CakeMigration {
  */
 	public $migration = array(
 		'up' => array(
-			'alter_field' => array(
-				'site_settings' => array(
-					'key' => array('type' => 'string', 'null' => false, 'default' => null, 'key' => 'index', 'collate' => 'utf8_general_ci', 'comment' => 'キー    e.g.) theme_name, site_name', 'charset' => 'utf8'),
-				),
-			),
 			'create_field' => array(
 				'site_settings' => array(
-					'indexes' => array(
-						'key' => array('column' => 'key', 'unique' => 0),
-					),
+					'is_original_copy' => array('type' => 'boolean', 'null' => false, 'default' => '0', 'comment' => 'オリジナルのコピー。言語を新たに追加したときに使用する', 'after' => 'is_translation'),
 				),
 			),
 		),
 		'down' => array(
-			'alter_field' => array(
-				'site_settings' => array(
-					'key' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => 'Key of the record.    e.g.) theme_name, site_name', 'charset' => 'utf8'),
-				),
-			),
 			'drop_field' => array(
-				'site_settings' => array('indexes' => array('key')),
+				'site_settings' => array('is_original_copy'),
 			),
 		),
 	);
