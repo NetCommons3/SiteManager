@@ -28,6 +28,8 @@ echo $this->NetCommonsHtml->css('/plugin_manager/css/style.css');
 					<?php echo __d('site_manager', 'Use languages'); ?>
 				</div>
 				<div class="panel-body">
+					<?php echo $this->NetCommonsForm->hidden('Language.code', array('value' => null)); ?>
+
 					<?php echo $this->NetCommonsForm->input('Language.code', array(
 						'type' => 'checkbox',
 						'multiple' => true,
