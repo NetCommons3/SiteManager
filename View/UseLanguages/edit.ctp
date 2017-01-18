@@ -50,27 +50,6 @@ echo $this->NetCommonsHtml->css('/plugin_manager/css/style.css');
 					<?php endif; ?>
 				</div>
 			</div>
-
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<?php echo __d('site_manager', 'Use m17n plugins'); ?>
-				</div>
-				<div class="panel-body">
-					<div class="form-inline">
-						<div class="clearfix">
-							<?php echo $this->NetCommonsForm->input('Plugin.key', array(
-								'type' => 'checkbox',
-								'multiple' => true,
-								'options' => $plugins,
-								'default' => $isM17nPlugins,
-								'error' => false,
-								'hiddenField' => false,
-								'div' => array('class' => 'plugin-checkbox-outer'),
-							)); ?>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 
 		<div class="panel-footer text-center">
