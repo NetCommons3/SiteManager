@@ -402,7 +402,7 @@ msgid "Already is the text and e-mail subject line that is sent to the contribut
 msgstr "既に承認したコンテンツを編集して担当者への連絡を入力した際に投稿者に送られるメールの件名と本文です。"
 
 #: SiteManager/View/Workflow/edit.ctp:15
-msgid "Against approval is required content, you can set the e-mail subject line,  text that is sent to complete approval from the application request (remand)."
+msgid "Against approval is required content, you can set the e-mail subject line, text that is sent to complete approval from the application request (remand)."
 msgstr "承認が必要なコンテンツに対して、申請から承認完了（差し戻し）までに送信されるメールの件名と本文が設定できます。"
 
 #
