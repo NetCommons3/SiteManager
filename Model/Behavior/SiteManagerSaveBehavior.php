@@ -69,6 +69,9 @@ class SiteManagerSaveBehavior extends ModelBehavior {
 		));
 		foreach ($mails as $index => $mail) {
 			$langId = $mail['MailSettingFixedPhrase']['language_id'];
+			if (! array_key_exists($langId, $data[$model->alias]['UserRegist.mail_subject'])) {
+				continue;
+			}
 			$subject = $data[$model->alias]['UserRegist.mail_subject'][$langId]['value'];
 			$body = $data[$model->alias]['UserRegist.mail_body'][$langId]['value'];
 			$mails[$index]['MailSettingFixedPhrase']['mail_fixed_phrase_subject'] = $subject;
