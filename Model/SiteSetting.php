@@ -270,6 +270,7 @@ class SiteSetting extends SiteManagerAppModel {
 		$this->loadModels([
 			'Page' => 'Pages.Page',
 			'Room' => 'Rooms.Room',
+			'Space' => 'Rooms.Space',
 		]);
 		//パブリックスペースの場合
 		$defaultStartRoom = SiteSettingUtil::read('App.default_start_room');
@@ -298,7 +299,15 @@ class SiteSetting extends SiteManagerAppModel {
 			return '/';
 		}
 
-		return '/' . $page['Page']['permalink'];
+		$space = $this->Space->find('first', array(
+			'recursive' => -1,
+			'conditions' => array('id' => $room['Room']['space_id'])
+		));
+		if ($space['Space']['permalink']) {
+			return '/' . $space['Space']['permalink'] . '/' . $page['Page']['permalink'];
+		} else {
+			return '/' . $page['Page']['permalink'];
+		}
 	}
 
 /**
