@@ -170,7 +170,7 @@ msgstr "ロボット型検索エンジンが登録の対象にしてよいか(in
 
 #: SiteManager/View/MetaSettings/edit.ctp:15
 msgid "Meta-information (meta tag), is described in the head tag of the html page, is a tag that defines a variety of additional information of the page.The meta-information by setting properly, will also be the SEO measures. Also, if you change the content in each page, it can be changed in the Page Setup."
-msgstr "メタ情報（metaタグ）は、htmlページのheadタグ内に記述される、ページの各種付加情報を定義するタグです。"
+msgstr "メタ情報（METAタグ）は、htmlページのheadタグ内に記述される、ページの各種付加情報を定義するタグです。"
 "メタ情報を適切に設定することで、SEOの対策にもなります。また、ページごとで内容を変える場合は、ページ設定で変更することができます。"
 
 # この項目は、i18nでセットされない
