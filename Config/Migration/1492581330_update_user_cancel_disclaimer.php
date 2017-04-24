@@ -78,7 +78,6 @@ class UpdateUserCancelDisclaimer extends NetCommonsMigration {
 			$update = [
 				'SiteSetting.value' => '\'<p><span style="color: #f25a62; text-decoration: underline;"><strong>User data which will be deleted</strong></span><br />' .
 						'If proceeded, your user profile and private room in this NetCommons will vanish, and cannot be used again.</p>' .
-						'<p>&nbsp;</p>' .
 						'<p><span style="color: #f25a62; text-decoration: underline;"><strong>User data which will not be deleted</strong></span><br />' .
 						'Your posts and uploaded files in this NetCommons will not be deleted automatically.<br />' .
 						'If you wish to delete them, you have to do it manually before you cancel your account.\''
