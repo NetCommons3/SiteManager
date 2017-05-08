@@ -10,6 +10,8 @@
  */
 
 echo $this->NetCommonsHtml->css('/site_manager/css/style.css');
+App::uses('UserAttribute', 'UserAttributes.Model');
+
 ?>
 
 <div class="panel-heading clearfix" ng-click="AutomaticInputItems = ! AutomaticInputItems">
@@ -72,7 +74,8 @@ echo $this->NetCommonsHtml->css('/site_manager/css/style.css');
 				<input type="hidden" name="data[UserAttributeSetting][{{userAttr.userAttributeSetting.id}}][auto_regist_weight]" ng-value="{{$index + 1}}">
 
 				<button type="button" class="btn btn-default btn-xs user-attributes-display-btn"
-						ng-disabled="(userAttr.userAttributeSetting.required || userAttr.userAttributeSetting.userAttributeKey == 'email')"
+						ng-disabled="(userAttr.userAttributeSetting.required ||
+									userAttr.userAttributeSetting.userAttributeKey == '<?php echo UserAttribute::EMAIL_FIELD; ?>')"
 						ng-click="display($index, 0)"
 						ng-show="(userAttr.userAttributeSetting.required || userAttr.userAttributeSetting.autoRegistDisplay)">
 
@@ -94,7 +97,7 @@ echo $this->NetCommonsHtml->css('/site_manager/css/style.css');
 
 			<div class="pull-left">
 				{{userAttr.userAttribute.name}}
-				<strong class="text-danger h4" ng-show="userAttr.userAttributeSetting.required">
+				<strong class="text-danger h4" ng-show="(userAttr.userAttributeSetting.required || userAttr.userAttributeSetting.userAttributeKey === 'email')">
 					<?php echo __d('net_commons', '*'); ?>
 				</strong>
 			</div>
