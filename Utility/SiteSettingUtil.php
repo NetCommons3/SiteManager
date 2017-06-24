@@ -53,10 +53,6 @@ class SiteSettingUtil {
 			'App.default_start_room',
 			// * サイトタイムゾーン
 			'App.default_timezone',
-			// * グループルームの容量
-			'App.disk_for_group_room',
-			// * プライベートルームの容量
-			'App.disk_for_private_room',
 
 			// * デバッグモード
 			'debug',
