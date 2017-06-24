@@ -35,6 +35,13 @@ class SiteSettingUtil {
 	protected static $_data = array();
 
 /**
+ * initializeしたかどうか
+ *
+ * @var array
+ */
+	protected static $_initialized = false;
+
+/**
  * 初期データをセットする
  *
  * [NetCommonsAppController::beforeFilter](../NetCommons/classes/NetCommonsAppController.html#method_beforeFilter)
@@ -43,6 +50,11 @@ class SiteSettingUtil {
  * @return void
  */
 	public static function initialize() {
+		if (self::$_initialized) {
+			return;
+		}
+		self::$_initialized = true;
+
 		self::setup(array(
 			// * サイト名
 			'App.site_name',
