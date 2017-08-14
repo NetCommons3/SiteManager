@@ -38,6 +38,7 @@ App::uses('UserAttribute', 'UserAttributes.Model');
 				'value' => '1',
 			));
 		} else {
+			$userAttributes[$i]['UserAttributeSetting']['auto_regist_display'] = (int)$userAttributes[$i]['UserAttributeSetting']['auto_regist_display'];
 			echo $this->NetCommonsForm->checkbox('UserAttributeSetting.' . $userAttrSettingId . '.auto_regist_display', array(
 				'value' => $userAttribute['UserAttributeSetting']['auto_regist_display'],
 				'class' => 'hidden'
