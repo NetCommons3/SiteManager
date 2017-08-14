@@ -33,8 +33,9 @@ App::uses('UserAttribute', 'UserAttributes.Model');
 		));
 
 		if ($userAttribute['UserAttributeSetting']['required']) {
+			$userAttributes[$i]['UserAttributeSetting']['auto_regist_display'] = '1';
 			echo $this->NetCommonsForm->hidden('UserAttributeSetting.' . $userAttrSettingId . '.auto_regist_display', array(
-				'value' => null,
+				'value' => '1',
 			));
 		} else {
 			$userAttributes[$i]['UserAttributeSetting']['auto_regist_display'] = (int)$userAttributes[$i]['UserAttributeSetting']['auto_regist_display'];
