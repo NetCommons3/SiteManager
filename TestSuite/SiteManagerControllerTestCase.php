@@ -20,7 +20,7 @@ App::uses('NetCommonsControllerTestCase', 'NetCommons.TestSuite');
  * @package NetCommons\SiteManager\TestSuite
  * @codeCoverageIgnore
  */
-class SiteManagerControllerTestCase extends NetCommonsControllerTestCase {
+abstract class SiteManagerControllerTestCase extends NetCommonsControllerTestCase {
 
 /**
  * Fixtures
