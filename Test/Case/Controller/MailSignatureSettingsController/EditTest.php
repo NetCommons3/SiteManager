@@ -41,6 +41,10 @@ class MailSignatureSettingsControllerEditTest extends SiteManagerControllerTestC
 	public function setUp() {
 		parent::setUp();
 
+		$this->generateNc(Inflector::camelize($this->_controller), array('components' => array(
+			'Flash' => array('set')
+		)));
+
 		//ログイン
 		TestAuthGeneral::login($this);
 	}
@@ -150,8 +154,8 @@ class MailSignatureSettingsControllerEditTest extends SiteManagerControllerTestC
  */
 	public function testEditPost() {
 		//チェック
-		$this->controller->Components->Session
-			->expects($this->once())->method('setFlash')
+		$this->controller->Flash->expects($this->once())
+			->method('set')
 			->with(__d('net_commons', 'Successfully saved.'));
 
 		//テスト実行
