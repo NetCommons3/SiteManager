@@ -213,6 +213,18 @@ class SiteSetting extends SiteManagerAppModel {
 	public $userRoles = array();
 
 /**
+ * validateする外部プラグイン
+ * ### 設定例
+ * ```
+ * array('AuthShibboleth')
+ * ```
+ *
+ * @var array
+ * @see SiteSetting::__validateExternals()
+ */
+	public $validatePlugins = array();
+
+/**
  * Behaviors
  *
  * @var array
@@ -519,7 +531,7 @@ class SiteSetting extends SiteManagerAppModel {
 		$data = $this->validateSecuritySettings($data);
 		$data = $this->validateDeveloper($data);
 
-		$data = $this->__validateAuthExternals($data);
+		$data = $this->__validateExternals($data);
 
 		if (! $this->validationErrors) {
 			return $data;
@@ -529,28 +541,23 @@ class SiteSetting extends SiteManagerAppModel {
 	}
 
 /**
- * 外部プラグインの認証あったら、動的にビヘイビア呼んでvalidateチェック
+ * 外部プラグイン、動的にビヘイビア呼んでvalidateチェック
  *
  * @param array $data データ
  * @return array
  */
-	private function __validateAuthExternals($data) {
-		$authExternalPlugins = AuthenticatorPlugin::getExternals();
-		if (! $authExternalPlugins) {
-			return $data;
-		}
-
+	private function __validateExternals($data) {
 		// 外部プラグインでvalidateするため一時的に退避
 		$messagePlugin = $this->messagePlugin;
 
-		foreach ($authExternalPlugins as $plugin) {
-			// AuthXXXX.AuthXXXXVaidateBehavior load
+		foreach ($this->validatePlugins as $plugin) {
+			// XXXX.XXXXVaidateBehavior load
 			$this->Behaviors->load($plugin . '.' . $plugin . 'Validate');
 
 			// validateのエラーメッセージで外部プラグインの言語ファイルを使うようにセット
 			$this->messagePlugin = Inflector::underscore($plugin);
 
-			// AuthXXXX.AuthXXXXVaidateBehavior::validateAuthXXXX()でvalidate実行
+			// XXXX.XXXXVaidateBehavior::validateXXXX()でvalidate実行
 			$validateFunction = 'validate' . $plugin;
 			$data = $this->$validateFunction($data);
 		}
