@@ -15,6 +15,7 @@ App::uses('SiteManagerAppModel', 'SiteManager.Model');
 App::uses('AutoUserRegist', 'Auth.Model');
 App::uses('M17nHelper', 'M17n.View/Helper');
 App::uses('Space', 'Rooms.Model');
+App::uses('AuthenticatorPlugin', 'Auth.Utility');
 
 /**
  * SiteSetting Model
@@ -210,6 +211,18 @@ class SiteSetting extends SiteManagerAppModel {
  * @var array
  */
 	public $userRoles = array();
+
+/**
+ * validateする外部プラグイン
+ * ### 設定例
+ * ```
+ * array('AuthShibboleth')
+ * ```
+ *
+ * @var array
+ * @see SiteSetting::__validateExternals()
+ */
+	public $validatePlugins = array();
 
 /**
  * Behaviors
@@ -518,11 +531,39 @@ class SiteSetting extends SiteManagerAppModel {
 		$data = $this->validateSecuritySettings($data);
 		$data = $this->validateDeveloper($data);
 
+		$data = $this->__validateExternals($data);
+
 		if (! $this->validationErrors) {
 			return $data;
 		} else {
 			return false;
 		}
+	}
+
+/**
+ * 外部プラグイン、動的にビヘイビア呼んでvalidateチェック
+ *
+ * @param array $data データ
+ * @return array
+ */
+	private function __validateExternals($data) {
+		// 外部プラグインでvalidateするため一時的に退避
+		$messagePlugin = $this->messagePlugin;
+
+		foreach ($this->validatePlugins as $plugin) {
+			// XXXX.XXXXVaidateBehavior load
+			$this->Behaviors->load($plugin . '.' . $plugin . 'Validate');
+
+			// validateのエラーメッセージで外部プラグインの言語ファイルを使うようにセット
+			$this->messagePlugin = Inflector::underscore($plugin);
+
+			// XXXX.XXXXVaidateBehavior::validateXXXX()でvalidate実行
+			$validateFunction = 'validate' . $plugin;
+			$data = $this->$validateFunction($data);
+		}
+		$this->messagePlugin = $messagePlugin;
+
+		return $data;
 	}
 
 }
