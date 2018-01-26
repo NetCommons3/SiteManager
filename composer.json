@@ -4,25 +4,28 @@
     "homepage": "http://www.netcommons.org/",
     "extra": {
         "installer-paths": {
-            "app/Plugin/{$name}": ["type:cakephp-plugin"]
+            "app/Plugin/{$name}": [
+                "type:cakephp-plugin"
+            ]
         }
     },
     "require": {
-        "cakedc/migrations":            "~2.2",
-        "netcommons/auth":              "@dev",
-        "netcommons/control-panel":     "@dev",
-        "netcommons/data-types":        "@dev",
-        "netcommons/m17n":              "@dev",
-        "netcommons/net-commons":       "@dev",
-        "netcommons/pages":             "@dev",
-        "netcommons/plugin-manager":    "@dev",
-        "netcommons/rooms":             "@dev",
-        "netcommons/theme-settings":    "@dev"
+        "cakedc/migrations": "~2.2",
+        "netcommons/auth": "@dev",
+        "netcommons/control-panel": "@dev",
+        "netcommons/data-types": "@dev",
+        "netcommons/m17n": "@dev",
+        "netcommons/net-commons": "@dev",
+        "netcommons/pages": "@dev",
+        "netcommons/plugin-manager": "@dev",
+        "netcommons/rooms": "@dev",
+        "netcommons/theme-settings": "@dev"
     },
     "require-dev": {
-        "netcommons/users":             "dev-master"
+        "netcommons/users": "dev-master"
     },
-    "license": "NetCommons License",
+    "license": "LicenseRef-NetCommons",
+    "license-ref-net-commons": "https://raw.githubusercontent.com/NetCommons3/NetCommons3/master/license.txt",
     "authors": [
         {
             "name": "NetCommons Community",
@@ -33,10 +36,12 @@
             "homepage": "https://github.com/s-nakajima"
         }
     ],
-    "type":        "cakephp-plugin",
-    "keywords":    ["cakephp", "site_manager"],
+    "type": "cakephp-plugin",
+    "keywords": [
+        "cakephp",
+        "site_manager"
+    ],
     "config": {
         "vendor-dir": "vendors"
     }
 }
-
