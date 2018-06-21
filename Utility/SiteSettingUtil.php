@@ -85,6 +85,10 @@ class SiteSettingUtil {
 
 			// * セッション
 			'Session',
+
+			// * サーバ設定
+			// ** PHP最大メモリ数
+			'Php.memory_limit',
 		));
 
 		//テーマのみデフォルト値セット
@@ -104,6 +108,8 @@ class SiteSettingUtil {
 		//Sessionの設定値を変えるため、Configureにセットする
 		$session = Hash::merge(Configure::read('Session'), self::read('Session'));
 		Configure::write('Session', $session);
+
+		ini_set('memory_limit', self::read('Php.memory_limit'));
 	}
 
 /**
