@@ -110,7 +110,7 @@ class SiteSettingUtil {
 		Configure::write('Session', $session);
 
 		if (isset(self::$_data['Php']['memory_limit'])) {
-			ini_set('memory_limit', self::$_data['Php']['memory_limit']);
+			ini_set('memory_limit', self::read('Php.memory_limit'));
 		}
 	}
 
