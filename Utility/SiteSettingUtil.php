@@ -92,7 +92,7 @@ class SiteSettingUtil {
 		));
 
 		//テーマのみデフォルト値セット
-		if (! Hash::check(self::$_data, 'theme')) {
+		if (isset(self::$_data['theme'])) {
 			self::write('theme', 'Default', '0');
 		}
 
@@ -109,7 +109,9 @@ class SiteSettingUtil {
 		$session = Hash::merge(Configure::read('Session'), self::read('Session'));
 		Configure::write('Session', $session);
 
-		ini_set('memory_limit', self::read('Php.memory_limit'));
+		if (isset(self::$_data['Php']['memory_limit'])) {
+			ini_set('memory_limit', self::$_data['Php']['memory_limit']);
+		}
 	}
 
 /**
