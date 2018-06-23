@@ -92,7 +92,7 @@ class SiteSettingUtil {
 		));
 
 		//テーマのみデフォルト値セット
-		if (isset(self::$_data['theme'])) {
+		if (! Hash::check(self::$_data, 'theme')) {
 			self::write('theme', 'Default', '0');
 		}
 
