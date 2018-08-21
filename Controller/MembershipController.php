@@ -29,6 +29,7 @@ class MembershipController extends SiteManagerAppController {
 		'SiteManager.SiteSetting',
 		'UserAttributes.UserAttribute',
 		'UserRoles.UserRole',
+		'M17n.Language',
 	);
 
 /**
@@ -156,6 +157,7 @@ class MembershipController extends SiteManagerAppController {
 				'UserAttributeSetting.id',
 				'UserAttributeSetting.user_attribute_key',
 				'UserAttributeSetting.required',
+				'UserAttributeSetting.is_multilingualization',
 				'UserAttributeSetting.auto_regist_display',
 				'UserAttributeSetting.auto_regist_weight',
 			),
@@ -175,6 +177,22 @@ class MembershipController extends SiteManagerAppController {
 			)
 		));
 		$this->set('userAttributes', $userAttributes);
+
+		$languages = $this->Language->getLanguage();
+		$originalTags = [];
+		foreach ($userAttributes as $userAttribute) {
+			$tagKey = 'X-' . strtoupper($userAttribute['UserAttributeSetting']['user_attribute_key']);
+			if ($userAttribute['UserAttributeSetting']['is_multilingualization']) {
+				foreach ($languages as $lang) {
+					$originalTags[] = '{' . $tagKey . '-' . $lang['Language']['id'] . '} : ' .
+						h($userAttribute['UserAttribute']['name']) .
+						__d('m17n', '(' . $lang['Language']['code'] . ')');
+				}
+			} else {
+				$originalTags[] = '{' . $tagKey . '} : ' . h($userAttribute['UserAttribute']['name']);
+			}
+		}
+		$this->set('originalTags', $originalTags);
 	}
 
 /**

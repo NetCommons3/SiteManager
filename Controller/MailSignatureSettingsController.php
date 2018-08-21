@@ -20,11 +20,13 @@ App::uses('SiteManagerAppController', 'SiteManager.Controller');
 class MailSignatureSettingsController extends SiteManagerAppController {
 
 /**
- * use model
+ * 使用するモデル
  *
  * @var array
  */
-	//public $uses = array();
+	public $uses = array(
+		'SiteManager.SiteSetting',
+	);
 
 /**
  * edit

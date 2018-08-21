@@ -97,7 +97,8 @@ $SiteSetting->prepare();
 							<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'AutoRegist.disclaimer', array(
 									'type' => 'wysiwyg',
 									'label' => __d('site_manager', 'AutoRegist.disclaimer'),
-									'help' => __d('site_manager', 'AutoRegist.disclaimer help'),
+									//'help' => __d('site_manager', 'AutoRegist.disclaimer help'),
+									'help' => implode('<br>', $originalTags),
 								)); ?>
 						</div>
 
@@ -115,7 +116,7 @@ $SiteSetting->prepare();
 							<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'AutoRegist.approval_mail_body', array(
 									'type' => 'textarea',
 									'label' => __d('site_manager', 'AutoRegist.approval_mail_body'),
-									'help' => __d('site_manager', 'AutoRegist.approval_mail_body help'),
+									'help' => implode('<br>', $originalTags),
 									'mailHelp' => true,
 									'required' => true,
 								)); ?>
@@ -135,7 +136,8 @@ $SiteSetting->prepare();
 							<?php echo $this->SiteManager->inputLanguage('SiteSetting', 'AutoRegist.acceptance_mail_body', array(
 									'type' => 'textarea',
 									'label' => __d('site_manager', 'AutoRegist.acceptance_mail_body'),
-									'help' => __d('site_manager', 'AutoRegist.acceptance_mail_body help'),
+									//'help' => __d('site_manager', 'AutoRegist.acceptance_mail_body help'),
+									'help' => implode('<br>', $originalTags),
 									'mailHelp' => true,
 									'required' => true,
 								)); ?>
