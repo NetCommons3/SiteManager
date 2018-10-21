@@ -173,7 +173,7 @@ class SiteSettingUtil {
  */
 	public static function read($keyPath, $default = null, $langId = null) {
 		if (! isset($langId)) {
-			$langId = Current::read('Language.id', '0');
+			$langId = Current::read('Language.id', '2');
 		}
 
 		$pathes = array();
