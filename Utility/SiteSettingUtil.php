@@ -31,7 +31,7 @@ class SiteSettingUtil {
 /**
  * サイト設定のキャッシュキー
  *
- * @var array
+ * @var string
  */
 	const CACHE_KEY = 'site_settings';
 
