@@ -465,6 +465,11 @@ class SiteSetting extends SiteManagerAppModel {
 			//トランザクションCommit
 			$this->commit();
 
+			//サイト設定情報の初期化
+			SiteSettingUtil::cacheClear();
+			SiteSettingUtil::reset();
+			SiteSettingUtil::initialize();
+
 		} catch (Exception $ex) {
 			//トランザクションRollback
 			$this->rollback($ex);
@@ -499,6 +504,11 @@ class SiteSetting extends SiteManagerAppModel {
 
 			//トランザクションCommit
 			$this->commit();
+
+			//サイト設定情報の初期化
+			SiteSettingUtil::cacheClear();
+			SiteSettingUtil::reset();
+			SiteSettingUtil::initialize();
 
 		} catch (Exception $ex) {
 			//トランザクションRollback
