@@ -71,6 +71,21 @@ class SiteSettingUtil {
 	protected static $_cachePrefix = '';
 
 /**
+ * Utilityの事前準備
+ *
+ * staticにしているため、constractが使用されないので、各メソッドで呼び出す
+ *
+ * @return void
+ */
+	private static function __prepareUtility() {
+		if (! self::$_SiteSetting) {
+			self::$_SiteSetting = ClassRegistry::init('SiteManager.SiteSetting');
+			self::$_cachePrefix = self::$_SiteSetting->useDbConfig;
+			self::$_SiteSettingUtilFunc = new SiteSettingUtilFunc();
+		}
+	}
+
+/**
  * 初期データをセットする
  *
  * [NetCommonsAppController::beforeFilter](../NetCommons/classes/NetCommonsAppController.html#method_beforeFilter)
@@ -83,9 +98,9 @@ class SiteSettingUtil {
 			return;
 		}
 		self::$_initialized = true;
-		self::$_SiteSetting = ClassRegistry::init('SiteManager.SiteSetting');
-		self::$_cachePrefix = self::$_SiteSetting->useDbConfig;
-		self::$_SiteSettingUtilFunc = new SiteSettingUtilFunc();
+
+		//事前準備
+		self::__prepareUtility();
 
 		//キャッシュから取得
 		if (self::cacheSetup()) {
@@ -163,6 +178,9 @@ class SiteSettingUtil {
  * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
  */
 	public static function setup($keyPaths, $force = false) {
+		//事前準備
+		self::__prepareUtility();
+
 		if (is_string($keyPaths)) {
 			$keyPaths = array($keyPaths);
 		}
@@ -214,6 +232,9 @@ class SiteSettingUtil {
  * @return array|null SiteSettingデータ
  */
 	public static function read($keyPath, $default = null, $langId = null) {
+		//事前準備
+		self::__prepareUtility();
+
 		if (! isset($langId)) {
 			$langId = Current::read('Language.id', '2');
 		}
@@ -278,6 +299,9 @@ class SiteSettingUtil {
  * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
  */
 	public static function write($keyPath, $value, $langId, $settingCache = true) {
+		//事前準備
+		self::__prepareUtility();
+
 		//`$keyPath = 'App.site_name';　$value = 'aaaa';` を
 		//`$keyPath = 'App';　$value = array('site_name' => 'aaaa');` に変換する
 		if (strpos($keyPath, '.') !== false) {
