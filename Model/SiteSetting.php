@@ -230,6 +230,7 @@ class SiteSetting extends SiteManagerAppModel {
  * @var array
  */
 	public $actsAs = array(
+		'NetCommons.NetCommonsCache',
 		'DataTypes.Timezone',
 		'SiteManager.IpAddressManager',
 		'SiteManager.SiteManagerValidate',

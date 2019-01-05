@@ -11,6 +11,7 @@
 
 App::uses('CakeText', 'Utility');
 App::uses('SiteSettingUtilFunc', 'SiteManager.Utility');
+App::uses('NetCommonsCache', 'NetCommons.Utility');
 
 /**
  * SiteSetting Utility
@@ -42,6 +43,34 @@ class SiteSettingUtil {
 	protected static $_initialized = false;
 
 /**
+ * SiteSettingモデル
+ *
+ * @var SiteSetting
+ */
+	protected static $_SiteSetting;
+
+/**
+ * SiteSettingUtilFuncユーティリティ
+ *
+ * @var SiteSettingUtilFunc
+ */
+	protected static $_SiteSettingUtilFunc;
+
+/**
+ * Utilityの事前準備
+ *
+ * staticにしているため、constractが使用されないので、各メソッドで呼び出す
+ *
+ * @return void
+ */
+	private static function __prepareUtility() {
+		if (! self::$_SiteSetting) {
+			self::$_SiteSetting = ClassRegistry::init('SiteManager.SiteSetting');
+			self::$_SiteSettingUtilFunc = new SiteSettingUtilFunc();
+		}
+	}
+
+/**
  * 初期データをセットする
  *
  * [NetCommonsAppController::beforeFilter](../NetCommons/classes/NetCommonsAppController.html#method_beforeFilter)
@@ -54,6 +83,9 @@ class SiteSettingUtil {
 			return;
 		}
 		self::$_initialized = true;
+
+		//事前準備
+		self::__prepareUtility();
 
 		self::setup(array(
 			// * サイト名
@@ -92,7 +124,7 @@ class SiteSettingUtil {
 		));
 
 		//テーマのみデフォルト値セット
-		if (! Hash::check(self::$_data, 'theme')) {
+		if (! isset(self::$_data['theme'])) {
 			self::write('theme', 'Default', '0');
 		}
 
@@ -123,7 +155,8 @@ class SiteSettingUtil {
  * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
  */
 	public static function setup($keyPaths, $force = false) {
-		$SiteSetting = ClassRegistry::init('SiteManager.SiteSetting');
+		//事前準備
+		self::__prepareUtility();
 
 		if (is_string($keyPaths)) {
 			$keyPaths = array($keyPaths);
@@ -141,7 +174,7 @@ class SiteSettingUtil {
 			return;
 		}
 
-		$result = $SiteSetting->find('all', array(
+		$result = self::$_SiteSetting->cacheFindQuery('all', array(
 			'recursive' => -1,
 			'fields' => array(
 				'language_id', 'key', 'value'
@@ -172,6 +205,9 @@ class SiteSettingUtil {
  * @return array|null SiteSettingデータ
  */
 	public static function read($keyPath, $default = null, $langId = null) {
+		//事前準備
+		self::__prepareUtility();
+
 		if (! isset($langId)) {
 			$langId = Current::read('Language.id', '2');
 		}
@@ -191,26 +227,29 @@ class SiteSettingUtil {
 		if ($keyPath === 'Config.language' &&
 				Hash::get(self::$_data, $keyPath . '.' . '0') === '') {
 
-			return (new SiteSettingUtilFunc())->acceptLanguage();
+			return self::$_SiteSettingUtilFunc->acceptLanguage();
 		}
 
 		$pathes = $basePathes;
 		$pathes[] = $langId;
-		if (Hash::get(self::$_data, $pathes)) {
-			return Hash::get(self::$_data, $pathes);
+		$value = Hash::get(self::$_data, $pathes);
+		if ($value) {
+			return $value;
 		}
 
 		$pathes = $basePathes;
 		$pathes[] = '0';
-		if (Hash::get(self::$_data, $pathes)) {
-			return Hash::get(self::$_data, $pathes);
+		$value = Hash::get(self::$_data, $pathes);
+		if ($value) {
+			return $value;
 		}
 
 		$pathes = $basePathes;
-		if (is_array(Hash::get(self::$_data, $pathes))) {
-			$valueArray = Hash::get(self::$_data, $pathes);
+		$value = Hash::get(self::$_data, $pathes);
+		if (is_array($value)) {
+			$valueArray = $value;
 			$result = array();
-			$result = (new SiteSettingUtilFunc())->getReadData($result, $valueArray, $default, $langId);
+			$result = self::$_SiteSettingUtilFunc->getReadData($result, $valueArray, $default, $langId);
 			return $result;
 		}
 
@@ -231,6 +270,9 @@ class SiteSettingUtil {
  * @return void
  */
 	public static function write($keyPath, $value, $langId) {
+		//事前準備
+		self::__prepareUtility();
+
 		//`$keyPath = 'App.site_name';　$value = 'aaaa';` を
 		//`$keyPath = 'App';　$value = array('site_name' => 'aaaa');` に変換する
 		if (strpos($keyPath, '.') !== false) {
@@ -254,7 +296,7 @@ class SiteSettingUtil {
 				self::$_data[$keyPath] = array();
 			}
 			self::$_data[$keyPath] = array_replace_recursive(
-				self::$_data[$keyPath], (new SiteSettingUtilFunc())->writeArray($data, $value, $langId)
+				self::$_data[$keyPath], self::$_SiteSettingUtilFunc->writeArray($data, $value, $langId)
 			);
 		} else {
 			self::$_data = Hash::insert(self::$_data, $keyPath . '.' . $langId, $value);
@@ -303,7 +345,12 @@ class SiteSettingUtil {
  * @return void
  */
 	public static function reset() {
+		//事前準備
+		self::__prepareUtility();
+
 		self::$_data = array();
+		self::$_initialized = false;
+		self::$_SiteSetting->cacheClear();
 	}
 
 /**
