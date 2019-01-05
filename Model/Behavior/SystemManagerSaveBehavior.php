@@ -49,6 +49,7 @@ class SystemManagerSaveBehavior extends ModelBehavior {
 			if (! $model->Space->saveField('room_disk_size', $value)) {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
+			$model->Space->cacheClear();
 			unset($data[$model->alias][$key]);
 		}
 
