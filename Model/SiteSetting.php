@@ -313,7 +313,7 @@ class SiteSetting extends SiteManagerAppModel {
 			return '/';
 		}
 
-		$space = $this->Space->find('first', array(
+		$space = $this->Space->cacheFindQuery('first', array(
 			'recursive' => -1,
 			'conditions' => array('id' => $room['Room']['space_id'])
 		));
