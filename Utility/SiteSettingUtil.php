@@ -11,7 +11,7 @@
 
 App::uses('CakeText', 'Utility');
 App::uses('SiteSettingUtilFunc', 'SiteManager.Utility');
-App::uses('Cache', 'Cache');
+App::uses('NetCommonsCache', 'NetCommons.Utility');
 
 /**
  * SiteSetting Utility
@@ -27,13 +27,6 @@ App::uses('Cache', 'Cache');
  * @package NetCommons\SiteManager\Utility
  */
 class SiteSettingUtil {
-
-/**
- * サイト設定のキャッシュキー
- *
- * @var string
- */
-	const CACHE_KEY = 'site_settings';
 
 /**
  * サイト設定のデータ保持用
@@ -64,13 +57,6 @@ class SiteSettingUtil {
 	protected static $_SiteSettingUtilFunc;
 
 /**
- * initializeしたかどうか
- *
- * @var array
- */
-	protected static $_cachePrefix = '';
-
-/**
  * Utilityの事前準備
  *
  * staticにしているため、constractが使用されないので、各メソッドで呼び出す
@@ -80,7 +66,6 @@ class SiteSettingUtil {
 	private static function __prepareUtility() {
 		if (! self::$_SiteSetting) {
 			self::$_SiteSetting = ClassRegistry::init('SiteManager.SiteSetting');
-			self::$_cachePrefix = self::$_SiteSetting->useDbConfig;
 			self::$_SiteSettingUtilFunc = new SiteSettingUtilFunc();
 		}
 	}
@@ -101,14 +86,6 @@ class SiteSettingUtil {
 
 		//事前準備
 		self::__prepareUtility();
-
-		//キャッシュから取得
-		if (self::cacheSetup()) {
-			return;
-		}
-
-		//キャッシュが取れなかった場合、クリア
-		self::cacheClear();
 
 		self::setup(array(
 			// * サイト名
@@ -197,7 +174,7 @@ class SiteSettingUtil {
 			return;
 		}
 
-		$result = self::$_SiteSetting->find('all', array(
+		$result = self::$_SiteSetting->cacheFindQuery('all', array(
 			'recursive' => -1,
 			'fields' => array(
 				'language_id', 'key', 'value'
@@ -209,13 +186,9 @@ class SiteSettingUtil {
 			self::write(
 				$siteSetting['SiteSetting']['key'],
 				$siteSetting['SiteSetting']['value'],
-				$siteSetting['SiteSetting']['language_id'],
-				false
+				$siteSetting['SiteSetting']['language_id']
 			);
 		}
-
-		//キャッシュに登録
-		self::cacheWrite();
 	}
 
 /**
@@ -294,11 +267,9 @@ class SiteSettingUtil {
  * @param string $keyPath Hashクラスのpath、nullの場合、Hash::mergeする
  * @param mixed $value セットする値
  * @param int $langId 言語ID(Language.id)
- * @param bool $settingCache キャッシュにセットするか否か
  * @return void
- * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
  */
-	public static function write($keyPath, $value, $langId, $settingCache = true) {
+	public static function write($keyPath, $value, $langId) {
 		//事前準備
 		self::__prepareUtility();
 
@@ -329,11 +300,6 @@ class SiteSettingUtil {
 			);
 		} else {
 			self::$_data = Hash::insert(self::$_data, $keyPath . '.' . $langId, $value);
-		}
-
-		//キャッシュの登録
-		if ($settingCache) {
-			self::cacheWrite();
 		}
 	}
 
@@ -371,9 +337,6 @@ class SiteSettingUtil {
 			}
 		}
 		self::$_data = array_filter(self::$_data);
-
-		//キャッシュの登録
-		self::cacheWrite();
 	}
 
 /**
@@ -382,7 +345,8 @@ class SiteSettingUtil {
  * @return void
  */
 	public static function reset() {
-		self::$_data = array();
+		//事前準備
+		self::__prepareUtility();
 		self::$_initialized = false;
 	}
 
@@ -406,41 +370,6 @@ class SiteSettingUtil {
 		$pathes = preg_replace('/[\[\]]/', '', $pathes);
 
 		return $pathes;
-	}
-
-/**
- * キャッシュのセットアップ
- *
- * @return bool
- */
-	public static function cacheSetup() {
-		$siteSettings = Cache::read(self::$_cachePrefix . '_' . self::CACHE_KEY, '_cake_core_');
-		if ($siteSettings !== false) {
-			self::$_data = $siteSettings;
-			return true;
-		}
-		return false;
-	}
-
-/**
- * キャッシュのクリア
- *
- * @return void
- */
-	public static function cacheClear() {
-		self::$_data = [];
-		Cache::delete(self::$_cachePrefix . '_' . self::CACHE_KEY, '_cake_core_');
-	}
-
-/**
- * キャッシュの書き込み
- *
- * @return void
- */
-	public static function cacheWrite() {
-		if (self::$_cachePrefix !== 'test') {
-			Cache::write(self::$_cachePrefix . '_' . self::CACHE_KEY, self::$_data, '_cake_core_');
-		}
 	}
 
 }
