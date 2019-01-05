@@ -347,7 +347,10 @@ class SiteSettingUtil {
 	public static function reset() {
 		//事前準備
 		self::__prepareUtility();
+
+		self::$_data = array();
 		self::$_initialized = false;
+		self::$_SiteSetting->cacheClear();
 	}
 
 /**
