@@ -76,7 +76,7 @@ class UseLanguagesController extends SiteManagerAppController {
 			}
 		}
 
-		$plugins = $this->Plugin->find('list', array(
+		$plugins = $this->Plugin->cacheFindQuery('list', array(
 			'recursive' => -1,
 			'fields' => array('key', 'name'),
 			'conditions' => array(
@@ -87,7 +87,7 @@ class UseLanguagesController extends SiteManagerAppController {
 		));
 		$this->set('plugins', $plugins);
 
-		$plugins = $this->Plugin->find('list', array(
+		$plugins = $this->Plugin->cacheFindQuery('list', array(
 			'recursive' => -1,
 			'fields' => array('key', 'key'),
 			'conditions' => array(
