@@ -11,6 +11,7 @@
 
 App::uses('SiteSettingValidateBehavior', 'SiteManager.Model/Behavior');
 App::uses('Current', 'NetCommons.Utility');
+App::uses('NetCommonsSecurity', 'NetCommons.Utility');
 
 /**
  * IpAddress管理 Behavior
@@ -19,6 +20,28 @@ App::uses('Current', 'NetCommons.Utility');
  * @package NetCommons\SiteManager\Model\Behavior
  */
 class IpAddressManagerBehavior extends SiteSettingValidateBehavior {
+
+/**
+ * NetCommonsSecurityユーティリティ
+ *
+ * @var object
+ */
+	public $NetCommonsSecurity;
+
+/**
+ * ビヘイビアの設定処理
+ *
+ * @param Model $model ビヘイビア呼び出し元モデル
+ * @param array $config $modelのためのコンフィグ設定
+ * @return void
+ */
+	public function setup(Model $model, $config = array()) {
+		parent::setup($model, $config);
+
+		if (! $this->NetCommonsSecurity) {
+			$this->NetCommonsSecurity = new NetCommonsSecurity();
+		}
+	}
 
 /**
  * IPアドレスのアクセス拒否のValidate処理
@@ -97,7 +120,7 @@ class IpAddressManagerBehavior extends SiteSettingValidateBehavior {
  * @return string
  */
 	public function getCurrentIp(Model $model) {
-		return Hash::get($_SERVER, 'HTTP_X_FORWARDED_FOR', Hash::get($_SERVER, 'REMOTE_ADDR'));
+		return $this->NetCommonsSecurity->getCurrentIp();
 	}
 
 /**
@@ -108,33 +131,7 @@ class IpAddressManagerBehavior extends SiteSettingValidateBehavior {
  * @return bool
  */
 	public function hasCurrentIp(Model $model, $ips) {
-		if (! $ips) {
-			return false;
-		}
-
-		if (is_string($ips)) {
-			$ips = explode('|', $ips);
-		}
-
-		$currentIp = $this->getCurrentIp($model);
-		if (! $currentIp) {
-			return false;
-		}
-		foreach ($ips as $accept) {
-			if (strpos($accept, '/')) {
-				list($acceptIp, $mask) = explode('/', $accept);
-			} else {
-				$acceptIp = $accept;
-				$mask = 32;
-			}
-			$acceptLong = ip2long($acceptIp) >> (32 - $mask);
-			$currentLong = ip2long($currentIp) >> (32 - $mask);
-			if ($acceptLong === $currentLong) {
-				return true;
-			}
-		}
-
-		return false;
+		return $this->NetCommonsSecurity->hasCurrentIp($ips);
 	}
 
 /**
