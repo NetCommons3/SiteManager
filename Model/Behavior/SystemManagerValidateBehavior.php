@@ -69,6 +69,13 @@ class SystemManagerValidateBehavior extends SiteSettingValidateBehavior {
 					__d('net_commons', 'Invalid request.'));
 		}
 
+		//パブリックルームの容量
+		$value = (int)Hash::get($data[$model->alias]['App.disk_for_public_room'], '0.value');
+		if (! in_array($value, $model->SiteSetting->diskSpace, true)) {
+			$this->_setValidationMessage($model, 'App.disk_for_public_room', '0',
+				__d('net_commons', 'Invalid request.'));
+		}
+
 		//グループルームの容量
 		$value = (int)Hash::get($data[$model->alias]['App.disk_for_group_room'], '0.value');
 		if (! in_array($value, $model->SiteSetting->diskSpace, true)) {

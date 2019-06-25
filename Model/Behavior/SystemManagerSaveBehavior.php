@@ -28,8 +28,10 @@ class SystemManagerSaveBehavior extends ModelBehavior {
  * @throws InternalErrorException
  */
 	public function saveRoomDiskSize(Model $model, $data) {
-		if (! isset($data[$model->alias]['App.disk_for_group_room']) ||
-				! isset($data[$model->alias]['App.disk_for_private_room'])) {
+		if (! isset($data[$model->alias]['App.disk_for_public_room']) ||
+				! isset($data[$model->alias]['App.disk_for_group_room']) ||
+				! isset($data[$model->alias]['App.disk_for_private_room'])
+		) {
 			return $data;
 		}
 		$model->loadModels([
@@ -37,6 +39,7 @@ class SystemManagerSaveBehavior extends ModelBehavior {
 		]);
 
 		$spaces = array(
+			'App.disk_for_public_room' => Space::PUBLIC_SPACE_ID,
 			'App.disk_for_group_room' => Space::COMMUNITY_SPACE_ID,
 			'App.disk_for_private_room' => Space::PRIVATE_SPACE_ID,
 		);
