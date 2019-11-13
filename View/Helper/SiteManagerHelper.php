@@ -377,7 +377,7 @@ class SiteManagerHelper extends AppHelper {
 		$html .= __d('net_commons', 'Can use an embedded keyword.') . ' ';
 		$html .= '<a href="" data-toggle="popover" data-placement="' . $placement . '"' .
 					' title="' . __d('mails', 'Embedded keyword?') . '"' . ' data-content="' . $content . '">';
-		$html .= '<span class="glyphicon glyphicon-question-sign"></span>';
+		$html .= '<span class="glyphicon glyphicon-info-sign"></span>';
 		$html .= '</a>';
 		$html .= '<script type="text/javascript">' .
 			'$(function () { $(\'[data-toggle="popover"]\').popover({html: true}) });</script>';
