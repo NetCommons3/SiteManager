@@ -56,6 +56,33 @@ class SiteSettingValidateBehavior extends ModelBehavior {
 	}
 
 /**
+ * Wysiwygのクレンジング
+ *
+ * @param Model $model ビヘイビア呼び出し元モデル
+ * @param array $data リクエストデータ配列
+ * @param string $key キー
+ * @return array リクエストデータ
+ */
+	protected function _cleansingWysiwyg(Model $model, $data, $key) {
+		if (! isset($data[$model->alias][$key])) {
+			return $data;
+		}
+
+		$model->Behaviors->load('Wysiwyg.Purifiable', [
+			'fields' => [$model->alias => ['value']],
+		]);
+
+		foreach ($data[$model->alias][$key] as $langId => $check) {
+			$model->create($check);
+			$model->validates();
+			$data[$model->alias][$key][$langId] = $model->data[$model->alias];
+		}
+
+		$model->Behaviors->unload('Wysiwyg.Purifiable');
+		return $data;
+	}
+
+/**
  * validationMessageの有無
  *
  * @param Model $model ビヘイビア呼び出し元モデル

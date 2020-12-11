@@ -74,6 +74,7 @@ class SiteManagerValidateBehavior extends SiteSettingValidateBehavior {
 		);
 		foreach ($settingKeys as $key) {
 			if (Hash::get($data[$model->alias]['App.close_site'], '0.value')) {
+				$data = $this->_cleansingWysiwyg($model, $data, $key);
 				$data = $this->_validateRequired($model, $data, $key);
 			} else {
 				unset($data[$model->alias][$key]);
@@ -184,6 +185,9 @@ class SiteManagerValidateBehavior extends SiteSettingValidateBehavior {
 			//			__d('net_commons', 'Invalid request.'));
 			//}
 
+			//利用規約文
+			$data = $this->_cleansingWysiwyg($model, $data, 'AutoRegist.disclaimer');
+
 			//会員登録承認メール、会員登録受付メール
 			$settingKeys = array(
 				'AutoRegist.approval_mail_subject',
@@ -255,6 +259,9 @@ class SiteManagerValidateBehavior extends SiteSettingValidateBehavior {
 				$this->_setValidationMessage($model, 'UserCancel.notify_administrators', '0',
 						__d('net_commons', 'Invalid request.'));
 			}
+
+			//退会規約文
+			$data = $this->_cleansingWysiwyg($model, $data, 'UserCancel.disclaimer');
 
 			//退会完了メール
 			$settingKeys = array(
