@@ -49,7 +49,7 @@ class SystemManagerSaveBehavior extends ModelBehavior {
 				$value = null;
 			}
 			$model->Space->id = $spaceId;
-			if (! $model->Space->saveField('room_disk_size', $value)) {
+			if (! $model->Space->saveField('room_disk_size', $value, ['callbacks' => false])) {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
 			$model->Space->cacheClear();

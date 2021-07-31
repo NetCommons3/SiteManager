@@ -494,7 +494,7 @@ class SiteSetting extends SiteManagerAppModel {
 			$this->id = $siteSetting['SiteSetting']['id'];
 
 			//登録処理
-			if (! $this->SiteSetting->saveField('value', $value)) {
+			if (! $this->SiteSetting->saveField('value', $value, ['callbacks' => false])) {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
 
