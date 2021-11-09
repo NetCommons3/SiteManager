@@ -180,7 +180,7 @@ Login id: {X-USERNAME}',
 			array(
 				'language_id' => 0,
 				'key' => 'Meta.copyright',
-				'value' => 'Copyright © 2016',
+				'value' => 'Copyright 2016',
 			),
 			// * キーワード
 			array(
